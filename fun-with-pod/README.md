@@ -2,7 +2,7 @@
 title: Fun in POD-land
 url: fun-with-pod
 format: markdown
-created: Dec 19 2014
+created: 2014-12-19
 tags:
     - Perl
     - POD

@@ -2,7 +2,7 @@
 title: Semantic Versioning Your Way
 url: semantic-version-your-way
 format: markdown
-created: Nov 8 2014
+created: 2014-11-08
 tags:
     - Perl
     - Dist::Zilla

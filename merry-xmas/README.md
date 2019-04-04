@@ -2,7 +2,7 @@
 title: Working with Jolly Santa's Outstanding Notes
 url: merry-xmas
 format: markdown
-created: Dec 23 2014
+created: 2014-12-23
 tags:
     - Perl
 ---
