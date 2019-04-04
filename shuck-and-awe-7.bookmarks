@@ -1,0 +1,167 @@
+<!DOCTYPE NETSCAPE-Bookmark-file-1>
+<!-- This is an automatically generated file.
+It will be read and overwritten.
+Do Not Edit! -->
+<TITLE>Bookmarks</TITLE>
+<H1>Bookmarks</H1>
+
+<DL><p>
+    <DT><H3 FOLDED>Shuck and Awe</H3>
+    <DL><p>
+        <DT><H3 FOLDED>Number 6 - June 16, 2010</H3>
+        <DL><p>
+            <DT><A HREF="http://null.perl-hackers.net/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">/dev/null</A>
+	<DD>
+    [yanick@enkidu shuck]$ perl -MXML::LibXML \
+        -E'say $_->toString for \
+            XML::LibXML->load_xml( location => "news.xml")\
+                       ->findnodes( q{//news[@lang="perl"]} )'
+    
+No one is safe from the TPF Inquisition.  
+[Alberto SimÃµes](http://null.perl-hackers.net/)
+[cornered Michael Schwern at YAPC](http://news.perlfoundation.org/2010/06/testbuilder-2-updates.html) and exacted 
+a confession about the state of Test::Builder 2.  No doubt threatened by the 
+horrid torments that only torture by the comfy chair can provide, 
+the Schwern [spilled the beans](http://use.perl.org/~schwern/journal/40421).
+            <DT><A HREF="http://news.perlfoundation.org/2010/06/testbuilder-2-updates.html" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Test::Builder 2 updates - The Perl Foundation</A>
+	<DD>
+    [yanick@enkidu shuck]$ perl -MXML::LibXML \
+        -E'say $_->toString for \
+            XML::LibXML->load_xml( location => "news.xml")\
+                       ->findnodes( q{//news[@lang="perl"]} )'
+    
+No one is safe from the TPF Inquisition.  
+[Alberto SimÃµes](http://null.perl-hackers.net/)
+[cornered Michael Schwern at YAPC](http://news.perlfoundation.org/2010/06/testbuilder-2-updates.html) and exacted 
+a confession about the state of Test::Builder 2.  No doubt threatened by the 
+horrid torments that only torture by the comfy chair can provide, 
+the Schwern [spilled the beans](http://use.perl.org/~schwern/journal/40421).
+            <DT><A HREF="http://use.perl.org/~schwern/journal/40421" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Journal of schwern (1528)</A>
+	<DD>
+    [yanick@enkidu shuck]$ perl -MXML::LibXML \
+        -E'say $_->toString for \
+            XML::LibXML->load_xml( location => "news.xml")\
+                       ->findnodes( q{//news[@lang="perl"]} )'
+    
+No one is safe from the TPF Inquisition.  
+[Alberto SimÃµes](http://null.perl-hackers.net/)
+[cornered Michael Schwern at YAPC](http://news.perlfoundation.org/2010/06/testbuilder-2-updates.html) and exacted 
+a confession about the state of Test::Builder 2.  No doubt threatened by the 
+horrid torments that only torture by the comfy chair can provide, 
+the Schwern [spilled the beans](http://use.perl.org/~schwern/journal/40421).
+            <DT><A HREF="http://blogs.perl.org/users/smash/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">smash at blogs.perl.org</A>
+	<DD>For the readers who aren't BFF with Perl's `grep` function yet, 
+[smash](http://blogs.perl.org/users/smash/) provides [a little example
+how this function can help making your code shorter, faster, and most
+important, easier to read](http://blogs.perl.org/users/smash/2010/06/grep-is-your-friend.html).
+            <DT><A HREF="http://blogs.perl.org/users/smash/2010/06/grep-is-your-friend.html" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">smash at blogs.perl.org: grep is your friend</A>
+	<DD>For the readers who aren't BFF with Perl's `grep` function yet, 
+[smash](http://blogs.perl.org/users/smash/) provides [a little example
+how this function can help making your code shorter, faster, and most
+important, easier to read](http://blogs.perl.org/users/smash/2010/06/grep-is-your-friend.html).
+            <DT><A HREF="http://perlgeek.de/blog-en/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">blog | Perlgeek.de :: Home</A>
+	<DD>[Moritz Lenz](http://perlgeek.de/blog-en/) announces the Perl 6 challenge of
+this week: [implementing $*ARGFILES](http://perlgeek.de/blog-en/perl-6/contribute-now-argfiles.html).
+He also announces the winners of the previous weeks, which have been 
+[selected by a Perl 6
+script](http://perlgeek.de/blog-en/perl-6/contribute-now-lottery.html).
+            <DT><A HREF="http://perlgeek.de/blog-en/perl-6/contribute-now-argfiles.html" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">blog | Perlgeek.de :: This Week's Contribution to Perl 6 Week 8: Implement $*ARGFILES for Rakudo</A>
+	<DD>[Moritz Lenz](http://perlgeek.de/blog-en/) announces the Perl 6 challenge of
+this week: [implementing $*ARGFILES](http://perlgeek.de/blog-en/perl-6/contribute-now-argfiles.html).
+He also announces the winners of the previous weeks, which have been 
+[selected by a Perl 6
+script](http://perlgeek.de/blog-en/perl-6/contribute-now-lottery.html).
+            <DT><A HREF="http://perlgeek.de/blog-en/perl-6/contribute-now-lottery.html" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">blog | Perlgeek.de :: This Week's Contribution to Perl 6 - Lottery Intermission</A>
+	<DD>[Moritz Lenz](http://perlgeek.de/blog-en/) announces the Perl 6 challenge of
+this week: [implementing $*ARGFILES](http://perlgeek.de/blog-en/perl-6/contribute-now-argfiles.html).
+He also announces the winners of the previous weeks, which have been 
+[selected by a Perl 6
+script](http://perlgeek.de/blog-en/perl-6/contribute-now-lottery.html).
+            <DT><A HREF="http://use.perl.org/~chromatic/journal/40423" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Journal of chromatic (983)</A>
+	<DD>The [first draft of the Modern Perl Book is available for reviews](http://use.perl.org/~chromatic/journal/40423), 
+[chromatic](http://use.perl.org/~chromatic/) sayz.  Veterans, now is the time
+to do your part and review a section or two.
+            <DT><A HREF="http://use.perl.org/~chromatic/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">chromatic - use Perl User</A>
+	<DD>The [first draft of the Modern Perl Book is available for reviews](http://use.perl.org/~chromatic/journal/40423), 
+[chromatic](http://use.perl.org/~chromatic/) sayz.  Veterans, now is the time
+to do your part and review a section or two.
+            <DT><A HREF="http://search.cpan.org/dist/KiokuDB/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">יובל קוג'מן (Yuval Kogman) / KiokuDB - search.cpan.org</A>
+	<DD>[KiokuDB](http://search.cpan.org/dist/KiokuDB/) is nifty. 
+[DBIx::Class](http://search.cpan.org/dist/DBIx-Class) is awesome. 
+[Yuval](http://nothingmuch.woobling.org/) has worked his magic again 
+to allow [the use of the former on top for the
+latter](http://blog.woobling.org/2010/03/kiokudb-for-dbic-users.html). 
+Would the result be niftwesome or awesifty? You be the judge.
+            <DT><A HREF="http://search.cpan.org/dist/DBIx-Class" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Arthur Axel "fREW" Schmidt / DBIx-Class - search.cpan.org</A>
+	<DD>[KiokuDB](http://search.cpan.org/dist/KiokuDB/) is nifty. 
+[DBIx::Class](http://search.cpan.org/dist/DBIx-Class) is awesome. 
+[Yuval](http://nothingmuch.woobling.org/) has worked his magic again 
+to allow [the use of the former on top for the
+latter](http://blog.woobling.org/2010/03/kiokudb-for-dbic-users.html). 
+Would the result be niftwesome or awesifty? You be the judge.
+            <DT><A HREF="http://nothingmuch.woobling.org/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">nothingmuch</A>
+	<DD>[KiokuDB](http://search.cpan.org/dist/KiokuDB/) is nifty. 
+[DBIx::Class](http://search.cpan.org/dist/DBIx-Class) is awesome. 
+[Yuval](http://nothingmuch.woobling.org/) has worked his magic again 
+to allow [the use of the former on top for the
+latter](http://blog.woobling.org/2010/03/kiokudb-for-dbic-users.html). 
+Would the result be niftwesome or awesifty? You be the judge.
+            <DT><A HREF="http://blog.woobling.org/2010/03/kiokudb-for-dbic-users.html" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">nothingmuch's perl blog: KiokuDB for DBIC Users</A>
+	<DD>[KiokuDB](http://search.cpan.org/dist/KiokuDB/) is nifty. 
+[DBIx::Class](http://search.cpan.org/dist/DBIx-Class) is awesome. 
+[Yuval](http://nothingmuch.woobling.org/) has worked his magic again 
+to allow [the use of the former on top for the
+latter](http://blog.woobling.org/2010/03/kiokudb-for-dbic-users.html). 
+Would the result be niftwesome or awesifty? You be the judge.
+            <DT><A HREF="http://www.effectiveperlprogramming.com/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">The Effective Perler</A>
+	<DD>[brian d foy](http://www.effectiveperlprogramming.com/) reminds us 
+that [the flip-flop operator uses a global
+state](http://www.effectiveperlprogramming.com/blog/314),
+and what it means in term of potential gotchas.
+            <DT><A HREF="http://www.effectiveperlprogramming.com/blog/314" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Respect the global state of the flip flop operator « The Effective Perler</A>
+	<DD>[brian d foy](http://www.effectiveperlprogramming.com/) reminds us 
+that [the flip-flop operator uses a global
+state](http://www.effectiveperlprogramming.com/blog/314),
+and what it means in term of potential gotchas.
+            <DT><A HREF="http://blogs.perl.org/users/ovid/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Ovid at blogs.perl.org</A>
+	<DD>[Ovid](http://blogs.perl.org/users/ovid/)
+shares [how to post to
+Blogger](http://blogs.perl.org/users/ovid/2010/06/getting-married-and-posting-to-blogger.html).
+Oh yeah, and he's now married and has a child process in the compilation
+stage. w00t! 
+            <DT><A HREF="http://blogs.perl.org/users/ovid/2010/06/getting-married-and-posting-to-blogger.html" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Ovid at blogs.perl.org: Getting Married and Posting to Blogger</A>
+	<DD>[Ovid](http://blogs.perl.org/users/ovid/)
+shares [how to post to
+Blogger](http://blogs.perl.org/users/ovid/2010/06/getting-married-and-posting-to-blogger.html).
+Oh yeah, and he's now married and has a child process in the compilation
+stage. w00t! 
+            <DT><A HREF="http://www.kiffingish.com/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Kiffin Gish dot Com</A>
+	<DD>[Kiffin Gish](http://www.kiffingish.com) found the hard way that you 
+ ever truly realize how much you need something only [after its
+ gone](http://www.kiffingish.com/2010/06/dont-run-this-command.html). Oops.
+            <DT><A HREF="http://www.kiffingish.com/2010/06/dont-run-this-command.html" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Don't run this command - Kiffin Gish dot Com</A>
+	<DD>[Kiffin Gish](http://www.kiffingish.com) found the hard way that you 
+ ever truly realize how much you need something only [after its
+ gone](http://www.kiffingish.com/2010/06/dont-run-this-command.html). Oops.
+            <DT><A HREF="http://github.com/timbunce/java2perl6" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">timbunce's java2perl6 at master - GitHub</A>
+	<DD>In the "building bridges" department, 
+Tim Bunce tackles the equivalent of a Gibraltar Strait overpass and
+started a project on GitHub that [takes Java classes and translates
+them into their Perl 6 equivalents](http://github.com/timbunce/java2perl6). 
+            <DT><A HREF="http://blog.twoshortplanks.com/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">As Thick As Two Short Planks – Mark Fowler's Blog</A>
+	<DD>[Mark Fowler](http://blog.twoshortplanks.com) discusses the art of [measuring
+the performance of web
+applications](http://blog.twoshortplanks.com/2010/06/26/measuring/)
+and gives a few pointers that I, for one, will be seriously taking into
+consideration (not to mention the reference that I now have to
+order). 
+            <DT><A HREF="http://blog.twoshortplanks.com/2010/06/26/measuring/" ADD_DATE="0" LAST_VISIT="0" LAST_MODIFIED="0">Measuring what counts « As Thick As Two Short Planks – Mark Fowler's Blog</A>
+	<DD>[Mark Fowler](http://blog.twoshortplanks.com) discusses the art of [measuring
+the performance of web
+applications](http://blog.twoshortplanks.com/2010/06/26/measuring/)
+and gives a few pointers that I, for one, will be seriously taking into
+consideration (not to mention the reference that I now have to
+order). 
+        </DL><p>
+    </DL><p>
+</DL><p>

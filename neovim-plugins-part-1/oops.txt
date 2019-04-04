@@ -1,0 +1,2 @@
+/tmp/nvim1Fz4Ns/0 at /usr/local/soft/perlbrew//perls/perl-5.20.2/bin/nvimx.pl line 65.
+here at /usr/local/soft/perlbrew//perls/perl-5.20.2/bin/nvimx.pl line 67.

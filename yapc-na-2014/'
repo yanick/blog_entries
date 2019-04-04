@@ -1,0 +1,127 @@
+# Yanick At Perl Conference: Notes of Attendance (YAPC::NA)
+
+It's hard to believe that Orlando was only my third YAPC. And yet, I only
+attended my first YAPC ever in [Asheville in 2011][asheville]. The next year I
+went long and had a taste of the ::EU namespace with [Frankfurt][frankfurt].
+For 2013 I
+had to take a sabbatical for cause of a sprint/summer-long alluring game of
+strip-thyroid. And that brings us to 2014, and Orlando. This year I don't
+have any tall tale to tell, but nonetheless, here are a few of my
+notes and impressions for the event, hoping that they will somehow whet your
+appetite, and tempt you to come and join in the fun next year.
+
+[asheville]: http://techblog.babyl.ca/entry/asheville-part-III
+[frankfurt]: http://act.yapc.eu/ye2012/
+
+## Organization
+
+The show rolled like a well-oiled machine.  The
+venue was a pleasant one, the coffee kept flowing, and good munchies were
+available during the breaks (honorable mention must go for a vegetarian
+option being present for the two buffets we had). The real-time streaming was
+nothing short of spectacular, and the list of talks and keynotes was superb.
+
+Now, some grumbles have been heard about the low level of communication going on
+for this YAPC. I must say, information was not disseminated as well as it
+could have been. Both before the conference, and during the events  (the BOFs
+weren't as strongly advertised as they should have been, I'm still uncertain
+how the t-shirt printing was supposed to work).  But when you know how
+short-handed the organizers were, and how Life really had a good go at driving
+them insane, it makes you appreciate what they still managed to pull off.
+With a little luck, next year will see more volunteers, which should help with 
+the communication, and the overall general workload of all concerned.
+
+
+## Game Night
+
+This year was the first time that I experienced YAPC::NA's game night.
+In a nutshell, the more official dinner party of the days of yore have been
+replaced by a logistically simpler buffet (this year Mexican-themed, and quite yummy), 
+and a focus on games. The official game was Magic: The Gathering, but a lot of
+people brought other games, going from classics such a Scrabble, to party
+favorites like Cards Against Humanity, to more involved wargames like [OGRE][].
+The shift from the previous officialish dinners is to promote more
+intermingling, and I must say that I like it. You grab some food, you pick a
+table, and you play. As an ice breaker, it's genius. And it's fun as heck.
+
+As it happens, I landed at Ricardo Signes' table, and has he reported in his
+own [YAPC blog entry][rjbs], he had brought a few OGRE mini-kits. While the rules were
+pretty simple for a wargame, it was still quite the challenge to grasp all the
+details after a quick introduction and a demo game. But, in all honesty? I don't
+think anybody cared. Metal behemoths rolled on the battlefield. Desperate
+squadrons of men and balefully underpowered vehicules tried to make a stand.
+Hilarity, and much pyrotechnic demolition, destruction and discombobulation
+ensued, and we all had a blast.
+
+## Keynotes
+
+Oh my did we have many keynotes this year. Which, mind you, I don't begrudge,
+because they were so darn good. Mark Keating and Dan Wright were quite
+informative. Larry was endearing as always (I swear, this man could give a
+3-hour seminar on TCL and I would still be charmed by it), Matt Trout was his
+usual entertaining self. Charlie Stross was, hell, he was FRIGGIN' *CHARLIE
+STROSS*,  how more cool could it get? 
+
+And the dual keynotes of Sawyer and
+Genehack on the last day were like the two sides of the same coin -- the bold,
+unbridled enthusiasm of one being met with the wise, weathered experience of
+the other. They uplifted, they stirred the soul. Ultimately, they begged the
+question: why are we doing what we do, and how must we grow to stay who we
+are. Those men are good. It was glorious.
+
+## Knitting
+
+You haven't slept all that much the night before. It's 1:30pm, right after 
+a hefty lunch. The talk is interesting, and the person giving it *is*
+a good talker. But your eyelids feel so, so heavy. More coffee is in
+order as soon as you reach the break, but until then you'll have to soldier
+o-- oh my, you hope that nobody saw you sharply nod down and wake yourself up. 
+
+Sounds familiar? If so, do you want to know something that helps surprisingly
+well against those attacks of languor?  Knitting! It's just involving enough
+to keep the body awake, but sufficiently automatic to let the brain
+concentrate on what's happening at the front of the room. I've been lugging my
+knitting around for a few conferences now, and I must say it works pretty
+well. I recommend. And might be tempted to give a quick tutorial one of these
+days. Which brings me to...
+
+## Off-Perl Track
+
+This year, the organizers tried a whole track of talks dealing with
+extracurricular stuff. It went to other languages like Rust to more broadly general life-related things like
+coffee roasting. Frankly? I *love* the idea. Not only can it help draw outsiders who
+would not be that tempted by an all-Perl conference, but it broaden the scope
+of the knowledge we get to share and be exposed to during the conference to
+all the shady nuggets that are peripheral to our core activities. I really
+hope to see more of that during the upcoming years.
+
+## Dancer
+
+
+Within the premises of the conference, was the presence of three members of
+the Dancer crew: Sawyer, Mickey and myself. So it goes without saying that we /had/ to have a Dancer BOF.
+The BOFs were a little bit stealthy this year, so the crowd that showed up
+wasn't huge, but that's okay -- quality over quantity and all that. In all
+cases, we talked about the status of things, of when to use Dancer versus the
+other frameworks, of specific use cases, of plugins, of templates, of horror
+stories and of things to consider for the future. All in all, it was a
+pretty nicely filled hour.
+
+And while we're talking about Dancer. If there is one thing that made me squee
+with delight at the conference, if had to be how much Dancer is used by the 
+community. It's one thing to know that the project you're part of is somehow
+popular, but it's something else to see listed on the stack of serious systems
+and part of so many talks.
+
+## Meatspace Meetings: Massively Meaningful
+
+So, the event was smoothly operated. The talks were informative. The overall
+atmosphere wholesomely pleasant. But I didn't mention yet why I really enjoy
+going to YAPC. Oh, it's a little bit for all those reasons, sure, but mostly?
+It's for
+something much greater: it's to rekindle with the Tribe. It's funny. Even
+though emails, Twitter, bug reports, blog entries, IRC and dozen of other
+interfaces ensure that we are interconnected in tenuous and not-so-tenous ways 
+
+
+

@@ -1,0 +1,12 @@
+There is also the error window and ':vimgrep'
+
+:vimgrep /foo/%    (% to restrict to current file)
+:copen
+Ctl-W up/down to move to the other window
+
+
+foo
+
+blah blah foo
+
+and then he said "Foo", which is totally footastic

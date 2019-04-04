@@ -1,0 +1,6 @@
+sequenceDiagram
+    API ->> middleware:  COMPUTE_MOVE_SHIP { id: enkidu }
+    middleware ->> reducer: COMPUTE_MOVE_SHIP  {id: enkidu } 
+    Note right of reducer: ignored
+    middleware ->> reducer: MOVE_SHIP { id: enkidu, coords: [x,y] } 
+    Note right of reducer: acted on
