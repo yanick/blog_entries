@@ -1,0 +1,84 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >galuga.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >entry</div><div class="comment"
+     ></div></div><div class="code"
+    >title: 			<span class="placeholder"
+     >${1:title}</span>
+url: 			<span class="placeholder"
+     >${2:url (optional)}</span>
+format: 		<span class="placeholder"
+     >${3:markdown}</span>
+created: 		<span class="placeholder"
+     >${4:1 Jun 2010}</span>
+last_updated: 	<span class="placeholder"
+     >${5:updated}</span>
+original: 		<span class="placeholder"
+     >${6:name - url}</span>
+tags:
+	- <span class="placeholder"
+     >${7:tag}</span>
+---
+
+<span class="placeholder"
+     >${8:entry}</span>
+</div></div></div></body></html>

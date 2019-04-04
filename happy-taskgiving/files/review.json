@@ -1,0 +1,230 @@
+{
+  "stdout": [
+    [
+      0.316895,
+      "\u001b]0;fish  /home/yanick\u0007\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.003033,
+      "Welcome to fish, the friendly interactive shell\r\nType \u001b[32mhelp\u001b[30m\u001b[m\u000f for instructions on how to use fish\r\n"
+    ],
+    [
+      0.100167,
+      "\u001b]0;fish  /home/yanick\u0007\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.000243,
+      "\u001b[2m⏎\u001b[m\u000f                                                                               \r \r\u001b[2K"
+    ],
+    [
+      0.027293,
+      "\r\n\u001b[40m\u001b[m\u000f\u001b[38;2;0;135;135m11:46\u001b[40m\u001b[m\u000f\u001b[38;2;0;95;255m yanick\u001b[30m\u001b[m\u000f@\u001b[38;2;0;175;255menkidu\u001b[40m\u001b[m\u000f\u001b[38;2;102;0;0m \u001b[38;2;0;95;0m~\u001b[30m\u001b[m\u000f\r\n\u001b[40m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[40m\u001b[m\u000f\u001b[38;2;153;153;153m⥼ \u001b[40m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[K"
+    ],
+    [
+      0.698567,
+      "t"
+    ],
+    [
+      0.03893,
+      "\b\u001b[31m\u001b[1mt\u001b[m\u000f"
+    ],
+    [
+      0.019455,
+      "\u001b[38;2;85;85;85mask-kusarigama review\u001b[21D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.216434,
+      "\u001b[31m\u001b[1ma\u001b[m\u000f\u001b[38;2;85;85;85msk-kusarigama review\u001b[20D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.038959,
+      "\u001b[31m\u001b[1ms\u001b[m\u000f\u001b[38;2;85;85;85mk-kusarigama review\u001b[19D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.061218,
+      "\u001b[31m\u001b[1mk\u001b[m\u000f\u001b[38;2;85;85;85m-kusarigama review\u001b[18D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.039123,
+      "\b\b\b\b\u001b[38;2;0;95;215mtask\u001b[38;2;85;85;85m-kusarigama review\u001b[18D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.220621,
+      "\u001b[38;2;0;95;215m-\u001b[38;2;85;85;85mkusarigama review\u001b[17D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.038697,
+      "\b\b\b\b\b\u001b[31m\u001b[1mtask-\u001b[m\u000f\u001b[38;2;85;85;85mkusarigama review\u001b[17D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.569226,
+      "\u001b[31m\u001b[1mk\u001b[m\u000f\u001b[38;2;85;85;85musarigama review\u001b[16D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.39582,
+      "\u001b[31m\u001b[1musarigama review\u001b[m\u000f"
+    ],
+    [
+      0.019256,
+      "\u001b[22D\u001b[38;2;0;95;215mtask-kusarigama\u001b[30m\u001b[m\u000f \u001b[38;2;0;175;255m\u001b[4mreview\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.691922,
+      "\r\n\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      8.4e-05,
+      "\u001b]0;task-kusarigama  /home"
+    ],
+    [
+      5.6e-05,
+      "/"
+    ],
+    [
+      4.6e-05,
+      "yanick\u0007\u001b[30m\u001b[m\u000f\r"
+    ],
+    [
+      1.480801,
+      "\u001b[2J\u001b[31m34H\u001b[0m \u001b[34m275M\u001b[0m \u001b[36m63L\u001b[0m \u001b[32m49U\u001b[0m\r\n"
+    ],
+    [
+      0.888071,
+      "\r\nName          Value\r\n------------- --------------------------------------------------\r\nID            456\r\nDescription   reconcile RBC e-saving account\r\nStatus        Pending\r\nRecurrence    monthly\r\nParent task   0d7064c0-ba58-4a8a-8858-f19671837d86"
+    ],
+    [
+      3.4e-05,
+      "\r\nMask Index    7.000000\r\nEntered       2017-08-29 20:08:47 (12w)\r\n"
+    ],
+    [
+      2.1e-05,
+      "Due           2017-09-28 23:59:59\r\nLast modified 2017-11-06 16:32:28 (2w)\r\nTags          finance\r\nVirtual tags  CHILD OVERDUE PENDING READY TAGGED UNBLOCKED YEAR\r\nUUID          3f0cbf68-3f0d-4744-9436-bf7d395c257c"
+    ],
+    [
+      0.000465,
+      "\r\nUrgency       103.2\r\n\r\n    tags    0.8 *    1 =    0.8\r\n    due       1 * 1e+0 =    100\r\n    age   0.236 *   10 =   2.36\r\n                         ------\r\n                          103.2\r\n\r\nDate                Modification\r\n------------------- -------------------------------------------\r\n2017-11-06 16:32:28 Wait set to '2017-11-08 00:00:00'.\r\n                    Status changed from 'pending' to 'waiting'.\r\n\r\n"
+    ],
+    [
+      0.003308,
+      "whatcha gonna do? [hHmMlL.,dDwqan] "
+    ],
+    [
+      0.809171,
+      "?\r\n"
+    ],
+    [
+      0.013995,
+      "\r\nThe list of available commands is:\r\n\r\nKey   Name         Description               \r\nh     h            high priority             \r\nH     H            high priority and next    \r\nm     m            med priority              \r\nM     M            med priority and next     \r\nl     l            low priority              \r\nL     L            low priority and next     \r\n.     mod          generic modification      \r\n,     append       append                    \r\nd     done                                   \r\nD     delete                                 \r\nw     wait                                   \r\nq     quit                                   \r\na     annotate                               \r\n      show again                             \r\nn     next         next                      \r\n?     help         List available commands   \r\n\r\n\r\nwhatcha gonna do? [hHmMlL.,dDwqan] "
+    ],
+    [
+      1.122185,
+      "\r\n"
+    ],
+    [
+      0.867265,
+      "\r\nName          Value\r\n------------- --------------------------------------------------\r\nID            456\r\nDescription   reconcile RBC e-saving account\r\nStatus        Pending\r\nRecurrence    monthly\r\nParent task   0d7064c0-ba58-4a8a-8858-f19671837d86\r\nMask Index    7.000000\r\nEntered       2017-08-29 20:08:47 (12w)\r\nDue           2017-09-28 23:59:59\r\nLast modified 2017-11-06 16:32:28 (2w)\r\nTags          finance\r\nVirtual tags  CHILD OVERDUE PENDING READY TAGGED UNBLOCKED YEAR\r\nUUID          3f0cbf68-3f0d-4744-9436-bf7d395c257c\r\nUrgency       103.2\r\n\r\n    tags    0.8 *    1 =    0.8\r\n    due       1 * 1e+0 =    100\r\n    age   0.236 *   10 =   2.36\r\n                         ------\r\n                          103.2\r\n\r\nDate                Modification\r\n------------------- -------------------------------------------\r\n2017-11-06 16:32:28 Wait set to '2017-11-08 00:00:00'.\r\n                    Status changed from 'pending' to 'waiting'.\r\n"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      0.001573,
+      "whatcha gonna do? [hHmMlL.,dDwqan] "
+    ],
+    [
+      2.307019,
+      "M\r\n"
+    ],
+    [
+      0.003638,
+      "\u001b[2J\u001b[31m34H\u001b[0m \u001b[34m275M\u001b[0m \u001b[36m63L\u001b[0m \u001b[32m48U\u001b[0m\r\n"
+    ],
+    [
+      0.830504,
+      "\r\nName          Value\r\n------------- ------------------------------------\r\nID            472\r\nDescription   put baromether\r\nStatus        Pending\r\nEntered       2017-08-30 11:34:40 (12w)\r\nLast modified 2017-08-30 11:34:40 (12w)\r\nVirtual tags  PENDING READY UNBLOCKED\r\nUUID          656aad4b-a35d-42c9-845e-3eb95ec355db\r\nUrgency       2.356\r\n\r\n    age  0.236 *   10 =   2.36\r\n                        ------\r\n                         2.356\r\n\r\n"
+    ],
+    [
+      0.001312,
+      "whatcha gonna do? [hHmMlL.,dDwqan] "
+    ],
+    [
+      3.08472,
+      "d\r\n"
+    ],
+    [
+      0.00353,
+      "\u001b[2J\u001b[31m34H\u001b[0m \u001b[34m275M\u001b[0m \u001b[36m63L\u001b[0m \u001b[32m47U\u001b[0m\r\n"
+    ],
+    [
+      0.836518,
+      "\r\n"
+    ],
+    [
+      0.000418,
+      "Name          Value"
+    ],
+    [
+      0.000135,
+      "\r\n"
+    ],
+    [
+      0.000359,
+      "------------- ------------------------------------"
+    ],
+    [
+      0.000474,
+      "\r\n"
+    ],
+    [
+      0.000208,
+      "ID            496\r\nDescription   Tabs on android Firefox\r\nStatus        Pending\r\nEntered       2017-09-17 11:19:45 (9w)\r\nLast modified 2017-09-17 11:19:45 (9w)"
+    ],
+    [
+      0.000322,
+      "\r\nTags          anja\r\nVirtual tags  PENDING READY TAGGED UNBLOCKED\r\nUUID          8ac19e9d-a118-4ee5-aff5-6b693819e36a\r\nUrgency       2.663\r\n\r\n    tags    0.8 *    1 =    0.8\r\n    age   0.186 *   10 =   1.86\r\n                         ------\r\n                          2.663\r\n\r\n"
+    ],
+    [
+      0.003733,
+      "whatcha gonna do? [hHmMlL.,dDwqan] "
+    ],
+    [
+      4.266388,
+      "q\r\n"
+    ],
+    [
+      0.000328,
+      "no, come back!\r\n"
+    ],
+    [
+      0.109576,
+      "\u001b]0;fish  /home/yanick\u0007\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      3.4e-05,
+      "\u001b[2m⏎\u001b[m\u000f                                                                               \r \r\u001b[2K"
+    ],
+    [
+      0.019443,
+      "\r\n\u001b[40m\u001b[m\u000f\u001b[38;2;0;135;135m11:46\u001b[40m\u001b[m\u000f\u001b[38;2;0;95;255m yanick\u001b[30m\u001b[m\u000f@\u001b[38;2;0;175;255menkidu\u001b[40m\u001b[m\u000f\u001b[38;2;102;0;0m \u001b[38;2;0;95;0m~\u001b[30m\u001b[m\u000f\r\n\u001b[40m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[40m\u001b[m\u000f\u001b[38;2;153;153;153m⥼ \u001b[40m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[K"
+    ],
+    [
+      5.335437,
+      "\r\n\u001b[30m\u001b["
+    ],
+    [
+      6.5e-05,
+      "m\u000f\r\n\u001b[30m\u001b[m\u000f"
+    ]
+  ],
+  "title": null,
+  "duration": 25.489042,
+  "height": 39,
+  "command": null,
+  "env": {
+    "TERM": "screen-256color",
+    "SHELL": "/usr/bin/fish"
+  },
+  "width": 80,
+  "version": 1
+}

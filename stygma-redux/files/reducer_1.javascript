@@ -1,0 +1,2 @@
+function reducer( state, action ) {
+}

@@ -1,0 +1,5 @@
+serializer: JSON
+plugins:
+    StoreManager:
+        db: my_store.sqlite3
+        store_class: Proto::Store

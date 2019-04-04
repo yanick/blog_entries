@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant App
+    participant Reducer
+    participant Reducer_Summary
+    participant Reducer_Items
+    participant State
+    Note right of State: { ...initial_state }
+    App ->> Reducer: ADD_TO_CART
+    activate Reducer
+    State ->> Reducer: { ...initial_state }
+    Reducer ->> Reducer_Summary: { state.summary, action }
+    activate Reducer_Summary
+    Reducer_Summary ->> Reducer: new summary state
+    deactivate Reducer_Summary
+    Reducer ->> Reducer_Items: { state.items, action }
+    activate Reducer_Items
+    Reducer_Items ->> Reducer: new items state
+    deactivate Reducer_Items
+    Reducer ->> State: { ...state_with_item }
+    deactivate Reducer
+    Note right of State: { ...state_with_item }
+
+

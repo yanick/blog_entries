@@ -1,0 +1,438 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >php.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >php</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;?php
+<span class="placeholder"
+     >${1}</span>
+?>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >inc</div><div class="comment"
+     ></div></div><div class="code"
+    >include '<span class="placeholder"
+     >${1:file}</span>';<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >req</div><div class="comment"
+     ></div></div><div class="code"
+    >require '<span class="placeholder"
+     >${1:file}</span>';<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >globals</div><div class="comment"
+     > $GLOBALS['...']</div></div><div class="code"
+    >$GLOBALS['<span class="placeholder"
+     >${1:variable}</span>']<span class="placeholder"
+     >${2: = }</span><span class="placeholder"
+     >${3:something}</span><span class="placeholder"
+     >${4:;}</span><span class="placeholder"
+     >${5}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >$_ ENV['...']</div><div class="comment"
+     ></div></div><div class="code"
+    >$_ENV['<span class="placeholder"
+     >${1:variable}</span>']<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >$_ Get['...']</div><div class="comment"
+     ></div></div><div class="code"
+    >$_GET['<span class="placeholder"
+     >${1:variable}</span>']<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >$_ REQUEST['...']</div><div class="comment"
+     ></div></div><div class="code"
+    >$_REQUEST['<span class="placeholder"
+     >${1:variable}</span>']<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >$_ SESSION['...']</div><div class="comment"
+     ></div></div><div class="code"
+    >$_SESSION['<span class="placeholder"
+     >${1:variable}</span>']<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >/*</div><div class="comment"
+     > Start Docblock</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${1}</span>
+ **/
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_cp</div><div class="comment"
+     > Class - post doc</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${1:undocumented class}</span>
+ *
+ * @package <span class="placeholder"
+     >${2:default}</span>
+ * @author <span class="placeholder"
+     >${3:`g:snips_author`}</span>
+**/<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_vp</div><div class="comment"
+     > Class Variable - post doc</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${1:undocumented class variable}</span>
+ *
+ * @var <span class="placeholder"
+     >${2:string}</span>
+ **/<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_v</div><div class="comment"
+     > Class Variable</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${3:undocumented class variable}</span>
+ *
+ * @var <span class="placeholder"
+     >${4:string}</span>
+ **/
+<span class="placeholder"
+     >${1:var}</span> $<span class="placeholder"
+     >${2}</span>;<span class="placeholder"
+     >${5}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_c</div><div class="comment"
+     > Class</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${3:undocumented class}</span>
+ *
+ * @packaged <span class="placeholder"
+     >${4:default}</span>
+ * @author <span class="placeholder"
+     >${5:`g:snips_author`}</span>
+ **/
+<span class="placeholder"
+     >${1:}</span>class <span class="placeholder"
+     >${2:}</span>
+{<span class="placeholder"
+     >${6}</span>
+} // END $1class $2
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_dp</div><div class="comment"
+     > Constant Definition - post doc</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${1:undocumented constant}</span>
+ **/<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_d</div><div class="comment"
+     > Constant Definition</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${3:undocumented constant}</span>
+ **/
+define(<span class="placeholder"
+     >${1}</span>, <span class="placeholder"
+     >${2}</span>);<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_fp</div><div class="comment"
+     > Function - post doc</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${1:undocumented function}</span>
+ *
+ * @return <span class="placeholder"
+     >${2:void}</span>
+ * @author <span class="placeholder"
+     >${3:`g:snips_author`}</span>
+ **/<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_s</div><div class="comment"
+     > Function signature</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${4:undocumented function}</span>
+ *
+ * @return <span class="placeholder"
+     >${5:void}</span>
+ * @author <span class="placeholder"
+     >${6:`g:snips_author`}</span>
+ **/
+<span class="placeholder"
+     >${1}</span>function <span class="placeholder"
+     >${2}</span>(<span class="placeholder"
+     >${3}</span>);<span class="placeholder"
+     >${7}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_f</div><div class="comment"
+     > Function</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${4:undocumented function}</span>
+ *
+ * @return <span class="placeholder"
+     >${5:void}</span>
+ * @author <span class="placeholder"
+     >${6:`g:snips_author`}</span>
+ **/
+<span class="placeholder"
+     >${1}</span>function <span class="placeholder"
+     >${2}</span>(<span class="placeholder"
+     >${3}</span>)
+{<span class="placeholder"
+     >${7}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_h</div><div class="comment"
+     > Header</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${1}</span>
+ *
+ * @author <span class="placeholder"
+     >${2:`g:snips_author`}</span>
+ * @version <span class="placeholder"
+     >${3:$Id$}</span>
+ * @copyright <span class="placeholder"
+     >${4:$2}</span>, `strftime('%d %B, %Y')`
+ * @package <span class="placeholder"
+     >${5:default}</span>
+ **/
+
+/**
+ * Define DocBlock
+ *//
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doc_i</div><div class="comment"
+     > Interface</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${2:undocumented class}</span>
+ *
+ * @package <span class="placeholder"
+     >${3:default}</span>
+ * @author <span class="placeholder"
+     >${4:`g:snips_author`}</span>
+ **/
+interface <span class="placeholder"
+     >${1:}</span>
+{<span class="placeholder"
+     >${5}</span>
+} // END interface $1
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >class</div><div class="comment"
+     > class ...</div></div><div class="code"
+    >/**
+ * <span class="placeholder"
+     >${1}</span>
+ **/
+class <span class="placeholder"
+     >${2:ClassName}</span>
+{
+	<span class="placeholder"
+     >${3}</span>
+	function <span class="placeholder"
+     >${4:__construct}</span>(<span class="placeholder"
+     >${5:argument}</span>)
+	{
+		<span class="placeholder"
+     >${6:// code...}</span>
+	}
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >def</div><div class="comment"
+     > define(...)</div></div><div class="code"
+    >define('<span class="placeholder"
+     >${1}</span>'<span class="placeholder"
+     >${2}</span>);<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >def?</div><div class="comment"
+     > defined(...)</div></div><div class="code"
+    ><span class="placeholder"
+     >${1}</span>defined('<span class="placeholder"
+     >${2}</span>')<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >do</div><div class="comment"
+     > do ... while</div></div><div class="code"
+    >do {
+	<span class="placeholder"
+     >${2:// code... }</span>
+} while (<span class="placeholder"
+     >${1:/* condition */}</span>);
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ife</div><div class="comment"
+     ></div></div><div class="code"
+    >if (<span class="placeholder"
+     >${1:/* condition */}</span>) {
+	<span class="placeholder"
+     >${2:// code...}</span>
+} else {
+	<span class="placeholder"
+     >${3:// code...}</span>
+}
+<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >elseif</div><div class="comment"
+     ></div></div><div class="code"
+    >elseif (<span class="placeholder"
+     >${1:/* condition */}</span>) {
+	<span class="placeholder"
+     >${2:// code...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >t</div><div class="comment"
+     > Tertiary conditional</div></div><div class="code"
+    >$<span class="placeholder"
+     >${1:retVal}</span> = (<span class="placeholder"
+     >${2:condition}</span>) ? <span class="placeholder"
+     >${3:a}</span> : <span class="placeholder"
+     >${4:b}</span>;<span class="placeholder"
+     >${5}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >case</div><div class="comment"
+     ></div></div><div class="code"
+    >case '<span class="placeholder"
+     >${1:value}</span>':
+	<span class="placeholder"
+     >${2:// code...}</span>
+	break;<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >foreach</div><div class="comment"
+     ></div></div><div class="code"
+    >foreach ($<span class="placeholder"
+     >${1:variable}</span> as $<span class="placeholder"
+     >${2:key}</span>) {
+	<span class="placeholder"
+     >${3:// code...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >array</div><div class="comment"
+     > $... = array (...)</div></div><div class="code"
+    >$<span class="placeholder"
+     >${1:arrayName}</span> = array('<span class="placeholder"
+     >${2}</span>' => <span class="placeholder"
+     >${3}</span>);<span class="placeholder"
+     >${4}</span>
+</div></div></div></body></html>

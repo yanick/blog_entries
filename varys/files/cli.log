@@ -1,0 +1,44 @@
+$ varys.pl                                                               
+Available commands:
+
+   commands: list the application's commands
+       help: display a command's help screen
+
+  diskusage: (unknown)
+
+
+$ varys.pl diskusage --run_test --test_percent 80                        
+\ {
+    info          {
+        partitions   {
+            /dev/sda1    {
+                free         414659,
+                mountpoint   "/boot",
+                total        472036,
+                usage        33006,
+                usageper     8
+            },
+            /dev/sda5    {
+                free         12549112,
+                mountpoint   "/",
+                total        19223252,
+                usage        5697656,
+                usageper     32
+            },
+            ...
+    },
+    input         {
+        check_name     "Varys::Check::DiskUsage",
+        skip           [],
+        test_percent   80,
+        timestamp      "2012-07-22T16:24:28"
+    },
+    test_result   {
+        filled_partitions   [
+            [0] "/dev/sda8"
+        ],
+        success             0
+    },
+    timestamp     "2012-07-22T16:24:28"
+}
+

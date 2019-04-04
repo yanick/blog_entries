@@ -1,0 +1,34 @@
+<input name="course" id="course" />
+
+<input type="submit" 
+    value="plot course" 
+    onclick="plot_course()" />
+
+<div class="intercom">
+    <p><b>intercom</b></p>
+    <div class="log"> </div>
+</div>
+
+<script>
+
+function plot_course() {
+    var course = $('#course').val();
+    var data = new Object();
+    data["course"] = course;
+    jQuery.ajax({
+        url: '/plot_course',
+        data: data,
+        dataType: 'json',
+        type: "POST",
+        success: function(data) {
+        $('.log').html();
+        for each ( var line in data.log ) {
+            $('.log').append( '<p>' + line + '</p>' );
+        }
+
+        var x = traj.attr( "path", data.trajectory );
+        traj.show();
+    } });
+    }
+    
+</script>

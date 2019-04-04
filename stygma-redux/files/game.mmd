@@ -1,0 +1,34 @@
+sequenceDiagram
+    participant App
+    participant start_game
+    participant end_of_game
+    participant Reducer
+    Note right of Reducer: chamber:null, alive:true
+    App ->>+ start_game: START_GAME
+    start_game->>+end_of_game: LOAD_GUN chamber:2
+    deactivate start_game
+    end_of_game->>Reducer: LOAD_GUN chamber:2
+    Note right of Reducer: chamber:2, alive:true
+    Reducer-->>-end_of_game: store.getState()
+
+    App ->>+ start_game: PULL_TRIGGER
+    start_game->>+end_of_game: PULL_TRIGGER
+    deactivate start_game
+    end_of_game->>Reducer: PULL_TRIGGER
+    Note right of Reducer: chamber:1, alive:true
+    Reducer-->>-end_of_game: store.getState()
+
+    App ->>+ start_game: PULL_TRIGGER
+    start_game->>+end_of_game: PULL_TRIGGER
+    deactivate start_game
+    end_of_game->>Reducer: PULL_TRIGGER
+    Note right of Reducer: chamber:0, alive:true
+    Reducer-->>-end_of_game: store.getState()
+
+    App ->>+ start_game: PULL_TRIGGER
+    start_game->>+end_of_game: PULL_TRIGGER
+    deactivate start_game
+    end_of_game->>Reducer: PULL_TRIGGER
+    Note right of Reducer: chamber:null, alive:false
+    Reducer-->>-end_of_game: store.getState()
+    Note right of end_of_game: Cleaning requested at aisle 5...

@@ -1,0 +1,60 @@
+Dependencies: how requires the latest, and nothing less
+
+Recently, hanekomu was discussing [how to make
+subsequent installs of a Task::BeLike module 
+upgrade its dependencies to their latest
+version](http://hanekomu.at/blog/dev/20091005-1227-repeatedly_installing_task_distributions.html).
+The idea is intriguing.  It's not something you want to do
+for a typical module, but it makes sense in the context of 
+Task::BeLike. If you care enough about a module to put it
+in your Task::BeLike, you probably care enough to want to
+upgrade when there's a new version out there.
+
+Unfortunately, I think hanekomu's proposed way of doing it is 
+flawed (mind you, the debate is still going on as of the writing of this
+entry and I can still be proven wrong).  But I might have an easy 
+alternative to it...
+
+Let's say that in your <code>Build.PL</code> (the logic would
+be the same for a <code>Makefile.PL</code>)
+you have your dependencies stashed in _%dependencies_.  Something 
+akin to
+
+    %dependencies = (
+        XML::LibXML      => 0,          # any version will do
+        XML::XPathScript => '1.42',     # 1.42 or higher
+        Moose            => 'latest',   # nothing but the shiniest!
+    );
+
+all we want to do, really, is to switch the _latest_ for, well, 
+the latest version available.  Surprisingly, it's almost as 
+easy to do than to say: 
+
+    for my $mod ( keys %dependencies ) {
+        next unless $dependencies{$mod} eq 'latest';
+
+        require CPANPLUS::Backend;
+        state $cb = CPANPLUS::Backend->new;
+
+        $dependencies{$mod} = $cb->module_tree( $mod )->package_version;
+    }
+
+A [little further
+hacking](http://github.com/yanick/Task-BeLike-YANICK/commit/563898785d5a39af66c6d5ad3a296dfb7568bb3e)
+later, I have incorporated the functionality to my own _Task::BeLike::YANICK_
+module.  The way I implemented it, installing the module the usual way
+will yield no surprise (i.e., dependencies already present
+are not going to be updated).  But if the environment variable _TASK_UPGRADE_
+is set to true, like so
+
+    TASK_UPGRADE=1 cpan -f Task::BeLike::YANICK
+
+then the magic is going to be unleashed (the _-f_ is to force
+the re-install, if the Task has already been installed before).  
+Alternatively, just to know
+which dependencies are out-of-date, one can also extract
+the distribution and do a
+
+    perl ./Build.PL --upgrade
+    ./Build prereq_report
+

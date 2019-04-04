@@ -1,0 +1,7 @@
+use 5.10.0;
+
+use Smoke::Module;
+
+my $smoke = Smoke::Module->new( tarball => 'Dancer-Plugin-Memcached-0.01.tar.gz' );
+
+say $smoke->test_status;

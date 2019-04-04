@@ -1,0 +1,269 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >c.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >main</div><div class="comment"
+     > main()</div></div><div class="code"
+    >int main(int argc, const char *argv[])
+{
+	<span class="placeholder"
+     >${1}</span>
+	return 0;
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >inc</div><div class="comment"
+     > #include &lt;...></div></div><div class="code"
+    >#include &lt;<span class="placeholder"
+     >${1:stdio}</span>.h><span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >Inc</div><div class="comment"
+     > #include "..."</div></div><div class="code"
+    >#include "<span class="placeholder"
+     >${1:`Filename("$1.h")`}</span>"<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >Def</div><div class="comment"
+     > #ifndef ... #define ... #endif</div></div><div class="code"
+    >#ifndef $1
+#define <span class="placeholder"
+     >${1:SYMBOL}</span> <span class="placeholder"
+     >${2:value}</span>
+#endif<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ifdef</div><div class="comment"
+     ></div></div><div class="code"
+    >#ifdef <span class="placeholder"
+     >${1:FOO}</span>
+	<span class="placeholder"
+     >${2:#define }</span>
+#endif
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >once</div><div class="comment"
+     > cleaner, I don't know how to do it in vim script)</div></div><div class="code"
+    >#ifndef <span class="placeholder"
+     >${1:`toupper(Filename('', 'UNTITLED').'_'.system("/usr/bin/ruby -e 'print (rand * 2821109907455).round.to_s(36)'"))`}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >if</div><div class="comment"
+     > If Condition</div></div><div class="code"
+    >if (<span class="placeholder"
+     >${1:/* condition */}</span>) {
+	<span class="placeholder"
+     >${2:/* code */}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >t</div><div class="comment"
+     > Tertiary conditional</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:/* condition */}</span> ? <span class="placeholder"
+     >${2:a}</span> : <span class="placeholder"
+     >${3:b}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >do</div><div class="comment"
+     > Do While Loop</div></div><div class="code"
+    >do {
+	<span class="placeholder"
+     >${2:/* code */}</span>
+} while (<span class="placeholder"
+     >${1:/* condition */}</span>);
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >wh</div><div class="comment"
+     > While Loop</div></div><div class="code"
+    >while (<span class="placeholder"
+     >${1:/* condition */}</span>) {
+	<span class="placeholder"
+     >${2:/* code */}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >for</div><div class="comment"
+     > For Loop</div></div><div class="code"
+    >for (<span class="placeholder"
+     >${2:i}</span> = 0; $2 &lt; <span class="placeholder"
+     >${1:count}</span>; $2<span class="placeholder"
+     >${3:++}</span>) {
+	<span class="placeholder"
+     >${4:/* code */}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >forr</div><div class="comment"
+     > Custom For Loop</div></div><div class="code"
+    >for (<span class="placeholder"
+     >${1:i}</span> = <span class="placeholder"
+     >${2:0}</span>; <span class="placeholder"
+     >${3:$1 &lt; 10}</span>; $1<span class="placeholder"
+     >${4:++}</span>) {
+	<span class="placeholder"
+     >${5:/* code */}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >fun</div><div class="comment"
+     > Function</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:void}</span> <span class="placeholder"
+     >${2:function_name}</span>(<span class="placeholder"
+     >${3}</span>)
+{
+	<span class="placeholder"
+     >${4:/* code */}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >fund</div><div class="comment"
+     > Function Declaration</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:void}</span> <span class="placeholder"
+     >${2:function_name}</span>(<span class="placeholder"
+     >${3}</span>);<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >td</div><div class="comment"
+     > Typedef</div></div><div class="code"
+    >typedef <span class="placeholder"
+     >${1:int}</span> <span class="placeholder"
+     >${2:MyCustomType}</span>;<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >st</div><div class="comment"
+     > Struct</div></div><div class="code"
+    >struct <span class="placeholder"
+     >${1:`Filename('$1_t', 'name')`}</span> {
+	<span class="placeholder"
+     >${2:/* data */}</span>
+}<span class="placeholder"
+     >${3: /* optional variable list */}</span>;<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >tds</div><div class="comment"
+     > Typedef struct</div></div><div class="code"
+    >typedef struct <span class="placeholder"
+     >${2:_$1 }</span>{
+	<span class="placeholder"
+     >${3:/* data */}</span>
+} <span class="placeholder"
+     >${1:`Filename('$1_t', 'name')`}</span>;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >tde</div><div class="comment"
+     > Typdef enum</div></div><div class="code"
+    >typedef enum {
+	<span class="placeholder"
+     >${1:/* data */}</span>
+} <span class="placeholder"
+     >${2:foo}</span>;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >pr</div><div class="comment"
+     > dynamic `...`</div></div><div class="code"
+    >printf("<span class="placeholder"
+     >${1:%s}</span>\n"<span class="placeholder"
+     >${2}</span>);<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >fpr</div><div class="comment"
+     > fprintf (again, this isn't as nice as TextMate's version, but it works)</div></div><div class="code"
+    >fprintf(<span class="placeholder"
+     >${1:stderr}</span>, "<span class="placeholder"
+     >${2:%s}</span>\n"<span class="placeholder"
+     >${3}</span>);<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >un</div><div class="comment"
+     ></div></div><div class="code"
+    >unsigned
+</div></div></div></body></html>

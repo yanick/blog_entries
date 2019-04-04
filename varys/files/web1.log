@@ -1,0 +1,73 @@
+$ curl http://enkidu:3000/DiskUsage                                                                      
+Authorization required
+
+$ curl -u  yanick:hush http://enkidu:3000/DiskUsage 
+{
+   "info" : {
+      "partitions" : {
+         "/dev/sda6" : {
+            "usage" : "1142828",
+            "free" : "3417840",
+            "usageper" : "26",
+            "mountpoint" : "/var",
+            "total" : "4804736"
+         },
+         "none" : {
+            "usage" : "0",
+            "free" : "3967264",
+            "usageper" : "0",
+            "mountpoint" : "/var/lock",
+            "total" : "3967264"
+         },
+         ...
+      }
+   },
+   "input" : {
+      "check_name" : "Varys::Check::DiskUsage",
+      "skip" : [],
+      "timestamp" : "2012-07-22T15:19:12",
+      "test_percent" : 60
+   },
+   "timestamp" : "2012-07-22T15:19:12",
+   "test_result" : null
+}
+
+$ POST -C yanick:hush http://enkidu:3000/DiskUsage 
+{
+   "info" : {
+      "partitions" : {
+         "/dev/sda6" : {
+            "usage" : "1142828",
+            "free" : "3417840",
+            "usageper" : "26",
+            "mountpoint" : "/var",
+            "total" : "4804736"
+         },
+         "none" : {
+            "usage" : "0",
+            "free" : "3967264",
+            "usageper" : "0",
+            "mountpoint" : "/var/lock",
+            "total" : "3967264"
+         },
+         ...
+   },
+   "input" : {
+      "check_name" : "Varys::Check::DiskUsage",
+      "skip" : [],
+      "timestamp" : "2012-07-22T15:21:08",
+      "test_percent" : 60
+   },
+   "timestamp" : "2012-07-22T15:21:08",
+   "test_result" : {
+      "success" : 0,
+      "filled_partitions" : [
+         "/dev/sda8",
+         "/dev/sda11"
+      ]
+   }
+}
+
+$ sqlite3 checks.sqlite 'select * from DiskUsage'
+Varys::Check::DiskUsage : 2012-07-22T15:19:12|2012-07-22T15:19:12
+Varys::Check::DiskUsage : 2012-07-22T15:21:08|2012-07-22T15:21:08

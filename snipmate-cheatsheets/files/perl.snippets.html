@@ -1,0 +1,261 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >perl.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >#!</div><div class="comment"
+     > #!/usr/bin/perl</div></div><div class="code"
+    >#!/usr/bin/perl
+
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sub</div><div class="comment"
+     > Function</div></div><div class="code"
+    >sub <span class="placeholder"
+     >${1:function_name}</span> {
+	<span class="placeholder"
+     >${2:#body ...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >if</div><div class="comment"
+     > Conditional</div></div><div class="code"
+    >if (<span class="placeholder"
+     >${1}</span>) {
+	<span class="placeholder"
+     >${2:# body...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ife</div><div class="comment"
+     > Conditional if..else</div></div><div class="code"
+    >if (<span class="placeholder"
+     >${1}</span>) {
+	<span class="placeholder"
+     >${2:# body...}</span>
+} else {
+	<span class="placeholder"
+     >${3:# else...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ifee</div><div class="comment"
+     > Conditional if..elsif..else</div></div><div class="code"
+    >if (<span class="placeholder"
+     >${1}</span>) {
+	<span class="placeholder"
+     >${2:# body...}</span>
+} elsif (<span class="placeholder"
+     >${3}</span>) {
+	<span class="placeholder"
+     >${4:# elsif...}</span>
+} else {
+	<span class="placeholder"
+     >${5:# else...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >xif</div><div class="comment"
+     > Conditional One-line</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:expression}</span> if <span class="placeholder"
+     >${2:condition}</span>;<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >unless</div><div class="comment"
+     > Unless conditional</div></div><div class="code"
+    >unless (<span class="placeholder"
+     >${1}</span>) {
+	<span class="placeholder"
+     >${2:# body...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >xunless</div><div class="comment"
+     > Unless conditional One-line</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:expression}</span> unless <span class="placeholder"
+     >${2:condition}</span>;<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >eval</div><div class="comment"
+     > Try/Except</div></div><div class="code"
+    >eval {
+	<span class="placeholder"
+     >${1:# do something risky...}</span>
+};
+if ($@) {
+	<span class="placeholder"
+     >${2:# handle failure...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >wh</div><div class="comment"
+     > While Loop</div></div><div class="code"
+    >while (<span class="placeholder"
+     >${1}</span>) {
+	<span class="placeholder"
+     >${2:# body...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >xwh</div><div class="comment"
+     > While Loop One-line</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:expression}</span> while <span class="placeholder"
+     >${2:condition}</span>;<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >for</div><div class="comment"
+     > For Loop</div></div><div class="code"
+    >for my $<span class="placeholder"
+     >${1:i}</span> ( <span class="placeholder"
+     >${2:@array}</span> ) { 
+	<span class="placeholder"
+     >${3:# body...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >fore</div><div class="comment"
+     > Foreach Loop</div></div><div class="code"
+    >foreach my $<span class="placeholder"
+     >${1:x}</span> (@<span class="placeholder"
+     >${2:array}</span>) {
+	<span class="placeholder"
+     >${3:# body...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >xfore</div><div class="comment"
+     > Foreach Loop One-line</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:expression}</span> foreach @<span class="placeholder"
+     >${2:array}</span>;<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cl</div><div class="comment"
+     > Package</div></div><div class="code"
+    >package <span class="placeholder"
+     >${1:ClassName}</span>;
+
+use base qw(<span class="placeholder"
+     >${2:ParentClass}</span>);
+
+sub new {
+	my $class = shift;
+	$class = ref $class if ref $class;
+	my $self = bless {}, $class;
+	$self;
+}
+
+1;<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >slurp</div><div class="comment"
+     > Read File</div></div><div class="code"
+    >my $<span class="placeholder"
+     >${1:var}</span>;
+{ local $/ = undef; local *FILE; open FILE, "&lt;<span class="placeholder"
+     >${2:file}</span>"; $$1 = &lt;FILE>; close FILE }<span class="placeholder"
+     >${3}</span>
+</div></div><h2
+   >Catalyst
+</h2><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >stash</div><div class="comment"
+     ></div></div><div class="code"
+    >$c->stash( $1, $2 );
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >chained</div><div class="comment"
+     ></div></div><div class="code"
+    >sub <span class="placeholder"
+     >${1:name}</span> :Chained('<span class="placeholder"
+     >${2:chain}</span>') 
+              :PathPart('<span class="placeholder"
+     >${3:path}</span>') 
+			  :<span class="placeholder"
+     >${4:capture}</span>Args(<span class="placeholder"
+     >${5:0}</span>) {
+	my ( $self, $c, <span class="placeholder"
+     >${6:@others}</span> ) = @_;
+</div></div></div></body></html>

@@ -1,0 +1,222 @@
+{
+  "command": null,
+  "width": 80,
+  "version": 1,
+  "title": null,
+  "duration": 49.366754,
+  "height": 39,
+  "env": {
+    "SHELL": "/usr/bin/fish",
+    "TERM": "screen-256color"
+  },
+  "stdout": [
+    [
+      0.331439,
+      "\u001b]0;fish  /home/yanick\u0007\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.003069,
+      "Welcome to fish, the friendly interactive shell\r\nType \u001b[32mhelp\u001b[30m\u001b[m\u000f for instructions on how to use fish\r\n"
+    ],
+    [
+      0.104778,
+      "\u001b]0;fish  /home/yanick\u0007"
+    ],
+    [
+      6e-05,
+      "\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.000642,
+      "\u001b[2m⏎\u001b[m\u000f                                                                               \r \r\u001b[2K"
+    ],
+    [
+      0.027164,
+      "\r\n\u001b[40m\u001b[m\u000f\u001b[38;2;0;135;135m11:49\u001b[40m\u001b[m\u000f\u001b[38;2;0;95;255m yanick\u001b[30m\u001b[m\u000f@\u001b[38;2;0;175;255menkidu\u001b[40m\u001b[m\u000f\u001b[38;2;102;0;0m \u001b[38;2;0;95;0m~\u001b[30m\u001b[m\u000f\r\n\u001b[40m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[40m\u001b[m\u000f\u001b[38;2;153;153;153m⥼ \u001b[40m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[30m\u001b[m\u000f\u001b[K"
+    ],
+    [
+      0.18927,
+      "t"
+    ],
+    [
+      0.03952,
+      "\b\u001b[31m\u001b[1mt\u001b[m\u000f"
+    ],
+    [
+      0.019555,
+      "\u001b[38;2;85;85;85mask-kusarigama decimate\u001b[23D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.251497,
+      "\u001b[31m\u001b[1ma\u001b[m\u000f\u001b[38;2;85;85;85msk-kusarigama decimate\u001b[22D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.060338,
+      "\u001b[31m\u001b[1ms\u001b[m\u000f\u001b[38;2;85;85;85mk-kusarigama decimate\u001b[21D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.039663,
+      "\u001b[31m\u001b[1mk\u001b[m\u000f\u001b[38;2;85;85;85m-kusarigama decimate\u001b[20D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.039913,
+      "\b\b\b\b\u001b[38;2;0;95;215mtask\u001b[38;2;85;85;85m-kusarigama decimate\u001b[20D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.223553,
+      "\u001b[38;2;0;95;215m-\u001b[38;2;85;85;85mkusarigama decimate\u001b[19D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.039904,
+      "\b\b\b\b\b\u001b[31m\u001b[1mtask-\u001b[m\u000f\u001b[38;2;85;85;85mkusarigama decimate\u001b[19D\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.300031,
+      "\u001b[31m\u001b[1mkusarigama decimate\u001b[m\u000f"
+    ],
+    [
+      0.020546,
+      "\u001b[24D\u001b[38;2;0;95;215mtask-kusarigama\u001b[30m\u001b[m\u000f \u001b[38;2;0;175;255m\u001b[4mdecimate\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.436322,
+      "\r\n\u001b[30m\u001b[m\u000f"
+    ],
+    [
+      0.000121,
+      "\u001b]0;task-kusarigama  /home/yanick\u0007"
+    ],
+    [
+      4.1e-05,
+      "\u001b[30m\u001b[m\u000f\r"
+    ],
+    [
+      1.516986,
+      "Decimating H priority...\r\nWe have 34, we want 37\r\nneed 3 more H tasks\r\nPromote one!\r\n\r\n\r\n"
+    ],
+    [
+      6.6e-05,
+      " 0  242 \u001b[34m[pollux] \u001b[0m2: Add Combiner class\u001b[36m +github\u001b[0m\r\n 1   72 \u001b[34m\u001b[0mBlog about logging in FullThrust\u001b[36m +blogging\u001b[0m\r\n 2  485 \u001b[34m\u001b[0mmerge /vimwiki and /wiki\r\n"
+    ],
+    [
+      5.7e-05,
+      " 3  144 \u001b[34m[aotds] \u001b[0mDisable orders when they are sent\r\n"
+    ],
+    [
+      5.7e-05,
+      " 4  221 \u001b[34m[moosex-blessed-reconstruct] \u001b[0m4: Clarify in the docs what &dquot;fix up&dquot; actually mean\u001b[36m +github\u001b[0m\r\n 5  213 \u001b[34m[cod] \u001b[0m1: Make stash process-dependent\u001b[36m +github\u001b[0m\r\n"
+    ],
+    [
+      4.1e-05,
+      " 6  408 \u001b[34m[App-gh] \u001b[0m64: revisit `issue comment`  command\u001b[36m +github\u001b[0m\r\n"
+    ],
+    [
+      4.6e-05,
+      " 7  567 \u001b[34m\u001b[0mdaily duolingo\u001b[36m +daily\u001b[0m \u001b[36m +focus\u001b[0m\r\n 8  368 \u001b[34m\u001b[0mansible for mailman on gilga\r\n"
+    ],
+    [
+      4.8e-05,
+      " 9  233 \u001b[34m[Dancer2-Plugin-REST] \u001b[0m5: add XML support [REST.pm]\u001b[36m +todo\u001b[0m \u001b[36m +watson\u001b[0m \u001b[36m +github\u001b[0m\r\n\r\n\r\n"
+    ],
+    [
+      0.001667,
+      "which one? [0123456789] "
+    ],
+    [
+      10.957622,
+      "7\r\n"
+    ],
+    [
+      0.00343,
+      "need 2 more H tasks\r\nPromote one!\r\n\r\n\r\n"
+    ],
+    [
+      0.000326,
+      " 0   55 \u001b[34m\u001b[0mhttp://jpmens.net/2016/03/05/a-shell-command-to-create-json-jo/\u001b[36m +bookmark\u001b[0m\r\n"
+    ],
+    [
+      0.000107,
+      " 1  330 \u001b[34m[exercism] \u001b[0mruby track +ruby   (15/84)\r\n"
+    ],
+    [
+      0.000105,
+      " 2  487 \u001b[34m\u001b[0madd opening for ntf\u001b[36m +gilgamesh\u001b[0m\r\n"
+    ],
+    [
+      7.7e-05,
+      " 3  464 \u001b[34m[App-gh] \u001b[0mcommand pull\r\n"
+    ],
+    [
+      9.9e-05,
+      " 4  254 \u001b[34m[File-Serialize] \u001b[0m7: Allow to customize the precedences/desired seralizers\u001b[36m +github\u001b[0m\r\n"
+    ],
+    [
+      6.8e-05,
+      " 5   63 \u001b[34m[taskwarrior] \u001b[0madd 'task tree' command\r\n"
+    ],
+    [
+      9.5e-05,
+      " 6  268 \u001b[34m[JSON-Schema-AsType] \u001b[0m3: Clean up the validate_explain messages for all\u001b[36m +github\u001b[0m\r\n"
+    ],
+    [
+      5.5e-05,
+      " 7    4 \u001b[34m[oculi] \u001b[0mAdd check for Weightgrapher\r\n"
+    ],
+    [
+      6.4e-05,
+      " 8  150 \u001b[34m\u001b[0mPaint bench\r\n"
+    ],
+    [
+      6.3e-05,
+      " 9  332 \u001b[34m[exercism] \u001b[0mperl 6 track +perl 6   (0/20)\r\n\r\n\r\n"
+    ],
+    [
+      0.002244,
+      "which one? [0123456789] "
+    ],
+    [
+      12.69725,
+      "9\r\n"
+    ],
+    [
+      0.00346,
+      "need 1 more H tasks\r\nPromote one!\r\n\r\n\r\n"
+    ],
+    [
+      0.000357,
+      " 0   17 \u001b[34m\u001b[0muse presto for rest examples\r\n"
+    ],
+    [
+      0.000322,
+      " 1  222 \u001b[34m[Dist-Zilla-Plugin-ContributorsFile] \u001b[0m4: Make the template configurable\u001b[36m +github\u001b[0m\r\n 2  366 \u001b[34m\u001b[0mAnsible all of gilga mailman config or remove it\r\n 3  302 \u001b[34m[Taskwarrior] \u001b[0m-Kurosigami steal Git::Wrapper\u001b[36m +hacking\u001b[0m\r\n 4   84 \u001b[34m\u001b[0mmake gloves for Trey\r\n"
+    ],
+    [
+      6.7e-05,
+      " 5  230 \u001b[34m[Dancer2-Plugin-REST] \u001b[0m8: groom contributors\u001b[36m +github\u001b[0m\r\n"
+    ],
+    [
+      6.3e-05,
+      " 6  241 \u001b[34m[pollux] \u001b[0m3: Revisit actions\u001b[36m +github\u001b[0m\r\n"
+    ],
+    [
+      0.000122,
+      " 7   50 \u001b[34m\u001b[0mCheck into Perl::Tidy\r\n"
+    ],
+    [
+      6.6e-05,
+      " 8   60 \u001b[34m\u001b[0mdownload Vikins\u001b[36m +tv\u001b[0m\r\n 9   21 \u001b[34m\u001b[0mBackups on all machines\r\n"
+    ],
+    [
+      4.8e-05,
+      "\r\n\r\n"
+    ],
+    [
+      0.002125,
+      "which one? [0123456789] "
+    ],
+    [
+      3.537525,
+      "3\r\n"
+    ]
+  ]
+}

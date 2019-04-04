@@ -1,0 +1,665 @@
+<html>
+<head>
+    <style>@media print{
+    @page {
+        size: 5.5in 8.5in;
+        margin: 1cm;
+        margin-top: 0.75cm;
+        margin-left: 0cm;
+        margin-right: 0cm;
+        padding: 0cm;
+        padding-left: 0cm;
+      //  @bottom { content: flow(footer) };
+    }
+
+    @page :first {
+        margin-top: 0.25cm;
+        @top-left { content: "" }
+        @top-right { content: "" }
+    }
+
+    @page {
+        @top-left {
+            content: flow(header);
+        }
+        @top-right {
+            content: flow(subheader,start);
+        }
+    }
+
+    @page :right {
+        @bottom-right {
+            content: counter(page) "/" counter(pages)
+        };
+        padding-left: 2cm;
+        padding-right: 1cm;
+    }
+    @page :left {
+        @bottom-left {
+            content: counter(page) "/" counter(pages)
+        };
+        padding-left: 1cm;
+        padding-right: 2cm;
+    }
+
+}
+
+div.footer { 
+    text-align: right;
+    border-top: solid 1px black;
+   // flow: static(footer);
+    font-style: italic;
+}
+
+div.header { flow: static(header); }
+.subheader { flow: static(subheader); font-style: italic; text-align: right; }
+
+.breaker { page-break-before: always; }
+
+h1 {
+    text-align: right;
+    border-bottom: 1px black solid;
+    font-size: large;
+}
+
+h2 {
+    background-color: lightblue;
+    font-size: larger;
+}
+
+h2:nth-of-type(1) {
+    border-top: 0px;
+}
+
+h3 { font-size: small; margin-bottom: 2px; }
+
+body, table {
+    font-family: sans-serif;
+    font-size: 10pt;
+//    column-count:2;
+//    -moz-column-count:2; /* Firefox */
+//    -webkit-column-count:2; /* Safari and Chrome */
+}
+
+
+tr {
+    vertical-align: top;
+}
+
+th {
+    border-bottom: solid 1px black;
+    padding: 0em 1em;
+    text-align: left;
+}
+
+td {
+    padding: 0.25em 1em;
+    vertical-align: top;
+}
+
+tbody:nth-child(even) {
+//    background-color: lightgrey;
+}
+
+table {
+    border-spacing: 0px;
+//    margin: 0 2em;
+}
+
+td, th {
+    border-left: 1px solid black;
+}
+
+td:nth-child(1), th:nth-child(1) {
+    border-left: 0px;
+}
+
+
+</style>
+    <title>Fugitive</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <div class="content">
+  <h1 id="fugitive">Fugitive</h1>
+  <div class="header">Fugitive</div>
+  <h2 id="commands">commands</h2>
+  <div class="subheader">commands</div>
+  <table>
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>:Git [args]</td>
+        <td>Similar to :!git [args] but chdir to the repository tree first.</td>
+      </tr>
+      <tr>
+        <td>:Git! [args]</td>
+        <td>Like :Git , but capture the output into a temp file</td>
+      </tr>
+      <tr>
+        <td>:Gcd [dir]</td>
+        <td>:cd relative to the repository.</td>
+      </tr>
+      <tr>
+        <td>:Glcd [dir]</td>
+        <td>:lcd relative to the repository.</td>
+      </tr>
+      <tr>
+        <td>:Gstatus</td>
+        <td>Bring up the output of git-status in the preview window.</td>
+      </tr>
+      <tr>
+        <td>:Gcommit [args]</td>
+        <td>If there is nothing to commit, :Gstatus is called instead.</td>
+      </tr>
+      <tr>
+        <td>:Gmerge [args]</td>
+        <td>Calls git-merge and loads errors and conflicted files</td>
+      </tr>
+      <tr>
+        <td>:Gpull [args]</td>
+        <td>Like :Gmerge , but for git-pull.</td>
+      </tr>
+      <tr>
+        <td>:Gpush [args]</td>
+        <td>Invoke git-push, load the results into the quickfix</td>
+      </tr>
+      <tr>
+        <td>:Gfetch [args]</td>
+        <td>Like :Gpush , but for git-fetch.</td>
+      </tr>
+      <tr>
+        <td>:Ggrep [args]</td>
+        <td>:grep with git-grep as &#39;grepprg&#39;.</td>
+      </tr>
+      <tr>
+        <td>:Glgrep [args]</td>
+        <td>:lgrep with git-grep as &#39;grepprg&#39;.</td>
+      </tr>
+      <tr>
+        <td>:Glog [args]</td>
+        <td>Load all previous revisions of the current file into the quickfix list.</td>
+      </tr>
+      <tr>
+        <td>:{range}Glog [args]</td>
+        <td>Use git-log -L to load previous revisions of the given range of the current file into the quickfix list.</td>
+      </tr>
+      <tr>
+        <td>:Gllog [args]</td>
+        <td>Like :Glog , but use the location list instead of the quickfix list.</td>
+      </tr>
+      <tr>
+        <td>:Gedit [revision]</td>
+        <td>:edit a fugitive-revision .</td>
+      </tr>
+      <tr>
+        <td>:Gsplit [revision]</td>
+        <td>:split a fugitive-revision .</td>
+      </tr>
+      <tr>
+        <td>:Gvsplit [revision]</td>
+        <td>:vsplit a fugitive-revision .</td>
+      </tr>
+      <tr>
+        <td>:Gtabedit [revision]</td>
+        <td>:tabedit a fugitive-revision .</td>
+      </tr>
+      <tr>
+        <td>:Gpedit [revision]</td>
+        <td>:pedit a fugitive-revision .</td>
+      </tr>
+      <tr>
+        <td>:Gsplit! [args]</td>
+        <td>Like :Git! , but open the resulting temp file in a</td>
+      </tr>
+      <tr>
+        <td>:Gvsplit! [args]</td>
+        <td>^ split, tab, or preview window.</td>
+      </tr>
+      <tr>
+        <td>:Gtabedit! [args]</td>
+        <td>^</td>
+      </tr>
+      <tr>
+        <td>:Gpedit! [args]</td>
+        <td>^</td>
+      </tr>
+      <tr>
+        <td>:Gread [revision]</td>
+        <td>Empty the buffer and :read a fugitive-revision.</td>
+      </tr>
+      <tr>
+        <td>:{range}Gread [revision]</td>
+        <td>:read in a fugitive-revision after {range}.</td>
+      </tr>
+      <tr>
+        <td>:Gread! [args]</td>
+        <td>Empty the buffer and :read the output of a Git command.</td>
+      </tr>
+      <tr>
+        <td>:{range}Gread! [args]</td>
+        <td>:read the output of a Git command after {range}.</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>:Gwrite</td>
+        <td>Write to the current file&#39;s path and stage the results.</td>
+      </tr>
+      <tr>
+        <td>:Gwrite {path}</td>
+        <td>You can give :Gwrite an explicit path of where in the work tree to write. You can also give a path like :0:foo.txt or even :0 to write to just that stage in the index.</td>
+      </tr>
+      <tr>
+        <td>:Gwq [path]</td>
+        <td>Like :Gwrite followed by :quit if the write succeeded.</td>
+      </tr>
+      <tr>
+        <td>:Gwq! [path]</td>
+        <td>Like :Gwrite! followed by :quit! if the write succeeded.</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>:Gdiff [revision]</td>
+      </tr>
+      <tr>
+        <td>:Gsdiff [revision]</td>
+        <td>Like :Gdiff, but always split horizontally.</td>
+      </tr>
+      <tr>
+        <td>:Gvdiff [revision]</td>
+        <td>Like :Gdiff, but always split vertically.</td>
+      </tr>
+      <tr>
+        <td>:Gmove {destination}</td>
+        <td>Add a ! to pass -f</td>
+      </tr>
+      <tr>
+        <td>:Gremove</td>
+        <td>Add a ! to pass -f</td>
+      </tr>
+      <tr>
+        <td>:Gblame [flags]</td>
+        <td>Run git-blame on the file</td>
+      </tr>
+      <tr>
+        <td>:[range]Gblame [flags]</td>
+        <td>Run git-blame on the given range.</td>
+      </tr>
+      <tr>
+        <td>:[range]Gbrowse</td>
+      </tr>
+      <tr>
+        <td>:[range]Gbrowse!</td>
+        <td>put the URL on the clipboard rather than opening it.</td>
+      </tr>
+      <tr>
+        <td>:[range]Gbrowse {revision}</td>
+        <td>Like :Gbrowse, but for a given fugitive-revision. A useful value here is -, which ties the URL to the latest commit rather than a volatile branch.</td>
+      </tr>
+      <tr>
+        <td>:[range]Gbrowse [...]@{remote}</td>
+        <td>Force using the given remote rather than the remote for the current branch. The remote is used to determine which GitHub repository to link to.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="breaker" id="gstatuscommands"> Gstatus commands</h2>
+  <div class="subheader">* Gstatus commands</div>
+  <table>
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>g?</td>
+        <td>show this help</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>&lt;C-N&gt;</td>
+        <td>next file</td>
+      </tr>
+      <tr>
+        <td>&lt;C-P&gt;</td>
+        <td>previous file</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>&lt;CR&gt;</td>
+        <td>:Gedit</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>:Git add</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>:Git reset (staged files)</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>cA</td>
+        <td>:Gcommit --amend --reuse-message=HEAD</td>
+      </tr>
+      <tr>
+        <td>ca</td>
+        <td>:Gcommit --amend</td>
+      </tr>
+      <tr>
+        <td>cc</td>
+        <td>:Gcommit</td>
+      </tr>
+      <tr>
+        <td>cva</td>
+        <td>:Gcommit --amend --verbose</td>
+      </tr>
+      <tr>
+        <td>cvc</td>
+        <td>:Gcommit --verbose</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>D</td>
+        <td>:Gdiff</td>
+      </tr>
+      <tr>
+        <td>ds</td>
+        <td>:Gsdiff</td>
+      </tr>
+      <tr>
+        <td>dp</td>
+        <td>:Git! diff (p for patch; use :Gw to apply)</td>
+      </tr>
+      <tr>
+        <td>dp</td>
+        <td>:Git add --intent-to-add (untracked files)</td>
+      </tr>
+      <tr>
+        <td>dv</td>
+        <td>:Gvdiff</td>
+      </tr>
+      <tr>
+        <td>O</td>
+        <td>:Gtabedit</td>
+      </tr>
+      <tr>
+        <td>o</td>
+        <td>:Gsplit</td>
+      </tr>
+      <tr>
+        <td>p</td>
+        <td>:Git add --patch</td>
+      </tr>
+      <tr>
+        <td>p</td>
+        <td>:Git reset --patch (staged files)</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>q</td>
+        <td>close status</td>
+      </tr>
+      <tr>
+        <td>r</td>
+        <td>reload status</td>
+      </tr>
+      <tr>
+        <td>S</td>
+        <td>:Gvsplit</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="breaker" id="gblame"> Gblame</h2>
+  <div class="subheader">* Gblame</div>
+  <table>
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>g?</td>
+        <td>show help</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="open">open</h3>
+  <table>
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>o</td>
+        <td>open commit in horizontal split</td>
+      </tr>
+      <tr>
+        <td>O</td>
+        <td>open commit in new tab</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="close">close</h3>
+  <table>
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>q</td>
+        <td>close blame and return to blamed window</td>
+      </tr>
+      <tr>
+        <td>gq</td>
+        <td>q, then :Gedit to return to work tree version</td>
+      </tr>
+      <tr>
+        <td>&lt;CR&gt;</td>
+        <td>q, then open commit</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="resize">resize</h3>
+  <table>
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A</td>
+        <td>resize to end of author column</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>resize to end of commit column</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>resize to end of date/time column</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="reblame">reblame</h3>
+  <table>
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>-</td>
+        <td>reblame at commit</td>
+      </tr>
+      <tr>
+        <td>~</td>
+        <td>reblame at [count]th first grandparent</td>
+      </tr>
+      <tr>
+        <td>P</td>
+        <td>reblame at [count]th parent (like HEAD^[count])</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="breaker" id="mappings"> mappings</h2>
+  <div class="subheader">* mappings</div>
+  <table>
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&lt;C-R&gt;&lt;C-G&gt;</td>
+        <td>On the command line, recall the path to the current object</td>
+      </tr>
+      <tr>
+        <td>[&quot;x]y&lt;C-G&gt;</td>
+        <td>Yank the commit SHA and path to the current object.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="availableingitobjects.">available in Git objects.</h3>
+  <table>
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&lt;CR&gt;</td>
+        <td>Jump to the revision under the cursor.</td>
+      </tr>
+      <tr>
+        <td>o</td>
+        <td>Jump to the revision under the cursor in a new split.</td>
+      </tr>
+      <tr>
+        <td>S</td>
+        <td>Jump to the revision under the cursor in a new vertical split.</td>
+      </tr>
+      <tr>
+        <td>O</td>
+        <td>Jump to the revision under the cursor in a new tab.</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>Go to the tree containing the current tree or blob.</td>
+      </tr>
+      <tr>
+        <td>~</td>
+        <td>Go to the current file in the [count]th first ancestor.</td>
+      </tr>
+      <tr>
+        <td>P</td>
+        <td>Go to the current file in the [count]th parent.</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>Go to the commit containing the current file.</td>
+      </tr>
+      <tr>
+        <td>.</td>
+        <td>Start a command line with the current revision prepopulated at the end of the line.</td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td>Show the current tag, commit, or tree in an alternate format.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="breaker" id="specifyingrevisions"> SPECIFYING REVISIONS</h2>
+  <div class="subheader">* SPECIFYING REVISIONS</div>
+  <table>
+    <col />
+    <col />
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>master</td>
+        <td>.git/refs/heads/master</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>HEAD</td>
+        <td>.git/HEAD</td>
+      </tr>
+      <tr>
+        <td>HEAD^{}</td>
+        <td>The commit referenced by HEAD</td>
+      </tr>
+      <tr>
+        <td>HEAD^</td>
+        <td>The parent of the commit referenced by HEAD</td>
+      </tr>
+      <tr>
+        <td>HEAD:</td>
+        <td>The tree referenced by HEAD</td>
+      </tr>
+      <tr>
+        <td>/HEAD</td>
+        <td>The file named HEAD in the work tree</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>Makefile</td>
+        <td>The file named Makefile in the work tree</td>
+      </tr>
+      <tr>
+        <td>HEAD^:Makefile</td>
+        <td>The file named Makefile in the parent of HEAD</td>
+      </tr>
+      <tr>
+        <td>:Makefile</td>
+        <td>The file named Makefile in the index (writable)</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>-</td>
+        <td>The current file in HEAD</td>
+      </tr>
+      <tr>
+        <td>^</td>
+        <td>The current file in the previous commit</td>
+      </tr>
+      <tr>
+        <td>~3</td>
+        <td>The current file 3 commits ago</td>
+      </tr>
+      <tr>
+        <td>:</td>
+        <td>.git/index (Same as :Gstatus)</td>
+      </tr>
+      <tr>
+        <td>:0</td>
+        <td>The current file in the index</td>
+      </tr>
+      <tr>
+        <td>:1</td>
+        <td>The current file&#39;s common ancestor during a conflict</td>
+      </tr>
+      <tr>
+        <td>:2</td>
+        <td>The current file in the target branch during a conflict</td>
+      </tr>
+      <tr>
+        <td>:3</td>
+        <td>The current file in the merged branch during a conflict</td>
+      </tr>
+      <tr>
+        <td>:/foo</td>
+        <td>The most recent commit with &quot;foo&quot; in the message</td>
+      </tr>
+    </tbody>
+  </table>
+</div> 
+    <div style="page-break-after: always"></div><div style="page-break-after: always"></div><div style="page-break-after: always"></div>
+</body>
+</html>

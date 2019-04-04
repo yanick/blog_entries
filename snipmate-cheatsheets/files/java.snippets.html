@@ -1,0 +1,198 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >java.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >main</div><div class="comment"
+     ></div></div><div class="code"
+    >public static void main (String [] args)
+{
+	<span class="placeholder"
+     >${1:/* code */}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >po</div><div class="comment"
+     ></div></div><div class="code"
+    >protected
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >st</div><div class="comment"
+     ></div></div><div class="code"
+    >static
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ab</div><div class="comment"
+     ></div></div><div class="code"
+    >abstract
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >br</div><div class="comment"
+     ></div></div><div class="code"
+    >break;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ca</div><div class="comment"
+     ></div></div><div class="code"
+    >catch(<span class="placeholder"
+     >${1:Exception}</span> <span class="placeholder"
+     >${2:e}</span>) <span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sy</div><div class="comment"
+     ></div></div><div class="code"
+    >synchronized
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >j.u</div><div class="comment"
+     ></div></div><div class="code"
+    >java.util
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >j.b</div><div class="comment"
+     ></div></div><div class="code"
+    >java.beans.
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >j.m</div><div class="comment"
+     ></div></div><div class="code"
+    >java.math.
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >el</div><div class="comment"
+     ></div></div><div class="code"
+    >else 
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >wh</div><div class="comment"
+     ></div></div><div class="code"
+    >while (<span class="placeholder"
+     >${1}</span>) <span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >fore</div><div class="comment"
+     ></div></div><div class="code"
+    >for (<span class="placeholder"
+     >${1}</span> : <span class="placeholder"
+     >${2}</span>) <span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cs</div><div class="comment"
+     ></div></div><div class="code"
+    >case <span class="placeholder"
+     >${1}</span>:
+	<span class="placeholder"
+     >${2}</span>
+<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >t</div><div class="comment"
+     ></div></div><div class="code"
+    >public void test<span class="placeholder"
+     >${1:Name}</span>() throws Exception <span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >in</div><div class="comment"
+     ></div></div><div class="code"
+    >interface <span class="placeholder"
+     >${1:`Filename("", "untitled")`}</span> <span class="placeholder"
+     >${2:extends Parent}</span><span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >v</div><div class="comment"
+     ></div></div><div class="code"
+    ><span class="placeholder"
+     >${1:String}</span> <span class="placeholder"
+     >${2:var}</span><span class="placeholder"
+     >${3: = null}</span><span class="placeholder"
+     >${4}</span>;<span class="placeholder"
+     >${5}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cos</div><div class="comment"
+     ></div></div><div class="code"
+    >static public final String <span class="placeholder"
+     >${1:var}</span> = "<span class="placeholder"
+     >${2}</span>";<span class="placeholder"
+     >${3}</span>
+</div></div></div></body></html>

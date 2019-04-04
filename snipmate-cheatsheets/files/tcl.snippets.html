@@ -1,0 +1,258 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >tcl.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >#!</div><div class="comment"
+     > #!/usr/bin/tclsh</div></div><div class="code"
+    >#!/usr/bin/tclsh
+
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >pro</div><div class="comment"
+     > Process</div></div><div class="code"
+    >proc <span class="placeholder"
+     >${1:function_name}</span> {<span class="placeholder"
+     >${2:args}</span>} {
+	<span class="placeholder"
+     >${3:#body ...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >xif</div><div class="comment"
+     >xif</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:expr}</span>? <span class="placeholder"
+     >${2:true}</span> : <span class="placeholder"
+     >${3:false}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >if</div><div class="comment"
+     > Conditional</div></div><div class="code"
+    >if {<span class="placeholder"
+     >${1}</span>} {
+	<span class="placeholder"
+     >${2:# body...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ife</div><div class="comment"
+     > Conditional if..else</div></div><div class="code"
+    >if {<span class="placeholder"
+     >${1}</span>} {
+	<span class="placeholder"
+     >${2:# body...}</span>
+} else {
+	<span class="placeholder"
+     >${3:# else...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ifee</div><div class="comment"
+     > Conditional if..elsif..else</div></div><div class="code"
+    >if {<span class="placeholder"
+     >${1}</span>} {
+	<span class="placeholder"
+     >${2:# body...}</span>
+} elseif {<span class="placeholder"
+     >${3}</span>} {
+	<span class="placeholder"
+     >${4:# elsif...}</span>
+} else {
+	<span class="placeholder"
+     >${5:# else...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ifc</div><div class="comment"
+     > If catch then</div></div><div class="code"
+    >if { [catch {<span class="placeholder"
+     >${1:#do something...}</span>} <span class="placeholder"
+     >${2:err}</span>] } {
+	<span class="placeholder"
+     >${3:# handle failure...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >catch</div><div class="comment"
+     > Catch</div></div><div class="code"
+    >catch {<span class="placeholder"
+     >${1}</span>} <span class="placeholder"
+     >${2:err}</span> <span class="placeholder"
+     >${3:options}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >wh</div><div class="comment"
+     > While Loop</div></div><div class="code"
+    >while {<span class="placeholder"
+     >${1}</span>} {
+	<span class="placeholder"
+     >${2:# body...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >for</div><div class="comment"
+     > For Loop</div></div><div class="code"
+    >for {set <span class="placeholder"
+     >${2:var}</span> 0} {$$2 &lt; <span class="placeholder"
+     >${1:count}</span>} {<span class="placeholder"
+     >${3:incr}</span> $2} {
+	<span class="placeholder"
+     >${4:# body...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >fore</div><div class="comment"
+     > Foreach Loop</div></div><div class="code"
+    >foreach <span class="placeholder"
+     >${1:x}</span> {<span class="placeholder"
+     >${2:#list}</span>} {
+	<span class="placeholder"
+     >${3:# body...}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >af</div><div class="comment"
+     > after ms script...</div></div><div class="code"
+    >after <span class="placeholder"
+     >${1:ms}</span> <span class="placeholder"
+     >${2:#do something}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >afc</div><div class="comment"
+     > after cancel id</div></div><div class="code"
+    >after cancel <span class="placeholder"
+     >${1:id or script}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >afi</div><div class="comment"
+     > after idle</div></div><div class="code"
+    >after idle <span class="placeholder"
+     >${1:script}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >afin</div><div class="comment"
+     > after info id</div></div><div class="code"
+    >after info <span class="placeholder"
+     >${1:id}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >exp</div><div class="comment"
+     > Expr</div></div><div class="code"
+    >expr {<span class="placeholder"
+     >${1:#expression here}</span>}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sw</div><div class="comment"
+     > Switch</div></div><div class="code"
+    >switch <span class="placeholder"
+     >${1:var}</span> {
+	<span class="placeholder"
+     >${3:pattern 1}</span> {
+		<span class="placeholder"
+     >${4:#do something}</span>
+	}
+	default {
+		<span class="placeholder"
+     >${2:#do something}</span>
+	}
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ca</div><div class="comment"
+     > Case</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:pattern}</span> {
+	<span class="placeholder"
+     >${2:#do something}</span>
+}<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ns</div><div class="comment"
+     > Namespace eval</div></div><div class="code"
+    >namespace eval <span class="placeholder"
+     >${1:path}</span> {<span class="placeholder"
+     >${2:#script...}</span>}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >nsc</div><div class="comment"
+     > Namespace current</div></div><div class="code"
+    >namespace current
+</div></div></div></body></html>

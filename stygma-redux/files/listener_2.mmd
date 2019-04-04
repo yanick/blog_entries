@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant App
+    participant start_game
+    participant Reducer
+    participant Listener
+    Note right of Reducer: chamber:null, alive:true
+    App ->>+ start_game: START_GAME
+    start_game->>-Reducer: LOAD_GUN chamber:1
+    Note right of Reducer: chamber:1, alive:true
+    Reducer-->>Listener: state
+    Note right of Listener: AW RIGHT!
+    Listener->>+start_game: PULL_TRIGGER
+
+    start_game->>-Reducer: PULL_TRIGGER
+    Note right of Reducer: chamber:0, alive:true
+    Reducer-->>Listener: state
+    Note right of Listener: AW RIGHT!
+    Listener->>+start_game: PULL_TRIGGER
+
+    start_game->>-Reducer: PULL_TRIGGER
+    Note right of Reducer: chamber:null, alive:false
+    Reducer-->>Listener: state
+    Note right of Listener: Cleaning requested at aisle 5...

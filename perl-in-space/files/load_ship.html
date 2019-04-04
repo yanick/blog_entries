@@ -1,0 +1,23 @@
+<script>
+    var traj;
+
+    jQuery.getJSON( '/radar', function(data){
+
+        for each ( s in data.ships ) {
+            var ship = paper.image( 
+                "/images/ship.gif", 
+                s.location.x-100,
+                s.location.y-100, 
+                200, 200          ).rotate(s.heading);
+
+            ships[s.id] = ship;
+            ship.node.id = s.id;
+
+            var trajectory = paper.path( "M0,0L0,0" );
+            trajectory.insertBefore(ship);
+            trajectory.attr({ stroke: "white" });
+            trajectory.node.id = "trajectory-" + s.id;
+            traj = trajectory;
+        }
+    });
+</script>

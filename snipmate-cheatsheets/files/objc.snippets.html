@@ -1,0 +1,395 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >objc.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >Imp</div><div class="comment"
+     > #import &lt;...></div></div><div class="code"
+    >#import &lt;<span class="placeholder"
+     >${1:Cocoa/Cocoa.h}</span>><span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >imp</div><div class="comment"
+     > #import "..."</div></div><div class="code"
+    >#import "<span class="placeholder"
+     >${1:`Filename()`.h}</span>"<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sel</div><div class="comment"
+     > @selector(...)</div></div><div class="code"
+    >@selector(<span class="placeholder"
+     >${1:method}</span>:)<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >s</div><div class="comment"
+     > @"..." string</div></div><div class="code"
+    >@"<span class="placeholder"
+     >${1}</span>"<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >o</div><div class="comment"
+     > Object</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:NSObject}</span> *<span class="placeholder"
+     >${2:foo}</span> = [<span class="placeholder"
+     >${3:$1 alloc}</span>]<span class="placeholder"
+     >${4}</span>;<span class="placeholder"
+     >${5}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >log</div><div class="comment"
+     > NSLog(...)</div></div><div class="code"
+    >NSLog(@"<span class="placeholder"
+     >${1:%@}</span>"<span class="placeholder"
+     >${2}</span>);<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >objc</div><div class="comment"
+     > Class</div></div><div class="code"
+    >@interface <span class="placeholder"
+     >${1:`Filename('', 'someClass')`}</span> : <span class="placeholder"
+     >${2:NSObject}</span>
+{
+}
+@end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >int</div><div class="comment"
+     > Class Interface</div></div><div class="code"
+    >@interface <span class="placeholder"
+     >${1:`Filename('', 'someClass')`}</span> : <span class="placeholder"
+     >${2:NSObject}</span>
+{<span class="placeholder"
+     >${3}</span>
+}
+<span class="placeholder"
+     >${4}</span>
+@end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >impl</div><div class="comment"
+     > Class Implementation</div></div><div class="code"
+    >@implementation <span class="placeholder"
+     >${1:`Filename('', 'someClass')`}</span>
+<span class="placeholder"
+     >${2}</span>
+@end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ifself</div><div class="comment"
+     ></div></div><div class="code"
+    >if (self = [super init]) {
+	<span class="placeholder"
+     >${1:/* code */}</span>
+}
+return self;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cat</div><div class="comment"
+     > Category</div></div><div class="code"
+    >@interface <span class="placeholder"
+     >${1:NSObject}</span> (<span class="placeholder"
+     >${2:Category}</span>)
+@end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cath</div><div class="comment"
+     > Category Interface</div></div><div class="code"
+    >@interface <span class="placeholder"
+     >${1:NSObject}</span> (<span class="placeholder"
+     >${2:Category}</span>)
+<span class="placeholder"
+     >${3}</span>
+@end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >array</div><div class="comment"
+     > NSArray</div></div><div class="code"
+    >NSMutableArray *<span class="placeholder"
+     >${1:array}</span> = [NSMutable array];<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >dict</div><div class="comment"
+     > NSDictionary</div></div><div class="code"
+    >NSMutableDictionary *<span class="placeholder"
+     >${1:dict}</span> = [NSMutableDictionary dictionary];<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >bez</div><div class="comment"
+     > NSBezierPath</div></div><div class="code"
+    >NSBezierPath *<span class="placeholder"
+     >${1:path}</span> = [NSBezierPath bezierPath];<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >m</div><div class="comment"
+     > Method</div></div><div class="code"
+    >- (<span class="placeholder"
+     >${1:id}</span>)<span class="placeholder"
+     >${2:method}</span>
+{
+	<span class="placeholder"
+     >${3}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >md</div><div class="comment"
+     > Method declaration</div></div><div class="code"
+    >- (<span class="placeholder"
+     >${1:id}</span>)<span class="placeholder"
+     >${2:method}</span>;<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ibad</div><div class="comment"
+     > IBAction declaration</div></div><div class="code"
+    >- (IBAction)<span class="placeholder"
+     >${1:method}</span>:(<span class="placeholder"
+     >${2:id}</span>)sender;<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >iba</div><div class="comment"
+     > IBAction method</div></div><div class="code"
+    >- (IBAction)<span class="placeholder"
+     >${1:method}</span>:(<span class="placeholder"
+     >${2:id}</span>)sender
+{
+	<span class="placeholder"
+     >${3}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >wake</div><div class="comment"
+     > awakeFromNib method</div></div><div class="code"
+    >- (void)awakeFromNib
+{
+	<span class="placeholder"
+     >${1}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >M</div><div class="comment"
+     > Class Method</div></div><div class="code"
+    >+ (<span class="placeholder"
+     >${1:id}</span>)<span class="placeholder"
+     >${2:method}</span>
+{<span class="placeholder"
+     >${3}</span>
+	return nil;
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sm</div><div class="comment"
+     > Sub-method (Call super)</div></div><div class="code"
+    >- (<span class="placeholder"
+     >${1:id}</span>)<span class="placeholder"
+     >${2:method}</span>
+{
+	[super $2];<span class="placeholder"
+     >${3}</span>
+	return self;
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >I</div><div class="comment"
+     > Method: Initialize</div></div><div class="code"
+    >+ (void) initialize
+{
+	[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWIthObjectsAndKeys:
+		<span class="placeholder"
+     >${1}</span>@"value", @"key",
+		nil]];
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >objacc</div><div class="comment"
+     > Object</div></div><div class="code"
+    >- (<span class="placeholder"
+     >${1:id}</span>)<span class="placeholder"
+     >${2:thing}</span>
+{
+	return $2;
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >forin</div><div class="comment"
+     > for (object in array)</div></div><div class="code"
+    >for (<span class="placeholder"
+     >${1:Class}</span> *<span class="placeholder"
+     >${2:some$1}</span> in <span class="placeholder"
+     >${3:array}</span>) {
+	<span class="placeholder"
+     >${4}</span>
+}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >prop</div><div class="comment"
+     > @property (Objective-C 2.0)</div></div><div class="code"
+    >@property (<span class="placeholder"
+     >${1:retain}</span>) <span class="placeholder"
+     >${2:NSSomeClass}</span> <span class="placeholder"
+     >${3:*$2}</span>;<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >syn</div><div class="comment"
+     > @synthesize (Objective-C 2.0)</div></div><div class="code"
+    >@synthesize <span class="placeholder"
+     >${1:property}</span>;<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >alloc</div><div class="comment"
+     > [[ alloc] init]</div></div><div class="code"
+    >[[<span class="placeholder"
+     >${1:foo}</span> alloc] init<span class="placeholder"
+     >${2}</span>];<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ret</div><div class="comment"
+     > retain</div></div><div class="code"
+    >[<span class="placeholder"
+     >${1:foo}</span> retain];<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >rel</div><div class="comment"
+     > release</div></div><div class="code"
+    >[<span class="placeholder"
+     >${1:foo}</span> release];
+<span class="placeholder"
+     >${2:$1 = nil;}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >arel</div><div class="comment"
+     > autorelease</div></div><div class="code"
+    >[<span class="placeholder"
+     >${1:foo}</span> autorelease];
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >pool</div><div class="comment"
+     > autorelease pool</div></div><div class="code"
+    >NSAutoreleasePool *<span class="placeholder"
+     >${1:pool}</span> = [[NSAutoreleasePool alloc] init];
+<span class="placeholder"
+     >${2:/* code */}</span>
+[$1 drain];
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >except</div><div class="comment"
+     > Throw an exception</div></div><div class="code"
+    >NSException *<span class="placeholder"
+     >${1:badness}</span>;
+$1 = [NSException exceptionWithName:@"<span class="placeholder"
+     >${2:$1Name}</span>"
+                             reason:@"<span class="placeholder"
+     >${3}</span>"
+                           userInfo:nil];
+[$1 raise];
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cl</div><div class="comment"
+     ></div></div><div class="code"
+    >@class <span class="placeholder"
+     >${1:Foo}</span>;<span class="placeholder"
+     >${2}</span>
+</div></div></div></body></html>

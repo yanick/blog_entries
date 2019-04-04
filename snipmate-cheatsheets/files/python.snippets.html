@@ -1,0 +1,204 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >python.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >#!</div><div class="comment"
+     ></div></div><div class="code"
+    >#!/usr/bin/python
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >imp</div><div class="comment"
+     ></div></div><div class="code"
+    >import <span class="placeholder"
+     >${1:module}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >docs</div><div class="comment"
+     > Module Docstring</div></div><div class="code"
+    >'''
+File: <span class="placeholder"
+     >${1:`Filename('$1.py', 'foo.py')`}</span>
+Author: <span class="placeholder"
+     >${2:`g:snips_author`}</span>
+Description: <span class="placeholder"
+     >${3}</span>
+'''
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >for</div><div class="comment"
+     ></div></div><div class="code"
+    >for <span class="placeholder"
+     >${1:needle}</span> in <span class="placeholder"
+     >${2:haystack}</span>:
+	<span class="placeholder"
+     >${3:# code...}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cl</div><div class="comment"
+     > New Class</div></div><div class="code"
+    >class <span class="placeholder"
+     >${1:ClassName}</span>(<span class="placeholder"
+     >${2:object}</span>):
+	"""<span class="placeholder"
+     >${3:docstring for $1}</span>"""
+	def __init__(self, <span class="placeholder"
+     >${4:arg}</span>):
+		<span class="placeholder"
+     >${5:super($1, self).__init__()}</span>
+		self.$4 = $4
+		<span class="placeholder"
+     >${6}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >def</div><div class="comment"
+     > New Function</div></div><div class="code"
+    >def <span class="placeholder"
+     >${1:fname}</span>(<span class="placeholder"
+     >${2:`indent('.') ? 'self' : ''`}</span>):
+	"""<span class="placeholder"
+     >${3:docstring for $1}</span>"""
+	<span class="placeholder"
+     >${4:pass}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >defs</div><div class="comment"
+     > New Method</div></div><div class="code"
+    >def <span class="placeholder"
+     >${1:mname}</span>(self, <span class="placeholder"
+     >${2:arg}</span>):
+	<span class="placeholder"
+     >${3:pass}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >property</div><div class="comment"
+     > New Property</div></div><div class="code"
+    >def <span class="placeholder"
+     >${1:foo}</span>():
+	doc = "<span class="placeholder"
+     >${2:The $1 property.}</span>"
+	def fget(self):
+		<span class="placeholder"
+     >${3:return self._$1}</span>
+	def fset(self, value):
+		<span class="placeholder"
+     >${4:self._$1 = value}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ld</div><div class="comment"
+     > Lambda</div></div><div class="code"
+    ><span class="placeholder"
+     >${1:var}</span> = lambda <span class="placeholder"
+     >${2:vars}</span> : <span class="placeholder"
+     >${3:action}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >try Try/Except</div><div class="comment"
+     ></div></div><div class="code"
+    >try:
+	<span class="placeholder"
+     >${1:pass}</span>
+except <span class="placeholder"
+     >${2:Exception}</span>, <span class="placeholder"
+     >${3:e}</span>:
+	<span class="placeholder"
+     >${4:raise $3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >try Try/Except/Finally</div><div class="comment"
+     ></div></div><div class="code"
+    >try:
+	<span class="placeholder"
+     >${1:pass}</span>
+except <span class="placeholder"
+     >${2:Exception}</span>, <span class="placeholder"
+     >${3:e}</span>:
+	<span class="placeholder"
+     >${4:raise $3}</span>
+finally:
+	<span class="placeholder"
+     >${5:pass}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ifmain</div><div class="comment"
+     > if __name__ == '__main__':</div></div><div class="code"
+    >if __name__ == '__main__':
+	<span class="placeholder"
+     >${1:main()}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >_</div><div class="comment"
+     > __magic__</div></div><div class="code"
+    >__<span class="placeholder"
+     >${1:init}</span>__<span class="placeholder"
+     >${2}</span>
+</div></div></div></body></html>

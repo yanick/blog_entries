@@ -1,0 +1,768 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >ruby.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >#!</div><div class="comment"
+     > #!/usr/bin/ruby</div></div><div class="code"
+    >#!/usr/bin/ruby
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >=b</div><div class="comment"
+     > New Block</div></div><div class="code"
+    >=begin rdoc
+	<span class="placeholder"
+     >${1}</span>
+=end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >rb</div><div class="comment"
+     ></div></div><div class="code"
+    >#!/usr/bin/env ruby -wKU
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >req</div><div class="comment"
+     ></div></div><div class="code"
+    >require "<span class="placeholder"
+     >${1}</span>"<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >end</div><div class="comment"
+     ></div></div><div class="code"
+    >__END__
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >when</div><div class="comment"
+     ></div></div><div class="code"
+    >when <span class="placeholder"
+     >${1:condition}</span>
+	<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >deft</div><div class="comment"
+     ></div></div><div class="code"
+    >def test_<span class="placeholder"
+     >${1:case_name}</span>
+	<span class="placeholder"
+     >${2}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ife</div><div class="comment"
+     ></div></div><div class="code"
+    >if <span class="placeholder"
+     >${1:condition}</span>
+	<span class="placeholder"
+     >${2}</span>
+else
+	<span class="placeholder"
+     >${3}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >unless</div><div class="comment"
+     ></div></div><div class="code"
+    >unless <span class="placeholder"
+     >${1:condition}</span>
+	<span class="placeholder"
+     >${2}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >until</div><div class="comment"
+     ></div></div><div class="code"
+    >until <span class="placeholder"
+     >${1:condition}</span>
+	<span class="placeholder"
+     >${2}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cla class .. initialize .. end</div><div class="comment"
+     ></div></div><div class="code"
+    >class <span class="placeholder"
+     >${1:`substitute(Filename(), '^.', '\u&amp;', '')`}</span>
+	def initialize(<span class="placeholder"
+     >${2:args}</span>)
+		<span class="placeholder"
+     >${3}</span>
+	end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cla class .. &lt; ParentClass .. initialize .. end</div><div class="comment"
+     ></div></div><div class="code"
+    >class <span class="placeholder"
+     >${1:`substitute(Filename(), '^.', '\u&amp;', '')`}</span> &lt; <span class="placeholder"
+     >${2:ParentClass}</span>
+	def initialize(<span class="placeholder"
+     >${3:args}</span>)
+		<span class="placeholder"
+     >${4}</span>
+	end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cla ClassName = Struct .. do .. end</div><div class="comment"
+     ></div></div><div class="code"
+    ><span class="placeholder"
+     >${1:`substitute(Filename(), '^.', '\u&amp;', '')`}</span> = Struct.new(:<span class="placeholder"
+     >${2:attr_names}</span>) do
+	def <span class="placeholder"
+     >${3:method_name}</span>
+		<span class="placeholder"
+     >${4}</span>
+	end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cla class BlankSlate .. initialize .. end</div><div class="comment"
+     ></div></div><div class="code"
+    >class <span class="placeholder"
+     >${1:BlankSlate}</span>
+	instance_methods.each { |meth| undef_method(meth) unless meth =~ /\A__/ }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cla-</div><div class="comment"
+     > class .. &lt; DelegateClass .. initialize .. end</div></div><div class="code"
+    >class <span class="placeholder"
+     >${1:`substitute(Filename(), '^.', '\u&amp;', '')`}</span> &lt; DelegateClass(<span class="placeholder"
+     >${2:ParentClass}</span>)
+	def initialize(<span class="placeholder"
+     >${3:args}</span>)
+		super(<span class="placeholder"
+     >${4:del_obj}</span>)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >mod module .. end</div><div class="comment"
+     ></div></div><div class="code"
+    >module <span class="placeholder"
+     >${1:`substitute(Filename(), '^.', '\u&amp;', '')`}</span>
+	<span class="placeholder"
+     >${2}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >mod module .. ClassMethods .. end</div><div class="comment"
+     ></div></div><div class="code"
+    >module <span class="placeholder"
+     >${1:`substitute(Filename(), '^.', '\u&amp;', '')`}</span>
+	module ClassMethods
+		<span class="placeholder"
+     >${2}</span>
+	end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >r</div><div class="comment"
+     > attr_reader</div></div><div class="code"
+    >attr_reader :<span class="placeholder"
+     >${1:attr_names}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >w</div><div class="comment"
+     > attr_writer</div></div><div class="code"
+    >attr_writer :<span class="placeholder"
+     >${1:attr_names}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >rw</div><div class="comment"
+     > attr_accessor</div></div><div class="code"
+    >attr_accessor :<span class="placeholder"
+     >${1:attr_names}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >Enum</div><div class="comment"
+     > include Enumerable</div></div><div class="code"
+    >include Enumerable
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >Comp</div><div class="comment"
+     > include Comparable</div></div><div class="code"
+    >include Comparable
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >Forw-</div><div class="comment"
+     > extend Forwardable</div></div><div class="code"
+    >extend Forwardable
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >defs</div><div class="comment"
+     > def self</div></div><div class="code"
+    >def self.<span class="placeholder"
+     >${1:class_method_name}</span>
+	<span class="placeholder"
+     >${2}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >defmm</div><div class="comment"
+     > def method_missing</div></div><div class="code"
+    >def method_missing(meth, *args, &amp;blk)
+	<span class="placeholder"
+     >${1}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >defds</div><div class="comment"
+     ></div></div><div class="code"
+    >def_delegators :<span class="placeholder"
+     >${1:@del_obj}</span>, :<span class="placeholder"
+     >${2:del_methods}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >app</div><div class="comment"
+     ></div></div><div class="code"
+    >if __FILE__ == $PROGRAM_NAME
+	<span class="placeholder"
+     >${1}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >usai</div><div class="comment"
+     > usage_if()</div></div><div class="code"
+    >if ARGV.<span class="placeholder"
+     >${1}</span>
+	abort "Usage: #{$PROGRAM_NAME} <span class="placeholder"
+     >${2:ARGS_GO_HERE}</span>"<span class="placeholder"
+     >${3}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >usau</div><div class="comment"
+     > usage_unless()</div></div><div class="code"
+    >unless ARGV.<span class="placeholder"
+     >${1}</span>
+	abort "Usage: #{$PROGRAM_NAME} <span class="placeholder"
+     >${2:ARGS_GO_HERE}</span>"<span class="placeholder"
+     >${3}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >hash</div><div class="comment"
+     ></div></div><div class="code"
+    >Hash.new { |<span class="placeholder"
+     >${1:hash}</span>, <span class="placeholder"
+     >${2:key}</span>| $1[$2] = <span class="placeholder"
+     >${3}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >file File.read()</div><div class="comment"
+     ></div></div><div class="code"
+    >File.read(<span class="placeholder"
+     >${1:"path/to/file"}</span>)<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >Dir Dir[".."]</div><div class="comment"
+     ></div></div><div class="code"
+    >Dir[<span class="placeholder"
+     >${1:"glob/**/*.rb"}</span>]<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >deli</div><div class="comment"
+     ></div></div><div class="code"
+    >delete_if { |<span class="placeholder"
+     >${1:e}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >flao</div><div class="comment"
+     > flatten_once()</div></div><div class="code"
+    >inject(Array.new) { |<span class="placeholder"
+     >${1:arr}</span>, <span class="placeholder"
+     >${2:a}</span>| $1.push(*$2)}<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >dow</div><div class="comment"
+     > downto(0) { |n| .. }</div></div><div class="code"
+    >downto(<span class="placeholder"
+     >${1:0}</span>) { |<span class="placeholder"
+     >${2:n}</span>| <span class="placeholder"
+     >${3}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >tim</div><div class="comment"
+     ></div></div><div class="code"
+    >times { |<span class="placeholder"
+     >${1:n}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >loo</div><div class="comment"
+     ></div></div><div class="code"
+    >loop { <span class="placeholder"
+     >${1}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >eab</div><div class="comment"
+     ></div></div><div class="code"
+    >each_byte { |<span class="placeholder"
+     >${1:byte}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >eac- each_cons(..) { |group| .. }</div><div class="comment"
+     ></div></div><div class="code"
+    >each_cons(<span class="placeholder"
+     >${1:2}</span>) { |<span class="placeholder"
+     >${2:group}</span>| <span class="placeholder"
+     >${3}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >eak</div><div class="comment"
+     ></div></div><div class="code"
+    >each_key { |<span class="placeholder"
+     >${1:key}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >eap</div><div class="comment"
+     ></div></div><div class="code"
+    >each_pair { |<span class="placeholder"
+     >${1:name}</span>, <span class="placeholder"
+     >${2:val}</span>| <span class="placeholder"
+     >${3}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >eav</div><div class="comment"
+     ></div></div><div class="code"
+    >each_value { |<span class="placeholder"
+     >${1:val}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >reve</div><div class="comment"
+     ></div></div><div class="code"
+    >reverse_each { |<span class="placeholder"
+     >${1:e}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >map</div><div class="comment"
+     ></div></div><div class="code"
+    >map { |<span class="placeholder"
+     >${1:e}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sor</div><div class="comment"
+     ></div></div><div class="code"
+    >sort { |a, b| <span class="placeholder"
+     >${1}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ran</div><div class="comment"
+     ></div></div><div class="code"
+    >sort_by { rand }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >any</div><div class="comment"
+     ></div></div><div class="code"
+    >any? { |<span class="placeholder"
+     >${1:e}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >col</div><div class="comment"
+     ></div></div><div class="code"
+    >collect { |<span class="placeholder"
+     >${1:e}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >fet</div><div class="comment"
+     ></div></div><div class="code"
+    >fetch(<span class="placeholder"
+     >${1:name}</span>) { |<span class="placeholder"
+     >${2:key}</span>| <span class="placeholder"
+     >${3}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >fina</div><div class="comment"
+     ></div></div><div class="code"
+    >find_all { |<span class="placeholder"
+     >${1:e}</span>| <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sub</div><div class="comment"
+     ></div></div><div class="code"
+    ><span class="placeholder"
+     >${1:g}</span>sub(<span class="placeholder"
+     >${2:/pattern/}</span>) { |<span class="placeholder"
+     >${3:match}</span>| <span class="placeholder"
+     >${4}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >max</div><div class="comment"
+     ></div></div><div class="code"
+    >max { |a, b|, <span class="placeholder"
+     >${1}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >par</div><div class="comment"
+     ></div></div><div class="code"
+    >partition { |<span class="placeholder"
+     >${1:e}</span>|, <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sel</div><div class="comment"
+     ></div></div><div class="code"
+    >select { |<span class="placeholder"
+     >${1:e}</span>|, <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >do</div><div class="comment"
+     ></div></div><div class="code"
+    >do |<span class="placeholder"
+     >${1:variable}</span>|
+	<span class="placeholder"
+     >${2}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ope</div><div class="comment"
+     ></div></div><div class="code"
+    >open(<span class="placeholder"
+     >${1:"path/or/url/or/pipe"}</span>, "<span class="placeholder"
+     >${2:w}</span>") { |<span class="placeholder"
+     >${3:io}</span>| <span class="placeholder"
+     >${4}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >patfh</div><div class="comment"
+     > path_from_here()</div></div><div class="code"
+    >File.join(File.dirname(__FILE__), *%2[<span class="placeholder"
+     >${1:rel path here}</span>])<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >unif</div><div class="comment"
+     > unix_filter {}</div></div><div class="code"
+    >ARGF.each_line<span class="placeholder"
+     >${1}</span> do |<span class="placeholder"
+     >${2:line}</span>|
+	<span class="placeholder"
+     >${3}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >optp</div><div class="comment"
+     > option_parse {}</div></div><div class="code"
+    >require "optparse"
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >opt</div><div class="comment"
+     ></div></div><div class="code"
+    >opts.on( "-<span class="placeholder"
+     >${1:o}</span>", "--<span class="placeholder"
+     >${2:long-option-name}</span>", <span class="placeholder"
+     >${3:String}</span>,
+         "<span class="placeholder"
+     >${4:Option description.}</span>") do |<span class="placeholder"
+     >${5:opt}</span>|
+	<span class="placeholder"
+     >${6}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ts</div><div class="comment"
+     ></div></div><div class="code"
+    >require "test/unit"
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >as</div><div class="comment"
+     ></div></div><div class="code"
+    >assert(<span class="placeholder"
+     >${1:test}</span>, "<span class="placeholder"
+     >${2:Failure message.}</span>")<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >asne</div><div class="comment"
+     ></div></div><div class="code"
+    >assert_not_equal(<span class="placeholder"
+     >${1:unexpected}</span>, <span class="placeholder"
+     >${2:actual}</span>)<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >asio</div><div class="comment"
+     ></div></div><div class="code"
+    >assert_instance_of(<span class="placeholder"
+     >${1:ExpectedClass}</span>, <span class="placeholder"
+     >${2:actual_instance}</span>)<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >asn</div><div class="comment"
+     ></div></div><div class="code"
+    >assert_nil(<span class="placeholder"
+     >${1:instance}</span>)<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >asm</div><div class="comment"
+     ></div></div><div class="code"
+    >assert_match(/<span class="placeholder"
+     >${1:expected_pattern}</span>/, <span class="placeholder"
+     >${2:actual_string}</span>)<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >aso</div><div class="comment"
+     ></div></div><div class="code"
+    >assert_operator(<span class="placeholder"
+     >${1:left}</span>, :<span class="placeholder"
+     >${2:operator}</span>, <span class="placeholder"
+     >${3:right}</span>)<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >asnr</div><div class="comment"
+     ></div></div><div class="code"
+    >assert_nothing_raised(<span class="placeholder"
+     >${1:Exception}</span>) { <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ass assert_same(..)</div><div class="comment"
+     ></div></div><div class="code"
+    >assert_same(<span class="placeholder"
+     >${1:expected}</span>, <span class="placeholder"
+     >${2:actual}</span>)<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >asns</div><div class="comment"
+     ></div></div><div class="code"
+    >assert_not_same(<span class="placeholder"
+     >${1:unexpected}</span>, <span class="placeholder"
+     >${2:actual}</span>)<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >asnt</div><div class="comment"
+     ></div></div><div class="code"
+    >assert_nothing_thrown { <span class="placeholder"
+     >${1}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >bm-</div><div class="comment"
+     > Benchmark.bmbm do .. end</div></div><div class="code"
+    >TESTS = <span class="placeholder"
+     >${1:10_000}</span>
+Benchmark.bmbm do |results|
+	<span class="placeholder"
+     >${2}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >Md</div><div class="comment"
+     > Marshal.dump(.., file)</div></div><div class="code"
+    >File.open(<span class="placeholder"
+     >${1:"path/to/file.dump"}</span>, "wb") { |<span class="placeholder"
+     >${2:file}</span>| Marshal.dump(<span class="placeholder"
+     >${3:obj}</span>, $2) }<span class="placeholder"
+     >${4}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >Ml</div><div class="comment"
+     > Mashal.load(obj)</div></div><div class="code"
+    >File.open(<span class="placeholder"
+     >${1:"path/to/file.dump"}</span>, "rb") { |<span class="placeholder"
+     >${2:file}</span>| Marshal.load($2) }<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >deec</div><div class="comment"
+     > deep_copy(..)</div></div><div class="code"
+    >Marshal.load(Marshal.dump(<span class="placeholder"
+     >${1:obj_to_copy}</span>))<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >tra</div><div class="comment"
+     ></div></div><div class="code"
+    >transaction(<span class="placeholder"
+     >${1:true}</span>) { <span class="placeholder"
+     >${2}</span> }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >xml-</div><div class="comment"
+     > xmlread(..)</div></div><div class="code"
+    >REXML::Document.new(File.read(<span class="placeholder"
+     >${1:"path/to/file"}</span>))<span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >xpa</div><div class="comment"
+     > xpath(..) { .. }</div></div><div class="code"
+    >elements.each(<span class="placeholder"
+     >${1:"//Xpath"}</span>) do |<span class="placeholder"
+     >${2:node}</span>|
+	<span class="placeholder"
+     >${3}</span>
+end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >clafn</div><div class="comment"
+     > class_from_name()</div></div><div class="code"
+    >split("::").inject(Object) { |par, const| par.const_get(const) }
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sinc</div><div class="comment"
+     > singleton_class()</div></div><div class="code"
+    >class &lt;&lt; self; self end
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >tas</div><div class="comment"
+     ></div></div><div class="code"
+    >desc "<span class="placeholder"
+     >${1:Task description\}</span>"
+task :<span class="placeholder"
+     >${2:task_name => [:dependent, :tasks]}</span> do
+	<span class="placeholder"
+     >${3}</span>
+end
+</div></div></div></body></html>

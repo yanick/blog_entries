@@ -1,0 +1,19 @@
+use 5.10.0;
+
+package Smoked;
+
+use Moose;
+
+extends 'Smoke::Module';
+with 'Smoke::Module::Pinto';
+with 'Smoke::Module::Store';
+
+__PACKAGE__->meta->make_immutable;
+
+my $smoke = __PACKAGE__->new( 
+    package_name => 'Dancer::Plugin::Memcached',
+    debug => 1,
+    log_to_stdout => 1,
+);
+
+say $smoke->run_tests;

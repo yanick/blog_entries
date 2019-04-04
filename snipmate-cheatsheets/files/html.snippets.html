@@ -1,0 +1,377 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >html.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >nbs</div><div class="comment"
+     > Non-Breaking Space</div></div><div class="code"
+    >&amp;nbsp;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >left</div><div class="comment"
+     > ←</div></div><div class="code"
+    >&amp;#x2190;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >right</div><div class="comment"
+     > →</div></div><div class="code"
+    >&amp;#x2192;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >up</div><div class="comment"
+     > ↑</div></div><div class="code"
+    >&amp;#x2191;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >down</div><div class="comment"
+     > ↓</div></div><div class="code"
+    >&amp;#x2193;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >return</div><div class="comment"
+     > ↩</div></div><div class="code"
+    >&amp;#x21A9;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >backtab</div><div class="comment"
+     > ⇤</div></div><div class="code"
+    >&amp;#x21E4;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >tab</div><div class="comment"
+     > ⇥</div></div><div class="code"
+    >&amp;#x21E5;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >shift</div><div class="comment"
+     > ⇧</div></div><div class="code"
+    >&amp;#x21E7;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >control</div><div class="comment"
+     > ⌃</div></div><div class="code"
+    >&amp;#x2303;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >enter</div><div class="comment"
+     > ⌅</div></div><div class="code"
+    >&amp;#x2305;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >command</div><div class="comment"
+     > ⌘</div></div><div class="code"
+    >&amp;#x2318;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >option</div><div class="comment"
+     > ⌥</div></div><div class="code"
+    >&amp;#x2325;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >delete</div><div class="comment"
+     > ⌦</div></div><div class="code"
+    >&amp;#x2326;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >backspace</div><div class="comment"
+     > ⌫</div></div><div class="code"
+    >&amp;#x232B;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >escape</div><div class="comment"
+     > ⎋</div></div><div class="code"
+    >&amp;#x238B;
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doctype HTML 4.01 Strict</div><div class="comment"
+     > Generic Doctype</div></div><div class="code"
+    >&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""
+"http://www.w3.org/TR/html4/strict.dtd">
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doctype HTML 5</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;!DOCTYPE HTML>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doctype XHTML 1.0 Strict</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doctype XHTML 1.1</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >docts</div><div class="comment"
+     > HTML Doctype 4.01 Strict</div></div><div class="code"
+    >&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""
+"http://www.w3.org/TR/html4/strict.dtd">
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doct</div><div class="comment"
+     > HTML Doctype 4.01 Transitional</div></div><div class="code"
+    >&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""
+"http://www.w3.org/TR/html4/loose.dtd">
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >doct5</div><div class="comment"
+     > HTML Doctype 5</div></div><div class="code"
+    >&lt;!DOCTYPE HTML>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >docxf</div><div class="comment"
+     > XHTML Doctype 1.0 Frameset</div></div><div class="code"
+    >&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >docxs</div><div class="comment"
+     > XHTML Doctype 1.0 Strict</div></div><div class="code"
+    >&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >docxt</div><div class="comment"
+     > XHTML Doctype 1.0 Transitional</div></div><div class="code"
+    >&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >docx</div><div class="comment"
+     > XHTML Doctype 1.1</div></div><div class="code"
+    >&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >xhtml</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;html xmlns="http://www.w3.org/1999/xhtml">
+<span class="placeholder"
+     >${1}</span>
+&lt;/html>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >head</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;head>
+	&lt;meta http-equiv="content-type" content="text/html; charset=utf-8"`Close()`>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >title</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;title><span class="placeholder"
+     >${1:`substitute(Filename('', 'Page Title'), '^.', '\u&amp;', '')`}</span>&lt;/title><span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >scriptsrc</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;script src="<span class="placeholder"
+     >${1}</span>.js" type="text/javascript" charset="utf-8">&lt;/script><span class="placeholder"
+     >${2}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >base</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;base href="<span class="placeholder"
+     >${1}</span>" target="<span class="placeholder"
+     >${2}</span>"`Close()`>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >div</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;div id="<span class="placeholder"
+     >${1:name}</span>">
+	<span class="placeholder"
+     >${2}</span>
+&lt;/div>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >movie</div><div class="comment"
+     > Embed QT Movie</div></div><div class="code"
+    >&lt;object width="$2" height="$3" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
+ codebase="http://www.apple.com/qtactivex/qtplugin.cab">
+	&lt;param name="src" value="$1"`Close()`>
+	&lt;param name="controller" value="$4"`Close()`>
+	&lt;param name="autoplay" value="$5"`Close()`>
+	&lt;embed src="<span class="placeholder"
+     >${1:movie.mov}</span>"
+		width="<span class="placeholder"
+     >${2:320}</span>" height="<span class="placeholder"
+     >${3:240}</span>"
+		controller="<span class="placeholder"
+     >${4:true}</span>" autoplay="<span class="placeholder"
+     >${5:true}</span>"
+		scale="tofit" cache="true"
+		pluginspage="http://www.apple.com/quicktime/download/"
+	`Close()[1:]`>
+&lt;/object><span class="placeholder"
+     >${6}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >form</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;form action="<span class="placeholder"
+     >${1:`Filename('$1_submit')`}</span>" method="<span class="placeholder"
+     >${2:get}</span>" accept-charset="utf-8">
+	<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >h1</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;h1 id="<span class="placeholder"
+     >${1:heading}</span>"><span class="placeholder"
+     >${2:$1}</span>&lt;/h1>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >label</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;label for="<span class="placeholder"
+     >${2:$1}</span>"><span class="placeholder"
+     >${1:name}</span>&lt;/label>&lt;input type="<span class="placeholder"
+     >${3:text/submit/hidden/button}</span>" name="<span class="placeholder"
+     >${4:$2}</span>" value="<span class="placeholder"
+     >${5}</span>" id="<span class="placeholder"
+     >${6:$2}</span>"`Close()`><span class="placeholder"
+     >${7}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >mailto</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;a href="mailto:<span class="placeholder"
+     >${1:joe@example.com}</span>?subject=<span class="placeholder"
+     >${2:feedback}</span>"><span class="placeholder"
+     >${3:email me}</span>&lt;/a>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >opt</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;option value="<span class="placeholder"
+     >${1:option}</span>"><span class="placeholder"
+     >${2:$1}</span>&lt;/option><span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >select</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;select name="<span class="placeholder"
+     >${1:some_name}</span>" id="<span class="placeholder"
+     >${2:$1}</span>">
+	&lt;option value="<span class="placeholder"
+     >${3:option}</span>"><span class="placeholder"
+     >${4:$3}</span>&lt;/option>
+&lt;/select><span class="placeholder"
+     >${5}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >textarea</div><div class="comment"
+     ></div></div><div class="code"
+    >&lt;textarea name="<span class="placeholder"
+     >${1:Name}</span>" rows="<span class="placeholder"
+     >${2:8}</span>" cols="<span class="placeholder"
+     >${3:40}</span>"><span class="placeholder"
+     >${4}</span>&lt;/textarea><span class="placeholder"
+     >${5}</span>
+</div></div></div></body></html>

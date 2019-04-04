@@ -1,0 +1,289 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >tex.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >begin</div><div class="comment"
+     > \begin{}...\end{}</div></div><div class="code"
+    >\begin{<span class="placeholder"
+     >${1:env}</span>}
+	<span class="placeholder"
+     >${2}</span>
+\end{$1}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >tab</div><div class="comment"
+     > Tabular</div></div><div class="code"
+    >\begin{<span class="placeholder"
+     >${1:tabular}</span>}{<span class="placeholder"
+     >${2:c}</span>}
+<span class="placeholder"
+     >${3}</span>
+\end{$1}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ali</div><div class="comment"
+     > Align(ed)</div></div><div class="code"
+    >\begin{align<span class="placeholder"
+     >${1:ed}</span>}
+	<span class="placeholder"
+     >${2}</span>
+\end{align$1}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >gat</div><div class="comment"
+     > Gather(ed)</div></div><div class="code"
+    >\begin{gather<span class="placeholder"
+     >${1:ed}</span>}
+	<span class="placeholder"
+     >${2}</span>
+\end{gather$1}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >eq</div><div class="comment"
+     > Equation</div></div><div class="code"
+    >\begin{equation}
+	<span class="placeholder"
+     >${1}</span>
+\end{equation}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >\</div><div class="comment"
+     > Unnumbered Equation</div></div><div class="code"
+    >\\[
+	<span class="placeholder"
+     >${1}</span>
+\\]
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >enum</div><div class="comment"
+     > Enumerate</div></div><div class="code"
+    >\begin{enumerate}
+	\item <span class="placeholder"
+     >${1}</span>
+\end{enumerate}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >item</div><div class="comment"
+     > Itemize</div></div><div class="code"
+    >\begin{itemize}
+	\item <span class="placeholder"
+     >${1}</span>
+\end{itemize}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >desc</div><div class="comment"
+     > Description</div></div><div class="code"
+    >\begin{description}
+	\item[<span class="placeholder"
+     >${1}</span>] <span class="placeholder"
+     >${2}</span>
+\end{description}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >mat</div><div class="comment"
+     > Matrix</div></div><div class="code"
+    >\begin{<span class="placeholder"
+     >${1:p/b/v/V/B/small}</span>matrix}
+	<span class="placeholder"
+     >${2}</span>
+\end{$1matrix}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cas</div><div class="comment"
+     > Cases</div></div><div class="code"
+    >\begin{cases}
+	<span class="placeholder"
+     >${1:equation}</span>, &amp;\text{ if }<span class="placeholder"
+     >${2:case}</span>\\
+	<span class="placeholder"
+     >${3}</span>
+\end{cases}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >spl</div><div class="comment"
+     > Split</div></div><div class="code"
+    >\begin{split}
+	<span class="placeholder"
+     >${1}</span>
+\end{split}
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >part</div><div class="comment"
+     > Part</div></div><div class="code"
+    >\part{<span class="placeholder"
+     >${1:part name}</span>} % (fold)
+\label{prt:<span class="placeholder"
+     >${2:$1}</span>}
+<span class="placeholder"
+     >${3}</span>
+% part $2 (end)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >cha</div><div class="comment"
+     > Chapter</div></div><div class="code"
+    >\chapter{<span class="placeholder"
+     >${1:chapter name}</span>} % (fold)
+\label{cha:<span class="placeholder"
+     >${2:$1}</span>}
+<span class="placeholder"
+     >${3}</span>
+% chapter $2 (end)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sec</div><div class="comment"
+     > Section</div></div><div class="code"
+    >\section{<span class="placeholder"
+     >${1:section name}</span>} % (fold)
+\label{sec:<span class="placeholder"
+     >${2:$1}</span>}
+<span class="placeholder"
+     >${3}</span>
+% section $2 (end)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >sub</div><div class="comment"
+     > Sub Section</div></div><div class="code"
+    >\subsection{<span class="placeholder"
+     >${1:subsection name}</span>} % (fold)
+\label{sub:<span class="placeholder"
+     >${2:$1}</span>}
+<span class="placeholder"
+     >${3}</span>
+% subsection $2 (end)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >subs</div><div class="comment"
+     > Sub Sub Section</div></div><div class="code"
+    >\subsubsection{<span class="placeholder"
+     >${1:subsubsection name}</span>} % (fold)
+\label{ssub:<span class="placeholder"
+     >${2:$1}</span>}
+<span class="placeholder"
+     >${3}</span>
+% subsubsection $2 (end)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >par</div><div class="comment"
+     > Paragraph</div></div><div class="code"
+    >\paragraph{<span class="placeholder"
+     >${1:paragraph name}</span>} % (fold)
+\label{par:<span class="placeholder"
+     >${2:$1}</span>}
+<span class="placeholder"
+     >${3}</span>
+% paragraph $2 (end)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >subp</div><div class="comment"
+     > Sub Paragraph</div></div><div class="code"
+    >\subparagraph{<span class="placeholder"
+     >${1:subparagraph name}</span>} % (fold)
+\label{subp:<span class="placeholder"
+     >${2:$1}</span>}
+<span class="placeholder"
+     >${3}</span>
+% subparagraph $2 (end)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >figure</div><div class="comment"
+     ></div></div><div class="code"
+    ><span class="placeholder"
+     >${1:Figure}</span>~\ref{<span class="placeholder"
+     >${2:fig:}</span>}<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >listing</div><div class="comment"
+     ></div></div><div class="code"
+    ><span class="placeholder"
+     >${1:Listing}</span>~\ref{<span class="placeholder"
+     >${2:list}</span>}<span class="placeholder"
+     >${3}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >page</div><div class="comment"
+     ></div></div><div class="code"
+    ><span class="placeholder"
+     >${1:page}</span>~\pageref{<span class="placeholder"
+     >${2}</span>}<span class="placeholder"
+     >${3}</span>
+</div></div></div></body></html>

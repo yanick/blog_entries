@@ -1,0 +1,30 @@
+<html>
+<head> 
+<style type="text/css">
+div.space_viewport {
+    background-color: black;
+    background: url(/images/starfield.jpg);
+    width: 800px;
+    height: 400px;
+}
+</style>
+
+<script src="/javascripts/raphael-min.js"></script>
+<script src="/javascripts/raphael-zpd.js"></script>
+<script src="/javascripts/jquery.js"></script>
+</head>
+<body>
+
+    <div class="space_viewport" id="space_viewport"></div>
+
+<script>
+    var paper = Raphael(document.getElementById("space_viewport"), 800, 400);
+
+    var zpf = new RaphaelZPD( paper, { zoom: true, pan: true, drag: false } );
+
+    paper.ZPDPanTo(0,0)
+
+    var ships = new Object(); // will contain the ships present on the map
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<html><head
+ ><style type="text/css"
+  >
+@page { size: landscape; }
+
+body {
+    font-family: monospace;
+}
+
+h2 { 
+    background-color: 
+    darkblue; color: white; 
+    padding: 3px;
+    text-align: center;
+}
+
+.header { border-bottom: 1px black solid; }
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.comment {
+    float: right;
+    font-style: italic;
+}
+
+.desc {
+    margin-top: 0.5em;
+}
+
+.code {
+    padding-left: 0.5em;
+    white-space: pre;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.placeholder {
+   color: red;
+}
+
+.snippets {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -moz-column-rule: 1px solid black;
+}
+
+.snippet {
+    column-break-inside: avoid; /* doesn't work. boo */
+    display: inline-block;      /* workaround for column-break suckiness */
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+</style></head><body
+ ><h1
+  >autoit.snippets</h1><div class="snippets"
+  ><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >if</div><div class="comment"
+     ></div></div><div class="code"
+    >If <span class="placeholder"
+     >${1:condition}</span> Then
+	<span class="placeholder"
+     >${2:; True code}</span>
+EndIf
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >elif</div><div class="comment"
+     ></div></div><div class="code"
+    >ElseIf <span class="placeholder"
+     >${1:condition}</span> Then
+	<span class="placeholder"
+     >${2:; True code}</span>
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ifel</div><div class="comment"
+     > If/Else block</div></div><div class="code"
+    >If <span class="placeholder"
+     >${1:condition}</span> Then
+	<span class="placeholder"
+     >${2:; True code}</span>
+Else
+	<span class="placeholder"
+     >${3:; Else code}</span>
+EndIf
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >ifelif</div><div class="comment"
+     > If/ElseIf/Else block</div></div><div class="code"
+    >If <span class="placeholder"
+     >${1:condition 1}</span> Then
+	<span class="placeholder"
+     >${2:; True code}</span>
+ElseIf <span class="placeholder"
+     >${3:condition 2}</span> Then
+	<span class="placeholder"
+     >${4:; True code}</span>
+Else
+	<span class="placeholder"
+     >${5:; Else code}</span>
+EndIf
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >switch</div><div class="comment"
+     > Switch block</div></div><div class="code"
+    >Switch (<span class="placeholder"
+     >${1:condition}</span>)
+Case {$2:case1}:
+	{$3:; Case 1 code}
+Case Else:
+	{$4:; Else code}
+EndSwitch
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >select</div><div class="comment"
+     > Select block</div></div><div class="code"
+    >Select (<span class="placeholder"
+     >${1:condition}</span>)
+Case {$2:case1}:
+	{$3:; Case 1 code}
+Case Else:
+	{$4:; Else code}
+EndSelect
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >while</div><div class="comment"
+     > While loop</div></div><div class="code"
+    >While (<span class="placeholder"
+     >${1:condition}</span>)
+	<span class="placeholder"
+     >${2:; code...}</span>
+WEnd
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >for</div><div class="comment"
+     > For loop</div></div><div class="code"
+    >For <span class="placeholder"
+     >${1:n}</span> = <span class="placeholder"
+     >${3:1}</span> to <span class="placeholder"
+     >${2:count}</span>
+	<span class="placeholder"
+     >${4:; code...}</span>
+Next
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >func</div><div class="comment"
+     > New Function</div></div><div class="code"
+    >Func <span class="placeholder"
+     >${1:fname}</span>(<span class="placeholder"
+     >${2:`indent('.') ? 'self' : ''`}</span>):
+	<span class="placeholder"
+     >${4:Return}</span>
+EndFunc
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >msg</div><div class="comment"
+     > Message box</div></div><div class="code"
+    >MsgBox(<span class="placeholder"
+     >${3:MsgType}</span>, <span class="placeholder"
+     >${1:"Title"}</span>, <span class="placeholder"
+     >${2:"Message Text"}</span>)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >debug</div><div class="comment"
+     > Debug Message</div></div><div class="code"
+    >MsgBox(0, "Debug", <span class="placeholder"
+     >${1:"Debug Message"}</span>)
+</div></div><div class="snippet"
+   ><div class="header"
+    ><div class="keyword"
+     >showvar</div><div class="comment"
+     > Show Variable Debug Message</div></div><div class="code"
+    >MsgBox(0, "<span class="placeholder"
+     >${1:VarName}</span>", $1)
+</div></div></div></body></html>

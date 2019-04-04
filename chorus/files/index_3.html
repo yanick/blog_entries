@@ -1,0 +1,65 @@
+<div id="chorus_terminal">
+    <div id="chorus_title"><b>Chorus</b>
+        <span id="chorus_url"><% $prez_url %></span>
+    </div>
+
+    <div class="choirboy">Joined the chorus
+        <div>MC is at slide <span id="mc_slide">unknown</span></div>
+        <div>auto-follow: 
+            <input id="chorus_autofollow" type="checkbox" checked="checked" />
+        </div>
+    </div>
+    
+    <div class="mc">Lead singer</div>
+</div>
+
+<script>
+var ws_path = "ws:<% $base_url %>_hippie/ws";
+var socket = new WebSocket( ws_path );
+
+var master;
+
+socket.onopen = function(){
+    send_msg( "connected" );
+};
+
+socket.onmessage = function(e){
+    if ( master ) { return; }  // masters don't listen to ANYBODY!
+
+    var data = JSON.parse(e.data);
+
+    $('#chorus_terminal .choirboy').show();
+
+    if ( data.master ) {
+        master = data.master;
+        $('#chorus_terminal .choirboy').hide();
+        $('#chorus_terminal .mc').show();
+        return;
+    }
+
+    if ( data.slide != undefined ) {
+        var s = data.slide+1;
+        $('#mc_slide').html( 
+            "<a href='<% $prez_url %>#" + s +  "'>" + s + "</a>"
+        );
+
+        if ( $('#chorus_autofollow').attr('checked') ) {
+            $.fn.slippy_show_slide( data.slide );
+        }
+    }
+};
+
+function send_msg(message) {
+    socket.send(JSON.stringify({msg: message}));
+}
+
+$('.slide').bind('setSlide', function() {
+    if ( master ) {
+        socket.send(JSON.stringify({
+            "master": master,
+            "slide": $().slippy_current_slide_index()
+        }));
+    }
+} );
+</script>
+
