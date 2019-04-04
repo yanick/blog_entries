@@ -1,7 +1,6 @@
 ---
 url: tmux-got-laziness
-format: markdown
-created: 4 March, 2013
+created: 2013-03-04
 tags:
     - Perl
     - App::GitGot

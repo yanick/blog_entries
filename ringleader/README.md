@@ -2,7 +2,7 @@
 title: A Ringleader Proxy for Sporadically-Used Web Applications
 url: ringleader
 format: markdown
-created: 10 July 2014
+created: 2014-07-10
 tags:
     - Perl
     - HTTP::Proxy

@@ -1,7 +1,7 @@
 ---
 url: nocoug-2012-sane
 format: markdown
-created: 11 June 2012
+created: 2012-06-11
 tags:
     - Perl
     - NoCOUG

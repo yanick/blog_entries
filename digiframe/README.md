@@ -2,7 +2,7 @@
 title: From Digikam to a Digital Frame
 url: digiframe
 format: markdown
-created: 19 June 2015
+created: 2015-06-19
 tags:
     - perl
     - digikam

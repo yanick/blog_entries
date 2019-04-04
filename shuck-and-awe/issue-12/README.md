@@ -1,7 +1,7 @@
 ---
 url: shuck-and-awe-12
 format: markdown
-created: 9 Sep 2010
+created: 2010-09-09
 original: the Pythian Blog - http://www.pythian.com/news/16391/shuck-awe-12-hunting-for-perl/
 tags:
     - Shuck & Awe

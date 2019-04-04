@@ -1,12 +1,12 @@
 ---
-title: Testing Dancer Applications
 url: testing-dancer
-format: markdown
-created: 24 August 2014
+created: 2014-08-24
 tags:
     - Perl
     - Dancer
 ---
+
+# Testing Dancer Applications
 
 So you wrote a [Dancer](cpan:release/Dancer) or 
 [Dancer2](cpan:release/Dancer2) application and,

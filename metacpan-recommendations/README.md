@@ -1,7 +1,6 @@
 ---
 url: metacpan-recommendations
-format: markdown
-created: 14 March 2013
+created: 2013-03-14
 tags:
     - perl
     - MetaCPAN

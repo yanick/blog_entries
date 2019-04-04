@@ -1,7 +1,6 @@
 ---
 url: nocoug-2012
-format: markdown
-created: 3 June 2012
+created: 2012-06-03
 original: The Pythian Blog - http://www.pythian.com/news/33537/nocoug-contest-the-perl-dark-horse-entry/
 tags:
     - Perl

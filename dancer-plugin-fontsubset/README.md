@@ -1,11 +1,12 @@
 ---
-title: Dancers Just Wanna Have Fonts
 url: dancer-plugin-fontsubset
-created: 22 jun 2013
+created: 2013-06-22
 tags:
     - Perl
     - Dancer
 ---
+
+# Dancers Just Wanna Have Fonts
 
 Here's a quick one to warm up...
 

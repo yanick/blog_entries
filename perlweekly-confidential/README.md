@@ -1,7 +1,6 @@
 ---
 url: perlweekly-confidential
-format: markdown
-created: 26 July 2014
+created: 2014-07-26
 tags:
     - Perl
     - PerlWeekly

@@ -1,7 +1,7 @@
 ---
 url: shaving-the-white-whale
 format: markdown
-created: 22 jun 2012
+created: 2012-06-22
 tags:
     - Perl
     - MooseX::Storage

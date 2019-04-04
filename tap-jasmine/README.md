@@ -2,7 +2,7 @@
 title: Seamless Mesh of JS Tests With Perl Harness? Yes.
 url: tap-jasmine
 format: markdown
-created: 30 may 2015
+created: 2015-05-30
 tags:
     - Perl
 ---

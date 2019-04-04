@@ -2,7 +2,7 @@
 title: Pulp Fiction
 url: pulp-fiction
 format: markdown
-created: 26 June 2015
+created: 2015-06-26
 tags:
     - Perl
     - Pulp

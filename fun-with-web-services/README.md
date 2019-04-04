@@ -1,12 +1,12 @@
 ---
-title: Building Web Service APIs
 url: fun-with-web-services
-format: markdown
-created: 3 July 2012
+created: 2012-07-03
 tags:
     - Perl
     - WWW::Ohloh::API
 ---
+
+# Building Web Service APIs
 
 A couple of years back, I created [WWW::Ohloh::API](cpan) because it
 seemed to be a fun thing to do. And, trust me, it was.  But now, since I'm not using that 

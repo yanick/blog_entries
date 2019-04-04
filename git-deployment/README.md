@@ -2,7 +2,7 @@
 title: Deploying Stuff With Git
 url: git-deployment
 format: markdown
-created: 11 dec 2011
+created: 2011-12-11
 tags:
     - Git
     - perl
