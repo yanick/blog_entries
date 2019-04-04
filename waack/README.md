@@ -1,11 +1,12 @@
 ---
-title: Instant REST API For Any Databases
 url: waack
 created: 2014-06-14
 tags:
     - Perl
     - Dancer
 ---
+
+# Instant REST API For Any Databases
 
 Not so long ago, I was playing with 
 ElasticSearch, which has the interesting characteristic of
@@ -216,7 +217,7 @@ http://enkidu:3000> GET /_schema
 
 Or as something more friendly to the human eye.
 
-![html view of the schema](__ENTRY_DIR__/schema_html.png)
+![html view of the schema](schema_html.png)
 
 Too much? We can get the columns of a single table.
 
