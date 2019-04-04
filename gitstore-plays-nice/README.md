@@ -1,7 +1,7 @@
 ---
 url: gitstore-plays-nice
 format: markdown
-created: 24 Jun 2012
+created: 2012-06-24
 tags:
     - Perl
     - GitStore

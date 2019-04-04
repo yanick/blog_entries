@@ -2,7 +2,7 @@
 title: Chained Actions with Dancer
 url: chained-dancer
 format: markdown
-created: 29 Mar 2011
+created: 2011-03-29
 tags:
     - Perl
     - Dancer

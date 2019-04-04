@@ -2,7 +2,7 @@
 title: Perl in Spaaace!
 url: perl-in-space
 format: markdown
-created: 30 Dec 2010
+created: 2010-12-30
 tags:
     - Perl
     - game

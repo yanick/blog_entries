@@ -2,7 +2,7 @@
 title: Teaching A Man To Fish
 url: teaching-to-fish
 format: markdown
-created: 7 Nov 2013
+created: 2013-11-07
 tags:
     - Perl
     - tmux

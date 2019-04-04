@@ -2,7 +2,7 @@
 title: Fit To Be tied (tied handles and localized $\)
 url: fit-to-be-tied
 format: markdown
-created: 17 Dec 2012
+created: 2012-12-17
 tags:
     - Perl
 ---

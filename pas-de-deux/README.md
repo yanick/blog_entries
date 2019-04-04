@@ -2,7 +2,7 @@
 title: A Quick Pas de Deux with Dancer
 url: pas-de-deux
 format: markdown
-created: 25 Jan 2012
+created: 2012-01-25
 tags:
     - Perl
     - Dancer

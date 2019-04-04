@@ -2,7 +2,7 @@
 title: Sometimes, It's the Little Things
 url: file-serialize
 format: markdown
-created: 18 Feb 2015
+created: 2015-02-18
 tags:
     - Perl
 ---

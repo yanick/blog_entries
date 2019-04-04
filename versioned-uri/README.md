@@ -2,7 +2,7 @@
 title: Getting Around Expiration Dates via Reincarnation (and Catalyst)
 url: versioned-uri
 format: markdown
-created: 18 Dec 2010
+created: 2010-12-18
 last_updated: 3 Jan 2011
 tags:
     - Perl

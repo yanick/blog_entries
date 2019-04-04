@@ -2,7 +2,7 @@
 title: Making Oozie Logs A Little Easier On The Eyes
 url: oozie-logs
 format: markdown
-created: 12 Feb 2014
+created: 2014-02-12
 tags:
     - Perl
     - Oozie

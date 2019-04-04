@@ -1,7 +1,7 @@
 ---
 url: dbd-oracle-v1.43_00
 format: markdown
-created: 1 Apr 2012
+created: 2012-04-01
 tags:
     - perl
     - DBD::Oracle

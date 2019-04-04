@@ -1,7 +1,7 @@
 ---
 url: jackrabbit
 format: markdown
-created: 6 Sep 2013
+created: 2013-09-06
 tags:
     - Perl
     - XML::Rabbit

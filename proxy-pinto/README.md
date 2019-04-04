@@ -2,7 +2,7 @@
 title: Picking Packages With Pass-through, Proxied Pinto 
 url: proxy-pinto
 format: markdown
-created: 3 Jan 2013
+created: 2013-01-03
 updated: 15 Jan 2013
 tags:
     - Perl

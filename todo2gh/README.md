@@ -2,7 +2,7 @@
 title: Pushing Your Code TODOs to GitHub Issues
 url: todo2gh
 format: markdown
-created: 30 Jan 2013
+created: 2013-01-30
 last_updated: 31 Jan 2013
 tags:
     - Perl

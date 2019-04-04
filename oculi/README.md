@@ -2,7 +2,7 @@
 title: The Hills Have Multi-Faceted Eyes
 url: oculi
 format: markdown
-created: 7 Jan 2015
+created: 2015-01-07
 tags:
     - Perl
 ---

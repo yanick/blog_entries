@@ -2,7 +2,7 @@
 title: Bandying tickets from RT to GitHub Issues
 url: rt-to-github 
 format: markdown
-created: 17 Jul 2011
+created: 2011-07-17
 last_updated: 5 Mar 2013
 tags:
     - Perl

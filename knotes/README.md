@@ -2,7 +2,7 @@
 title: Migrating Knotes data the hard way
 url: knotes-migration
 format: markdown
-created: 11 Jun 2014
+created: 2014-06-11
 tags:
     - Perl
 ---

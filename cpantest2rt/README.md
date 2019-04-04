@@ -2,7 +2,7 @@
 title: Generating RT bugs out of CPAN Testers' Reports
 url: cpantest-to-rt
 format: markdown
-created: 31 Oct 2010
+created: 2010-10-31
 tags:
     - Perl
     - CPAN Testers

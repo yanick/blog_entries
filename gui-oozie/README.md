@@ -1,7 +1,7 @@
 ---
 title: Gui Oozie Goodness
 url: gui-oozie
-created: 10 Nov 2013
+created: 2013-11-10
 tags:
     - Perl
     - Oozie

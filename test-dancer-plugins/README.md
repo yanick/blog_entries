@@ -2,7 +2,7 @@
 title: Mass-Testing Dancer's Plugins
 url: test-dancer-plugins
 format: markdown
-created: 17 Sep 2012
+created: 2012-09-17
 tags:
     - Perl
     - Dancer

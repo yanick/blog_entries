@@ -2,7 +2,7 @@
 title: Distributing Dancer Apps as Modules
 url: dancer-local
 format: markdown
-created: 12 Sep 2012
+created: 2012-09-12
 tags:
     - Perl
     - Dancer

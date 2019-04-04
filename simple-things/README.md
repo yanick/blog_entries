@@ -2,7 +2,7 @@
 title: Making Simple Things Easy
 url: simple-things
 format: markdown
-created: 9 Feb 2013
+created: 2013-02-09
 tags:
     - Perl
 ---

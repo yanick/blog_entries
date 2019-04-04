@@ -1,7 +1,7 @@
 ---
 url: new-and-improved-git-cpan-patch-0.7.0
 format: markdown
-created:  12 Nov 2011
+created: 2011-11-12
 tags:
     - Perl
     - New and Improved

@@ -2,7 +2,7 @@
 title: Tricking Dancer With a Kinda-Empty Route 
 url: dancer-empty-route
 format: markdown
-created: 27 Apr 2014
+created: 2014-04-27
 tags:
     - Perl
     - Dancer

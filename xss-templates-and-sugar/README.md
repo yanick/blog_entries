@@ -1,7 +1,7 @@
 ---
 url:            xss-templates-sugar
 format:         markdown
-created:        2 Aug 2010
+created: 2010-08-02
 tags:
     - XML::XSS
     - XML::XPathScript

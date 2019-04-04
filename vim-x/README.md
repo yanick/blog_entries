@@ -1,7 +1,7 @@
 ---
 url: vim-x
 format: markdown
-created: 23 Mar 2014
+created: 2014-03-23
 tags:
     - Perl
     - vim

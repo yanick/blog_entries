@@ -2,7 +2,7 @@
 title: Plastering 'endorse' buttons all over the (coder)wall
 url: coderwall-button
 format: markdown
-created: 11 Nov 2012
+created: 2012-11-11
 tags:
     - Perl
     - coderwall

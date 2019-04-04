@@ -1,7 +1,7 @@
 ---
 url: dbix-class-deploymenthandler-rocks
 format: markdown
-created: 20 Jan 2011
+created: 2011-01-20
 tags:
     - Perl
     - DBIx::Class::DeploymentHandler

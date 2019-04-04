@@ -1,7 +1,7 @@
 ---
 url: a-song-of-graph
 format: markdown
-created: 2 Feb 2014
+created: 2014-02-02
 tags:
     - Perl
 ---

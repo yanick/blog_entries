@@ -1,7 +1,7 @@
 ---
 url: email-simple-markdown
 format: markdown
-created: 16 May 2012
+created: 2012-05-16
 tags:
     - Perl
     - Email::Simple::Markdown

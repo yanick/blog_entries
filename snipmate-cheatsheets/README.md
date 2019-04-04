@@ -2,7 +2,7 @@
 title: SnipMate Cheatsheets Generator
 url: snipmate-cheatsheets
 format: markdown
-created: 17 Apr 2012
+created: 2012-04-17
 tags:
     - Perl
     - Template::Caribou

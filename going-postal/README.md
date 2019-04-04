@@ -2,7 +2,7 @@
 title: Going Postal (with Dancer)
 url: going-postal
 format: markdown
-created: 5 Sep 2011
+created: 2011-09-05
 tags:
     - Dancer
     - Perl

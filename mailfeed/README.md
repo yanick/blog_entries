@@ -2,7 +2,7 @@
 title: From the Blogs to Your Mailbox
 url: mailfeed
 format: markdown
-created: 18 Feb 2012
+created: 2012-02-18
 tags:
     - Perl
     - Blogs

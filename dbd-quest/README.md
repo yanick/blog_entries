@@ -2,7 +2,7 @@
 title: The DBD-Quest of Unknown Kadath
 url: dbd-quest-of-unknown-kadath
 format: markdown
-created: 28 Jul 2011
+created: 2011-07-28
 tags:
     - Perl
     - DBD::Oracle

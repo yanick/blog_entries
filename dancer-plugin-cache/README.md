@@ -2,7 +2,7 @@
 title: Writing a Dancer Plugin
 url: writing-a-dancer-plugin
 format: markdown
-created: 27 Mar 2011
+created: 2011-03-27
 tags:
     - Perl
     - Dancer

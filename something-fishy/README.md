@@ -2,7 +2,7 @@
 title: Something Fishy
 url: something-fishy
 format: markdown
-created: 21 Nov 2013
+created: 2013-11-21
 tags:
     - perl
     - fish

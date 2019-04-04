@@ -2,7 +2,7 @@
 title: CPANvote is live
 url: cpanvote-is-live
 format: markdown
-created: 5 Mar 2011
+created: 2011-03-05
 tags:
     - Perl
     - cpanvote

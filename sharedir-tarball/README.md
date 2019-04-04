@@ -2,7 +2,7 @@
 title: ShareDir Without The Leftover Blues
 url: sharedir-tarball
 format: markdown
-created: 18 Oct 2012
+created: 2012-10-18
 tags:
     - Perl
 ---

@@ -2,7 +2,7 @@
 title: Dancer In Chains
 url: dancer-in-chains
 format: markdown
-created: 8 Feb 2014
+created: 2014-02-08
 tags:
     - Perl
     - Dancer

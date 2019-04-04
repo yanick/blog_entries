@@ -2,7 +2,7 @@
 title: Day of the Geeks
 url: happy-geek-day
 format: markdown
-created: 25 May 2011
+created: 2011-05-25
 tags:
     - geek day
 ---

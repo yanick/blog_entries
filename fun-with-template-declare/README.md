@@ -1,7 +1,7 @@
 ---
 url: fun-with-template-declare
 format: markdown
-created: 22 Aug 2011
+created: 2011-08-22
 tags:
     - Perl
     - Template::Declare

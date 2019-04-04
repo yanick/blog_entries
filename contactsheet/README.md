@@ -2,7 +2,7 @@
 title: A contact sheet for your website
 url: contact-sheet
 format: markdown
-created: 3 Mar 2012
+created: 2012-03-03
 tags:
     - Perl
     - Dancer

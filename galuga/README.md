@@ -104,7 +104,7 @@ look like this:
 <pre code="plain">
 url: galuga
 format: markdown
-created: 23 Sep 2010
+created: 2010-09-23
 tags:
     - Perl
     - Galuga

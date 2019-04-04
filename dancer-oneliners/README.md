@@ -2,7 +2,7 @@
 title: Web Service one-liners with Dancer
 url: dancer-oneliners
 format: markdown
-created: 10 Sept 2012
+created: 2012-09-10
 tags:
     - Dancer
     - Perl

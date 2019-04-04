@@ -2,7 +2,7 @@
 title: Making Docsets
 url: making-docsets
 format: markdown
-created: 24 Aug 2015
+created: 2015-08-24
 tags:
     - Perl
 ---

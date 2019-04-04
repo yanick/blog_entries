@@ -1,7 +1,7 @@
 ---
 url: dancer-as-web-server
 format: markdown
-created: 13 Mar 2011
+created: 2011-03-13
 last_updated: 16 Mar 2011
 tags:
     - Perl

@@ -2,7 +2,7 @@
 title: Dancing the Haka
 url: haka
 format: markdown
-created: 24 Nov 2011
+created: 2011-11-24
 tags:
     - Perl
     - Haka

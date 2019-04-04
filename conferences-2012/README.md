@@ -2,7 +2,7 @@
 title: Conference 2012 Battle Plan 
 url: conferences-2012
 format: markdown
-created: 12 Feb 2012
+created: 2012-02-12
 tags:
     - Perl
     - conferences

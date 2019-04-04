@@ -2,7 +2,7 @@
 title: Marshmallow-white whale sighted in Los Angeles
 url: galuga-in-la
 format: markdown
-created: 6 Mar 2011
+created: 2011-03-06
 tags:
     - Perl
     - Galuga

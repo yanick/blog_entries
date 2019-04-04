@@ -2,7 +2,7 @@
 title: Me presenting at the Ottawa Valley SAGE meeting of Thursday
 url: ovsage
 format: markdown
-created: 17 Apr 2011
+created: 2011-04-17
 tags:
     - Perl
     - Ottawa Valley SAGE

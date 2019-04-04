@@ -1,7 +1,7 @@
 ---
 url: dist-zilla-plugin-coalescepod
 format: markdown
-created: 4 Feb 2012
+created: 2012-02-04
 tags:
     - Perl
     - Dist::Zilla

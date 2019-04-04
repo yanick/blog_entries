@@ -2,7 +2,7 @@
 title: A First Foray Into Hadoop Territory
 url: first-hadoop-foray
 format: markdown
-created: 8 Jul 2012
+created: 2012-07-08
 modified: 19 Jul 2012
 tags:
     - Perl

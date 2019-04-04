@@ -1,7 +1,7 @@
 ---
 url: vim-x-update
 format: markdown
-created: 8 Apr 2014
+created: 2014-04-08
 tags:
     - Perl
     - vim

@@ -2,7 +2,7 @@
 title: NoCOUG SQL Challenge – thinking outside the padded box
 url: nocoug
 format: markdown
-created: 19 Feb 2011 
+created: 2011-02-19 
 original: the Pythian blog - http://www.pythian.com/news/20785/nocoug-sql-challenge-thinking-outside-the-padded-box
 tags:
     - Perl

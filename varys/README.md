@@ -2,7 +2,7 @@
 title: Varys' Little Birds
 url: varys
 format: markdown
-created: 22 Jul 2012
+created: 2012-07-22
 tags:
     - Perl
 ---

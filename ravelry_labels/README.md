@@ -2,7 +2,7 @@
 title: Printing Yarn Labels with QR Codes
 url: ravelry-labels
 format: markdown
-created: 2 Jan 2015
+created: 2015-01-02
 tags:
     - JavaScript
     - Ravelry

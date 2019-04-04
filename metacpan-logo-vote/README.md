@@ -2,7 +2,7 @@
 title: Meta-CPAN Logo Contest Voting Helper
 url: metacpa-logo-vote
 format: markdown
-created: 25 Mar 2012
+created: 2012-03-25
 tags:
     - Perl
     - Metacpan

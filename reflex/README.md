@@ -2,7 +2,7 @@
 title: Test-driving Reflex
 url: reflex
 format: markdown
-created: 17 May 2012
+created: 2012-05-17
 tags:
     - Perl
     - Reflex

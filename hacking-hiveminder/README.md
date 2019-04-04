@@ -1,7 +1,7 @@
 ---
 title: Hacking Hiveminder
 url: hacking-hiveminder
-created: 22 Sep 2013
+created: 2013-09-22
 tags:
     - Hiveminder
 ---

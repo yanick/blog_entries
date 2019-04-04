@@ -2,7 +2,7 @@
 title: Reminiscences of 2012, Foreshadowings of 2013
 url: out-2012-in-2013
 format: markdown
-created: 31 Dec 2012
+created: 2012-12-31
 tags:
     - Perl
 ---

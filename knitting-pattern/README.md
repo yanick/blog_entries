@@ -2,7 +2,7 @@
 title:          Easy Knitting Pattern Generation
 url:            knitting-pattern
 format:         markdown
-created:         9 Aug 2010
+created: 2010-08-09
 original: the Pythian blog - http://www.pythian.com/news/15485/easy-knitting-pattern-generation/
 tags:
     - Perl

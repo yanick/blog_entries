@@ -1,7 +1,7 @@
 ---
 title: Oozing Caribou
 url: oozing-caribou
-created: 13 Oct 2013
+created: 2013-10-13
 tags:
     - Perl
     - Hive

@@ -2,7 +2,7 @@
 title: Newsmill (aka an excuse to play with shinies)
 url: newsmill
 format: markdown
-created: 20 Jan 2013
+created: 2013-01-20
 tags:
     - Perl
     - Perlweekly

@@ -2,7 +2,7 @@
 title: Fine-Tuning the 'vim-project' Plugin For My Perl Needs
 url: vim-project
 format: markdown
-created: 14 Oct 2012
+created: 2012-10-14
 tags:
     - Perl
     - Vim

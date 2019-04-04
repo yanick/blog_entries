@@ -2,7 +2,7 @@
 title: MetaCPAN JavaScript API
 url: metacpan-js
 format: markdown
-created: 14 Apr 2013
+created: 2013-04-14
 tags:
     - Perl
     - MetaCPAN

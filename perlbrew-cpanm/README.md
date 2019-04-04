@@ -2,7 +2,7 @@
 title: Guerilla Perl installations
 url: guerilla-perl-installations
 format: markdown
-created: 30 Jan 2011
+created: 2011-01-30
 last_updated: 31 Jan 2011
 tags:
     - Perl

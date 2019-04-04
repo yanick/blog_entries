@@ -1,7 +1,7 @@
 ---
 url: taming-pod-weaver
 format: markdown
-created: 8 Oct 2011
+created: 2011-10-08
 tags:
     - Dist::Zilla
     - Pod::Weaver

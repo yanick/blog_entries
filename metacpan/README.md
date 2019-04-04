@@ -1,7 +1,7 @@
 ---
 title: MetaCPAN FTW!
 format: markdown
-created: 17 Dec 2010
+created: 2010-12-17
 tags:
     - Perl
     - CPAN

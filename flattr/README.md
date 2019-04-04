@@ -2,7 +2,7 @@
 title: Flattr your CPAN Stack
 url: flattr
 format: markdown
-created: 7 Apr 2013
+created: 2013-04-07
 tags:
     - Perl
     - Flattr

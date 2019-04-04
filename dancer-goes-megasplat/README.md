@@ -2,7 +2,7 @@
 title: Dancer Goes Megasplat
 url: dancer-goes-megasplat
 format: markdown
-created: 15 Jan 2013
+created: 2013-01-15
 tags:
     - Perl
     - Dancer

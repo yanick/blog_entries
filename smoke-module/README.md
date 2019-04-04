@@ -2,7 +2,7 @@
 title: Smoked Modules, Montréal-style
 url: smoke-module
 format: markdown
-created: 4 Oct 2012
+created: 2012-10-04
 tags:
     - Perl
     - smoking

@@ -2,7 +2,7 @@
 title: Statement Toggler for Vim
 url: statement-toggler
 format: markdown
-created: 13 Dec 2012
+created: 2012-12-13
 tags:
     - Perl
     - vim

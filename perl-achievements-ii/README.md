@@ -2,7 +2,7 @@
 title: perl-achievements, the return
 url: perl-achievements-ii
 format: Markdown
-created: 2 Feb 2012
+created: 2012-02-02
 tags:
     - Perl
     - Perl::Achievements

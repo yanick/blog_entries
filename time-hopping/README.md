@@ -2,7 +2,7 @@
 title: Webpage Timezone Hopping
 url: time-hopping
 format: markdown
-created: 20 Oct 2012
+created: 2012-10-20
 tags:
     - Javascript
 ---

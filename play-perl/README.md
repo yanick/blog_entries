@@ -2,7 +2,7 @@
 title: Playing with Play Perl
 url: play-perl
 format: markdown
-created: 10 Feb 2013
+created: 2013-02-10
 tags:
     - Perl
     - Play Perl

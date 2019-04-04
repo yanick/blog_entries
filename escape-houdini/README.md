@@ -1,7 +1,7 @@
 ---
 url: escape-houdini
 format: markdown
-created: 14 May 2013
+created: 2013-05-14
 tags:
     - Perl
     - Escape::Houdini

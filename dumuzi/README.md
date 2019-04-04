@@ -2,7 +2,7 @@
 title: System Monitoring on the Cheap with TAP and Smolder
 url: system-monitoring-on-the-cheap
 format: markdown
-created: 28 Oct 2010
+created: 2010-10-28
 tags:
     - system monitoring
     - Smolder

@@ -2,7 +2,7 @@
 title: Deduping 100 Gigs Worth of Files? Gimme 5 Minutes...
 url: dfw-contest
 format: markdown
-created: 11 Jan 2014
+created: 2014-01-11
 tags:
     - Perl
     - DFW

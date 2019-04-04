@@ -2,7 +2,7 @@
 title: Crafting Cheatsheets
 url: crafting-cheatsheets
 format: markdown
-created: 25 Jan 2015
+created: 2015-01-25
 tags:
     - cheatsheets
     - vim

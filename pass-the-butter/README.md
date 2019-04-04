@@ -2,7 +2,7 @@
 title: I Can't Pass You the Butter, and Here Is Why...
 url: pass-the-butter
 format: markdown
-created: 26 Feb 2012
+created: 2012-02-26
 tags:
     - Perl
     - exception handling

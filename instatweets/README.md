@@ -2,7 +2,7 @@
 title: Instant Tweets for Any Website
 url: instatweets
 format: markdown
-created: 14 Mar 2011
+created: 2011-03-14
 tags:
     - Perl
     - Dancer

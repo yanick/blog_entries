@@ -1,7 +1,7 @@
 ---
 url: dist-zilla-github
 format: markdown
-created: 23 Jan 2011
+created: 2011-01-23
 tags:
     - Perl
     - Dist-Zilla

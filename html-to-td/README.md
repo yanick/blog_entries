@@ -1,6 +1,6 @@
 ---
 url: html-to-td
-created: 20 Dec 2010
+created: 2010-12-20
 tags:
     - Perl
     - Template::Declare

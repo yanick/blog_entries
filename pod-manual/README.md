@@ -1,7 +1,7 @@
 ---
 url: pod-manual-returns
 format: markdown
-created: 27 Dec 2010
+created: 2010-12-27
 tags:
     - Perl
     - Pod::Manual

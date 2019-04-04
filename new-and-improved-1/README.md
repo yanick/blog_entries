@@ -1,7 +1,7 @@
 ---
 url: new-and-improved
 format: markdown
-created: 24 Oct 2011
+created: 2011-10-24
 tags:
     - Perl
     - New and Improved

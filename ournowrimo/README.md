@@ -2,7 +2,7 @@
 title: NaNoWriMo Graph Web Application with Dancer
 url: ournowrimo
 format: markdown
-created: 14 Nov 2010
+created: 2010-11-14
 tags:
     - Perl
     - Dancer

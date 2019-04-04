@@ -2,7 +2,7 @@
 title: A First Stab at SQLiteTAP
 url: sqlitetap
 format: markdown
-created:  13 Feb 2012
+created: 2012-02-13
 tags:
     - Perl
     - PgTAP

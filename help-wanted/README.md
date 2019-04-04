@@ -2,7 +2,7 @@
 title: Help Wanted - A Proposal
 url: help-wanted
 format: markdown
-created: 26 Jun 2012
+created: 2012-06-26
 tags:
     - Perl
     - metacpan

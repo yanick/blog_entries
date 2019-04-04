@@ -1,7 +1,7 @@
 ---
 title: Exporting Old use.perl.org Blog Entries
 format: markdown
-created: 12 Dec 2010
+created: 2010-12-12
 tags:
     - Perl
     - use.perl.org

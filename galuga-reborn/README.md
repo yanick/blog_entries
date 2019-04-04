@@ -2,7 +2,7 @@
 title: Galuga Reborn!
 url: galuga-reborn
 format: markdown
-created: 7 Jun 2013
+created: 2013-06-07
 tags:
     - Perl
     - galuga
@@ -54,7 +54,7 @@ metadata, written in a semi-YAML format:
 title: Galuga Reborn!
 url: galuga-reborn
 format: markdown
-created: 7 Jun 2013
+created: 2013-06-07
 tags:
     - Perl
     - galuga

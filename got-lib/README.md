@@ -2,7 +2,7 @@
 title: got lib? Lieber Gott! 
 url: got-lib
 format: markdown
-created: 1 Mar 2015
+created: 2015-03-01
 tags:
     - Perl
 ---

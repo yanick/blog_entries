@@ -2,7 +2,7 @@
 title: Having fun with logging and I18N
 url: logging-and-I18N
 format: markdown
-created: 1 Jan 2011
+created: 2011-01-01
 tags:
     - Perl
     - Log::Dispatchouli

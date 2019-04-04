@@ -1,7 +1,7 @@
 ---
 url:               dzil-autocomplete
 format:            markdown
-created:           16 Jun 2010
+created: 2010-06-16
 original:         the Pythian blog - http://www.pythian.com/news/13359/distzilla-autocomplete
 tags:
     - dist-zilla

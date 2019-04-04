@@ -1,7 +1,7 @@
 ---
 url: new-and-improved-moosex-role-buildinstanceof
 format: markdown
-created: 10 Nov 2011
+created: 2011-11-10
 tags:
     - Perl
     - New and Improved

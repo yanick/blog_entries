@@ -1,6 +1,6 @@
 ---
 url: taming-pod-weaver-2
-created: 23 Oct 2011
+created: 2011-10-23
 tags:
     - Perl
     - Pod::Weaver

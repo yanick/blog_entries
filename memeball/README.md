@@ -2,7 +2,7 @@
 title: Ask the Magic MemeBall
 url: memeball
 format: markdown
-created: 28 Jan 2012
+created: 2012-01-28
 tags:
     - Perl
     - Dancer

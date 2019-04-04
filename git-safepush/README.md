@@ -2,7 +2,7 @@
 title: Push... a little more than I ever wanted
 url: git-safepush
 format: markdown
-created: 11 Jan 2011
+created: 2011-01-11
 tags:
     - Perl
     - git

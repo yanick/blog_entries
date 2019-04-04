@@ -2,7 +2,7 @@
 title: Your Schwartz Factor on your CPAN Page
 url: schwartz-factor
 format: markdown
-created: 13 Nov 2010
+created: 2010-11-13
 last-updated: 14 Nov 2010
 tags:
     - Schwartz factor

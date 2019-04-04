@@ -2,7 +2,7 @@
 title: A Web Log Analyzer Called DuckFeet
 url: duckfeet
 format: markdown
-created: 29 Dec 2011
+created: 2011-12-29
 tags:
     - Perl
     - DuckFeet

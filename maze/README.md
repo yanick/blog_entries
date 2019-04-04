@@ -1,6 +1,6 @@
 ---
 url: maze
-created: 15 May 2011
+created: 2011-05-15
 last_updated: 5 March 2013
 tags:
     - Perl

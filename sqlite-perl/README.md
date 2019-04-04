@@ -2,7 +2,7 @@
 title: Embedding Perl in SQLite
 url: sqlite-perl
 format: markdown
-created: 20 Feb 2012
+created: 2012-02-20
 tags:
     - Perl
     - SQLite

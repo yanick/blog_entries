@@ -1,7 +1,7 @@
 ---
 url: digging-dungeons
 format: markdown
-created: 9 Aug 2011
+created: 2011-08-09
 tags:
     - Perl
     - game

@@ -2,7 +2,7 @@
 title: MacGyvering a Remote Disk Usage Utility
 url: remote-du
 format: markdown
-created: 13 Feb 2011
+created: 2011-02-13
 tags:
     - Perl
     - Git

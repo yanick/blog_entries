@@ -1,7 +1,7 @@
 ---
 url: git-cpan-patch-more-git
 format: markdown
-created: 12 Feb 2014 
+created: 2014-02-12 
 tags:
     - Perl
     - Git::CPAN::Patch

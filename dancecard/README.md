@@ -2,7 +2,7 @@
 title: A New Year, a New Dancecard
 url: dancecard
 format: markdown
-created: 3 Jan 2014
+created: 2014-01-03
 tags:
     - Perl
     - dancecard

@@ -2,7 +2,7 @@
 title: Extract the Synopsis of a Module
 url: podsyn
 format: markdown
-created: 9 May 2011
+created: 2011-05-09
 tags:
     - Perl
     - POD
