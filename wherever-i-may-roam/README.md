@@ -1,6 +1,6 @@
 ---
 title: Wherever I May Roam
-created: 6/Jun/2010
+created: 2010-06-06
 last_updated: 7/June/2010
 format: markdown
 tags:

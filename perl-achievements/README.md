@@ -2,7 +2,7 @@
 title: perl-achievements
 url: perl-achievements
 format: markdown
-created: 19/Aug/2010
+created: 2010-08-19
 original: the Pythian Blog - http://www.pythian.com/news/15735/perl-achievements/
 tags:
     - Perl
