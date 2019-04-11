@@ -1,7 +1,7 @@
 ---
 title: $tea="Earl Grey";print $tea
 format: html
-created: 15 Feb 2007
+created: 2007-02-15
 original: use.perl.org - http://use.perl.org/~Yanick/journal/32417
 tags:
     - voice recognition

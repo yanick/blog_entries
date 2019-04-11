@@ -1,7 +1,7 @@
 ---
 url: shuck-awe-4-hunting-for-perl
 original: the Pythian blog - http://www.pythian.com/news/12559/shuck-awe-4-hunting-for-perl
-created: 21 May 2010
+created: 2010-05-21
 tags:
     - Shuck & Awe
     - bioperl

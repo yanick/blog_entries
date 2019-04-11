@@ -1,7 +1,7 @@
 ---
 url: shuck-awe-9-hunting-for-perl
 original: the Pythian blog - http://www.pythian.com/news/15087/shuck-awe-9-hunting-for-perl
-created: 28 Jul 2010
+created: 2010-07-28
 tags:
     - Perl
     - Shuck & Awe

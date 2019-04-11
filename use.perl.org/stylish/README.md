@@ -2,7 +2,7 @@
 title: Perlish theme for Friends, Fans and Foes 
 url: friends-fans-and-foes
 format: html
-created:  24 Aug 2006
+created: 2006-08-24
 last_updated: 
 original: use.perl.org - http://use.perl.org/~Yanick/journal/30746
 tags:

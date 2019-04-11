@@ -1,7 +1,7 @@
 ---
 title: Just another Perl Auslaender
 format: html
-created: 4 Mar 2009
+created: 2009-03-04
 original: use.perl.org - http://use.perl.org/~Yanick/journal/38591
 tags:
     - Perl

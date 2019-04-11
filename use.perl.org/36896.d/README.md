@@ -1,7 +1,7 @@
 ---
 title: Bring the blog back hooome
 format: html
-created: 10 Jul 2008
+created: 2008-07-10
 original: use.perl.org - http://use.perl.org/~Yanick/journal/36896
 tags:
     - Perl

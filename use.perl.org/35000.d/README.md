@@ -1,7 +1,7 @@
 ---
 title: Redux
 format: html
-created: 28 Nov 2007
+created: 2007-11-28
 original: use.perl.org - http://use.perl.org/~Yanick/journal/35000
 tags:
     - GreaseMonkey

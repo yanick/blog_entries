@@ -1,6 +1,6 @@
 ---
 format: html
-created: 21 Apr 2009
+created: 2009-04-21
 original: use.perl.org - http://use.perl.org/~Yanick/journal/38840
 tags:
     - Perl

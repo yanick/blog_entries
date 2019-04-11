@@ -1,7 +1,7 @@
 ---
 title: Me at OsBootCamp 8
 format: html
-created: 6 Sep 2008
+created: 2008-09-06
 original: use.perl.org - http://use.perl.org/~Yanick/journal/37373
 tags:
     - Perl

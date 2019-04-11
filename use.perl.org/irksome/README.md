@@ -2,7 +2,7 @@
 title:  use.perl.org offline journal editing
 url: use-perl-org-offline-editing
 format: html
-created: 20 Sep 2006
+created: 2006-09-20
 original: http://use.perl.org/~Yanick/journal/31063
 tags:
     - Perl

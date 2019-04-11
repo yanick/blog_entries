@@ -1,7 +1,7 @@
 ---
 url: shuck-awe-7-hunting-for-perl
 original: the Pythian blog - http://www.pythian.com/news/13913/shuck-awe-7-hunting-for-perl
-created: 29 Jun 2010
+created: 2010-06-29
 tags:
     - blogger
     - dbix-class

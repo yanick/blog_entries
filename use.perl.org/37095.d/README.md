@@ -1,7 +1,7 @@
 ---
 title: Mohlohpoly game
 format: html
-created: 4 Aug 2008
+created: 2008-08-04
 original: use.perl.org - http://use.perl.org/~Yanick/journal/37095
 tags:
     - Perl

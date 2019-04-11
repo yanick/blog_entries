@@ -1,7 +1,7 @@
 ---
 title: Greasemonkeying dependencies
 format: html
-created: 28 Jan 2008
+created: 2008-01-28
 original: use.perl.org - http://use.perl.org/~Yanick/journal/35507
 tags:
     - Greasemonkeying

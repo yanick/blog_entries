@@ -1,7 +1,7 @@
 ---
 url: test-pod-snippets
 format: html
-created: 23 Aug 2006
+created: 2006-08-23
 last_updated: 21 Nov 2010
 original: use.perl.org - http://use.perl.org/~Yanick/journal/30734
 tags:

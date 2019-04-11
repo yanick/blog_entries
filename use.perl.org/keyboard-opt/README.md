@@ -2,7 +2,7 @@
 title: Gentlemen, set your keyboards to 'optimized'
 url: keyboard-optimized
 format: html
-created: 13 Sep 2006
+created: 2006-09-13
 original: use.perl.org - http://use.perl.org/~Yanick/journal/30983
 tags:
     - Perl

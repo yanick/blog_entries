@@ -1,7 +1,7 @@
 ---
 title: Why I am passionate about Perl
 format: html
-created: 11 May 2008
+created: 2008-05-11
 original: use.perl.org - http://use.perl.org/~Yanick/journal/36384
 tags:
     - Perl

@@ -2,7 +2,7 @@
 title: The Dahut Vinci Code
 url: dahut-vinci
 format: html
-created: 3 Sep 2006
+created: 2006-09-03
 original: use.perl.org - http://use.perl.org/~Yanick/journal/30864
 tags:
     - Dahuts

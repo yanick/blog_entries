@@ -2,7 +2,7 @@
 title: cpanvote - a Perl mini-project
 url: cpanvote-a-perl-mini-project
 format: html
-created: 19 Feb 2010
+created: 2010-02-19
 original: the Pythian blog - http://www.pythian.com/news/8593/cpanvote-a-perl-mini-project
 tags:
     - Catalyst

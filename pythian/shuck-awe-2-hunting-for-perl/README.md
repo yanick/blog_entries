@@ -1,7 +1,7 @@
 ---
 url: shuck-awe-2-hunting-for-perl
 original: the Pythian blog - http://www.pythian.com/news/11341/shuck-awe-2-hunting-for-perl
-created: 21 Apr 2010
+created: 2010-04-21
 tags:
     - cloud
     - CPAN

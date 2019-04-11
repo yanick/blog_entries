@@ -1,7 +1,7 @@
 ---
 title: Bart on Git
 format: html
-created: 15 Jul 2008
+created: 2008-07-15
 original: use.perl.org - http://use.perl.org/~Yanick/journal/36922
 tags:
     - Git

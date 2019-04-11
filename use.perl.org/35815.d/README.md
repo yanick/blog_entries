@@ -1,7 +1,7 @@
 ---
 title: XPathScript slides
 format: html
-created: 1 Mar 2008
+created: 2008-03-01
 original: use.perl.org - http://use.perl.org/~Yanick/journal/35815
 tags:
     - Perl

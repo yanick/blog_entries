@@ -2,7 +2,7 @@
 title:             XPathScript Reborn
 url:            xpathscript-reborn
 format:         html
-created:         7 Jul 2010
+created:         2010-07-07
 last_update:    2 Aug 2010
 original:         the Pythian blog - http://www.pythian.com/news/14007/xpathscript-reborn
 tags:

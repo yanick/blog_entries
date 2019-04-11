@@ -1,12 +1,11 @@
 ---
-title: From Digikam to a Digital Frame
-url: digiframe
-format: markdown
 created: 2015-06-19
 tags:
     - perl
     - digikam
 ---
+
+# From Digikam to a Digital Frame
 
 This one is a random act of duct taping.
 
@@ -28,7 +27,7 @@ Digikam allows, amongst other things, to tag pictures. Even better, it stores
 its information in a convenient SQLite database. 
 
 The schema is nothing very complex, so with the help of 
-[DBIx::Class::Schema::Loader](cpan:release/DBIx-Class-Schema-Loader), it's
+[DBIx::Class::Schema::Loader](cpan), it's
 pretty easy to grab all pictures that, say, have been given the tag
 *digiframe*:
 

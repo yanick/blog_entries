@@ -1,7 +1,7 @@
 ---
 url: shuck-awe-8-hunting-for-perl
 original: the Pythian blog - http://www.pythian.com/news/14459/shuck-awe-8-hunting-for-perl
-created: 15 Jul 2010
+created: 2010-07-15
 tags:
     - CPAN
     - exception handling

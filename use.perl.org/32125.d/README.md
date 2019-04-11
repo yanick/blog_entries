@@ -1,7 +1,7 @@
 ---
 title: Resurrecting Ottawa.pm
 format: html
-created: 11 Jan 2007
+created: 2007-01-11
 original: use.perl.org - http://use.perl.org/~Yanick/journal/32125
 tags:
     - Perl

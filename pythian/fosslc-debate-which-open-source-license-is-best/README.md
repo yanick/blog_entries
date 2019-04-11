@@ -2,7 +2,7 @@
 title: FOSSLC debate -- Which Open Source license is best?
 url: fosslc-debate-which-open-source-license-is-best
 original: the Pythian blog - http://www.pythian.com/news/4006/fosslc-debate-which-open-source-license-is-best
-created: 28 Sep 2009
+created: 2009-09-28
 markup: html
 tags:
     - Airbus

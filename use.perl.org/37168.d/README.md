@@ -1,7 +1,7 @@
 ---
 title: Pasting repository info on CPAN page
 format: html
-created: 12 Aug 2008
+created: 2008-08-12
 original: use.perl.org - http://use.perl.org/article.pl?sid=08/08/13/065232
 tags:
     - Perl

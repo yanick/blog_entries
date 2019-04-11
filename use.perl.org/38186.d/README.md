@@ -1,7 +1,7 @@
 ---
 title: Variation on the Faces of CPAN
 format: html
-created: 30 Dec 2008
+created: 2008-12-30
 original: use.perl.org - http://use.perl.org/~Yanick/journal/38186
 tags:
     - Perl

@@ -1,7 +1,7 @@
 ---
 title: No-one expected the Technorati inquisition
 format: html
-created: 1 Aug 2007
+created: 2007-08-01
 original: use.perl.org - http://use.perl.org/~Yanick/journal/33947
 tags:
     - Perl

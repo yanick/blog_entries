@@ -2,7 +2,7 @@
 title: Reinstalled awstats on Babyl
 url: reinstalled-awstats
 format: html
-created: 29 Aug 2006
+created: 2006-08-29
 original: use.perl.org - http://use.perl.org/~Yanick/journal/30797
 tags:
     - awstats

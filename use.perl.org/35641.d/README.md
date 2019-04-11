@@ -1,7 +1,7 @@
 ---
 title: Thinking about taking over NetPacket
 format: html
-created: 12 Feb 2008
+created: 2008-02-12
 original: use.perl.org - http://use.perl.org/~Yanick/journal/35641
 tags:
     - Perl

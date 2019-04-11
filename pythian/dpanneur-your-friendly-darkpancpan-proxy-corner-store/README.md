@@ -2,7 +2,7 @@
 title: dpanneur – your friendly DarkPAN/CPAN proxy corner store
 url: dpanneur-your-friendly-darkpancpan-proxy-corner-store
 original: the Pythian blog - http://www.pythian.com/news/9389/dpanneur-your-friendly-darkpancpan-proxy-corner-store
-created: 15 Mar 2010
+created: 2010-03-15
 tags:
     - cache
     - CPAN

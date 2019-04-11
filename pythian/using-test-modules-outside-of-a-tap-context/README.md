@@ -1,7 +1,7 @@
 ---
 title: Using test modules outside of a TAP context
 url: using-test-modules-outside-of-a-tap-context
-created: 19 Jul 2010
+created: 2010-07-19
 original: the Pythian blog - http://www.pythian.com/news/14519/using-test-modules-outside-of-a-tap-context
 tags:
     - testing

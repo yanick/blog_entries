@@ -1,7 +1,7 @@
 ---
 title: Breaking off from the use.perl.org mothership
 format: html
-created: 10 May 2009
+created: 2009-05-10
 original: use.perl.org - http://use.perl.org/~Yanick/journal/38951
 tags:
     - Perl

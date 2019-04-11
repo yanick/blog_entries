@@ -1,7 +1,7 @@
 ---
 title: Meeting Availability Dialect
 format: html
-created: 10 Mar 2007
+created: 2007-03-10
 original: use.perl.org - http://use.perl.org/~Yanick/journal/32641
 tags:
     - Perl

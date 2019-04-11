@@ -1,7 +1,7 @@
 ---
 original: the Pythian blog - http://www.pythian.com/news/7069/local-pod-browsing-using-podpomweb-via-the-cli
 url: local-pod-browsing-using-podpomweb-via-the-cli
-created: 11 Jan 2010
+created: 2010-01-11
 tags:
     - Perl
     - Pod

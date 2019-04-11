@@ -2,7 +2,7 @@
 title: CPAN/Ohloh mashup
 url: cpan-ohloh-mashup
 format: html
-created: 23 Apr 2008
+created: 2008-04-23
 original: use.perl.org - http://use.perl.org/~Yanick/journal/36234
 tags:
     - Perl

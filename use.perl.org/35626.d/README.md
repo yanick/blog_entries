@@ -1,7 +1,7 @@
 ---
 title: Git's the nightclub, Perltidy's the bouncer
 format: html
-created: 9 Feb 2008
+created: 2008-02-09
 original: use.perl.org - http://use.perl.org/~Yanick/journal/35626
 tags:
     - Perl

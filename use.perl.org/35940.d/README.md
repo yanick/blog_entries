@@ -1,7 +1,7 @@
 ---
 title: per(l)version
 format: html
-created: 19 Mar 2008
+created: 2008-03-19
 original: use.perl.org - http://use.perl.org/~Yanick/journal/35940
 tags:
     - Perl

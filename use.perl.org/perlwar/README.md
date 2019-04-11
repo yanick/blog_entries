@@ -1,7 +1,7 @@
 ---
 title: PerlWar 0.02 is out
 format: html
-created: 22 Oct 2006
+created: 2006-10-22
 original: use.perl.org - http://use.perl.org/~Yanick/journal/31385
 tags:
     - Perl

@@ -2,7 +2,7 @@
 title: ... it's the only way to be sure
 url: its-the-only-way
 format: markdown
-created: 15 Aug 2006
+created: 2006-08-15
 last_updated: 13 Nov 2010
 original: use.perl.org - http://use.perl.org/~Yanick/journal/30644
 tags:

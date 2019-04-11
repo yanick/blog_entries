@@ -1,7 +1,7 @@
 ---
 title: CPAN Patching with Git
 format: html
-created: 29 Dec 2008
+created: 2008-12-29
 original: use.perl.org - http://use.perl.org/article.pl?sid=08/12/29/202226
 tags:
     - Perl 

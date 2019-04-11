@@ -1,7 +1,7 @@
 ---
 url:               contributing-to-cpan-pause-id-bug-tracking-and-code-repositories
 format:            html
-created:           3 Feb 2010
+created:           2010-02-03
 original:      the Pythian blog - http://www.pythian.com/news/7877/contributing-to-cpan-pause-id-bug-tracking-and-code-repositories   
 tags:
     - CPAN

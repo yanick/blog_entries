@@ -2,7 +2,7 @@
 title: Google Maps + Flickr + Bike = niftiness overload
 url: bikely
 format: html
-created: 20 Aug 2006
+created: 2006-08-20
 original: use.perl.org - http://use.perl.org/~Yanick/journal/30704
 tags:
     - bikely.com

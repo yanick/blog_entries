@@ -1,7 +1,7 @@
 ---
 url: shuck-awe-1-hunting-for-perl
 original: the Pythian blog - http://www.pythian.com/news/10529/shuck-awe-1-hunting-for-perl
-created: 8 Apr 2010
+created: 2010-04-08
 format: html
 tags:
     - Google Summer of Code

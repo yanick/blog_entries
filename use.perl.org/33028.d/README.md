@@ -1,7 +1,7 @@
 ---
 title: Catalyst's manual
 format: html
-created: 18 Apr 2007
+created: 2007-04-18
 original: use.perl.org - http://use.perl.org/~Yanick/journal/33028
 tags:
     - Catalyst

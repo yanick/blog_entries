@@ -1,6 +1,6 @@
 ---
 format: html
-created: 27 Jun 2007
+created: 2007-06-27
 original: use.perl.org - http://use.perl.org/~Yanick/journal/33619
 tags:
     - bindings

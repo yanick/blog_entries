@@ -1,7 +1,7 @@
 ---
 url: shuck-awe-3-hunting-for-perl
 original: the Pythian blog - http://www.pythian.com/news/11869/shuck-awe-3-hunting-for-perl
-created: 5 May 2010
+created: 2010-05-05
 tags:
     - android
     - book

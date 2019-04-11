@@ -1,6 +1,6 @@
 ---
 format: html
-created: 22 Jul 2007
+created: 2007-07-22
 original: use.perl.org - http://use.perl.org/~Yanick/journal/33858
 tags:
     - terminology

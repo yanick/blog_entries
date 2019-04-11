@@ -2,7 +2,7 @@
 title:  Embperl 2.0 chdir quirkiness
 url: embperl-quirkiness
 format: html
-created: 14 Sep 2006
+created: 2006-09-14
 last_updated:
 original: use.perl.org - http://use.perl.org/~Yanick/journal/30997
 tags:
