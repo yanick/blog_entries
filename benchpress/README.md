@@ -244,7 +244,7 @@ But we want tables! We want graphs! Mostly, we want an excuse to play with R!
 
 So I wrote some baby R:
 
-<pre data-src="./report.r"></pre>
+<<< entry/benchpress/files/report.r
 
 Invoked `Rmarkdown`:
 
