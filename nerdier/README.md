@@ -111,8 +111,7 @@ to all files selected.
 
 And that's it. Wanna see it in action?
 
-<asciinema-player src="/entry/nerdier/files/nerdier.json" />
-
+<Asciinema src="./nerdier.json" />
 
 [Neovim::RPC]: cpan:Neovim::RPC
 [Nerdtree]:   https://github.com/scrooloose/nerdtree

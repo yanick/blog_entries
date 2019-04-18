@@ -74,4 +74,4 @@ where I
     <b>s</b>ort).
 * finally mark one task as done via `<leader>d`.
 
-<asciinema-player src="/entry/tasknvimrrior/files/demo.json" />
+<Asciinema src="/entry/tasknvimrrior/files/demo.json" />

@@ -31,7 +31,7 @@ task. '`.`' will let me modify the task like `task mod` would. '`,`' will append
 the next one (I should modify the code so that the command gives me a dirty look
 when invoked), etc.
 
-<asciinema-player src="/entry/happy-taskgiving/files/review.json" />
+<Asciinema src="/entry/happy-taskgiving/files/review.json" />
 
 ## `task-kusarigama decimate`
 
@@ -57,4 +57,4 @@ shows me 10 medium priority tasks and makes me choose which one of the bunch
 deserves the promotion. Ten tasks is a good middle-ground number that 
 offers enough choices to make picking both manageable and meaningful. 
 
-<asciinema-player src="/entry/happy-taskgiving/files/decimate.json" />
+<Asciinema src="/entry/happy-taskgiving/files/decimate.json" />

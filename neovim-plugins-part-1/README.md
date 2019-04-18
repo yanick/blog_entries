@@ -122,7 +122,7 @@ to dynamically load plugins, but for this first run it'll be used as a sign of
 life. We can use the vim function `Nvimx_notify` defined in the config
 block above to ask Neovim::RPC what's up.
 
-<asciinema-player src="/entry/neovim-plugins-part-1/files/enduser.json"></asciinema-player>
+<Asciinema src="/entry/neovim-plugins-part-1/files/enduser.json" />
 
 
 ## Run it: developer edition
@@ -137,14 +137,14 @@ the too-silent Neovim::RPC instance and replace it by one run directly in a
 second terminal, where we'll
 be able to see its logs in their glorious details.
 
-<asciinema-player src="/entry/neovim-plugins-part-1/files/debug1.json"></asciinema-player>
+<Asciinema src="/entry/neovim-plugins-part-1/files/debug1.json" />
 
 Or... neovim actually boasts a in-editor terminal emulator, so instead of a
 second terminal, for bonus ouroboros points, we could have the editor run the terminal emulator running
 `nvimx.pl` that is going to connect back to the editor running it.
 That's exactly what that `Nvimx_termstart` function does.
 
-<asciinema-player src="/entry/neovim-plugins-part-1/files/debug2.json"></asciinema-player>
+<Asciinema src="/entry/neovim-plugins-part-1/files/debug2.json" />
 
 ## Coming up next
 

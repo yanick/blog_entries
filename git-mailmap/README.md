@@ -55,7 +55,7 @@ if there was a tool to help us populate the `.mailmap`?
 
 ... as you might surmise, as of a few hours ago there is one:
 
-<asciinema-player src="/entry/git-mailmap/files/git-mailmap.json" />
+<Asciinema src="/entry/git-mailmap/files/git-mailmap.json" />
 
 The video showcases pretty much all the action the
 script does. It'll list the contributors of the current
