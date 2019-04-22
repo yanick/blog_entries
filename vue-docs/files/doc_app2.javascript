@@ -1,11 +1,11 @@
-&lt;template>
-  &lt;div>
-    &lt;Component v-bind="component" 
+<template>
+  <div>
+    <Component v-bind="component" 
         v-for="component in all_components" />
-  &lt;/div>
-&lt;/template>
+  </div>
+</template>
 
-&lt;script>
+<script>
 import Component from './Doc/Component.vue';
 import _ from 'lodash';
 import add_component from './utils';
@@ -18,4 +18,4 @@ export default {
     components: { Component },
     data: () => ({ all_components: components })
 };
-&lt;/script>
+</script>

@@ -22,31 +22,39 @@ This being said, let's an example speak for itself.
 
 ## The store itself
 
-## hackthrough
+<Hackthrough>
 
-### ./Blog.perl
+<Hackstep src="Blog.perl">
 
 First up, the main `Blog` store class. That part is wonderfully boring.
 
-##/hackthrough
+</Hackstep>
+
+</Hackthrough>
 
 ## The blog entry
 
-## hackthrough
+<Hackthrough>
 
-### ./Blog/Model/Entry_1.perl
+<Hackstep src="Blog/Model/Entry_1.perl">
 
 Next we create the class that represents blog entries.
 
-### ./Blog/Model/Entry_2.perl@4-8
+</Hackstep>
+
+<Hackstep src="Blog/Model/Entry_2.perl" lines="4-8">
 
 A blog entry has a url (which is also its unique identifier).
 
-### ./Blog/Model/Entry_3.perl@8-13
+</Hackstep>
+
+<Hackstep src="Blog/Model/Entry_3.perl" lines="8-13">
 
 And an author, which will also be an object saved in the database.
 
-### ./Blog/Model/Entry_4.perl@6-21
+</Hackstep>
+
+<Hackstep src="Blog/Model/Entry_4.perl" lines="6-21">
 
 And can be assigned tags, also saved in the database.
 
@@ -54,28 +62,35 @@ We use two attributes because I want the saved tags to be in fact blog
 entry/tag pairs (so that's it's easy, say, to get all blog entries that have
 the tag `perl`), but don't want the end-user to have to worry about it.  
 
-### ./Blog/Model/Entry_5.perl@6-8
+</Hackstep>
+
+<Hackstep src="Blog/Model/Entry_5.perl" lines="6-8">
 
 Oh yeah, and content. Let's not forget some content...
 
-##/hackthrough
+</Hackstep>
+
+</Hackthrough>
 
 ## The authors
 
-## hackthrough
+<Hackthrough>
 
-### ./Blog/Model/Author.perl
+<Hackstep src="Blog/Model/Author.perl">
 
 We also need an `Author` class. Let's make it minimalistic: a name and an
 optional bio.
 
-##/hackthrough
+</Hackstep>
+
+</Hackthrough>
 
 ## The tags
 
-## hackthrough
+<Hackthrough>
 
-### ./Blog/Model/Tag.perl
+
+<Hackstep src="Blog/Model/Tag.perl">
 
 Same deal with the tags.
 
@@ -83,53 +98,72 @@ We want to be able to have the same tag
 associated with different blog entries, so we set the store key to be
 based on both the tag and the blog's id, and we index on those two values.
 
-##/hackthrough
+</Hackstep>
+
+</Hackthrough>
 
 ## Using it
 
-##hackthrough 
+<Hackthrough>
 
-### ./ex1.perl
+
+<Hackstep src="ex1.perl">
 
 Setting the store is dead easy. Yes, even if the database
 didn't previously exist.
 
 Love you, sqlite. Always did, always will.
 
-### ./ex2.perl
+</Hackstep>
+
+<Hackstep src="ex2.perl">
 
 You can create objects and put in the store....
 
-### ./ex3.perl
+</Hackstep>
+
+<Hackstep src="ex3.perl">
 
 ... or do it all in one fell swoop.
 
-### ./ex4.perl
+</Hackstep>
+
+<Hackstep src="ex4.perl">
 
 Once created, it can be used as an attribute for another 
 object.
 
-### ./ex5.perl
+</Hackstep>
+
+<Hackstep src="ex5.perl">
 
 Or if the object already exist in the db, just use its key.
 
-### ./ex6.perl
+</Hackstep>
+
+<Hackstep src="ex6.perl">
 
 The object doesn't exist yet? Pass in a hashref. It will be taken as the arguments of
 the attribute's object constructor.
 
-### ./ex7.perl
+</Hackstep>
+
+<Hackstep src="ex7.perl">
 
 Works with arrays of objects too.
 
-### ./ex8.perl
+</Hackstep>
+
+<Hackstep src="ex8.perl">
 
 What does the search functionality looks like? Like this.
 
 Right now the objects returned by the search aren't tied 
 to the store, but [it will be fixed soon](https://github.com/yanick/DBIx-NoSQL-Store-Manager/issues/7).
 
-##/hackthrough 
+</Hackstep>
+
+</Hackthrough> 
 
 Enjoy!
 

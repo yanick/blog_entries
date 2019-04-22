@@ -92,23 +92,29 @@ objects, and their only required feature is to have a `type` attribute.
 The type is typically an uppercased string. Mostly because things work better 
 when you shout.
 
-## hackthrough
+<Hackthrough>
 
-### ./actions_1.javascript
+<Hackstep src="actions_1.javascript">
 
 Simple action.
 
-### ./actions_2.javascript
+</Hackstep>
+
+<Hackstep src="actions_2.javascript">
 
 Action with a payload. The payload can be anything you wish, in whatever format you fancy.
 
-### ./action_3.javascript
+</Hackstep>
+
+<Hackstep src="action_3.javascript">
 
 Some people prefers to encapsule the payload
 in its own attribute.
 
+</Hackstep>
 
-##/hackthrough
+
+</Hackthrough>
 
 ## Transimmutability
 
@@ -219,23 +225,30 @@ let action = {
 So far, so good. The action describe what we wanna do. Now let's write the 
 reducer to turn that wanna into a tadah.
 
-## hackthrough
+<Hackthrough>
 
-### ./reducer_1.javascript
+
+<Hackstep src="reducer_1.javascript">
 
 We know the rules: two parameters enter the reducing arena, one state will
 come out.
 
-### ./reducer_2.javascript @2-11
+</Hackstep>
+
+<Hackstep src="reducer_2.javascript" lines="2-11">
 
 The action is a `ADD_TO_CART`? Update the state
 in consequence.
 
-### ./reducer_3.javascript @12
+</Hackstep>
+
+<Hackstep src="reducer_3.javascript" lines="12">
 
 Not any action we know? Fine. Return the state unchanged.
 
-##/hackthrough
+</Hackstep>
+
+</Hackthrough>
 
 ### Quick interlude: back to functional programming's metathesiophobia
 
@@ -292,21 +305,27 @@ let set_tax_action = {
 
 Let's also upgrade the reducer to deal with them.
 
-##hackthrough 
+<Hackthrough>
 
-### ./upgrade_1.javascript
+<Hackstep src="upgrade_1.javascript">
 
 Previous version.
 
-### ./upgrade_2.javascript @3-7
+</Hackstep>
+
+<Hackstep src="upgrade_2.javascript" lines="3-7">
 
 Adding `CLEAR_CART` code.
 
-### ./upgrade_3.javascript @9-13
+</Hackstep>
+
+<Hackstep src="upgrade_3.javascript" lines="9-13">
 
 And then the `TAX` code.
 
-##/hackthrough 
+</Hackstep>
+
+</Hackthrough> 
 
 ## Vroooooom, Go cart!
 
@@ -335,30 +354,37 @@ actions, but don't interact with each other? What means that we can split the fu
 and deal with the state subsections individually.
 
 
-##hackthrough 
+<Hackthrough> 
 
-### ./simplify_1.javascript 
+<Hackstep src="simplify_1.javascript">
 
 So we take our monster reducer.
 
-### ./simplify_2.javascript 
+</Hackstep>
+
+<Hackstep src="simplify_2.javascript">
 
 ... and we slim it down through the "we'll deal about it elsewhere" diet.
 
-### ./simplify_3.javascript 
+</Hackstep>
+
+<Hackstep src="simplify_3.javascript">
 
 The sub-reducers are still using the same logic, just
 more localised.
 
-### ./simplify_4.javascript 
+</Hackstep>
+
+<Hackstep src="simplify_4.javascript">
 
 Which means smaller, more focused functions, and 
 long `state.items`-type names shortened to `state`.
 
 Me gusta.
 
+</Hackstep>
 
-##/hackthrough 
+</Hackthrough> 
 
 
 Already a little easier to chew on, isn't?  Basically, each sub-reducer only deals with its part of the state, and the state
@@ -371,33 +397,43 @@ And we don't need to do it upfront either; it's pretty easy
 to refactor and add sub-reducers as the state evolves and grows. For example, that `summary_reducer` above still
 feels too big? Null problemo.
 
-## hackthrough
+<Hackthrough>
 
-### ./subreducer_1.javascript
+
+<Hackstep src="subreducer_1.javascript">
 
 Start with the original summary reducer.
 
-### ./subreducer_2.javascript
+</Hackstep>
+
+<Hackstep src="subreducer_2.javascript">
 
 Each of the three attributes get its own
 sub-reducer. 
 
 (feels a lot like what we did to the original reducer, isn't?)
 
-### ./subreducer_3.javascript @1-11
+</Hackstep>
+
+<Hackstep src="subreducer_3.javascript" lines="1-11">
 
 The reducer for the total.
 
-### ./subreducer_4.javascript @1-3
+</Hackstep>
+
+<Hackstep src="subreducer_4.javascript" lines="1-3">
 
 ... and the one for the tax...
 
-### ./subreducer_5.javascript @1-9
+</Hackstep>
+
+<Hackstep src="subreducer_5.javascript" lines="1-9">
 
 ... and finally the one for the number of items.
 
+</Hackstep>
 
-##/hackthrough
+</Hackthrough>
 
 
 Because the sub-reducers are independent of each other (and don't rely
@@ -410,13 +446,16 @@ With the use of Redux helper functions and some ES6 tricks, we can shorten
 that code even more.  I won't go into details, but here how a full-squished
 version of our code could look like.
 
-## hackthrough
+<Hackthrough>
 
-### ./with_redux_1.javascript 
+
+<Hackstep src="with_redux_1.javascript">
 
 We reach for Redux's helper functions.
 
-### ./with_redux_2.javascript @3-6
+</Hackstep>
+
+<Hackstep src="with_redux_2.javascript" lines="3-6">
 
 Main reducer is made of two sub-reducers. 
 
@@ -432,29 +471,40 @@ is equivalent to
 {  foo: foo, bar: bar }
 ```
 
-### ./with_redux_3.javascript @3-9
+</Hackstep>
+
+<Hackstep src="with_redux_3.javascript" lines="3-9">
 
 Adding the items reducer called, o surprise, `items`.
 
 
-### ./with_redux_4.javascript @3
+</Hackstep>
+
+<Hackstep src="with_redux_4.javascript" lines="3">
 
 Summary reducer, made of more reducers!
 
-### ./with_redux_5.javascript @3-9
+</Hackstep>
+
+<Hackstep src="with_redux_5.javascript" lines="3-9">
 
 Total reducer. Like, totally dude.
 
-### ./with_redux_6.javascript @3-5
+</Hackstep>
+
+<Hackstep src="with_redux_6.javascript" lines="3-5">
 
 Taxes.
 
-### ./with_redux_7.javascript @3-9
+</Hackstep>
+
+<Hackstep src="with_redux_7.javascript" lines="3-9" >
 
 And finally the nbr_items reducer.
 
+</Hackstep>
 
-##/hackthrough
+</Hackthrough>
 
 ## A game with savepoints
 
@@ -539,24 +589,30 @@ implementation of the store of a Russian Roulette game.
 The state of the game will have a `loaded_chamber` relative to the current chamber, as well
 as a `alive` flag. To communicate with the store, we'll have two actions: `LOAD_GUN` and `PULL_TRIGGER`.
 
-##hackthrough
+<Hackthrough>
 
-### ./russian_1.javascript 
+<Hackstep src="russian_1.javascript">
 
 We begin with the reducer's boilerplate. We define 
 a original state as the default `state`, but
 otherwise have all actions pass through.
 
 
-### ./russian_2.javascript @10-13
+</Hackstep>
+
+<Hackstep src="russian_2.javascript" lines="10-13">
 
 Adding state change for `LOAD_GUN`.
 
-### ./russian_3.javascript @10-26
+</Hackstep>
+
+<Hackstep src="russian_3.javascript" lines="10-26">
 
 And  for `PULL_TRIGGER`.
 
-##/hackthrough
+</Hackstep>
+
+</Hackthrough>
 
 
 Now let's add two middlewares. One that starts the game with some randomness,
@@ -565,46 +621,61 @@ defeat.
 
 ##hackthrough 
 
-### ./middleware_1.javascript 
+</Hackstep>
+
+<Hackstep src="middleware_1.javascript">
 
 We import the helper tools from Redux.
 
-### ./middleware_2.javascript 
+</Hackstep>
+
+<Hackstep src="middleware_2.javascript">
 
 Middlewares are curried functions. They get
 three arguments: the store, the function
 that will push the action to the next middleware or
 into the reducer's maws, and the action itself.
 
-### ./middleware_3.javascript @2-2
+</Hackstep>
+
+<Hackstep src="middleware_3.javascript" lines="2-2">
 
 If we want the middleware to be a passthrough,
 we just call `next(action)`.
 
-### ./middleware_4.javascript @6-9
+</Hackstep>
+
+<Hackstep src="middleware_4.javascript" lines="6-9">
 
 If we see a `START_GAME` action, we don't propagate 
 it (we could, if another middleware 
 or the reducer were to do something with it), but rather
 dispatch a new `LOAD_GUN` action.
 
-### ./middleware_5.javascript
+</Hackstep>
+
+<Hackstep src="middleware_5.javascript">
 
 For the `end_of_game` middleware, we
 first propagate the action.
 
-### ./middleware_6.javascript @5-9
+</Hackstep>
+
+<Hackstep src="middleware_6.javascript" lines="5-9">
 
 ... and then check if it the said action
 had any... messy outcome.
 
-### ./middleware_7.javascript
+</Hackstep>
+
+<Hackstep src="middleware_7.javascript">
 
 Finally, we configure the store to
 use the middlewares. 
 
+</Hackstep>
 
-##/hackthrough
+</Hackthrough>
 
 And that's it. We can now play a game!
 
@@ -619,20 +690,24 @@ the `end_of_game` middleware of the last section could be replaced by a subscrib
 goes "are they dead yet?" each time something happen.
 
 
-##hackthrough
+<Hackthrough>
 
-###  ./listener_1.javascript 
+
+<Hackstep src="listener_1.javascript ">
 
 Creating the store as before, minus the `end_of_game` middleware.
 
-###  ./listener_2.javascript
+</Hackstep>
+
+<Hackstep src="listener_2.javascript">
 
 Add a listener that keeps track of the last
 known cranial integrity of the player, and does
 the announcement if things changed for the worse.
 
+</Hackstep>
 
-##/hackthrough
+</Hackthrough>
 
 !(mermaid:files/listener.mmd)
 

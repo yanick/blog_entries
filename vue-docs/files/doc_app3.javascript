@@ -1,22 +1,22 @@
-&lt;template>
-  &lt;div>
-    &lt;h2>&lt;a :name="__file">{{ __file }}&lt;/a>&lt;/h2>
+<template>
+  <div>
+    <h2><a :name="__file">{{ __file }}</a></h2>
 
-    &lt;div v-if="props">
-      &lt;h3>props&lt;/h3>
-      &lt;ul>&lt;li v-for="prop in propNames">{{prop }}&lt;/li>&lt;/ul>
-    &lt;/div>
+    <div v-if="props">
+      <h3>props</h3>
+      <ul><li v-for="prop in propNames">{{prop }}</li></ul>
+    </div>
 
-    &lt;div v-if="components">
-      &lt;h3>components&lt;/h3>
-      &lt;ul>&lt;li v-for="(comp,name) in components">
-          &lt;a :href="'#' + comp.__file">{{ name }}&lt;/a>
-      &lt;/li>&lt;/ul>
-    &lt;/div>
-  &lt;/div>
-&lt;/template>
+    <div v-if="components">
+      <h3>components</h3>
+      <ul><li v-for="(comp,name) in components">
+          <a :href="'#' + comp.__file">{{ name }}</a>
+      </li></ul>
+    </div>
+  </div>
+</template>
 
-&lt;script>
+<script>
 export default {
   props: [ '__file', 'props', 'components' ],
   computed: {
@@ -26,4 +26,4 @@ export default {
     },
   }
 }
-&lt;/script>
+</script>

@@ -31,26 +31,31 @@ world needs. Another template module.
 
 ## The Single Component File, &agrave; la Perl
 
-## hackthrough
+<Hackthrough>
 
-### ./template.txt
+<Hackstep src="template.none">
 
 So in Vue.js, a single-component file will look something like this.
 
-### ./main.perl
+</Hackstep>
+
+<Hackstep src="main.perl">
 
 For our Perl version, we'll use modules to be our components, and we will
 use Perl's natural instinct to ignore POD directives to put the template
 smack there at the top.
 
-### ./entry.perl
+</Hackstep>
+
+<Hackstep src="entry.perl">
 
 And to make the example interesting, we're adding a subcomponent. With
 it, we'll be exercising the import of sub-components, `v-for` iterations,
 `v-if` conditionals, `{{`interpolations`}}` and attribute `:binding`s.
 
+</Hackstep>
 
-##/hackthrough
+</Hackthrough>
 
 
 ## From Single Component File to good ol' regular Perl
@@ -66,18 +71,24 @@ of the template's object, and the sub-components are defined via a
 But there is still the template itself that is not yet within our coding
 clutch. Well, that's hardly a problem.
 
-## hackthrough
+<Hackthrough>
 
-### ./tv1.perl
+</Hackstep>
+
+<Hackstep src="tv1.perl">
 
 First things first. We create the role.
 
-### ./tv2.perl
+</Hackstep>
+
+<Hackstep src="tv2.perl">
 
 ... then we add the `components` attribute, which defaults to be boring as all
 hecks.
 
-### ./tv3.perl
+</Hackstep>
+
+<Hackstep src="tv3.perl">
 
 Then we add the `template` attribute. 
 
@@ -87,8 +98,9 @@ the module lives, and we munge the file like savages.
 Eventually, we'll be
 more civilized and use a POD parsing module. But for now, it'll do.
 
+</Hackstep>
 
-##/hackthrough
+</Hackthrough>
 
 ## From template to final output
 
@@ -111,13 +123,16 @@ So, yeah, Vue uses a syntax that is close to Mustache. Very close. So very
 muchly close that one could be tempted to use
 [Template-Mustache](cpan:Template-Mustache)....
 
-## hackthrough
+<Hackthrough>
 
-### ./tv3.perl
+
+<Hackstep src="tv3.perl">
 
 Remember the template we already have?
 
-### ./tv4.perl @4,5
+</Hackstep>
+
+<Hackstep src="tv4.perl" lines="4,5">
 
 Bam. 
 
@@ -129,46 +144,60 @@ from the object's attributes.
 release it within the week.)
 
 
-## /hackthrough
+</Hackstep>
+
+</Hackthrough>
+
 
 ### Step 2: `v-if`
 
-## hackthrough
+<Hackthrough>
 
-### ./tv5.perl @1
+
+<Hackstep src="tv5.perl" lines="1">
 
 Now we're beginning to manipulate the DOM of the template. For that,
 we'll use [Web::Query](cpan:Web::Query), which is heavily inspired from
 jQuery.
 
-### ./tv5.perl @9
+</Hackstep>
+
+<Hackstep src="tv5.perl" lines="9">
 
 Basically, we find all nodes that have a `v-if` attribute...
 
-### ./tv5.perl @10,13-16
+</Hackstep>
+
+<Hackstep src="tv5.perl" lines="10,13-16">
 
 ...since this is a protype, we're slightly gross and assume blindly that the
 first token of the expression is a variable to resolve as per the context, and
 the rest is a Perl expression. Which is... soooomewhat reasonable.
 
-### ./tv5.perl @13
+</Hackstep>
+
+<Hackstep src="tv5.perl" lines="13">
 
 In any case, if the condition turns out to be false, we delete the node and
 never speak of it again.
 
+</Hackstep>
 
-##/hackthrough
+</Hackthrough>
 
 ## Step 3: Bindings
 
-## hackthrough
+<Hackthrough>
 
-### ./tv6.perl @4
+
+<Hackstep src="tv6.perl" lines="4">
 
 For the bindings, it's almost the same tactic. We go through **all** the
 nodes.
 
-### ./tv6.perl @8
+</Hackstep>
+
+<Hackstep src="tv6.perl" lines="8">
 
 We then filter on those that have attributes prefixed with colons. 
 
@@ -176,7 +205,9 @@ The code is
 a little on the ugly side because Web::Query doesn't allow to get all
 attributes easily. I'll also try to fix this presently.
 
-### ./tv6.perl @11-13
+</Hackstep>
+
+<Hackstep src="tv6.perl" lines="11-13">
 
 Anyhoo, we populate the attribute `foo` with whatever the variable or method given in
 `:foo` interpolate into given the context.
@@ -184,19 +215,23 @@ Anyhoo, we populate the attribute `foo` with whatever the variable or method giv
 Again, we're playing fast and loose, but we want we could come back and parse
 less blindly what is in `:foo`. But that's just finickling around.
 
-##/hackthrough
+</Hackstep>
+
+</Hackthrough>
 
 ## Step 4: iterations
 
 
-## hackthrough
+<Hackthrough>
 
-### ./tv7.perl @7
+<Hackstep src="tv7.perl" lines="7">
 
 For the `v-for` iterators, same procedure as usual. We look at all
 nodes with `v-for` attributes...
 
-### ./tv7.perl @14-20
+</Hackstep>
+
+<Hackstep src="tv7.perl" lines="14-20">
 
 ... and for every item of the list iterate over we make a copy of the tag,
 augment the template context with the iteree, and invoke the MIGHTY POWER OF
@@ -206,14 +241,15 @@ ALL* HAIL THE RECURSION GODS!
 
 (*all includes the Recursing Gods themselves, natch)
 
+</Hackstep>
 
-##/hackthrough
+</Hackthrough>
 
 ## Step 5: Sub-components
 
-## hackthrough
+<Hackthrough>
 
-### ./tv8.perl @8
+<Hackstep src="tv8.perl" lines="8">
 
 Last bit, the sub-components. 
 
@@ -222,38 +258,49 @@ Here we find nodes which tag name is the name of a component.
 (for now it's assumed that the tag name of the component `Example::Foo` is
 `foo`)
 
-### ./tv8.perl @11-12
+</Hackstep>
+
+<Hackstep src="tv8.perl" lines="11-12">
 
 For those tags, we collect all the attributes, which will be the props of the
 sub-components.
 
-### ./tv8.perl @15
+</Hackstep>
+
+<Hackstep src="tv8.perl" lines="15">
 
 And since the sub-component is also a template and only needs to be fed its
 props to do its thang, we go ahead, create the object and render it.
 
+</Hackstep>
 
-##/hackthrough
+</Hackthrough>
 
 ## BEHOLD!
 
 
-## hackthrough
+<Hackthrough>
 
-### ./tv9.perl
+<Hackstep src="tv9.perl">
 
 And we are done. With the code we did, plus that last 
 method that interconnect the pipeline....
 
-### ./tv10.perl
+</Hackstep>
+
+<Hackstep src="tv10.perl">
 
 ... we now have a set of components that we can call thus...
 
-### ./tv12.txt
+</Hackstep>
+
+<Hackstep src="tv12.none">
 
 ...will give us that.
 
-##/hackthrough
+</Hackstep>
+
+</Hackthrough>
 
 Now, it's not like I just recreated Vue. The reactive part of it really the
 *piece de resistance*, and the template and single file component format are

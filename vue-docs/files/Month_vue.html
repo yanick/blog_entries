@@ -1,22 +1,22 @@
-&lt;template>
-  &lt;table>
-    &lt;thead>
-      &lt;tr class="opening_balance">
-        &lt;td :colSpan="is_stock_account ? 5 : 4">
-        &lt;h2>{{month}} - {{ month | named_month }}&lt;/h2>
-    &lt;/td>
-    &lt;td class="money">
-      &lt;Money :amount="start_balance" />&lt;/td>
-    &lt;/tr>
-    &lt;/thead>
-    &lt;Day v-for="day in days"
+<template>
+  <table>
+    <thead>
+      <tr class="opening_balance">
+        <td :colSpan="is_stock_account ? 5 : 4">
+        <h2>{{month}} - {{ month | named_month }}</h2>
+    </td>
+    <td class="money">
+      <Money :amount="start_balance" /></td>
+    </tr>
+    </thead>
+    <Day v-for="day in days"
       :entries="day" :accounts="accounts" 
       :is_stock_account="is_stock_account" />
-    &lt;MonthSummary :entries="entries" :is_stock_account="is_stock_account" />
-  &lt;/table>
-&lt;/template>
+    <MonthSummary :entries="entries" :is_stock_account="is_stock_account" />
+  </table>
+</template>
 
-&lt;script>
+<script>
 import moment        from 'moment';
 import Money         from './Money.vue';
 import MonthSummary  from './MonthSummary.vue';
@@ -35,4 +35,4 @@ export default {
   filters:    { named_month, },
   computed:   { days },
 };
-&lt;/script>
+</script>
