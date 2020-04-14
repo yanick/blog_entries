@@ -37,7 +37,7 @@ $ cp -r lib/Neovim/RPC/Plugin/Pvim* ~/.config/nvim/perl5lib/Neovim/RPC/Plugin
 
 Then we need to add some vim configuration.
 
-```
+```vim
 " I'm using 'plugged' for my vim plugins
 
 """ vim-plug {{{
