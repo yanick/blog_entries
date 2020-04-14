@@ -12,7 +12,7 @@ week, I finally get to play with it by creating
 takes the projects of a [Ravelry](http://ravelry.com) user and display them
 in a chronological manner, like so:
 
-![Yarnline Screenshot](./files/screenshot.png)
+![Yarnline Screenshot](./screenshot.png)
 
 The app is running on my home [server](http://yarnline.babyl.ca) (but requires you to
 have a Ravelry account).  The [code
@@ -39,7 +39,7 @@ to the web service every time you need it. After a few hours of head-desk
 interfacting, though, I think I figured it
 out:
 
-<<< @/entry/yarnline/files/YarnLine.perl
+<SnippetFile src="./YarnLine.perl" />
 
 Oh yeah, and today I began to switch the templates from Mason to my
 experiment-in-progress,
