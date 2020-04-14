@@ -15,12 +15,12 @@ tags:
 
 <div style="float: right; margin: 5px;"> 
 <object width="360" height="288"><param name="movie"
-value="http://www.youtube.com/v/vIWQhlUWWRQ?fs=1&amp;hl=en_US&amp;rel=0"></param><param
-name="allowFullScreen" value="true"></param><param name="allowscriptaccess"
-value="always"></param><embed
+value="http://www.youtube.com/v/vIWQhlUWWRQ?fs=1&amp;hl=en_US&amp;rel=0"/><param
+name="allowFullScreen" value="true"/><param name="allowscriptaccess"
+value="always"/><embed
 src="http://www.youtube.com/v/vIWQhlUWWRQ?fs=1&amp;hl=en_US&amp;rel=0"
 type="application/x-shockwave-flash" allowscriptaccess="always"
-allowfullscreen="true" width="360" height="288"></embed></object>
+allowfullscreen="true" width="360" height="288" /></object>
 </div>
 
 Tell me if that sounds familiar: you're happily hacking on your codebase and,
@@ -44,15 +44,15 @@ I turned to plan B: crafting a new git command, `git-safepush`:
 With that, I just had to add `DO NOT PUSH` in a comment line along
 sensitive code, like so
 
-<pre code="Perl">
-    # DO NOT PUSH
-    my $password = '$ecr3t';
-</pre>
+```perl
+# DO NOT PUSH
+my $password = '$ecr3t';
+```
 
 and `safepush` is going to prevent me of doing anything foolish:
 
-<pre code="bash">
+```bash
 $ git safepush origin master:foo
 'DO NO PUSH' seen in file 'MyConfig.pm', aborting push
-</pre>
+```
 
