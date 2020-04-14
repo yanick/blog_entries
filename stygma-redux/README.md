@@ -333,7 +333,7 @@ And we have ourselves a nice little Redux store.
 With only three actions it might still be pretty trivial, but 
 it's enough to be functional.
 
-!(mermaid:files/cart.mmd)
+<Mermaid src="cart.mmd" />
 
 
 
@@ -390,7 +390,7 @@ Me gusta.
 Already a little easier to chew on, isn't?  Basically, each sub-reducer only deals with its part of the state, and the state
 can be recursively divided in as many subsections as wanted.
 
-!(mermaid:files/cart_divided.mmd)
+<Mermaid src="cart_divided.mmd" />
 
 
 And we don't need to do it upfront either; it's pretty easy
@@ -576,7 +576,7 @@ call *middleware*. These middleware will intercept actions as they pass by,
 be given perusal access to the store, as well as the ability to dispatch 
 new actions. 
 
-!(mermaid:middleware.mmd)
+<Mermaid src="middleware.mmd" />
 
 That's all there is to the general concept of middlewares. As to their use
 and implementation, that's another story. Which I might tell in a subsequent STYGMA
@@ -619,9 +619,7 @@ Now let's add two middlewares. One that starts the game with some randomness,
 and another that pushes something to the network when the player, ahem, suffer
 defeat.
 
-##hackthrough 
-
-</Hackstep>
+<Hackthrough>
 
 <Hackstep src="middleware_1.javascript">
 
@@ -679,7 +677,7 @@ use the middlewares.
 
 And that's it. We can now play a game!
 
-!(mermaid:files/game.mmd)
+<Mermaid src="game.mmd" />
 
 
 ## Listenin' in
@@ -709,7 +707,7 @@ the announcement if things changed for the worse.
 
 </Hackthrough>
 
-!(mermaid:files/listener.mmd)
+<Mermaid src="listener.mmd" />
 
 In fact, since the listener can also dispatch actions to the store... why not
 save a few clicks to the user, and automatically play the game to its logical, nihilistic
@@ -735,7 +733,7 @@ store.subscribe( () => {
 })
 ```
 
-!(mermaid:files/listener_2.mmd)
+<Mermaid src="listener_2.mmd" />
 
 ## S.T.Y.G.M.A.
 
