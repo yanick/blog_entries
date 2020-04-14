@@ -256,7 +256,7 @@ ship), and downstream middlewares flesh out the details before they are fed
 to the reducer. 
 
 
-!(mermaid:mw1.mmd)
+<Mermaid src="mw1.mmd" />
 
 (that's what is happening in that weird `next(u(...))` stanza in the 
 `object_movement_phase` middleware of the previous section.
@@ -270,12 +270,12 @@ palatable solution would be to have the middleware issue a second
 `MOVE_SHIP` action, and have the reducer ignore any `MOVE_SHIP` actions that
 don't have all its trimmings.
 
-!(mermaid:mw2.mmd)
+<Mermaid src="mw2.mmd" />
 
 A better approach would be to lay off the overloading sauce and 
 define two actions for the two steps that are implicit in `MOVE_SHIP`.
 
-!(mermaid:mw3.mmd)
+<Mermaid src="mw3.mmd" />
 
 In all honesty, I think sagas have it right and I have it wrong there. The
 fleshing out actions by middlewares as I'm doing it is clever, but not
