@@ -1,6 +1,8 @@
-created: 2020-04-12
+---
+created: 2020-04-13
 tags:
     - typescript
+    - redux
 ---
 
 # Tales of the Typescrypt: Recasting the first stone
@@ -27,7 +29,7 @@ taste of how thinking in Typescript differs from a vanilla JavaScript mindset.
 I am working on a library abstracting some of the boilerplate of Redux. I will
 spare you the details as this is another, incredibly large, kettle of fish by
 its own right. Suffice to say that I am building an api object that is
-destined to be a [duck]()-like one-stop-shop for the Redux store -- actions,
+destined to be a [duck](https://github.com/erikras/ducks-modular-redux)-like one-stop-shop for the Redux store -- actions,
 reducer, middleware, selectors, etc.
 
 For the good of this blog entry, we'll simplify that api down to just building actions,
@@ -103,7 +105,8 @@ const myDux = new Dux({
     actions: {
         doThis: () => {},
         doThat: () => {},
-    }});
+    }
+});
 ```
 
 and TypeScript will now know that the actions are `doThis` and `doThat`.
@@ -149,7 +152,7 @@ Let's put down first what is clear that we can't do: the type of an object
 can't be refined after its initialization. Which means the class
 implementation is a dead-end for that kind of shenanigans.
 
-But.
+But...
 
 But we could use an immutable, functional programming type of solution where
 we keep building a new object with a new type each time we add an action!
@@ -229,8 +232,9 @@ addAction(
 
 But that's just plain ludicrous.
 
-There is actually a third option, which is a little bit cheating... We could 
-use the way promises can be chained to cut on the silliness:
+There is actually a third option, which is a little bit of... let's call it
+lateral thinking.  We could use the way promises can be chained to 
+cut on the silliness:
 
 ```
 const dux = await Promise.resolve({})
