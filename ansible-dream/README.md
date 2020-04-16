@@ -6,6 +6,8 @@ tags:
 
 # An Ansible dream
 
+![](./falcon.jpg)
+
 This is a blog entry that I've been wanting to blurt out for a long while,
 now. Mostly to share the method behind the madness.
 
