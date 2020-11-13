@@ -29,6 +29,7 @@ module. For example, for the template module `My::Templates`, I
 dropped the individual templates under the directory `lib/auto/My/Templates`:
 
 
+```
     lib/
     ├── auto
     │   └── My
@@ -38,22 +39,24 @@ dropped the individual templates under the directory `lib/auto/My/Templates`:
     │               └── foo.td
     └── My
         └── Templates.pm
+```
 
 Each template file only needs to have the inner template definition. For
 example, `simple.td` looks like:
 
-    #syntax: perl
+```perl
     html {
         body {
             h1 { 'Hello ' . $args->{name} }
         }
     }
+```
 
 Because I'm piggy-backing on Perl's shared directories convention, harvesting 
 those template files is a breeze thanks to [File::SharedDir](cpan).
 
 
-    #syntax: perl
+```perl
     package My::Templates;
 
     use Template::Declare::Tags;
@@ -91,6 +94,7 @@ those template files is a breeze thanks to [File::SharedDir](cpan).
     }
 
     1;
+```
 
 As you can see, the code is pretty straight-forward and fairly minimal.
 With `module_dir()`, I grab all the files (recursively, natch) 
@@ -110,7 +114,7 @@ And that's all there is to it. The template module can be used like any
 other `Template::Declare` module, with no apparent difference for the
 outside world:
 
-    #syntax: perl
+```perl
     #!/usr/bin/perl 
 
     use strict;
@@ -121,6 +125,7 @@ outside world:
     Template::Declare->init( dispatch_to => [ 'My::Templates' ] );
     print Template::Declare->show( 'simple', { name => 'world' }  );
     print Template::Declare->show( 'sub/foo' );
+```
 
 
 Nice.  Now, I should probably stop plucking the alpaca's eyebrows

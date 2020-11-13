@@ -44,12 +44,13 @@ configuration.  For example, if the application is run on different machines
 with a shared cache, one way to have the cache's namespace set to the host
 machine would be:
 
-    #syntax: perl
-    use Sys::Hostname;
+```perl
+use Sys::Hostname;
 
     hook before_create_cache => sub {
         config->{plugins}{'Cache::CHI'}{namespace} = hostname;
     };
+```
 
 ### The whole response is cached, not only the content
 
@@ -66,13 +67,14 @@ passing the option '`no-cache`' via the '`Cache-Control`'
 or '`Pragma`' http header. If you want to abide to the will of the
 user, we now have a configuration item for that:
 
-    #syntax: bash
-    plugins:
-        Cache-CHI:
-            driver: Memory
-            global: 1
-            expires_in: 1 min
-            honor_no_cache: 1
+```bash
+plugins:
+    Cache-CHI:
+        driver: Memory
+        global: 1
+        expires_in: 1 min
+        honor_no_cache: 1
+```
 
 With *honor_no_cache* set to true, pages cached with `cache_page()` will
 automagically obey and flush the cache if the agent asks so.
@@ -83,19 +85,21 @@ The cache keys now can be customized via `cache_page_key_generator()`.
 Want to include the name of the host in the cache key (again, if dealing with
 a multi-hosted app)? Easy:
 
-    #syntax: perl
-    cache_page_key_generator sub {
-        return join ":", request()->host, request()->path_info;
-    };
+```perl
+cache_page_key_generator sub {
+    return join ":", request()->host, request()->path_info;
+};
+```
 
 Also, the generated key can also be accessed via `cache_page_key()`:
 
-    #syntax: perl
-    get '/page/*' => sub {
-        push @cached_pages, cache_page_key();
+```perl
+get '/page/*' => sub {
+    push @cached_pages, cache_page_key();
 
         return cache_page generate_page( splat );
     };
+```
 
 
 ## DBD::Oracle
@@ -103,10 +107,10 @@ Also, the generated key can also be accessed via `cache_page_key()`:
 Did you know that the `Makefile.PL` of [DBD::Oracle](cpan) has a bunch of
 options? Me neither.  But as of version 1.32, you can see'em all by doing:
 
-    #syntax: bash
-    $ perl Makefile.PL --help                                                                                         
-    Options:
-        -b  Try to use Oracle's own 'build' rule. Defaults to true.
+```bash
+$ perl Makefile.PL --help                                                                                         
+Options:
+    -b  Try to use Oracle's own 'build' rule. Defaults to true.
 
         -r  With '-b', use this names build rule (eg -r=build64).
 
@@ -144,3 +148,4 @@ options? Me neither.  But as of version 1.32, you can see'em all by doing:
             use the new OCI_INIT code and we force our emulation of
             OCILobWriteAppend.
 
+```

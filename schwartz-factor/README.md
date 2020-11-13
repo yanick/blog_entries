@@ -1,9 +1,7 @@
 ---
-title: Your Schwartz Factor on your CPAN Page
 url: schwartz-factor
-format: markdown
 created: 2010-11-13
-last-updated: 14 Nov 2010
+#last-updated: 2010-11-14
 tags:
     - Schwartz factor
     - CPAN
@@ -12,8 +10,10 @@ tags:
     - userscript.org
 ---
 
+# Your Schwartz Factor on your CPAN Page
+
 <div style="float: right">
-<img src="__ENTRY_DIR__/poster_schwartz.jpg" alt="The Schwartz" />
+<img src="poster_schwartz.jpg" alt="The Schwartz" />
 </div>
 
 The [Schwartz factor](http://use.perl.org/~brian_d_foy/journal/8314) of a CPAN
@@ -29,9 +29,7 @@ As such, I wanted to include a periodic check of my Schwartz factor to my
 Coming up with a script to extract the information from my CPAN home directory
 was simple enough:
 
-<div style="clear: both">
-<galuga_code code="perl">schwartz_factor.pl</galuga_code>
-</div>
+`` schwartz_factor.pl ``
 
 This is not exactly the most robust code I ever written -- the parsing of the
 page should be left to [HTML::Tree](cpan), really -- 
@@ -43,8 +41,7 @@ a GreaseMonkey script and I now have the Schwartz factor of CPAN authors added
 to their CPAN pages:
 
 <div align="center">
-<img src="__ENTRY_DIR__/schwartz.png" alt="Schwartz factor on CPAN author page" />
-<br/>
+<img src="schwartz.png" alt="Schwartz factor on CPAN author page" />
 <label>the Schwartz is weak with this one</label>
 </div>
 

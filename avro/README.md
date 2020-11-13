@@ -25,80 +25,85 @@ a data serialization system using JSON. I found its simple way to
 describe data schemas... endearing, and began to wonder how hard it would be 
 to auto-generate classes out of an Avro schema. Like, say: 
 
-    #syntax: perl
-    use Class::Avro;
+```perl
+use Class::Avro;
 
-    my $class = Class::Avro->new( schema => <<'END_SCHEMA' );
-    { 
-        "type": "record",
-        "name": "PlayingCard",
-        "fields": [
-            { "name": "color", "type": "string" },
-            { "name": "number", "type": "int" }
-        ]
-    }
-    END_SCHEMA
+my $class = Class::Avro->new( schema => <<'END_SCHEMA' );
+{ 
+    "type": "record",
+    "name": "PlayingCard",
+    "fields": [
+        { "name": "color", "type": "string" },
+        { "name": "number", "type": "int" }
+    ]
+}
+END_SCHEMA
+```
 
 For then be able to create new objects of the programmatically-minted
 `PlayingCard` class:
 
-    #syntax: perl
-    my $card = $class->new_object( color => 'spade', number => 1 );
-    
-    say $card->color;
+```perl
+my $card = $class->new_object( color => 'spade', number => 1 );
+
+say $card->color;
+```
 
 Or go one step further and deserialize directly from that `$class`:
 
 
-    #syntax: perl
-    my $other_card = $class->deserialize( q#{ "color": "heart", "number": "12" }# );
+```perl
+my $other_card = $class->deserialize( q#{ "color": "heart", "number": "12" }# );
 
-    say $other_card->number;
+say $other_card->number;
+```
 
 And, of course, it would also be nice to go the other way around: to have a
 regular Moose class be able to spit out an Avro representation of its
 attributes:
 
-    #syntax: perl
-    package TarotCard;
+```perl
+package TarotCard;
 
-    use Moose;
+use Moose;
 
-    with 'Class::Avro::Role';
+with 'Class::Avro::Role';
 
-    has suit => (
-        isa => 'Str',
-        is => 'ro',
-    );
+has suit => (
+    isa => 'Str',
+    is => 'ro',
+);
 
-    has number => (
-        isa => 'Int',
-        is => 'ro',
-    );
+has number => (
+    isa => 'Int',
+    is => 'ro',
+);
 
-    # and then later
-    say TarotCard->avro_schema;
+# and then later
+say TarotCard->avro_schema;
 
-    my $card = TarotCard->new( suit => 'batons', number => 5 );
+my $card = TarotCard->new( suit => 'batons', number => 5 );
 
-    say $card->suit, ' ', $card->number;
+say $card->suit, ' ', $card->number;
+```
 
 
 Ultimately, we also want the Avro to and fro to be compatible, such that we
 could do full-Ouroboros and do:
 
-    #syntax: perl
-    # prints back the same schema, imported and exported
-    say Class::Avro->new( schema => <<'END_SCHEMA' )->avro_schema;
-    { 
-        "type": "record",
-        "name": "Dice",
-        "fields": [
-            { "name": "nbr_sides", "type": "int" },
-            { "name": "color", "type": "string" }
-        ]
-    }
-    END_SCHEMA
+```perl
+# prints back the same schema, imported and exported
+say Class::Avro->new( schema => <<'END_SCHEMA' )->avro_schema;
+{ 
+    "type": "record",
+    "name": "Dice",
+    "fields": [
+        { "name": "nbr_sides", "type": "int" },
+        { "name": "color", "type": "string" }
+    ]
+}
+END_SCHEMA
+```
 
 Sounds like a lot of stuff to do, isn't? But, as usual, the truth is not as
 bacchanal as one would fear, but rather quite spartan. But let me show you...

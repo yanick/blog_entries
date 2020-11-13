@@ -1,5 +1,4 @@
 ---
-title: perl-achievements, the return
 url: perl-achievements-ii
 format: Markdown
 created: 2012-02-02
@@ -15,6 +14,8 @@ tags:
     - Module::Pluggable
     - Data::Printer
 ---
+
+# perl-achievements, the return
 
 So there I was, leisurely perusing my twitter feed... Oh, [an entry by
 brian d foy](https://twitter.com/#!/briandfoy_perl/status/162974986565459968)? 
@@ -52,15 +53,17 @@ just a tad.
 That's easy. With `Perl::Achievements` comes the script 'perlachievements`. To
 prepare the playground, do
 
-    #syntax: bash
-    $ perlachievements init
+```bash
+$ perlachievements init
+```
 
 Which is going to create the directory `~/.perl-achievements`, where the
 persistent data used by the app is kept.  Once this is done, scanning a script
 or module is only a question of doing
 
-    #syntax: bash
-    $ perlachievements scan foo.pl Module.pm ...
+```bash
+$ perlachievements scan foo.pl Module.pm ...
+```
 
 
 If your code unlock an achievement, it'll be proudly be displayed on the
@@ -85,24 +88,25 @@ pretty much it. For example, a `WeekendWarrior` achievement could be
 implemented as
 
 
-    #syntax: perl
-    package Perl::Achievements::Achievement::WeekendWarrior;
+```perl
+package Perl::Achievements::Achievement::WeekendWarrior;
 
-    use Moose;
+use Moose;
 
-    with 'Perl::Achievements::Achievement';
+with 'Perl::Achievements::Achievement';
 
-    sub scan {
-        my $self = shift;
+sub scan {
+    my $self = shift;
 
-        my $wday = (localtime)[6];
+    my $wday = (localtime)[6];
 
-        return unless $wday == 0 or $wday == 6;
+    return unless $wday == 0 or $wday == 6;
 
-        $self->unlock("Was at the computer during the week-ends");
-    }
+    $self->unlock("Was at the computer during the week-ends");
+}
 
-    1;
+1;
+```
 
 
 

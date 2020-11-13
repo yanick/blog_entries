@@ -1,5 +1,4 @@
 ---
-title: A Quick Pas de Deux with Dancer
 url: pas-de-deux
 format: markdown
 created: 2012-01-25
@@ -8,6 +7,9 @@ tags:
     - Dancer
     - Dancer::Template::TemplateDeclare
 ---
+
+
+# A Quick Pas de Deux with Dancer
 
 This is going to be a short one, but potentially useful for anybody writing
 a Dancer template module, or just plain curious about [Dancer](cpan)'s guts. So here
@@ -38,22 +40,24 @@ keep your stash under the mattress" manoeuver.
 To do the stashing, we augment the method `apply_renderer()` to do our leger
 de main before any rendering shenanigan begin:
 
-    #syntax: perl
-    sub apply_renderer {
-        my ( $self, $view, $tokens ) = @_;
+```perl
+sub apply_renderer {
+    my ( $self, $view, $tokens ) = @_;
 
-        $tokens->{template} = $view;
+    $tokens->{template} = $view;
 
-        return $self->SUPER::apply_renderer( $view, $tokens );
-    }
+    return $self->SUPER::apply_renderer( $view, $tokens );
+}
+```
 
 Now that our template is safely tucked away, we can get busy and pull the wool
 over the object's eyes. This is made easy by the method `view()`, which is
 supposed to take in the template name and return the corresponding file.
 Instead, we'll make it return something else that will always exist:
 
-    #syntax: perl
-    sub view { $FindBin::Bin }
+```perl
+sub view { $FindBin::Bin }
+```
 
 I know what you're going to say. *$FindBin::Bin* is a directory, not a file.
 As luck would have it, the test in `T::D::Abstract` is `-e` and not `-f`, so
@@ -63,15 +67,16 @@ something else.
 And that's pretty much it. There is still the business of retrieving the
 stashed template in `render()`, but that's easily done:
 
-    #syntax: perl
-    sub render {
-        my ($self, $template, $tokens) = @_;
+```perl
+sub render {
+    my ($self, $template, $tokens) = @_;
 
-        # just in case render() is called directly
-        $template = $tokens->{template} || $template;
+    # just in case render() is called directly
+    $template = $tokens->{template} || $template;
 
-        return Template::Declare->show( $template => $tokens );
-    }
+    return Template::Declare->show( $template => $tokens );
+}
+```
 
 
 With that, everything is back to normal. Now, all I need is a little bit of

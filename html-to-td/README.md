@@ -32,42 +32,45 @@ cleaner. Follow me, I'll show you.
 First, nothing too fancy. We just create a stylesheet called
 `XML::XSS::Stylesheet::HTML2TD` that inherits from `XML::XSS`.
 
-<galuga_code code="Perl">part1.pl</galuga_code>
+`` part1.pl ``
 
 And then, we begin with the fun stuff.  For all HTML elements,
 we want to morph
 
-    <div class="[..]"> [..] </div>
+```
+<div class="[..]"> [..] </div>
+```
 
 into something like
 
-    div { attr { class => "[..]" }; outs "[..]"; }
+```
+div { attr { class => "[..]" }; outs "[..]"; }
+```
 
 Since we want all HTML elements to be transformed, we use the catchall element
 of the stylesheet:
 
-<galuga_code code="Perl">part2.pl</galuga_code>
+`` part2.pl ``
 
 For the text, we want to wrap it with calls to `outs`.  Except for text nodes
 that are nothing but empty spaces, which we'll gladly skip:
 
-<galuga_code code="Perl">part3.pl</galuga_code>
+`` part3.pl ``
 
 For the pièce de résistance, since we'll eventually ask `Perl::Tidy` to
 clean up our code, why not do it directly as we are transforming the document?
 
-<galuga_code code="Perl">part4.pl</galuga_code>
+`` part4.pl ``
 
 And we are done.  Now we can take a semi-badly formated HTML snippet like this one,
 
-<galuga_code code="xml">snippet.html</galuga_code>
+`` snippet.html ``
 
 
 and pass it through `XML::XSS` very new `xss` command-line utility to get
 the corresponding `Template::Declare` code:
 
-<galuga_code code="bash">final.bash</galuga_code>
-
+`` final.bash ``
 
 There is still a lot to do, but I'm rrrreally liking the direction `XML::XSS` is 
 taking. 

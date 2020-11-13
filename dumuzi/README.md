@@ -1,7 +1,4 @@
 ---
-title: System Monitoring on the Cheap with TAP and Smolder
-url: system-monitoring-on-the-cheap
-format: markdown
 created: 2010-10-28
 tags:
     - system monitoring
@@ -12,6 +9,7 @@ tags:
 ---
 
 
+# System Monitoring on the Cheap with TAP and Smolder
 
 Like any self-respecting geek, I have a small network at home.
 It's fairly well-behaved and stable, so I never really felt the burning
@@ -47,7 +45,7 @@ TODO tests as a warning level.
 For convenience, I'm creating a test function that I'll use to report
 the status of the checks:
 
-<galuga_code code="Perl">Dumuzi.pm</galuga_code>
+<SnippetFile src="Dumuzi.perl" />
 
 (If you are curious, the name
 [Dumuzi](http://www.pantheon.org/articles/d/dumuzi.html) comes from the Babylonian theme of my
@@ -56,17 +54,17 @@ local network.)
 With that, I can now write some test files.  Say, one for the partition of the
 local machine:
 
-<galuga_code code="Perl">partition-usage.t</galuga_code>
+<SnippetFile src="partition-usage.perl"/>
 
 and one that verifies that all my websites are alive:
 
-<galuga_code code="Perl">websites.t</galuga_code>
+<SnippetFile src="websites.perl"/>
 
 Assuming that our files are arranged in a pseudo-distribution
 fashion (utility module under `lib` and tests under `t`)
 we can now run all our tests with `prove`:
 
-<pre code="bash">
+```bash
 $ prove -v -m  -l t
 t/partition-usage.t .. 
 1..5
@@ -150,20 +148,20 @@ t/partition-usage.t (Wstat: 512 Tests: 6 Failed: 3)
   Parse errors: Bad plan.  You planned 5 tests but ran 6.
 Files=2, Tests=16,  3 wallclock secs ( 0.03 usr  0.01 sys +  0.36 cusr  0.06 csys =  0.46 CPU)
 Result: FAIL
-</pre>
+```
 
 ## Part II - Gathering and Broadcasting the Results
 
 For that part, I'm using [Smolder](cpan). I create a project for each machine on which I
 want to run tests, and use the following script in a cronjob:
 
-<pre code="bash">
+```bash
 cd /home/dumuzi
 prove -l -m -v --archive test_run.tar.gz
 smolder_smoke_signal --server enkidu:8085 --file test_run.tar.gz --project `hostname`
-</pre>
+```
 
 Et voilà. I can now be notified of the checks via email, RSS feed or from
 Smolder's web interface.
 
-<div align="center"><img src="__ENTRY_DIR__/dumuzi.png" /></div>
+<div align="center"><img src="dumuzi.png" /></div>

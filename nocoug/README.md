@@ -1,7 +1,4 @@
 ---
-title: NoCOUG SQL Challenge – thinking outside the padded box
-url: nocoug
-format: markdown
 created: 2011-02-19 
 original: the Pythian blog - http://www.pythian.com/news/20785/nocoug-sql-challenge-thinking-outside-the-padded-box
 tags:
@@ -10,6 +7,8 @@ tags:
     - NoCOUG
     - golf
 ---
+
+# NoCOUG SQL Challenge – thinking outside the padded box
 
 Seems that our [André Araujo][1] has already spilled the beans and 
 revealed [his solution][2] to the [second edition of the NoCOUG SQL
@@ -47,11 +46,11 @@ To be able to work with it, I’ve exported the riddle table into a space-delimi
 
 With the data in that format, I can now solve the riddle with:
 
-<pre code="Perl">
+```perl
 #!/usr/bin/perl -p
 s/ (\w+)/lc$&amp;/e;$k{$1}=$_}{/ /&amp;&amp;s/[A-Z]+/$k{$&amp;}/,$x[y---c]=$_
 for(%k)x%k;$_=pop@x;
-</pre>
+```
 
 While this script prints the secret message, it’s not very well formatted. If we want to be prettier, we can always do:
 

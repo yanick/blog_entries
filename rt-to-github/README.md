@@ -1,7 +1,4 @@
 ---
-title: Bandying tickets from RT to GitHub Issues
-url: rt-to-github 
-format: markdown
 created: 2011-07-17
 last_updated: 5 Mar 2013
 tags:
@@ -11,6 +8,8 @@ tags:
     - RT::Client::REST
     - Net::GitHub
 ---
+
+# Bandying tickets from RT to GitHub Issues
 
 > **Update:** An updated script for v3 of the GitHub API can be found in my
 > [environment
@@ -44,7 +43,7 @@ and [Net::GitHub](cpan), it's quite easy to export our tickets.
 
 First, we create our github and rt clients:
 
-<pre code="Perl">
+```perl
 use RT::Client::REST;
 use RT::Client::REST::Ticket;
 
@@ -71,14 +70,14 @@ $rt->login(
     username => $rt_user,
     password => $rt_password
 );
-</pre>
+```
 
 We don't want to migrate tickets over and over again, so we look
 at our github tickets, and see if they relate to rt tickets. 
 To keep things simple, I'll make sure that tickets coming from
 RT contain the ticker number in their title.
 
-<pre code="Perl">
+```perl
 # see which tickets we already have on the github side
 my @gh_issues =
   map { /\(rt(\d+)\)/ } 
@@ -86,11 +85,11 @@ my @gh_issues =
       @{ $gh->list('open') || [] };
 
 say join ' ', 'github issues:', @gh_issues;
-</pre>
+```
 
 After that, we query RT for all the active tickets, and try to export them:
 
-<pre code="Perl">
+```perl
 export_ticket( $_ ) for $rt->search(
     type  => 'ticket',
     query => qq{
@@ -99,43 +98,43 @@ export_ticket( $_ ) for $rt->search(
         ( Status = 'new' or Status = 'open' )
     },
 );
-</pre>
+```
 
 The export function is pretty simple. As mentioned before, we
 first check that the ticket doesn't already exist on the github
 side:
 
 
-<pre code="Perl">
+```perl
 sub export_ticket {
     my $id = shift;
 
     say "ticket $id";
 
     return say "already on github" if $id ~~ @gh_issues;
-</pre>
+```
 
 If it doesn't, we import the main ticket information, plus
 the description of the ticket (contained in its first
 transaction):
 
-<pre code="Perl">
-    # get the information from RT
-    my $ticket = RT::Client::REST::Ticket->new(
-        rt => $rt,
-        id => $id,
-    );
-    $ticket->retrieve;
+```perl
+# get the information from RT
+my $ticket = RT::Client::REST::Ticket->new(
+    rt => $rt,
+    id => $id,
+);
+$ticket->retrieve;
 
-    # we just want the first transaction, which
-    # has the original ticket description
-    my $desc = $ticket->transactions->get_iterator->()->content;
-</pre>
+# we just want the first transaction, which
+# has the original ticket description
+my $desc = $ticket->transactions->get_iterator->()->content;
+```
 
 Finally, we create the github issue with those pieces of 
 data:
 
-<pre code="Perl">
+```perl
     # create the github ticket
     my $gh_ticket = $gh->open( $ticket->subject . ' (rt' . $_ . ')',
         "https://rt.cpan.org/Ticket/Display.html?id=$_\n\n" . $desc );
@@ -143,9 +142,9 @@ data:
     # and assign it the label 'rt'
     $gh->add_label( $gh_ticket->{number} => 'rt', );
 }
-</pre>
+```
 
-The full script is available [here](__ENTRY_DIR__/rt-to-github.pl).
+The full script is available [here](__ENTRY__/rt-to-github.pl).
 
 And that's all there is to it. It's simple, but it gets the job
 [done](https://github.com/yanick/DBD-Oracle/issues).  

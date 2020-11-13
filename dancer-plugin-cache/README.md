@@ -1,7 +1,5 @@
 ---
-title: Writing a Dancer Plugin
 url: writing-a-dancer-plugin
-format: markdown
 created: 2011-03-27
 tags:
     - Perl
@@ -9,6 +7,8 @@ tags:
     - Dancer::Plugin::Cache
     - Dancer::Plugin::Memcached
 ---
+
+# Writing a Dancer Plugin
 
 Last week I was looking at what [Dancer](cpan) had to
 offer in term of cache plugins. I found
@@ -28,14 +28,15 @@ contained in he helper module
 To invoke them, you just need to 'use' `Dancer::Plugin` within your module --
 all the inheritance stuff is taken care of behind the curtain:
 
-    #syntax: perl
-    package Dancer::Plugin::Cache;
+```perl
+package Dancer::Plugin::Cache;
 
-    use strict;
-    use warnings;
+use strict;
+use warnings;
 
-    use Dancer ':syntax';
-    use Dancer::Plugin;
+use Dancer ':syntax';
+use Dancer::Plugin;
+```
 
 
 With this simple invocation, we have now at our
@@ -49,11 +50,12 @@ in the application's namespace when the plugin is used. For example, for providi
 a '`cache`' keyword returning the `CHI` instance of the application, what we
 need to do is:
 
-    #syntax: perl
-    register cache => sub {
-        state $cache = CHI->new(%{ plugin_setting() });
-        return $cache;
-    };
+```perl
+register cache => sub {
+    state $cache = CHI->new(%{ plugin_setting() });
+    return $cache;
+};
+```
 
 Which is not high magic, mind you; we're only providing a wrapper around 
 the underlaying cache object.
@@ -61,12 +63,13 @@ the underlaying cache object.
 The fun, however, doesn't have to end there. Such keywords can be used to
 inject some new route behaviors to the application as well:
 
-    #syntax: perl
-    register check_page_cache => sub {
-        before sub {
-            halt cache()->get(request->{path_info});
-        };  
-    };
+```perl
+register check_page_cache => sub {
+    before sub {
+        halt cache()->get(request->{path_info});
+    };  
+};
+```
 
 In this case, calling 'check_page_cache' in the application will 
 enable a check that, if available, will return the cached output of a route 
@@ -76,13 +79,14 @@ Also, since the calls to `register` are done at runtime, we can also
 indulge in the kind of fun that [Moose](cpan) allows and programmatically
 create routes:
 
-    #syntax: perl
-    # create a bunch of helper functions
-    for my $method ( qw/ set get clear compute / ) {
-        register 'cache_'.$method => sub {
-            return cache()->$method( @_ );
-        }
+```perl
+# create a bunch of helper functions
+for my $method ( qw/ set get clear compute / ) {
+    register 'cache_'.$method => sub {
+        return cache()->$method( @_ );
     }
+}
+```
 
 ### plugin_setting()
 
@@ -92,10 +96,12 @@ configuration hash related to the current plugin. For `Dancer::Plugin::Cache`,
 it'll return whatever is contained within `config->{plugins}{Cache}`, which in
 the YAML configuration file will be, e.g.:
 
-   plugins:
-    Cache:
-        driver: Memory
-        global: 1
+```yaml
+plugins:
+Cache:
+    driver: Memory
+    global: 1
+```
 
 ### register_plugin()
 
@@ -104,11 +110,12 @@ forth and register it with the application. There are no knobs or settings
 that we have to be aware of. It just needs to be there at the end of the 
 plugin module, and everything will be peachy.
 
-    #syntax: perl
-    register_plugin;
-    1;
+```perl
+register_plugin;
+1;
 
-    __END__
+__END__
+```
 
 ### Ready to Rock
 
@@ -116,46 +123,47 @@ And that's it, we are ready to use our plugin (see the source
 of [Dancer::Plugin::Cache](cpan) for the full working
 example):
 
-    #syntax: perl
-    package MyApp;
+```perl
+package MyApp;
 
-    use Dancer ':syntax';
-    use Dancer::Plugin::Cache;
+use Dancer ':syntax';
+use Dancer::Plugin::Cache;
 
-    # caching pages' response
-    check_page_cache;
+# caching pages' response
+check_page_cache;
 
-    # this page will be automatically cached
-    get '/cache_me' => sub {
-        cache_page template 'foo';
-    };
+# this page will be automatically cached
+get '/cache_me' => sub {
+    cache_page template 'foo';
+};
 
-    # but not this one
-    get '/uncached' => sub {
-        template 'bar';
-    };
+# but not this one
+get '/uncached' => sub {
+    template 'bar';
+};
 
-    # using our helper functions
+# using our helper functions
 
-    get '/clear' => sub {
-        cache_clear;
-    };
+get '/clear' => sub {
+    cache_clear;
+};
 
-    put '/stash' => sub {
-        cache_set secret_stash => request->body;
-    };
+put '/stash' => sub {
+    cache_set secret_stash => request->body;
+};
 
-    get '/stash' => sub {
-        return cache_get 'secret_stash';
-    };
+get '/stash' => sub {
+    return cache_get 'secret_stash';
+};
 
-    # using the cache directly
+# using the cache directly
 
-    get '/something' => sub {
-        my $thingy = cache->compute( 'thingy', sub { compute_thingy() } );
+get '/something' => sub {
+    my $thingy = cache->compute( 'thingy', sub { compute_thingy() } );
 
-        return template 'foo' => { thingy => $thingy };
-    };
+    return template 'foo' => { thingy => $thingy };
+};
+```
 
 
 A last, small detail that is good to know: the plugin must be 'use'd in

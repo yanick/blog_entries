@@ -1,7 +1,4 @@
 ---
-title: Guerilla Perl installations
-url: guerilla-perl-installations
-format: markdown
 created: 2011-01-30
 last_updated: 31 Jan 2011
 tags:
@@ -9,6 +6,8 @@ tags:
     - App::cpanminus
     - App::perlbrew
 ---
+
+# Guerilla Perl installations
 
 **EDIT:** [melo](http://www.simplicidade.org/notes/) pointed out that the 
 installation of `cpanminus` could be further simplified via 
@@ -49,12 +48,13 @@ system integrity and users' happiness.
 The path to self-sufficient brewing is incredibly easy.
 First, you have to download and install `perlbrew`:
 
-<pre code="plain">
+```
 $ curl -L http://xrl.us/perlbrewinstall | bash
 
 ## Download the latest perlbrew
 
 ## Installing
+
 The perlbrew is installed as:
 
     /home/che/perl5/perlbrew/bin/perlbrew
@@ -68,7 +68,8 @@ Next, if this is the first time you install perlbrew, run:
 And follow the instruction on screen.
 
 ## Done. (automatically removes downloaded /tmp/perlbrew)
-</pre>
+
+```
 
 That installed `perlbrew` under the `perl5` directory in your home. 
 That
@@ -84,7 +85,7 @@ Anyway, back to the installation. The next step is to tweak our environment
 to use the perls that will be provided by `perlbrew`. To do that, 
 we follow `perlbrew`'s instructions. First we do:
 
-<pre code="plain">
+```
 $ /home/che/perl5/perlbrew/bin/perlbrew init
 Perlbrew environment initiated, required directories are created under
 
@@ -108,13 +109,13 @@ For further instructions, simply run:
 The default help messages will popup and tell you what to do!
 
 Enjoy perlbrew at $HOME!!
-</pre>
+```
 
 And then we add
 
-<pre code="bash">
+```bash
 source /home/che/perl5/perlbrew/etc/bashrc
-</pre>
+```
 
 in our `~/.bashrc`.  You can look at the file if you are curious. It's not
 doing anything more nefarious than to tweak your `$PERL5LIB` and `$PATH` and a 
@@ -123,7 +124,7 @@ few other environment variables.
 With that, the `perlbrew` environment is ready and installed. Now let's populate it
 with a few perls. First, let's get the latest and greatest:
 
-<pre code="plain">
+```
 $ perlbrew install perl-5.12.3
 Attempting to load conf from /home/che/perl5/perlbrew/Conf.pm
 Fetching perl-5.12.3 as /home/che/perl5/perlbrew/dists/perl-5.12.3.tar.gz
@@ -136,12 +137,12 @@ This could take a while. You can run the following command on another shell to t
 Installed perl-5.12.3 as perl-5.12.3 successfully. Run the following command to switch to it.
 
   perlbrew switch perl-5.12.3
-</pre>
+```
 
 and, why not?, an older one, just in case we want to run our code against
 a version matching what we have in our production environment:
 
-<pre code="plain">
+```
 $ perlbrew install perl-5.10.1
 Attempting to load conf from /home/che/perl5/perlbrew/Conf.pm
 Fetching perl-5.10.1 as /home/che/perl5/perlbrew/dists/perl-5.10.1.tar.gz
@@ -149,7 +150,7 @@ Fetching perl-5.10.1 as /home/che/perl5/perlbrew/dists/perl-5.10.1.tar.gz
 Installed perl-5.10.1 as perl-5.10.1 successfully. Run the following command to switch to it.
 
   perlbrew switch perl-5.10.1
-</pre>
+```
 
 We'll stop here for the time being, but we could install every
 version of Perl of the last 10 years, and cackle like loons as we'd have thus built the
@@ -160,17 +161,17 @@ with different building arguments (with/without threads, for example).
 Anyway, for the time being, we have two local perls built, plus the 
 system-wide perl. We can see then by doing:
 
-<pre code="bash">
+```bash
 $ perlbrew list
   perl-5.10.1
   perl-5.12.3
 * /usr/bin/perl (5.10.1)
-</pre>
+```
 
 And switching to one of our home-cooked version is as simple as doing:
 
 
-<pre code="plain">
+```
 $ perlbrew switch perl-5.10.1
 $ which perl
 /home/che/perl5/perlbrew/perls/perl-5.10.1/bin/perl
@@ -184,14 +185,14 @@ $ perl -v
 
 This is perl 5, version 12, subversion 3 (v5.12.3) built for i686-linux
 [..]
-</pre>
+```
 
 Want to revert to the system perl for a moment? That's not too hard either:
 
 
-<pre code="bash">
+```bash
 $ perlbrew off
-</pre>
+```
 
 ## Spicing up the brew with CPAN spiffiness
 
@@ -207,16 +208,16 @@ simplicity.
 to install `cpanm`, we'll leverage our brand-new shiny `perlbrew`:
 
 
-<pre code="plain">
+```
 $ perlbrew install-cpanm
-</pre>
+```
 
 Done. No, seriously, we're done. `cpanm` can now be used to install all the modules 
 you want. If those modules have dependencies, they will automatically be
 followed and installed:
 
 
-<pre code="plain">
+```
 $ cpanm XML::LibXML
 --> Working on XML::LibXML
 Fetching http://search.cpan.org/CPAN/authors/id/P/PA/PAJAS/XML-LibXML-1.70.tar.gz ... OK
@@ -235,22 +236,22 @@ Building and testing XML-SAX-0.96 ... OK
 Successfully installed XML-SAX-0.96
 Building and testing XML-LibXML-1.70 ... OK
 Successfully installed XML-LibXML-1.70
-</pre>
+```
 
 `cpanm` can take a list of module as arguments, or can read them from STDIN,
 which means you can make a list of your favorite modules and, on any brand-new
 machine do
 
-<pre code="plain">
+```
 $ cpanm &lt; my_favorite_modules.txt
-</pre>
+```
 
 to get your full armory installed.  Or, for extra-hardcore bonus points, you
 could keep your list of favorite modules as a CPAN module and do
 
-<pre code="plain">
+```
 $ cpanm Task::BeLike::YANICK
-</pre>
+```
 
 But the point is, you now have the power to leverage the power of modern Perl,
 no matter where you are. Huzzah!

@@ -1,7 +1,4 @@
 ---
-title: NaNoWriMo Graph Web Application with Dancer
-url: ournowrimo
-format: markdown
 created: 2010-11-14
 tags:
     - Perl
@@ -10,8 +7,10 @@ tags:
     - AxKit
 ---
 
+#  NaNoWriMo Graph Web Application with Dancer
+
 <div style="float: right; margin: 5px;">
-<img src="__ENTRY_DIR__/so-you-think-you-can-dance-canada.jpg"
+<img src="__ENTRY__/so-you-think-you-can-dance-canada.jpg"
     alt="So You Think You Can Dance, Canada?" />
     <p>playing on the other channel: <i>Hellcatalyst</i></p>
 </div>
@@ -50,12 +49,12 @@ running, shall we?
 At the core, the word count of all participant
 is kept in a csv file looking like this:
 
-<pre code="plain">
+```
 2010-11-01,Andy,0
 2010-11-01,Bernadette,0
 2010-11-01,Claude,0
 2010-11-02,Bernadette,120
-</pre>
+```
 
 The graph is only going to be used for one month, so there's no need to be any
 fancier.  Not to mention that the csv format makes it very easy to edit badly entered counts when
@@ -73,9 +72,9 @@ Got it? Now, let's get crackin'.
 As with Catalyst, creating the skeleton of a new application in Dancer is incredibly
 complicated. First, you have to do
 
-<pre code="bash">
+```bash
 $ dancer -a ournowrimo
-</pre>
+```
 
 and then, uh, you're done.  Okay, so maybe it's not that complicated after
 all. :-)
@@ -84,20 +83,20 @@ My personal template system of choice these days is [Mason](cpan), so I
 also edited the configuration file and changed the default templating system for the app to use
 [Dancer::Template::Mason](cpan): 
 
-<pre lang="plain">
+```
 logger: "file"
 appname: "ournowrimo"
 template: mason
-</pre>
+```
 
 ## Adding the Actions
 
 By now, we have an application that is already in working order. It won't do
 anything, but if we were to launch it by running
 
-<pre code="bash">
+```bash
 $ ./ournowrimo.pl
-</pre>
+```
 
 it would do it just fine.
 
@@ -109,11 +108,11 @@ defined in `lib/ournowrimo.pm`.
 For the main page, we don't do any heavy processing, we just want to invoke
 a template:
 
-<pre code="perl">
+```perl
 get '/graph' => sub {
     template 'index', { wrimoers => get_wrimoers() };
 };
-</pre>
+```
 
 That's it. For the url `/graph`, Dancer will 
 render the template `views/index.mason`, passing
@@ -138,7 +137,7 @@ Dancer has a `to_json()` function that takes care of the
 JSON encapsulation. All that is left for us to do, really, is 
 to do the real data munging:
 
-<pre code="Perl">
+```perl
 get '/data' => sub {
     open my $fh, '&lt;', $count_file;
 
@@ -176,7 +175,7 @@ get '/data' => sub {
 
     to_json( \@json );
 };
-</pre>
+```
 
 For more serious AJAX interaction, there's also the
 [Dancer::Plugin::Ajax](cpan) module that adds
@@ -188,7 +187,7 @@ is just fine.
 For the entry of a new word count, we are taking in a form request with two
 parameters, *who* and *count*:
 
-<pre code="Perl">
+```perl
 get '/add' => sub {
     open my $fh, '>>', $count_file;
     say $fh join ',', DateTime->now, params->{who}, params->{count};
@@ -196,7 +195,7 @@ get '/add' => sub {
 
     redirect '/';
 };
-</pre>
+```
 
 Seriously, could things get any easier?
 
@@ -206,7 +205,7 @@ Since everything else resulted in a ridiculously small amount of code,
 I decided to add a feed to the application to let everybody know of 
 wordcount updates.  Surely that will require a lot more coding?
 
-<pre code="Perl">
+```perl
 get '/feed' => sub {
     content_type 'application/atom+xml';
 
@@ -215,7 +214,7 @@ get '/feed' => sub {
 
     return $feed->as_string;
 };
-</pre>
+```
 
 ... Seemingly not, it won't.
 
@@ -229,21 +228,21 @@ has the cruft of a decade in its configuration files,  so to find the right way
 to deploy for me was trickier than it should be.  But eventually I found
 something that worked for me.  I launched the app as a plack-backed fastcgi 
 
-<pre code="bash">
+```bash
 plackup -s FCGI --listen /tmp/ournowrimo.socket ournowrimo.pl
-</pre>
+```
 
 and configured Apache to treat it as an external fastcgi server
 
-<pre code="plain">
+```
 Alias /wrimo/ /tmp/ournowrimo.fcgi/
 FastCgiExternalServer /tmp/ournowrimo.fcgi -socket /tmp/ournowrimo.socket
-</pre>
+```
 
 ## The Result
 
 <div align="center">
-<img src="__ENTRY_DIR__/ournowrimo.png" alt="screenshot" />
+<img src="__ENTRY__/ournowrimo.png" alt="screenshot" />
 </div>
 
 ## Peek at the Code on Github

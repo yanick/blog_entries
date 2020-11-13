@@ -1,5 +1,4 @@
 ---
-title: Deploying Stuff With Git
 url: git-deployment
 format: markdown
 created: 2011-12-11
@@ -8,6 +7,8 @@ tags:
     - perl
     - Git::Repository
 ---
+
+# Deploying Stuff With Git
 
 Somebody at `$work` asked me how I use Git to deploy stuff, probably working
 under the false hypothesis that wisdom is in any way, shape or form affiliated

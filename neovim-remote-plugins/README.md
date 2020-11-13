@@ -52,21 +52,7 @@ and autocommands they provides, which is then saved in
 
 That file will look something like:
 
-```vim
-" node plugins
-call remote#host#RegisterPlugin('node', '/home/yanick/.config/nvim/rplugin/node/packageName.js', [
-    \ {'sync': v:null, 'name': 'SetPackageName', 'type': 'command', 'opts': {}},
-    \ ])
-call remote#host#RegisterPlugin('node', '/home/yanick/.config/nvim/rplugin/node/taskwarrior', [
-    \ {'sync': v:null, 'name': 'TaskShow', 'type': 'function', 'opts': {}},
-    \ ])
-
-
-" python3 plugins
-call remote#host#RegisterPlugin('python3', '/home/yanick/.config/nvim/plugged/deoplete.nvim/rplugin/python3/deoplete', [
-    \ {'sync': v:false, 'name': '_deoplete_init', 'opts': {}, 'type': 'function'},
-    \ ])
-```
+<SnippetFile src="file-4.vim" />
 
 The cool part is that thanks to that file, Neovim is aware of the available functions and commands, 
 but will only evaluate the plugins' code when they are invoked. 
@@ -119,58 +105,11 @@ in the Perl file `./lib/Foo/Bar.pm`.
 
 With `Neovim::RPC`, the plugin looks like 
 
-```perl
-
-package Neovim::RPC::Plugin::FileToPackageName;
-
-use 5.20.0;
-
-use strict;
-use warnings;
-
-use Neovim::RPC::Plugin;
-
-use Promises qw/ collect /;
-
-use experimental 'signatures';
-
-sub file_to_package_name {
-    shift
-        =~ s#^(.*/)?lib/##r
-        =~ s#^/##r
-        =~ s#/#::#rg
-        =~ s#\.p[ml]$##r;
-}
-
-sub shall_get_filename ($self) {
-    $self->api->vim_call_function( fname => 'expand', args => [ '%:p' ] );
-}
-
-subscribe file_to_package_name => rpcrequest 
-    sub($self,@) {
-        collect(
-            filename => $self->shall_get_filename,
-            line     => $self->api->vim_get_current_line,
-        )
-    },
-    sub ($self,$props) {
-        $self->api->vim_set_current_line(
-            $props->{line} =~ s/__PACKAGE__/
-                file_to_package_name($props->{filename})
-            /er
-        )
-    };
-
-```
+<SnippetFile src="file-3.perl" />
 
 And it needs the following glue in the neovim config:
 
-```vim
-function! FileToPackage()
-    call Nvimx_request( 'load_plugin', 'FileToPackageName' )
-    call Nvimx_request('file_to_package_name')
-endfunction
-```
+<SnippetFile src="file-2.vim" />
 
 It's... not bad. We request the filename and the current line's content
 from neovim (in the form of promises, because asynchronicity), munge the line 
@@ -180,31 +119,7 @@ will straight-up make you reach for the bottle.
 
 What does does the JavaScript version looks like? Like this:
 
-```javascript
-function expandPackage( line, filename ) {
-    let packageName = filename 
-        .replace( /^(.*\/)?lib\//, '' )
-        .replace( /^\//, '' )
-        .replace( /\//g, '::' )
-        .replace( /\.p[ml]$/, '' );
-
-    return line.replace( '__PACKAGE__', packageName );
-}
-
-const setPackageName = plugin => async () => {
-    let [ filename, line ] = await Promise.all([
-        plugin.nvim.callFunction( 'expand', [ '%:p' ] ),
-        plugin.nvim.getLine(),
-    ]);
-
-    await plugin.nvim.setLine( expandPackage(line,filename) );
-};
-
-module.exports = plugin => {
-    plugin.registerCommand( 'SetPackageName', setPackageName(plugin) );
-};
-```
-
+<SnippetFile src="file-1.javascript" />
 
 The regular expression leger-de-main isn't as crisp, but `setPackageName` is much more straightforward than 
 `file_to_package_name`, mostly thanks to the `await`s replacing the 
@@ -220,137 +135,12 @@ of the asynchronous conversation between the plugin and neovim
 increases. For this example, I'm revisiting the command `TW_show` from
 my [neovim-based Taskwarrior UI](http://techblog.babyl.ca/entry/tasknvimrrior). In Perl, it looks like:
 
-```perl
-
-subscribe tw_show => rpcrequest 
-    sub( $self, $event ) {
-        my $buffer_id;
-
-        $self->rpc->api->vim_get_current_buffer
-        ->then(sub{ $buffer_id = ord $_[0]->data })
-        ->then(sub{
-            my @tasks = $self->task->export( '+READY', $event->all_params );
-
-            my @things = 
-                map { $self->task_line($_) } 
-                sort { $b->{urgency}  - $a->{urgency} } 
-                @tasks;
-
-            s/\n/ /g for @things;
-
-            return @things;
-        })
-        ->then( sub{
-            $self->rpc->api->nvim_buf_set_lines( $buffer_id, 0, 1E6, 0, [ @_ ] );
-        })
-},
-        sub { $_[0]->rpc->api->vim_input( '1G' ); },
-        sub { $_[0]->rpc->api->vim_command( ':TableModeRealign' ); };
-
-sub task_line($self,$task) {
-    $task->{urgency} = sprintf "%03d", $task->{urgency};
-    $task->{tags} &&= join ' ', $task->{tags}->@*;
-
-    no warnings 'uninitialized';
-    if ( length $task->{project} > 15 ) {
-        $task->{project} = ( substr $task->{description}, 0, 12 ) . '...';
-    }
-
-    $task->{$_} = relative_time($task->{$_}) for qw/ due /; 
-    $task->{$_} = relative_time($task->{$_},-1) for qw/ modified /; 
-
-    no warnings;
-    return join '|', undef, 
-            $task->@{qw/ urgency priority due description project tags modified uuid /},
-            undef;
-}
-
-sub relative_time($date,$mult=1) {
-    state $now = DateTime->now;
-
-    return unless $date;
-
-    # fine, I'll calculate it like a savage
-
-    $date = DateTime::Format::ISO8601->parse_datetime($date)->epoch;
-
-    my $delta = int( $mult * ( $date - time ) / 60 / 60 / 24 );
-
-    return int($delta/365) . 'y' if abs($delta) > 365;
-    return int($delta/30) . 'm' if abs($delta) > 30;
-    return int($delta/7) . 'w' if abs($delta) > 7;
-    return $delta . 'd';
-}
-
-```
+<SnippetFile src="v2.perl" />
 
 The JavaScript version (with the declaration order reversed to ease the comparison with 
 the Perl version):
 
-```javascript
-module.exports = plugin => {
-    const _ = require('lodash');
-
-    plugin.tw = _.once( () => { 
-        const Taskwarrior = require( './taskwarrior').default;
-        return new Taskwarrior();
-    });
-
-    plugin.registerFunction( 'TaskShow', taskShow(plugin) );
-};
-
-const taskShow = plugin => async ( filter = [] ) => {
-
-    console.log( "filter: ", filter );
-
-    const fp = require('lodash/fp');
-
-    let tasks = await plugin.tw().export( filter ) 
-                |> fp.sortBy( 'data.urgency' )
-                |> fp.reverse 
-                |> fp.map( taskLine );
-
-    await replaceCurrentBuffer(plugin)(tasks);
-
-    await Promise.all([
-        plugin.nvim.input('1G'),
-        plugin.nvim.command(':TableModeRealign'),
-    ]);
-};
-
-const replaceCurrentBuffer = plugin => async ( lines ) => {
-    const buffer = await plugin.nvim.buffer;
-
-    await buffer.setLines(lines, {
-        start: 0, end: -1, strictIndexing: true,
-    });
-};
-
-function taskLine( {data} ) {
-    const _ = require('lodash');
-
-    data.urgency = parseInt(data.urgency);
-
-    if( data.tags ) data.tags = data.tags.join(' ');
-
-    if ( data.project && data.project.length > 15 ) {
-        data.project = _.truncate( data.project, 15 );
-    }
-
-    const moment = require('moment');
-
-    [ 'due', 'modified' ].filter( f => data[f] ).forEach( f => {
-        data[f] = moment(data[f]).toNow();
-    });
-
-    return '|' + [
-        'urgency', 'priority', 'due', 'description', 'project',
-        'tags', 'modified', 'uuid'
-    ].map( k => data[k] || ' ' ).join( '|' ).replace( /\n/g, ' ' );
-
-}
-
-```
+<SnippetFile src="v2.javascript" />
 
 I have to admit: I dig it. I dig it a lot.
 

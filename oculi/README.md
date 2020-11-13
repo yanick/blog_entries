@@ -1,11 +1,10 @@
 ---
-title: The Hills Have Multi-Faceted Eyes
-url: oculi
-format: markdown
 created: 2015-01-07
 tags:
     - Perl
 ---
+
+# The Hills Have Multi-Faceted Eyes
 
 As your typical, slightly OCD computer geek, there is
 only one thing more engrossing to me than statistics.
@@ -34,47 +33,7 @@ The main goal was to make
 writing those metric gathering modules as simple and free of overhead as
 possible. So for the printer check I ended up with
 
-```perl
-package App::Oculi::Metric::Printer::Ink;
-
-use Web::Query;
-
-use Moose;
-
-with 'App::Oculi::Metric';
-
-has printer => (
-    traits => [ 'App::Oculi::SeriesIdentifier' ],
-    isa => 'Str',
-    is => 'ro',
-    required => 1,
-);
-
-has host => (
-    is => 'ro',
-    lazy => 1,
-    default => sub {
-        my $self = shift;
-        $self->get_service( host => { resource => $self->printer } );
-    },
-);
-
-sub gather_stats {
-    my $self = shift;
-
-    my $url = sprintf "http://%s/general/status.html", $self->host;
-
-    my %stats;
-    wq($url)->find( 'img.tonerremain' )->each(sub{
-        no warnings;  # height = 88px so complains because not numerical
-        $stats{  $_->attr('alt') } =  $_->attr('height') / 50;
-    });
-
-    return \%stats;
-}
-
-1;
-```
+``ink.perl``
 
 Not terribly complex isn't? Basically, the metric module needs to specify
 the different attributes it really needs to know (here the printer name and
@@ -93,46 +52,7 @@ its magic? That we'll see in the next sections.
 
 The email backlog metric module is barely more complex:
 
-
-```perl
-package App::Oculi::Metric::Email::Backlog;
-
-use Moose;
-
-with 'App::Oculi::Metric';
-
-my $i = 0;
-has $_ => (
-    traits => [ qw/ App::Oculi::SeriesIdentifier / ],
-    isa => 'Str',
-    is => 'ro',
-    required => 1,
-    series_index => $i++,
-) for qw/ server user mailbox /;
-
-has imap => (
-    isa => 'Net::IMAP::Client',
-    is => 'ro',
-    lazy => 1,
-    default => sub {
-        my $self = shift;
-        $self->get_service( imap => {
-                server => $self->server,
-                user => $self->user,
-        });
-    },
-);
-
-sub gather_stats {
-    my $self = shift;
-
-    return {
-        emails => $self->imap->status( $self->mailbox )->{MESSAGES}
-    };
-}
-
-1;
-```
+<SnippetFile src="./backlog.perl" />
 
 The main difference is that now the series label has three components (the
 server name, the user and the mailbox), so we need to tell the
@@ -146,48 +66,7 @@ create it for us.
 That section title is a lie, really. For the role making the
 foundation of the metric modules is relatively benign.
 
-```perl
-package App::Oculi::Metric;
-
-use Moose::Role;
-
-has oculi => (
-    isa => 'App::Oculi',
-    is => 'ro',
-    required => 1,
-    handles => [ 'get_service' ],
-);
-
-has metric_name => (
-    isa => 'Str',
-    is => 'ro',
-    default => sub {
-        my $self = shift;
-
-        my ( $class ) = $self->meta->class_precedence_list;
-
-        $class =~ s/^App::Oculi::Metric:://;
-        $class =~ s/::/./g;
-
-        return $class;
-    },
-);
-
-sub series_label {
-    my $self = shift;
-
-    my %attrs = map { 
-        my $att = $self->meta->get_attribute($_);
-        $att->does('App::Oculi::SeriesIdentifier') ? ( $_ => $att->series_index ) : () 
-    } $self->meta->get_attribute_list;
-
-    my @attrs = sort { $attrs{$a} <=> $attrs{$b} } keys %attrs;
-
-    return join '.', map { lc } $self->metric_name, map { $self->$_ } @attrs;
-}
-
-1;
-```
+<SnippetFile src="./metric.perl" />
 
 There's a little meta introspection to figure out the series name, 
 we add access to a main `oculi` object, and that's it.
@@ -547,7 +426,7 @@ and we can now do whatever we want with it in Grafana
 (using [http_this](cpan:release/App-HTTPThis) if you don't even want to bother
 with Apache or Nginx).
 
-![screenshot](__ENTRY_DIR__/oculi.png)
+![screenshot](oculi.png)
 
 The prototype, as it stands at the moment, is available
 [on GitHub](gh:yanick/oculi). Enjoy!

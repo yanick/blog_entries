@@ -52,32 +52,34 @@ box and count the ways this new antlered wonder might be poised to rock your soc
 HTML view. Which can be used for the obvious, or for the magnificently weird: 
 
 
-    #syntax: perl
-    package ShowMethods;
+```perl
+package ShowMethods;
 
-    use Moose::Role;
-    use Template::Caribou;
-    use Template::Caribou::Tags::HTML qw/ :all /;
+use Moose::Role;
+use Template::Caribou;
+use Template::Caribou::Tags::HTML qw/ :all /;
 
-    with 'Template::Caribou';
+with 'Template::Caribou';
 
-    template methods => sub {
-        my $self = shift;
+template methods => sub {
+    my $self = shift;
 
-        ul {
-            li { $_  } for $self->meta->get_method_list;
-        }
-    };
+    ul {
+        li { $_  } for $self->meta->get_method_list;
+    }
+};
 
-    # then later on
-    use MyClass;
-    use Moose::Util qw/ apply_all_roles /;
+# then later on
+use MyClass;
+use Moose::Util qw/ apply_all_roles /;
 
-    my $thingy = MyClass->new;
+my $thingy = MyClass->new;
 
-    apply_all_roles( $thingy, 'ShowMethods' );
+apply_all_roles( $thingy, 'ShowMethods' );
 
-    print $thingy->render('methods');
+print $thingy->render('methods');
+
+```
 
 
 ## Way no. 2 - You Can Still Write Straight HTML If you Want To
@@ -88,20 +90,21 @@ want to pound raw HTML code to get you started, and clean up the (now working)
 mess afterward.  Or you want to import already existing HTML and convert it
 afterward, as time allows. Happily, Caribou allows that:
 
-    #syntax: perl
-    template page => sub {
-        print ::RAW <<'END';
-    <html>
-        <head> ... </head>
-        <body> ... </body>
-    </html>
-    END
-    };
+```perl
+template page => sub {
+    print ::RAW <<'END';
+<html>
+    <head> ... </head>
+    <body> ... </body>
+</html>
+END
+};
+```
 
 Granted, it looks silly, but paves the way for subsequent rewrites that might
 look like
 
-    #syntax: perl
+```perl
     template page => sub {
         html {
             print ::RAW <<'END';
@@ -110,39 +113,42 @@ look like
     END
         }
     };
+```
 
 then
 
-    #syntax: perl
-    template page => sub {
-        html {
-            show('head');
-            show('body');
-        }
-    };
+```perl
+template page => sub {
+    html {
+        show('head');
+        show('body');
+    }
+};
 
-    template head => sub { print <<'END';
-        <head> ... same ungodly mess as before, 
-            but encapsulated in its own template </head>
-    END
-    };
+template head => sub { print <<'END';
+    <head> ... same ungodly mess as before, 
+        but encapsulated in its own template </head>
+END
+};
+```
 
 and ultimately
 
-    #syntax: perl
-    template page => sub {
-        html {
-            show('head');
-            show('body');
-        }
-    };
+```perl
+template page => sub {
+    html {
+        show('head');
+        show('body');
+    }
+};
 
-    template head => sub {
-        head {
-            title { "finally all Cariboutized" };
-        }
-    };
+template head => sub {
+    head {
+        title { "finally all Cariboutized" };
+    }
+};
 
+```
 
 ## Way no. 3 - Templates Can Go In Their Own Files
 
@@ -150,36 +156,39 @@ Thanks to the `Template::Caribou::Files` role, templates for a class can be
 defined in separate files so that you don't end up with a gigantic class. 
 Using that pattern, a template class will look nice and clean:
 
-    #syntax: perl
-    package Greeter;
+```perl
+package Greeter;
 
-    use Moose;
-    use Template::Caribou;
+use Moose;
+use Template::Caribou;
 
-    with 'Template::Caribou';
+with 'Template::Caribou';
 
-    with 'Template::Caribou::Files' => {
-        dirs        => [ 'views/greeter' ],
-        auto_reload => 1,
-    };
+with 'Template::Caribou::Files' => {
+    dirs        => [ 'views/greeter' ],
+    auto_reload => 1,
+};
 
-    has name => (
-        is       => 'ro',
-        isa      => 'Str',
-        required => 1,
-    );
+has name => (
+    is       => 'ro',
+    isa      => 'Str',
+    required => 1,
+);
 
-    1;
+1;
+```
 
 and will be able to import `.bou` templates off the given directories, which
 will look like
 
-    #syntax: perl
-    #( $salutation = 'Howdie' )
-    
-    body {
-        h1 { join ' ', $salutation, $self->name };
-    };
+```perl
+#( $salutation = 'Howdie' )
+
+body {
+    h1 { join ' ', $salutation, $self->name };
+};
+
+```
 
 The `.bou` templates are generated via [Method::Signatures](cpan), so not
 only we don't  have to worry about shifting our `$self` but we can also be
@@ -192,16 +201,17 @@ option is set to true, the class will rescan all template directories before
 any new render, which is awesome for development. Right now, for example, in
 the [Dancer](cpan) component of Newsmill, I have the action:
 
-    #syntax: perl
-    get qr{/edition/(\d+)} => sub {
-        my( $nbr ) = splat;
-        my $issue = rset('Edition')->find( $nbr )
-            or return send_error "Issue '$nbr' not found", 404;
+```perl
+get qr{/edition/(\d+)} => sub {
+    my( $nbr ) = splat;
+    my $issue = rset('Edition')->find( $nbr )
+        or return send_error "Issue '$nbr' not found", 404;
 
         return Newsmill::View::Issue->new(
             issue => $issue
         )->render('page');
     };
+```
     
 Once that is there, I can fiddle with the `.bou` templates all I want without
 having to restart the application.
@@ -224,17 +234,19 @@ indentation of the code is always only a call to [Perl::Tidy](cpan) away.
 It also means that the indentation in the source doesn't reflect on the
 output. So the nicely indented 
 
-    #syntax: perl
-    html {
-        head {
-            title { "Hi" };
-        }
+```perl
+html {
+    head {
+        title { "Hi" };
     }
+}
+```
 
 will become the succinct
 
-    #syntax: xml
-    <html><head><title>Hi</title></head></html>
+```xml
+<html><head><title>Hi</title></head></html>
+```
 
 by default (with soon an option to pretty print it for debugging purposes).
 
@@ -243,67 +255,70 @@ by default (with soon an option to pretty print it for debugging purposes).
 This one is kinda of a given. But since all tags are just Perl functions, it's
 worth to point out that they therefore can be quite versatile.
 
-    #syntax: perl
-    # in page.bou
-    use Template::Caribou::Tags::HTML ':all';
+```perl
+# in page.bou
+use Template::Caribou::Tags::HTML ':all';
 
-    html {
-        body {
-            div { attr class => 'left_column';
-                show( 'widget' => $_ )
-                    for $self->all_widgets;
-            };
-
-            div { attr class => 'main';
-                print ::RAW $self->body;
-            };
+html {
+    body {
+        div { attr class => 'left_column';
+            show( 'widget' => $_ )
+                for $self->all_widgets;
         };
-    }
 
-    # in widget.bou
-    #( $widget )
-    div {
-        attr id    => $widget->id,
-             class => 'widget';
-        print ::RAW $widget->content;
-    }
+        div { attr class => 'main';
+            print ::RAW $self->body;
+        };
+    };
+}
+
+# in widget.bou
+#( $widget )
+div {
+    attr id    => $widget->id,
+            class => 'widget';
+    print ::RAW $widget->content;
+}
+```
 
 ## Way no. 7 - Semantic Tags
 
 Look back at the example above. Isn't it silly that we mean
 'the left column', and we have to write it 
 
-    #syntax: xml
-    <div class="left_column"> ... </div>
+```xml
+<div class="left_column"> ... </div>
+```
 
 ? Wouldn't be nicer to take care of the mechanics once, and then use the 
 high-level name forevermore, like so:
 
-    #syntax: perl
-    # in page.bou
-    use Template::Caribou::Tags::HTML ':all';
+```perl
+# in page.bou
+use Template::Caribou::Tags::HTML ':all';
 
-    # define my custom divs
-    use Template::Caribou::Tags
-        map { mytag => { -as => $_, class => $_ } }
-            qw/ left_column widget main /;
+# define my custom divs
+use Template::Caribou::Tags
+    map { mytag => { -as => $_, class => $_ } }
+        qw/ left_column widget main /;
 
-    html {
-        body {
-            left_column { 
-                show( 'widget' => $_ )
-                    for $self->all_widgets;
-            };
-
-            main { print ::RAW $self->body; };
+html {
+    body {
+        left_column { 
+            show( 'widget' => $_ )
+                for $self->all_widgets;
         };
-    }
 
-    # in widget.bou
-    #( $widget )
-    widget { attr id => $widget->id;
-        print ::RAW $widget->content;
-    }
+        main { print ::RAW $self->body; };
+    };
+}
+
+# in widget.bou
+#( $widget )
+widget { attr id => $widget->id;
+    print ::RAW $widget->content;
+}
+```
 
 ## Way no. 8 - Extended Tags Just For HTML
 
@@ -314,48 +329,52 @@ hip-deep in HTML, and optimizes in function of that. Are you sick and tired to
 look up what is the right `<link>` invocation for stylesheets? Well, I am, and
 so Caribou's bag of extended tags contains
 
-    #syntax: perl
-    css_include "/my.css";
+```perl
+css_include "/my.css";
+```
 
 which takes care of all the nitty-gritty details. The shortcuts 
 go from the simple, like
     
-    #syntax: perl
-    a { attr href => 'http://...'; "some link" }
+```perl
+a { attr href => 'http://...'; "some link" }
+```
 
 that can become
 
-    #syntax: perl
-    anchor 'http://...' => "some link";
+```perl
+anchor 'http://...' => "some link";
+```
 
 to the more... powerful. Like this:
 
-    #syntax: perl
-    head {
-        # yes, this will convert a LESS stylesheet into classic 
-        # CSS
-        less q[
-            #header {
-            h1 {
-                font-size: 26px;
-                font-weight: bold;
+```perl
+head {
+    # yes, this will convert a LESS stylesheet into classic 
+    # CSS
+    less q[
+        #header {
+        h1 {
+            font-size: 26px;
+            font-weight: bold;
+        }
+        p { font-size: 12px;
+            a { text-decoration: none;
+            &:hover { border-width: 1px }
             }
-            p { font-size: 12px;
-                a { text-decoration: none;
-                &:hover { border-width: 1px }
-                }
-            }
-            }
-        ];
-    };
-    body {
-        markdown q{
-    Because writing a paragraph using Markdown is
-    *much* easier on the eyes than using straight 
-    HTML.  
-    };
-    };
+        }
+        }
+    ];
+};
+body {
+    markdown q{
+Because writing a paragraph using Markdown is
+*much* easier on the eyes than using straight 
+HTML.  
+};
+};
 
+```
 
 ## Way no. 9 - It's Pretty Easy To Create Tag Libraries For Anything
 
@@ -363,25 +382,27 @@ Case in point. Newsmill is built with
 [Bootstrap](http://twitter.github.com/bootstrap). With basic tags, I could do
 things like
 
-    #syntax: perl
-    div { attr class => 'row-fluid'; 
-        div { attr class => 'span8 offset2";
-            ...;
-        };
-    }
+```perl
+div { attr class => 'row-fluid'; 
+    div { attr class => 'span8 offset2";
+        ...;
+    };
+}
+```
 
 But it's much more legible if we go one level up the semantic ladder:
 
-    #syntax: perl
-    use Template::Caribou::Tags::Bootstrap 
-        row  => { -as => 'body_row', fluid => 1 },
-        span => { -as => 'body_span', offset => 2, span => 8 };
+```perl
+use Template::Caribou::Tags::Bootstrap 
+    row  => { -as => 'body_row', fluid => 1 },
+    span => { -as => 'body_span', offset => 2, span => 8 };
 
     body_row {
         body_span {
             ...;
         };
     }
+```
 
 ## What Lies Ahead
 

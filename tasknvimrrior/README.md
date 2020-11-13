@@ -41,19 +41,23 @@ module.
     $ cpanm Neovim-RPC-Plugin-Task
 
 Then you install both the vim glue for the plugin and the TableMode vim plugin
-on the neovim side.  If you are using C<Plugged> as your plugin manager, you
+on the neovim side.  If you are using `Plugged` as your plugin manager, you
 can do it by dropping the following in yout `init.vim`:
 
-    Plug 'yanick/Neovim-RPC-Plugin-Taskwarrior'
-    Plug 'dhruvasagar/vim-table-mode', {
-        \ 'on': [ 'TableModeEnable' ]
-    \ }
+```vim
+Plug 'yanick/Neovim-RPC-Plugin-Taskwarrior'
+Plug 'dhruvasagar/vim-table-mode', {
+    \ 'on': [ 'TableModeEnable' ]
+\ }
+```
 
 
 And then, in theory, you're set. To invoke the UI right off the bat, you can
 do
 
-    $ nvim -c 'call Task()`
+```bash
+$ nvim -c 'call Task()`
+```
 
 and magic will happen.
 

@@ -1,5 +1,4 @@
 ---
-title: SnipMate Cheatsheets Generator
 url: snipmate-cheatsheets
 format: markdown
 created: 2012-04-17
@@ -9,6 +8,8 @@ tags:
     - vim
     - snipmate
 ---
+
+# SnipMate Cheatsheets Generator
 
 Although 
 [SnipMate](http://www.vim.org/scripts/script.php?script_id=2540) is a powerful
@@ -27,7 +28,7 @@ Bottom-line: there is now the files `snipmate_cheatsheet.pl` and
 repo](https://github.com/yanick/Template-Caribou). They can be used straight
 from the repo checkout as follow:
 
-    #syntax: bash
+```bash
     # create one cheatsheet
     $ perl -Ilib -Iexamples/lib \
         examples/snipmate_cheatsheet.pl ~/.vim/snippets/perl.snippets
@@ -36,9 +37,10 @@ from the repo checkout as follow:
     $ mkdir cheatsheets
     $ cd cheatsheets
     $ perl -I../lib -I../examples/lib ../examples/snipmate_index.pl
+```
 
 And the result they should give you should be just like
-[that](__ENTRY_DIR__/index.html).
+[that](index.html).
 
 If all you care about is the final product, you can already stop reading, hurry to
 go clone my repo and run the advertised scripts to generate your very own
@@ -54,7 +56,7 @@ that should make the writing of tags a little easier.
 In that regard, the most notable new feature is the ability to generate custom
 tags per-template. Because while
 
-    #syntax: perl
+```perl
     div { attr class => 'snippet';
         div { attr class => 'header';
             div { attr class => 'keyword'; 
@@ -65,21 +67,23 @@ tags per-template. Because while
             };
         };
     };
+```
 
 is already okay, 
 
-    #syntax: perl
+```perl
     div_snippet {
         div_header { 
             div_keyword { $label; };
             div_comment { $comment; };
         };
     };
+```
 
 would be awesome. And now it's totally possible by creating those special tags with
 `Template::Caribou::Tags`:
 
-    #syntax: perl
+```perl
     use Template::Caribou::Tags
       mytag => { 
         -as => 'span_placeholder', class => 'placeholder', tag => 'span' 
@@ -87,23 +91,24 @@ would be awesome. And now it's totally possible by creating those special tags w
           # if 'tag' is not given, defaults to 'div'
       mytag => { -as => 'div_snippet', class => 'snippet' },
       ...
+```
  
 Along the same lines, I've also introduced some shortcut tag functions, `css`
 and `anchor` as part
 of the collection provided by `Template::Caribou::Tags::HTML`:
 
-    #syntax: perl
+```perl
     css <<'END_CSS';
         body { color: magenta; }
     END_CSS
 
     anchor 'http://foo.com', 'a link';
     anchor 'http://foo.com', sub { 'a ' . bold { 'link' } };
-
+```
 
 Nothing earth-shattering, as they are strictly equivalent to
 
-    #syntax: perl
+```perl
     style {
         attr type => 'text/css';
         "body { color: magenta; }";
@@ -118,6 +123,7 @@ Nothing earth-shattering, as they are strictly equivalent to
         attr href => 'http://foo.com';
         'a ' . bold { 'link' };
     }
+```
 
 
 But I think it's fair to say that they provide comfortable shorthands for their
@@ -126,12 +132,13 @@ most common uses.
 And, finally, although I won't use it directly in this case, tag attributes can
 now be queried and appended to:
 
-    #syntax: perl
+```perl
     div {
         ... # lotsa stuff
 
         attr '+class' => 'important' if attr('id') eq 'TheOne';
     }
+```
 
 
 ## Cheatsheet Template
@@ -140,7 +147,7 @@ Enough shameless display of mechanics. Now, let's put all those toys together to
 cheatsheet, shall we? First, package declaration and import of all important
 stuff:
 
-    #syntax: perl
+```perl
     package SnipMate::Snippets;
 
     use 5.14.0;
@@ -168,7 +175,7 @@ stuff:
         ;
 
     with 'Template::Caribou';
-
+```
 
 Notice that I just created the custom tags `div_comment`, `div_code`, etc,
 on-the-fly. And if you catch yourself thinking that it would be a good idea to
@@ -179,7 +186,7 @@ there yet... Dark gods provide, it should be there for the next iteration though
 Once done with the preamble, we define a couple of attributes that are going
 to hold the snippet information:
 
-    #syntax: perl
+```perl
     has snippet_file => (
         is => 'ro',
         isa => 'Path::Class::File',
@@ -192,6 +199,7 @@ to hold the snippet information:
         lazy => 1,
         builder => '_build_snippets',
     );
+```
 
 Next comes the builder `_build_snippets`, where we parse the snippets file.
 It's not the most elegant parsing ever done, but it's serviceable. And it
@@ -199,7 +207,7 @@ comes with a bonus: comment lines with two '#' are seen as being section
 names, useful for peeps like me who want to know which snippets are for
 general Perl stuff, for Catalyst, for Dancer, etc.
 
-    #syntax: perl
+```perl
     method _build_snippets {
         my @lines = $self->snippet_file->slurp;
 
@@ -241,13 +249,13 @@ general Perl stuff, for Catalyst, for Dancer, etc.
         return \@all_snippets;
 
     }
-
+```
 
 And after this, it's templates all the way down. We first have the top-level
 template, the webpage
 itself:
 
-    #syntax: perl
+```perl
     template webpage => method {
         html {
             head { 
@@ -261,20 +269,22 @@ itself:
             };
         }
     };
+```
 
 Then the individual sections:
 
-    #syntax: perl
+```perl
     template section => method( $title,@snippets ) {
 
         h2 { $title } if $title;
 
         show( 'snippet' => @$_ ) for @snippets;
     };
+```
 
 Which are made of snippets:
 
-    #syntax: perl
+```perl
     template snippet => method ( $label, $comment, $code ) {
         div_snippet {
 
@@ -297,11 +307,12 @@ Which are made of snippets:
             };
         }
     };
+```
 
 
 And the last touch, the style sheet:
 
-    #syntax: perl
+```perl
     template style => sub {
         css <<'END_CSS';
 
@@ -361,6 +372,7 @@ And the last touch, the style sheet:
     END_CSS
 
     };
+```
 
 Incidentally, yes, it took me almost as much time figuring out how to use
 CSS3's columns with Firefox than it took me to implement the rest.  The Web is
@@ -370,7 +382,7 @@ For the index generator, it's
 all of the same, only more simple still:
 
 
-    #syntax: perl
+```perl
     package SnipMate::Index;
 
     use 5.14.0;
@@ -436,6 +448,7 @@ all of the same, only more simple still:
     __PACKAGE__->meta->make_immutable;
 
     1;
+```
 
 
 And that's all there is to it. Nifty, isn't? 

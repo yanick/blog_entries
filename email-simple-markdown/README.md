@@ -1,6 +1,5 @@
 ---
 url: email-simple-markdown
-format: markdown
 created: 2012-05-16
 tags:
     - Perl
@@ -22,31 +21,32 @@ bodies (because, after all, it's meant to be simple), so it cannot help me
 there.  *Email::MIME*, though, is perfectly up for the job:
 
 
-    #syntax: perl
-    use Email::MIME;
+```perl
+use Email::MIME;
 
-    my $email = Email::MIME->create(
-        attributes => {
-            content_type => 'multipart/alternative',
-        },
-        header_str => [
-            From    => 'me@here.com',
-            To      => 'you@there.com',
-            Subject => q{Here's a multipart email},
-        ],
-        parts => [
-            Email::MIME->create(
-                attributes => { content_type => 'text/plain' },
-                body => 'Howdie',
-            ),
-            Email::MIME->create(
-                attributes => { content_type => 'text/html' },
-                body => '<b>Howdie</b>',
-            )
-        ],
-    );
+my $email = Email::MIME->create(
+    attributes => {
+        content_type => 'multipart/alternative',
+    },
+    header_str => [
+        From    => 'me@here.com',
+        To      => 'you@there.com',
+        Subject => q{Here's a multipart email},
+    ],
+    parts => [
+        Email::MIME->create(
+            attributes => { content_type => 'text/plain' },
+            body => 'Howdie',
+        ),
+        Email::MIME->create(
+            attributes => { content_type => 'text/html' },
+            body => '<b>Howdie</b>',
+        )
+    ],
+);
 
-    say $email->as_string;
+say $email->as_string;
+```
 
 It's not atrocious, but it's not lightweight either. And there is the problem
 that one has to make the effort to keep both bodies in sync. For simple
@@ -64,19 +64,19 @@ It inherits from
 an original pure-text body via the goodness of [Text::MultiMarkdown](cpan).
 Nothing arcane, but with it the code above can now be reduced to:
 
-    #syntax: perl
-    use Email::Simple::Markdown;
+```perl
+use Email::Simple::Markdown;
 
-    my $email = Email::Simple::Markdown->create(
-        header => [
-            From    => 'me@here.com',
-            To      => 'you@there.com',
-            Subject => q{Here's a multipart email},
-        ],
-        body => '**Howdie**',
-    );
+my $email = Email::Simple::Markdown->create(
+    header => [
+        From    => 'me@here.com',
+        To      => 'you@there.com',
+        Subject => q{Here's a multipart email},
+    ],
+    body => '**Howdie**',
+);
 
-    say $email->as_string;
-
+say $email->as_string;
+```
 
 which, I daresay, is much easier on the eyes.

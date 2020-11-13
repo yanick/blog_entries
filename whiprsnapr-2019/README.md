@@ -7,7 +7,7 @@ tags:
 # Taking a stroll up Ballmer's Peak
 
 <div style="float: right; margin-left: 1em; width: 300px">
-<img src="./hero.jpg" width="300" style="border-radius: 10px"/>
+<img src="__ENTRY__/hero.jpg" width="300" style="border-radius: 10px"/>
 <div style="font-size: var(--font-scale-3)">
 <i>the perfect evening counter-balance to that nice, hot mug of<i> shut the f* up <i>you poured yourself earlier in the morning</i>
 </div>
@@ -165,7 +165,7 @@ be fairly easy to tailor-suit the list according to the visitor's Untappd
 profile.
 
 <div style="text-align: center; margin-bottom: 2em;">
-<img src="./app.png" width="80%" />
+<img src="__ENTRY__/app.png" width="80%" />
 </div>
 
 
@@ -173,20 +173,20 @@ The second page is a gleeful dump of graphs. Like, if there was any doubt the
 crew like their IPAs and stouts, it's now scientifically proven:
 
 <div style="text-align: center; margin-bottom: 2em;">
-<img src="./styles.png" width="80%" />
+<img src="__ENTRY__/styles.png" width="80%" />
 </div>
 
 Which beers won the popularity contest? Wonder no more:
 
 <div style="text-align: center; margin-bottom: 2em;">
-<img src="./ratings.png" width="80%" />
+<img src="__ENTRY__/ratings.png" width="80%" />
 </div>
 
 Okay. Rating is one thing, but do people actually put their mouth where their
 beer belly is?
 
 <div style="text-align: center; margin-bottom: 2em;">
-<img src="./rates-checkins.png" width="80%" />
+<img src="__ENTRY__/rates-checkins.png" width="80%" />
 </div>
 
 (that ratings vs check-ins  graph is in need of a little grooming. The beers scoring a zero (unthinkable!) are probably some that didn't get any rating. And the two
@@ -196,7 +196,7 @@ edition but a regular that appeared during the year, and the Jollypop! that look
 And just for giggles: how about a plot of abv versus ibu?
 
 <div style="text-align: center; margin-bottom: 2em;">
-<img src="./abv.png" width="80%" />
+<img src="__ENTRY__/abv.png" width="80%" />
 </div>
 
 

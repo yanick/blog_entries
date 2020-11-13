@@ -43,11 +43,63 @@ so we'll use [Dancer](cpan). The code required
 to get this puppy off the ground is, as one might suspect, minimal. The 
 script itself looks like this:
 
-<galuga_code code="Perl">chorus_1.pl</galuga_code>
+```perl
+
+package chorus;
+
+use 5.10.0;
+
+use Dancer ':syntax';
+
+use Text::Markdown qw/ markdown /;
+use File::Slurp qw/ slurp /;
+
+my $prez;
+load_presentation( pop );
+
+get '/' => sub {
+    template 'index' => { 
+        presentation => $prez,
+        prez_url => request->base,
+        base_url => request->base->opaque,
+    };
+};
+
+sub load_presentation {
+    $prez = "<div class='slide'>". markdown( scalar slurp shift ) . "</div>";
+    my $heads;
+    $prez =~ s#(?=<h1>)# $heads++ ? "</div><div class='slide'>" : "" #eg;
+}
+
+dance;
+```
 
 And the HTML template (I'm using [Dancer::View::Mason](cpan)) like that:
 
-<galuga_code code="xml">index_1.html</galuga_code>
+```html
+<%args>
+$presentation
+</%args>
+
+<html>
+<head>
+    <script type="text/javascript" src="/slippy/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/slippy/jquery.history.js"></script>
+    <script type="text/javascript" src="/slippy/slippy-0.9.0.js"></script>
+
+    <!-- Slippy structural styles -->
+    <link type="text/css" rel="stylesheet" href="/slippy/slippy-0.9.0.css"/>
+    <!-- Slippy theme -->
+    <link type="text/css" rel="stylesheet" href="/slippy/slippy-pure.css"/>
+</head>
+<body>
+<% $presentation %>
+<script>
+$('.slide').slippy();
+</script>
+</body>
+</html>
+```
 
 Now all I have to do to get my slides up and running is
 
@@ -63,7 +115,21 @@ I'm passing the app's url to the template (although I could just as well
 use JavaScript's `document.location`) and inject the information to the 
 output:
 
-<galuga_code code="xml">index_2.html</galuga_code>
+```html
+<%args>
+$presentation
+$prez_url => ''
+$base_url
+</%args>
+
+<!-- and somewhere in the <body> -->
+
+<div id="chorus_terminal">
+    <div id="chorus_title"><b>Chorus</b> 
+        <span id="chorus_url"><% $prez_url %></span>
+    </div>
+</div>
+```
 
 With this, the url of `chorus` is automatically displayed and anybody
 in the audience can access the slide deck.
@@ -90,7 +156,39 @@ easy.
 Dancer-wise, what has to be done is to add `Web::Hippie` to the application,
 and basically add two routes:
 
-<galuga_code code="Perl">routes.pl</galuga_code>
+```perl
+use AnyMQ;
+
+my $bus = AnyMQ->new;
+my $topic = $bus->topic('slides');
+
+    # not the safest password ever,
+    # but it's not like we need anything stronger either
+my $token = join '', shuffle 'a'..'z';
+
+$chorus::first_connect = 1;
+
+# Web::Hippie routes
+get '/new_listener' => sub {
+    request->env->{'hippie.listener'}->subscribe($topic);
+};
+get '/message' => sub {
+    my $msg = request->env->{'hippie.message'};
+
+    if ( $chorus::first_connect ) {
+        $chorus::first_connect = 0;
+        $topic->publish( { master => $token } );
+        return;
+    }
+
+    # only the leader send stuff
+    return unless $msg->{master} eq $token;
+
+    delete $msg->{master};
+
+    $topic->publish( $msg );
+};
+```
 
 Mind you, there are a few more details involved, which you can see
 at the [GitHub repo of chorus][8], but not much. 
@@ -99,8 +197,73 @@ at the [GitHub repo of chorus][8], but not much.
 
 On the HTML template side, the added code is equally succint:
 
-<galuga_code code="xml">index_3.html</galuga_code>
+```html
+<div id="chorus_terminal">
+    <div id="chorus_title"><b>Chorus</b>
+        <span id="chorus_url"><% $prez_url %></span>
+    </div>
 
+    <div class="choirboy">Joined the chorus
+        <div>MC is at slide <span id="mc_slide">unknown</span></div>
+        <div>auto-follow: 
+            <input id="chorus_autofollow" type="checkbox" checked="checked" />
+        </div>
+    </div>
+    
+    <div class="mc">Lead singer</div>
+</div>
+
+<script>
+var ws_path = "ws:<% $base_url %>_hippie/ws";
+var socket = new WebSocket( ws_path );
+
+var master;
+
+socket.onopen = function(){
+    send_msg( "connected" );
+};
+
+socket.onmessage = function(e){
+    if ( master ) { return; }  // masters don't listen to ANYBODY!
+
+    var data = JSON.parse(e.data);
+
+    $('#chorus_terminal .choirboy').show();
+
+    if ( data.master ) {
+        master = data.master;
+        $('#chorus_terminal .choirboy').hide();
+        $('#chorus_terminal .mc').show();
+        return;
+    }
+
+    if ( data.slide != undefined ) {
+        var s = data.slide+1;
+        $('#mc_slide').html( 
+            "<a href='<% $prez_url %>#" + s +  "'>" + s + "</a>"
+        );
+
+        if ( $('#chorus_autofollow').attr('checked') ) {
+            $.fn.slippy_show_slide( data.slide );
+        }
+    }
+};
+
+function send_msg(message) {
+    socket.send(JSON.stringify({msg: message}));
+}
+
+$('.slide').bind('setSlide', function() {
+    if ( master ) {
+        socket.send(JSON.stringify({
+            "master": master,
+            "slide": $().slippy_current_slide_index()
+        }));
+    }
+} );
+</script>
+
+```
 Tweaks also had to be brought to `Slippy` to make,
 for example, the current slide number available. But only minor
 stuff.
@@ -108,13 +271,13 @@ stuff.
 And we are done with the mechanics. With what we did, all members of the
 audience can access the slide deck at will:
 
-![Chorus, no websocket](__ENTRY_DIR__/chorus1.png)
+![Chorus, no websocket](__ENTRY__/chorus1.png)
 
 And those with
 a websocket-enabled browser (right now, that'd be *Google Chrome*
 and *Firefox 4*) are given a little bit more toys to play with:
 
-![Chorus, with websocket](__ENTRY_DIR__/chorus2.png)
+![Chorus, with websocket](__ENTRY__/chorus2.png)
 
 
 Just remember: for the websockets to work, you have to use *Twiggy* 

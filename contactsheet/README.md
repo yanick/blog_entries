@@ -1,12 +1,13 @@
 ---
-title: A contact sheet for your website
 url: contact-sheet
-format: markdown
 created: 2012-03-03
 tags:
     - Perl
     - Dancer
 ---
+
+# A contact sheet for your website
+
 I'm in the throes of a major redesign of the site of my comic book, 
 [Académie des Chasseurs de Primes](http://academiedeschasseursdeprimes.ca).
 Like any of those redesign, it involves a lot of CSS whack-a-mole. Fine-tuning
@@ -31,12 +32,13 @@ feed Google.  Sweet.
 
 Using [WWW::Mechanize](cpan), it's a breeze. 
 
-    #syntax: perl
-    my $mech = Test::WWW::Mechanize->new;
+```perl
+my $mech = Test::WWW::Mechanize->new;
 
-    $mech->get_ok( "$root_url/sitemap" );
+$mech->get_ok( "$root_url/sitemap" );
 
-    my @links = $mech->links;
+my @links = $mech->links;
+```
 
 
 In the code snippet, I actually went a step further 
@@ -50,26 +52,27 @@ point in simply being awesome if we can be mega-awesome, right?
 For this part, we'll use [Selenium](http://seleniumhq.org/) via
 [WWW::Selenium](cpan).
 
-    #syntax: perl
-    my $sel = Test::WWW::Selenium->new( 
-        host => "localhost",
-        port => 4444,
-        browser => "*firefox",
-        browser_url => $root_url,
-    );
+```perl
+my $sel = Test::WWW::Selenium->new( 
+    host => "localhost",
+    port => 4444,
+    browser => "*firefox",
+    browser_url => $root_url,
+);
 
-    $sel->start;
+$sel->start;
 
-    for my $url ( map { $_->url } @links ) {
-        $sel->open_ok( $url ) or next;
+for my $url ( map { $_->url } @links ) {
+    $sel->open_ok( $url ) or next;
 
-        ( my $screenshot_file = $url . ".png" ) =~ s#/#_#g;
+    ( my $screenshot_file = $url . ".png" ) =~ s#/#_#g;
 
-        # Selenium wants an absolute path
-        $sel->capture_entire_page_screenshot( file( $screenshot_file )->absolute );
-    }
+    # Selenium wants an absolute path
+    $sel->capture_entire_page_screenshot( file( $screenshot_file )->absolute );
+}
 
-    $sel->stop;
+$sel->stop;
+```
 
 Yes, in those few lines, we visited all of our website's pages and generated a
 screenshot of every single one of them. Automation. I love it.
@@ -79,19 +82,20 @@ screenshot of every single one of them. Automation. I love it.
 For this I went with the good old [GD](cpan) module. We take the pictures,
 scale them down to a width of 300 pixels and save the result in a second file.
 
-    #syntax: perl
-    my $screenshot = GD::Image->newFromPng( $screenshot_file );
-    my ( $width, $height ) = $screenshot->getBounds;
-    my $scale = 300 / $width;
+```perl
+my $screenshot = GD::Image->newFromPng( $screenshot_file );
+my ( $width, $height ) = $screenshot->getBounds;
+my $scale = 300 / $width;
 
-    my $thumbnail = GD::Image->new( 300, $scale * $height );
-    $thumbnail->copyResampled($screenshot, ( 0 ) x 4, 
-        300, $scale * $height,
-        $width, $height, 
-    );
+my $thumbnail = GD::Image->new( 300, $scale * $height );
+$thumbnail->copyResampled($screenshot, ( 0 ) x 4, 
+    300, $scale * $height,
+    $width, $height, 
+);
 
-    ( my $thumbfile  = $screenshot_file ) =~ s/(?=\.png)/_thumbnail/;
-    print { file( $thumbfile )->openw } $thumbnail->png;
+( my $thumbfile  = $screenshot_file ) =~ s/(?=\.png)/_thumbnail/;
+print { file( $thumbfile )->openw } $thumbnail->png;
+```
 
 ## Step 5. Put the contact sheet together
 
@@ -100,8 +104,8 @@ generate the contact sheet. As *Caribou* is a work in progress, the following
 will not work out-of-the-box for you, but just for giggles, here's what the
 template looks like:
 
-    #syntax: perl
-    package ContactSheet;
+```perl
+package ContactSheet;
 
     use 5.10.0;
 
@@ -169,6 +173,7 @@ template looks like:
             };
         }
     };
+```
 
 
 ## Step 6. Putting it together
@@ -176,8 +181,8 @@ template looks like:
 And we are done. We assemble the different parts together in the script
 '`website_contactsheet.pl`':
 
-    #syntax: perl
-    #!/usr/bin/env perl 
+```perl
+#!/usr/bin/env perl 
 
     use 5.10.0;
 
@@ -247,32 +252,35 @@ And we are done. We assemble the different parts together in the script
         $template->render('main');
 
     done_testing;
+```
 
 Run it:
 
-    #syntax: bash
-    $ ./website_contactsheet.pl http://enkidu:3000
-    ok 1 - GET http://enkidu:3000/sitemap
-    ok 2 - open, /
-    ok 3 - open, /albums
-    ok 4 - open, /feeds/acp.atom
-    ok 5 - open, /magasin
-    ok 6 - open, /magasin/panier
-    ok 7 - open, /magasin/paypal/confirmation
-    ok 8 - open, /magasin/paypal/retour
-    ok 9 - open, /primes
-    ok 10 - open, /primes/chienbine
-    ok 11 - open, /primes/figurines
-    ok 12 - open, /primes/icones
-    ok 13 - open, /rentree
-    ok 14 - open, /sitemap
-    # creating index file
-    1..14
+```bash
+$ ./website_contactsheet.pl http://enkidu:3000
+ok 1 - GET http://enkidu:3000/sitemap
+ok 2 - open, /
+ok 3 - open, /albums
+ok 4 - open, /feeds/acp.atom
+ok 5 - open, /magasin
+ok 6 - open, /magasin/panier
+ok 7 - open, /magasin/paypal/confirmation
+ok 8 - open, /magasin/paypal/retour
+ok 9 - open, /primes
+ok 10 - open, /primes/chienbine
+ok 11 - open, /primes/figurines
+ok 12 - open, /primes/icones
+ok 13 - open, /rentree
+ok 14 - open, /sitemap
+# creating index file
+1..14
+```
 
 *Et voilà.* 
 
 <div align="center">
-<img src="__ENTRY_DIR__/screenshot.png" width="600" /></div>
+<img src="__ENTRY_DIR__/screenshot.png" width="600" />
+</div>
 
 We now have a contact sheet where I can see at a glance... that I
 still have a lot of work to do. \*sigh\*

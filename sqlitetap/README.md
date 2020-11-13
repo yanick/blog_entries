@@ -1,5 +1,4 @@
 ---
-title: A First Stab at SQLiteTAP
 url: sqlitetap
 format: markdown
 created: 2012-02-13
@@ -9,6 +8,8 @@ tags:
     - TAP
     - Oracle
 ---
+
+# A First Stab at SQLiteTAP
 
 The [main presentation](http://www.slideshare.net/spurkis/tapharness-friends) of the last tech meeting of Ottawa.pm, 
 was given by [Steve Purkis](http://search.cpan.org/~spurkis/) and was about
@@ -54,15 +55,16 @@ To use the extension, you first have to compile it on your machine.  The
 project includes a barebone Makefile that works for my Ubuntu box, but
 basically your local variation on
 
-    #syntax: bash
-    $ gcc -c sql_tap.c && ld -shared -o sql_tap.ext sql_tap.o
+```bash
+$ gcc -c sql_tap.c && ld -shared -o sql_tap.ext sql_tap.o
+```
 
 should do the trick.  After that, you just need to load the extension and run
 the tests just like with PgTAP.  For example, if we use the following test
 file
 
-    #syntax: sql
-    .load sql_tap.ext
+```sql
+.load sql_tap.ext
 
     select plan(6);
 
@@ -82,18 +84,20 @@ file
 
     select ok( 1 );
     select ok( 0 );
+```
 
 then we'll get
 
-    #syntax: bash
-    $ sqlite3 < test.sql
-    1..6
-    ok 1 - this passes
-    not ok 2 - this fails
-    ok 3 - lassie is darn cute
-    ok 4 - spot is darn cute
-    ok 5
-    not ok 6
+```bash
+$ sqlite3 < test.sql
+1..6
+ok 1 - this passes
+not ok 2 - this fails
+ok 3 - lassie is darn cute
+ok 4 - spot is darn cute
+ok 5
+not ok 6
+```
 
 Nifty, no?
 

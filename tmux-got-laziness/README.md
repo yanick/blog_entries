@@ -21,7 +21,7 @@ First tool that I was already using (but nowhere often enough):
 for you. Amongst other nifty commands, it has `chdir`, which opens
 a subshell to any of those projects.
 
-    #syntax: bash
+```bash
     $ got list
     1) Catalyst-Plugin-VersionedURI    git   git@github.com:yanick/Catalyst-Plugin-VersionedURI.git
     2) Dancer                          git   git@github.com:yanick/Dancer.git
@@ -42,6 +42,7 @@ a subshell to any of those projects.
 
     $ pwd
     /home/yanick/work/perl-modules/dancer/Dancer
+```
 
 Neat, isn't? But, really, typing a *whole* distribution name to get there? This is
 sooo exhausting. No, that simply won't do, so I [hacked][got-complete] a quick `got-complete` utility
@@ -70,14 +71,16 @@ already opened, jump to it.
 Yeeees, this is beginning to take shape. But... `got mux`, that's awfully
 long. Let's reduce that to a four-letter word, shall we?
 
-    #syntax: bash
+```
     complete -C got-complete -o nospace -o default hack
     alias hack='got mux'
+```
 
 There. Now I want to hack on Dancer? Then I do
 
-    #syntax: bash
-    $ hack Dancer
+```
+$ hack Dancer
+```
 
 ## Using Your Local Monsters
 
@@ -85,31 +88,36 @@ Of course, once you begin to mock with dependencies while you develop, you
 have to begin to add them to your `perl` invocation, or stash them in
 *PERL5LIB*. In my case, the project that began with
 
-    #syntax: bash
+```bash
     $ perl ./bin/app.pl
+```
 
 soon found itself requiring an amended `Template::Caribou`
 
-    #syntax: bash
+```bash
     $ perl -I ../perl-modules/Template-Caribou/lib ./bin/app.pl
+```
 
 then some shared modules with another project
 
-    #syntax: bash
+```bash
     $ perl -I ../perl-modules/Template-Caribou/lib  -I ../perl-modules/Galuga/lib ./bin/app.pl
+```
+
 
 Urgh. There should be a way to stash local paths for a project by doing
 something like
 
 
-    #syntax: bash
+```bash
     $ devinc ../perl-modules/Template-Caribou/lib
     $ devinc Dancer-Plugin-Cache-CHI
+```
 
 and have them automatically stored in a file ready to be used to populate
 *PERL5LIB*, like so
 
-    #syntax: bash
+```bash
     $ cat devlibs 
     export PERL5LIB=\
     ../perl-modules/Template-Caribou/lib:\
@@ -120,6 +128,7 @@ and have them automatically stored in a file ready to be used to populate
 
     $ echo $PERL5LIB
     ../perl-modules/Template-Caribou/lib:/home/yanick/work/perl-modules/dancer/Dancer-Plugin-Cache-CHI/lib:
+```
 
 If you also think that could be handy, [rejoice][devinc].
 
@@ -128,10 +137,11 @@ If you also think that could be handy, [rejoice][devinc].
 We already have `hack`, how about also having a `tweak` to jump to a module
 that need to be fixed, and automatically add it to the originator's `devlibs`?
 
-    #syntax: bash
+```bash
     # in your .bashrc
     complete -C got-complete -o nospace -o default tweak
     function tweak { devinc $1; hack $1; }
+```
 
 The result? Here, let me show you:
 

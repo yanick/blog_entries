@@ -1,6 +1,5 @@
 ---
 url: escape-houdini
-format: markdown
 created: 2013-05-14
 tags:
     - Perl
@@ -68,61 +67,63 @@ Aaaanyway, what I thought is that there should be a decoupling of the
 benchmarks, which should only describe what is expected of the functions to
 benchmark like, say, 
 
-    #syntax: perl
-    package Yardstick::Benchmark::WebEscaping;
+```perl
+package Yardstick::Benchmark::WebEscaping;
 
-    use strict;
-    use warnings;
+use strict;
+use warnings;
 
-    use Moose;
+use Moose;
 
-    extends 'Yardstick::Benchmark';
+extends 'Yardstick::Benchmark';
 
-    benchmark 'basic html escape' => (
-        tags   => [qw/ html escape /],
-        input  => [ '<body>hello world</body>' ], 
-        output => [ '&gt;body&lt;hello world&gt/body&lt;' ]
-    );
+benchmark 'basic html escape' => (
+    tags   => [qw/ html escape /],
+    input  => [ '<body>hello world</body>' ], 
+    output => [ '&gt;body&lt;hello world&gt/body&lt;' ]
+);
 
-    benchmark 'basic html unescape' => (
-        tags   => [qw/ html unescape /],
-        input  => [ '&gt;body&lt;hello world&gt/body&lt;' ],
-        output => [ '<body>hello world</body>' ], 
-    );
+benchmark 'basic html unescape' => (
+    tags   => [qw/ html unescape /],
+    input  => [ '&gt;body&lt;hello world&gt/body&lt;' ],
+    output => [ '<body>hello world</body>' ], 
+);
 
-    1;
+1;
+```
 
 and of the different contestants, which provide the functions to be measured:
 
 
-    #syntax: perl
-    package Yardstick::Benchmark::WebEscaping::Houdini;
+```perl
+package Yardstick::Benchmark::WebEscaping::Houdini;
 
-    use strict;
-    use warnings;
+use strict;
+use warnings;
 
-    use Escape::Houdini ':all';
-    use Moose;
+use Escape::Houdini ':all';
+use Moose;
 
-    extends 'Yardstick::Contender';
+extends 'Yardstick::Contender';
 
-    has '+info' => (
-        default => sub {
-            'Escape::Houdini' => Escape::Houdini->VERSION
-        },
-    );
+has '+info' => (
+    default => sub {
+        'Escape::Houdini' => Escape::Houdini->VERSION
+    },
+);
 
-    contender 'Escape::Houdini::escape_html()' => (
-        tags => [ qw/ html escape / ],
-        func => sub { escape_html($_[0]) },
-    );
+contender 'Escape::Houdini::escape_html()' => (
+    tags => [ qw/ html escape / ],
+    func => sub { escape_html($_[0]) },
+);
 
-    contender 'Escape::Houdini::unescape_html()' => (
-        tags => [ qw/ html unescape / ],
-        func => sub { unescape_html($_[0]) },
-    );
+contender 'Escape::Houdini::unescape_html()' => (
+    tags => [ qw/ html unescape / ],
+    func => sub { unescape_html($_[0]) },
+);
 
-    1;
+1;
+```
 
 That way, each new contender `Foo` only needs to include a
 `Yardstick::Benchmark::XXX::Foo` module in its distribution, and it can be

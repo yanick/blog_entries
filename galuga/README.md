@@ -20,7 +20,7 @@ tags:
 # Just What the World Needs: Another Blogging Engine
 
 <div style="float: right">
-    <img src="__ENTRY_DIR__/galuga_logo.png" alt="Powered by a Gamboling Beluga" width="300" />
+    <img src="__ENTRY__/galuga_logo.png" alt="Powered by a Gamboling Beluga" width="300" />
 </div>
 
 It's a well-known fact in the computer world that any given application
@@ -101,7 +101,7 @@ to serve the blog entries, the entries themselves are stored as
 [simple text files](http://github.com/yanick/blog_entries) that
 look like this:
 
-<pre code="plain">
+```yaml
 url: galuga
 format: markdown
 created: 2010-09-23
@@ -116,7 +116,7 @@ tags:
 
 It's a well-known fact in the computer world that any given application
 will evolve until it develops emailing functionality. Likewise, [..]
-</pre>
+```
 
 I began writing its webpages' templates using Mason, but later took the occasion to 
 try out [Template::Declare](cpan).  For the comment sub-system, I 

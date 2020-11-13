@@ -1,10 +1,10 @@
 ---
-title: Hacking Hiveminder
-url: hacking-hiveminder
 created: 2013-09-22
 tags:
     - Hiveminder
 ---
+
+# Hacking Hiveminder
 
 The race for getting things done. It's not so much about (God preserves us) reaching 
 the finish
@@ -65,7 +65,7 @@ does with its `editdump`.
 So, first thing first: I need a first script to take a local snapshot of
 the active todos. 
 
-``` perl
+```perl
 #!/usr/bin/env perl 
 
 use strict;
@@ -233,7 +233,7 @@ we just want to get something working. So let's gather our three
 scripts under a single umbrella (named `hm_vim.sh`):
 
 ``` bash
-#!/bin/bash
+#!/usr/bin/env bash
 
 /home/yanick/work/todo/hm_update.pl
 /home/yanick/work/todo/hm_reset.pl
@@ -242,7 +242,9 @@ scripts under a single umbrella (named `hm_vim.sh`):
 
 and to summon our small beast, we set up a simple Vim macro:
 
-    :map <Leader>u :0,$!/home/yanick/work/todo/hm_vim.sh<CR>
+```
+:map <Leader>u :0,$!/home/yanick/work/todo/hm_vim.sh<CR>
+```
 
 And there we go: a minimalistic Vim interface to
 Hiveminder is born!

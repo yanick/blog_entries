@@ -20,8 +20,9 @@ that I should overlook. But...
 I would *so* love to ditch the global template 
 inheritance that is defined via 
 
-    #syntax: perl
-    Template::Declare->init( dispatch_to => ['MyApp::Templates'] );
+```perl
+Template::Declare->init( dispatch_to => ['MyApp::Templates'] );
+```
 
 and go for a per-object mechanism.
 
@@ -106,12 +107,13 @@ attributes of the tag, and a ref to the inner content. For example, if we want
 a custom `my_h1` that upper case its text and inject some special style,
 it can be done with:
 
-    #syntax: perl
-    sub my_h1(&) { render_tag( 'img', sub {
-        my ( $attrs, $content ) = @_;
-        $attrs->{style} .= "; color: red";
-        $$content = uc $$content;
-    }, shift ) };
+```perl
+sub my_h1(&) { render_tag( 'img', sub {
+    my ( $attrs, $content ) = @_;
+    $attrs->{style} .= "; color: red";
+    $$content = uc $$content;
+}, shift ) };
+```
 
 
 And that's mostly all that one needs to know to use 
@@ -127,58 +129,61 @@ it's going to take a turn for the eldritch.
 Yup, you read that right. The keyword `template` is just a bit of sugar
 that does
 
-    #syntax: perl
-    sub template { 
-        my ( $meta, $label, $sub ) = @_;
+```perl
+sub template { 
+    my ( $meta, $label, $sub ) = @_;
 
-        $meta->add_method( "template_$label" => $sub );
-    }
+    $meta->add_method( "template_$label" => $sub );
+}
+```
 
 So the template `foo()` becomes the method `template_foo()`. The end-goal,
 here, is to make really easy to pepper `after()`, `before()` and
 `around()` modifiers all over the place, so that adding a menu would be as
 easy as:
 
-    #syntax:perl
-    before template_main => sub {
-        $_[0]->render( 'menu' );
-    };
+```perl
+before template_main => sub {
+    $_[0]->render( 'menu' );
+};
+```
 
 Keeping the templates so simple means that the gymnastics to render
 them have to be a little more esoteric. What I ended up doing 
 was to use global variables, and to matryoshka the hell out of them.
 
 
-    #syntax: perl
-    sub render {
-        my ( $self, $template, @args ) = @_;
+```perl
+sub render {
+    my ( $self, $template, @args ) = @_;
 
-        my $method = "template_$template";
+    my $method = "template_$template";
 
-        my $output = do
-        {
-            local $Template::Caribou::TEMPLATE =
-                $Template::Caribou::TEMPLATE || $self;
-                
-            local $Template::Caribou::IN_RENDER = 1;
-            local *STDOUT;
-            local *::RAW;
-            local $Template::Caribou::OUTPUT;
-            local %Template::Caribou::attr;
-            tie *STDOUT, 'Template::Caribou::Output';
-            tie *::RAW, 'Template::Caribou::OutputRaw';
-            my $res = $self->$method( @_ );
+    my $output = do
+    {
+        local $Template::Caribou::TEMPLATE =
+            $Template::Caribou::TEMPLATE || $self;
+            
+        local $Template::Caribou::IN_RENDER = 1;
+        local *STDOUT;
+        local *::RAW;
+        local $Template::Caribou::OUTPUT;
+        local %Template::Caribou::attr;
+        tie *STDOUT, 'Template::Caribou::Output';
+        tie *::RAW, 'Template::Caribou::OutputRaw';
+        my $res = $self->$method( @_ );
 
-            $Template::Caribou::OUTPUT 
-                or ref $res ? $res : Template::Caribou::Output::escape( $res );
-        };
+        $Template::Caribou::OUTPUT 
+            or ref $res ? $res : Template::Caribou::Output::escape( $res );
+    };
 
-        $output = Template::Caribou::String->new( $output );
+    $output = Template::Caribou::String->new( $output );
 
-        print $output unless defined wantarray or $Template::Caribou::IN_RENDER;
+    print $output unless defined wantarray or $Template::Caribou::IN_RENDER;
 
-        return $output;
-    }
+    return $output;
+}
+```
 
 
 I'll not explain everything in details, but there are a lot of dirty tricks
@@ -189,27 +194,28 @@ function `show()` can be used instead of `self->render()`. And there is the
 heuristic print/return dance at the end that is done to ensure that the
 template will DWIM in most of those cases:
 
-    #syntax: perl
-    template foo => sub {
-        "just print this";
-    };
+```perl
+template foo => sub {
+    "just print this";
+};
 
-    template foo2 => sub {
-        say ::RAW "just print <this>";
-    };
+template foo2 => sub {
+    say ::RAW "just print <this>";
+};
 
-    template foo3 => sub {
+template foo3 => sub {
+    p { "foo" };
+};
+
+template foo4 => sub {
+    h1 { 'Foo!' };
+    div {
         p { "foo" };
-    };
+    }
+};
 
-    template foo4 => sub {
-        h1 { 'Foo!' };
-        div {
-            p { "foo" };
-        }
-    };
-
-    # etc. Trust me, the fun never ends...
+ # etc. Trust me, the fun never ends...
+```
 
 And... beside a few other twisted implementation details, that's basically it. 
 

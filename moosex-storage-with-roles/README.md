@@ -14,7 +14,7 @@ versatile. Here, lemme show you.
 
 The usual way to deserialize objects with `MooseX::Storage`
 is to call the `unpack` (or `thaw`, or `load`) method of the target's class.
-For example, assuming we have the class C<SpaceCowboy>:
+For example, assuming we have the class `SpaceCowboy`:
 
 
 ```perl

@@ -56,16 +56,19 @@ First thing is to drop in scripts that will invoke the `Taskwarrior::Hooks`
 system on all events. We can do that manually
 
 
-    #!/usr/bin/env perl
-    # file: ~/.task/hooks/on-launch-tw_hooks.pl
+```perl
+#!/usr/bin/env perl
+# file: ~/.task/hooks/on-launch-tw_hooks.pl
 
-    use Taskwarrior::Hooks;
+use Taskwarrior::Hooks;
 
-    Taskwarrior::Hooks->new( raw_args => \@ARGV )
-        ->run_event( 'launch' ); # change event for the 4 scripts, natch
+Taskwarrior::Hooks->new( raw_args => \@ARGV )
+    ->run_event( 'launch' ); # change event for the 4 scripts, natch
+```
 
 or we can use the helper script that is included in the project, `twhooks`,
 
+```
     $ twhooks install
     Installing hooks in /home/yanick/.task/hooks
     '/home/yanick/.task/hooks/on-exit-tw_hooks.pl' already exist, skipping
@@ -74,44 +77,49 @@ or we can use the helper script that is included in the project, `twhooks`,
     '/home/yanick/.task/hooks/on-modify-tw_hooks.pl' already exist, skipping
     Performing plugins setup...
     Done
+```
 
 After that, we specify which plugins we want to use, and tweak the Taskwarrior
 configuration to accomodate them. For example
 
-    $ task config twhooks.plugins Renew,Command::Before,Command::After,GitCommit
+```
+$ task config twhooks.plugins Renew,Command::Before,Command::After,GitCommit
 
-    # config for Renew plugin
-    $ task config uda.renew.type    string
-    $ task config uda.renew.label   creates a follow-up task upon closing
-    $ task config uda.rdue.type     string
-    $ task config uda.rdue.label    next task due date
-    $ task config uda.rwait.type    string
-    $ task config uda.rwait.label   next task wait period
+# config for Renew plugin
+$ task config uda.renew.type    string
+$ task config uda.renew.label   creates a follow-up task upon closing
+$ task config uda.rdue.type     string
+$ task config uda.rdue.label    next task due date
+$ task config uda.rwait.type    string
+$ task config uda.rwait.label   next task wait period
 
-    # etc
+# etc
+```
 
 Or, again, using `twhooks`
 
-    $ twhooks add Renew Command::Before Command::After GitCommit
-    setting plugins to Renew, Command::Before, Command::After, GitCommit
-    Config file /home/yanick/.taskrc modified.
+```
+$ twhooks add Renew Command::Before Command::After GitCommit
+setting plugins to Renew, Command::Before, Command::After, GitCommit
+Config file /home/yanick/.taskrc modified.
 
-    $ twhooks install
-    Installing hooks in /home/yanick/.task/hooks
-    '/home/yanick/.task/hooks/on-exit-tw_hooks.pl' already exist, skipping
-    '/home/yanick/.task/hooks/on-add-tw_hooks.pl' already exist, skipping
-    '/home/yanick/.task/hooks/on-launch-tw_hooks.pl' already exist, skipping
-    '/home/yanick/.task/hooks/on-modify-tw_hooks.pl' already exist, skipping
-    Performing plugins setup...
-    -Taskwarrior::Hooks::Plugin::Renew
-    -Taskwarrior::Hooks::Plugin::Command::Before
-    creating pseudo-report 'before'
-    Config file /home/yanick/.taskrc modified.
-    -Taskwarrior::Hooks::Plugin::Command::After
-    creating pseudo-report 'after'
-    Config file /home/yanick/.taskrc modified.
-    -Taskwarrior::Hooks::Plugin::GitCommit
-    Done
+$ twhooks install
+Installing hooks in /home/yanick/.task/hooks
+'/home/yanick/.task/hooks/on-exit-tw_hooks.pl' already exist, skipping
+'/home/yanick/.task/hooks/on-add-tw_hooks.pl' already exist, skipping
+'/home/yanick/.task/hooks/on-launch-tw_hooks.pl' already exist, skipping
+'/home/yanick/.task/hooks/on-modify-tw_hooks.pl' already exist, skipping
+Performing plugins setup...
+-Taskwarrior::Hooks::Plugin::Renew
+-Taskwarrior::Hooks::Plugin::Command::Before
+creating pseudo-report 'before'
+Config file /home/yanick/.taskrc modified.
+-Taskwarrior::Hooks::Plugin::Command::After
+creating pseudo-report 'after'
+Config file /home/yanick/.taskrc modified.
+-Taskwarrior::Hooks::Plugin::GitCommit
+Done
+```
 
 And that's it. Taskwarrior will now use those plugins. 
 
@@ -129,39 +137,41 @@ format.
 
 So, what does this plugin looks like? It looks like this:
 
-    package Taskwarrior::Hooks::Plugin::GitCommit;
+```perl
+package Taskwarrior::Hooks::Plugin::GitCommit;
 
-    use strict;
-    use warnings;
+use strict;
+use warnings;
 
-    use Moo;
+use Moo;
 
-    extends 'Taskwarrior::Hooks::Hook';
+extends 'Taskwarrior::Hooks::Hook';
 
-    with 'Taskwarrior::Hooks::Hook::OnExit';
+with 'Taskwarrior::Hooks::Hook::OnExit';
 
-    use Git::Repository;
+use Git::Repository;
 
-    sub on_exit {
-        my $self = shift;
+sub on_exit {
+    my $self = shift;
 
-        my $dir = $self->data_dir;
+    my $dir = $self->data_dir;
 
-        unless( $dir->child('.git')->exists ) {
-            Git::Repository->command( init => $dir );
-            $self .= "initiated git repo for '$dir'";
-        }
+    unless( $dir->child('.git')->exists ) {
+        Git::Repository->command( init => $dir );
+        $self .= "initiated git repo for '$dir'";
+    }
 
-        my $git = Git::Repository->new( work_tree => $dir );
+    my $git = Git::Repository->new( work_tree => $dir );
 
-        # no changes? Fine
-        return unless $git->run( 'status', '--short' );
+    # no changes? Fine
+    return unless $git->run( 'status', '--short' );
 
-        $git->run( 'add', '.' );
-        $git->run( 'commit', '--message', 'on-exit saving' );
-    };
+    $git->run( 'add', '.' );
+    $git->run( 'commit', '--message', 'on-exit saving' );
+};
 
-    1;
+1;
+```
 
 Pretty self-explanatory. Except maybe for the `$self .= "blah";` part.
 Taskwarrior hooks are expected to spit out optional feedback when things go
@@ -177,6 +187,7 @@ Next step: having a plugin that modify tasks as they are created or modified.
 For example, with Taskwarrior you assign projects to tasks using the
 `project:foo` construct. That's long. I want to use `@` instead.
 
+```perl
     package Taskwarrior::Hooks::Plugin::ProjectAlias
 
     use strict;
@@ -207,6 +218,7 @@ For example, with Taskwarrior you assign projects to tasks using the
     }
 
     1;
+```
 
 Wasn't very hard to implement, was it? The tasks are passed to the `on_add` and
 `on_modify` as structures, and the JSON conversions are done by the plugin
@@ -230,6 +242,7 @@ Fortunately, implementing that kind of behavior with our plugins is not too
 onerous. We tag those repeating tasks with a new attribute (`renew`), and
 will monitor when tasks get done to intervene and create their next iteration.
 
+```perl
     package Taskwarrior::Hooks::Plugin::Renew;
 
     use strict;
@@ -286,12 +299,15 @@ will monitor when tasks get done to intervene and create their next iteration.
     }
 
     1;
+```
 
 
 Still not too bad, isn't? And now we can create one of those renewing tasks
 via
 
+```
     $ task add renew:1 rdue:now+1week rwait:due-3days Water plants
+```
 
 
 ### Before, After - adding new commands
@@ -311,7 +327,9 @@ For our example here, we have `Before`, which creates a new task and mark it
 as a depedency of an already-existing task. In other words, we'll be able to
 do
 
-    $ task 100 before Do the thing that must come first
+```
+$ task 100 before Do the thing that must come first
+```
 
 instead of
 
@@ -320,6 +338,7 @@ instead of
 
 And we do that via
 
+```perl
     package Taskwarrior::Hooks::Plugin::Command::Before;
 
     use 5.10.0;
@@ -356,6 +375,7 @@ And we do that via
     }
 
     1;
+```
 
 Cute, eh?
 

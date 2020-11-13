@@ -24,7 +24,7 @@ new small but (or so I think) nifty features.
 That one is a no-brainer. Up to now, to save the changes to the repo, one had
 to explicitly commit them:
 
-    #syntax: perl
+```perl
 
     use GitStore;
 
@@ -34,11 +34,12 @@ to explicitly commit them:
     $store->set( 'bar' => 'that' );
 
     $store->commit( 'a little bit of this and that');
+```
 
 which is fine and proper. But now, for the reckless at heart, we can also tell
 the store to just commit'em as they come along:
 
-    #syntax: perl
+```perl
 
     use GitStore;
 
@@ -48,6 +49,7 @@ the store to just commit'em as they come along:
     $store->set( 'bar' => 'that' );
 
     # that's it
+```
 
 ## Customizable serializer/deserializer
 
@@ -56,7 +58,7 @@ would use [Storable](cpan) to serialize and deserialize the stuff.
 Handy, but perhaps sometimes one want to save things in a readable format like
 YAML? Well, now it's possible:
 
-    #syntax: perl
+```perl
 
     use GitStore;
 
@@ -85,6 +87,7 @@ YAML? Well, now it's possible:
 
     # and that one as yaml
     $store->set( 'yaml/bar' => [ 1..10 ] );
+```
 
 ## Now Best Buddy With MooseX::Storage
 
@@ -94,10 +97,10 @@ sprinkle a little bit of unicorn dust on top of it, we now have
 driver that serializes and stores your precious
 Moose objects in the Git store.
 
-    #syntax: perl
-    package Point {  # the usual example
-        use Moose;
-        use MooseX::Storage;
+```perl
+package Point {  # the usual example
+    use Moose;
+    use MooseX::Storage;
 
         with Storage( format => 'YAML', io => 'GitStore');
 
@@ -111,5 +114,4 @@ Moose objects in the Git store.
 
     # ... and can easily be retrieved
     my $p2 = Point->load('my_point', git_repo => './store');
-
-
+```

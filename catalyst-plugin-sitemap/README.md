@@ -1,6 +1,4 @@
 ---
-url: catalyst-plugin-sitemap
-format: markdown
 created: 2010-09-27
 tags:
     - Perl
@@ -13,8 +11,8 @@ tags:
 
 I hadn't planned on writing this. In fact, I positively don't have the time to
 write this. But, sometimes, the only mistake a man has to make is to pause one second
-and wonders *hey, wouldn't be cool to have something that 
-auto-generates the sitemap of a Catalyst app?* And then **BAM*!* The yak
+and wonders <i>hey, wouldn't be cool to have something that auto-generates the sitemap of a Catalyst app?</i>
+And then **BAM!** The yak
 jumps out of nowhere, hangs to the poor sod's t-shirt with all hooves and
 forcefully moos "shave me, *shaaaave me*" until the silly git succumbs to the
 pressure. 
@@ -30,18 +28,17 @@ it's not CPANized yet.
 
 To use it, add the plugin to your Catalyst app main module:
 
-<pre code="Perl">
+```perl
 use Catalyst qw/ 
     Sitemap 
 /;
-</pre>
+```
 
 Then, use the sub attribute *:Sitemap* to tag actions for which you want an
 entry in the sitemap. The attribute can be called different ways:
 
 
-<pre code="Perl">
-
+```perl
     # bare attribute, add the uri for the action
 
 sub alone :Local :Sitemap { 
@@ -68,23 +65,23 @@ sub with_function :Local :Sitemap(*) { }
 sub with_function_sitemap {
     $_[2]->add( 'http://localhost/with_function' );
 }
-</pre>
+```
 
 
 And that's it.  Your catalyst application now has a *sitemap()* method that
 harvest all those entries and returns a [Search::Sitemap](cpan) object. 
 
-<pre code="Perl">
+```perl
 sub sitemap : Path('/sitemap') {
     my ( $self, $c ) = @_;
 
     $c->res->body( $c->sitemap->xml );
 }
-</pre>
+```
 
 That action, coupled with the ones defined above, would give this sitemap:
 
-<pre code="xml">
+```xml
  &lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
@@ -105,7 +102,7 @@ That action, coupled with the ones defined above, would give this sitemap:
  &lt;changefreq>daily&lt;/changefreq>
  &lt;/url>
  &lt;/urlset>
-</pre>
+```
 
 Right now, the *Search::Sitemap* object is re-created each time the method is
 called. The next time I have some rount tuit, I plan to provide the option to 

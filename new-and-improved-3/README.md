@@ -11,7 +11,7 @@ tags:
 # N&amp;I: Git::CPAN::Patch now detect repositories
 
 <div style="float: right; padding: 5px;">
-<img src="__ENTRY_DIR__/val_approuve.png" alt="New and Improved!" width="150"/>
+<img src="./val_approuve.png" alt="New and Improved!" width="150"/>
 </div>
 
 [Git::CPAN::Patch](cpan) could already seed a local  repository

@@ -1,5 +1,4 @@
 ---
-title: Distributing Dancer Apps as Modules
 url: dancer-local
 format: markdown
 created: 2012-09-12
@@ -8,14 +7,17 @@ tags:
     - Dancer
 ---
 
+# Distributing Dancer Apps as Modules
+
 Something that has been bugging me for a long time is how [Dancer](cpan) 
 apps (or [Catalyst](http://search.cpan.org/~jjnapiork/Catalyst-Runtime-5.90016/) apps for what matters) can't, generally-speaking, be installed like regular
 modules or applications because of their configuration files, static files and
 whatnots. What I would dearly love is to be able to do
 
-    #syntax: bash
-    $ cpanm App::Chorus
-    $ chorus.pl prez.mkd
+```bash
+$ cpanm App::Chorus
+$ chorus.pl prez.mkd
+```
 
 and have stuff, y'know, just work. (If you wonder what Chorus is, look [here](http://babyl.dyndns.org/techblog/entry/chorus))
 
@@ -37,22 +39,24 @@ First thing to do to make it installable is a no-brainer: rename the default
 script from `app.pl` to `foo.pl`. The script itself will have to be modified
 to use `Dancer::Local`:
 
-    #syntax: perl
-    #!/usr/bin/env perl
+```perl
+#!/usr/bin/env perl
 
-    # important: must be before 'use Dancer'
-    use Dancer::Local 'Foo';
+# important: must be before 'use Dancer'
+use Dancer::Local 'Foo';
 
-    use Dancer;
+use Dancer;
 
-    use Foo;
-    dance;
+use Foo;
+dance;
+```
 
 Although that's not quite true. We could also leave the script alone and just
 latter call it as
 
-    #syntax: bash
-    $ perl -IDancer::Local=Foo `which foo.pl`
+```bash
+$ perl -IDancer::Local=Foo `which foo.pl`
+```
 
 But that's not as appealing, so let's not do that unless we are forced to.
 
@@ -61,34 +65,35 @@ The last step (yes, already!) consists of adding the
 [Module::Build](cpan) over [ExtUtils::MakeMaker](cpan), so I went
 with:
 
-    #syntax: perl
-    package MyBuild;
+```perl
+package MyBuild;
 
-    use strict; 
-    use warnings;
+use strict; 
+use warnings;
 
-    use base qw/ Module::Build /;
+use base qw/ Module::Build /;
 
-    use File::Copy::Recursive qw/ rcopy /;
+use File::Copy::Recursive qw/ rcopy /;
 
-    $File::Copy::Recursive::CPRFComp = 1;
+$File::Copy::Recursive::CPRFComp = 1;
 
-    my @to_copy = qw/
-        config.yml
-        logs
-        environments
-        public
-        views
-        REMOVE_ME
-    /;
+my @to_copy = qw/
+    config.yml
+    logs
+    environments
+    public
+    views
+    REMOVE_ME
+/;
 
-    unless ( -d 'share' ) {
-        mkdir 'share';
+unless ( -d 'share' ) {
+    mkdir 'share';
 
-        rcopy( $_, 'share' ) for grep { -e $_ } @to_copy;
-    }
+    rcopy( $_, 'share' ) for grep { -e $_ } @to_copy;
+}
 
-    1;
+1;
+```
 
 Mind you, I could have just thrown all the files in `share` in the first
 place, but as I'm the type of guy who wants his cake and munch on it too, I
@@ -105,70 +110,71 @@ installed with all its components. Now we need a little helping elf to make
 sure that the app knows how to find and use those components, wherever it's
 called from. That'll be the job of `Dancer::Local`:
 
-    #syntax: perl
-    package Dancer::Local;
+```perl
+package Dancer::Local;
 
-    use 5.10.0;
+use 5.10.0;
 
-    use strict;
-    use warnings;
+use strict;
+use warnings;
 
-    use File::ShareDir 'dist_dir';
-    use File::HomeDir;
-    use File::Copy::Recursive qw/ dircopy /;
-    use File::Path qw/ make_path /;
-    use List::MoreUtils qw/ after_incl /;
+use File::ShareDir 'dist_dir';
+use File::HomeDir;
+use File::Copy::Recursive qw/ dircopy /;
+use File::Path qw/ make_path /;
+use List::MoreUtils qw/ after_incl /;
 
-    sub import {
-        my( $self, $dist ) = @_;
+sub import {
+    my( $self, $dist ) = @_;
 
-        my $appdir;
+    my $appdir;
 
-        if ( my @to_install = after_incl { $_ eq '--install' } @ARGV ) {
-            make_path( $to_install[1] ) if defined $to_install[1];
+    if ( my @to_install = after_incl { $_ eq '--install' } @ARGV ) {
+        make_path( $to_install[1] ) if defined $to_install[1];
 
-            $appdir = $to_install[1] // '.';
+        $appdir = $to_install[1] // '.';
 
-            dircopy( dist_dir($dist) => $appdir );
+        dircopy( dist_dir($dist) => $appdir );
 
-            say "installed shared file for '$dist' in '$appdir'";
-        }
-        else {
-            no warnings 'uninitialized';
+        say "installed shared file for '$dist' in '$appdir'";
+    }
+    else {
+        no warnings 'uninitialized';
 
-            $appdir = $ENV{DANCER_APPDIR} 
-                || ( '.' x -f 'config.yml' )
-                || File::HomeDir->my_dist_data($dist) 
-                || create_local_copy($dist);
-        }
-
-        $ENV{DANCER_APPDIR} = $appdir;
-
-        if ( open my $fh, "$appdir/REMOVE_ME" ) {
-            say "\n", <$fh>, "\n", 
-                "*** review the configuration files in '$appdir'\n",
-                "*** delete '$appdir/REMOVE_ME',\n",
-                "*** and run $0 again\n";
-
-            exit;
-        }
-
-        say "running $dist from $appdir...";
+        $appdir = $ENV{DANCER_APPDIR} 
+            || ( '.' x -f 'config.yml' )
+            || File::HomeDir->my_dist_data($dist) 
+            || create_local_copy($dist);
     }
 
-    sub create_local_copy {
-        my $dist = shift;
+    $ENV{DANCER_APPDIR} = $appdir;
 
-        my $local_copy = File::HomeDir->my_dist_data($dist,{create=>1});
+    if ( open my $fh, "$appdir/REMOVE_ME" ) {
+        say "\n", <$fh>, "\n", 
+            "*** review the configuration files in '$appdir'\n",
+            "*** delete '$appdir/REMOVE_ME',\n",
+            "*** and run $0 again\n";
 
-        print "copying $dist app files to $local_copy...\n";
-
-        dircopy( dist_dir($dist) => $local_copy );
-
-        return $local_copy;
+        exit;
     }
 
-    1;
+    say "running $dist from $appdir...";
+}
+
+sub create_local_copy {
+    my $dist = shift;
+
+    my $local_copy = File::HomeDir->my_dist_data($dist,{create=>1});
+
+    print "copying $dist app files to $local_copy...\n";
+
+    dircopy( dist_dir($dist) => $local_copy );
+
+    return $local_copy;
+}
+
+1;
+```
 
 
 The module is short, but does a lotsa things. Namely:

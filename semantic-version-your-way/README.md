@@ -1,5 +1,4 @@
 ---
-title: Semantic Versioning Your Way
 url: semantic-version-your-way
 format: markdown
 created: 2014-11-08
@@ -7,6 +6,8 @@ tags:
     - Perl
     - Dist::Zilla
 ---
+
+# Semantic Versioning Your Way
 
 I don't know if you remember, but a [wee while ago](blog:dist-zilla-semanticversion), I wrote
 [Dist::Zilla::Plugin::NextVersion::Semantic](cpan:release/Dist-Zilla-Plugin-NextVersion-Semantic),

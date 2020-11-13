@@ -1,5 +1,4 @@
 ---
-title: I Can't Pass You the Butter, and Here Is Why...
 url: pass-the-butter
 format: markdown
 created: 2012-02-26
@@ -8,12 +7,15 @@ tags:
     - exception handling
 ---
 
+# I Can't Pass You the Butter, and Here Is Why...
+
 I have a *Person* class, and I want to know if they can
 pass the butter.  So far, it's hardly a problem,
 
-    #syntax: perl
-    $self->take('bread roll') and $self->grab('knife') 
-        if $georges->can_pass_the_butter;
+```perl
+$self->take('bread roll') and $self->grab('knife') 
+    if $georges->can_pass_the_butter;
+```
 
 But here's the rub. If *$georges* can't pass the butter, I want 
 to know why. Is it because he's too far away, because there is 
@@ -25,11 +27,12 @@ other reason?  What is the most elegant way of knowing the *if* and the *why*?
 An obvious way of doing it would be to have two methods for the two types of
 questions:
 
-    #syntax: perl
-    unless( $georges->can_pass_the_butter ) {
-        say 'Sorry, that is not possible because ',
-            $georges->explains_why_he_cant_pass_the_butter;
-    }
+```perl
+unless( $georges->can_pass_the_butter ) {
+    say 'Sorry, that is not possible because ',
+        $georges->explains_why_he_cant_pass_the_butter;
+}
+```
 
 Urgh. That's cumbersome. And likely to duplicate effort needlessly in the
 logic of the two methods. So, no, it won't do.
@@ -39,9 +42,9 @@ logic of the two methods. So, no, it won't do.
 Maybe we could return something that is both the reason and the boolean
 answer.  So, maybe we could flip the question around?
 
-    #syntax: perl
-    sub cant_pass_the_butter {
-        # some stuff...
+```perl
+sub cant_pass_the_butter {
+    # some stuff...
 
         return "there's only margarine" 
             unless $table->has('butter');
@@ -59,6 +62,7 @@ answer.  So, maybe we could flip the question around?
     if ( my $reason = $georges->cant_pass_the_butter ) {
         ...
     }
+```
 
 Yeah... Technically speaking, it works. But this paves the way to double
 negations and convoluted 'if/unless' statements. I think it's safe to say
@@ -71,9 +75,9 @@ Something else we could use is Perl's functions ability to know if they are
 called in a scalar or list context. We could return the boolean alone in a
 scalar context, and the boolean and the reason in a list context, like thus
 
-    #syntax: perl
-    sub can_pass_the_butter {
-        # some stuff...
+```perl
+sub can_pass_the_butter {
+    # some stuff...
 
         if ( $self->cordiality( $requester ) < 0 ) {
             return wantarray ? ( 0, "get it yourself" ) : 0;
@@ -95,6 +99,7 @@ scalar context, and the boolean and the reason in a list context, like thus
     # wanna know why
     my ( $answer, $reason ) = $georges->can_pass_the_butter;
     die "Dinner ruined: $reason" unless $answer;
+```
 
 
 Again, not ideal. The list invocation of the condition is a wee bit
@@ -102,20 +107,22 @@ cumbersome, and we always have to remember that it yield two different things
 in a scalar and list context, so that we don't have surprises when we do
 things like
 
-    #syntax: perl
-    $self->init_meal( 
-        salt => $sylvia->can_pass_salt, 
-        butter => $georges->can_pass_the_butter
-    );
+```perl
+$self->init_meal( 
+    salt => $sylvia->can_pass_salt, 
+    butter => $georges->can_pass_the_butter
+);
+```
 
 
 Ooops. That will fail. What we needed to do was
 
-    #syntax: perl
-    $self->init_meal( 
-        salt => $sylvia->can_pass_salt, 
-        butter => scalar $georges->can_pass_the_butter
-    );
+```perl
+$self->init_meal( 
+    salt => $sylvia->can_pass_salt, 
+    butter => scalar $georges->can_pass_the_butter
+);
+```
 
 
 So... yeah, surely we can still do better than that.
@@ -126,8 +133,8 @@ Instead of returning a list, what if we could return a value that is a boolean
 *and* the reason. A variable that has a certain, what is the word, duality to
 it?
 
-    #syntax: perl
-    use Contextual::Return;
+```perl
+use Contextual::Return;
 
     sub can_pass_the_butter {
         # some stuff...
@@ -149,11 +156,12 @@ it?
     unless ( my $answer = $georges->can_pass_the_butter ) {
         warn "butter not available: $answer";
     }
+```
 
 Ah AH! Fooled you, did I? I'm sure you thought I was going to do
 
-    #syntax: perl
-    use Scalar::Util qw/ dualvar /;
+```perl
+use Scalar::Util qw/ dualvar /;
 
     sub can_pass_the_butter {
         # some stuff...
@@ -168,15 +176,17 @@ Ah AH! Fooled you, did I? I'm sure you thought I was going to do
 
         return dualvar 1, '';
     }
+```
 
 Well, truth is, so did I. But then I tried it and discovered that the string 
 has precedence over the numerical value for boolean comparisons, so we would
 need to do
 
-    #syntax: perl
-    my $verdict = $georges->can_pass_the_butter;
-    warn "Your bread roll is going to be dry: $verdict" 
-        unless 0 + $verdict;
+```perl
+my $verdict = $georges->can_pass_the_butter;
+warn "Your bread roll is going to be dry: $verdict" 
+    unless 0 + $verdict;
+```
 
 which is **not** appealing.  The [Contextual::Return](cpan) way is much
 more palatable, although a little bit on the dark magic side.
@@ -187,7 +197,7 @@ Now, something I noticed is that a lot of the use cases above looks like
 the typical '`... or die`' construct. So maybe we could piggy-back on our
 exception mechanism?
 
-    #syntax: perl
+```perl
 
     sub can_pass_the_butter {
         # some stuff...
@@ -209,6 +219,7 @@ exception mechanism?
     else {
         warn "can't get butter: $@";
     }
+```
  
 
 That method minimizes the gymnastics one has to do in `can_pass_the_butter()`
@@ -223,7 +234,7 @@ that.
 The previous solution was almost viable. Now, what if we try to go that way,
 while making the negative answer a little less explosive?
 
-    #syntax: perl
+```perl
 
     sub can_pass_the_butter {
         # some stuff...
@@ -249,6 +260,7 @@ while making the negative answer a little less explosive?
             say "Oh well, can't have rolls because: $@";
         }
     }
+```
 
 Now, this is beginning to be more like it. The condition can be written 
 in a succinct and intelligible manner. The reason can be retrieved whenever we

@@ -1,5 +1,4 @@
 ---
-title: A New Year, a New Dancecard
 url: dancecard
 format: markdown
 created: 2014-01-03
@@ -7,6 +6,8 @@ tags:
     - Perl
     - dancecard
 ---
+
+# A New Year, a New Dancecard
 
 First thing first: Happy New Year y'all! Health, happiness, and all that jazz to each and
 everyone of youses!

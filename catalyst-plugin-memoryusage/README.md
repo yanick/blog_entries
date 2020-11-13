@@ -1,7 +1,4 @@
 ---
-title: Profiling Catalyst's Requests Memory Consumption
-url: catalyst-plugin-memoryusage
-format: markdown
 created: 2010-11-28
 tags:
     - Perl
@@ -10,6 +7,9 @@ tags:
     - Catalyst::Plugin::LeakTracker
     - Catalyst::Controller::LeakTracker
 ---
+
+
+# Profiling Catalyst's Requests Memory Consumption
 
 Thanks to [Catalyst::Stats](cpan), it's already a breeze to profile the
 time taken by requests, and last week I found myself looking for the same kind 
@@ -28,7 +28,7 @@ This plugin is all about capturing memory usage. To do that, I decided
 to leverage [Memory::Usage](cpan).  So my first step was to add a
 `memory_usage` attribute to the application's context object:
 
-<pre code="Perl">
+```perl
 package Catalyst::Plugin::MemoryUsage;
 
 use strict;
@@ -43,7 +43,7 @@ has memory_usage => (
     is => 'rw',
     default => sub { Memory::Usage->new },
 );
-</pre>
+```
 
 
 Behavior-wise, I wanted to mirror what the time profiler
@@ -64,7 +64,7 @@ For the profiling's entry point, I piggy-backed on
 new request:
 
 
-<pre code="Perl">
+```perl
 around prepare => sub {
     my $orig = shift;
     my $self = shift;
@@ -76,7 +76,7 @@ around prepare => sub {
 
     return $c;
 };
-</pre>
+```
 
 For each private action, I tagged the milestone after `execute()`. It actually
 gives me more granularity than desired, as we will see in the log sample
@@ -84,29 +84,29 @@ below, but that's okay. Better more than less, and if the additional
 information begin to bother me, nothing prevents me of 
 adding a little skipping logic in there later on.
 
-<pre code="Perl">
+```perl
 after execute => sub {
     my $c = shift;
 
     $c->memory_usage->record( "after ". join " : ", @_ );
 };
-</pre>
+```
 
 And, for the actually reporting, I grafted it after the
 call to `finalize()`:
 
-<pre code="Perl">
+```perl
 before finalize => sub {
     my $c = shift;
 
     $c->log->debug( 'memory usage of request', $c->memory_usage->report );
 };
-</pre>
+```
 
 To that, we only have to add the function 
 `reset_memory_usage()`, and our plugin is done.
 
-<pre code="Perl">
+```perl
 sub reset_memory_usage {
     my $self = shift;
 
@@ -114,24 +114,24 @@ sub reset_memory_usage {
 }
 
 1;
-</pre>
+```
 
 ## Using the Plugin
 
 Using the plugin is only a question of adding it to the list of plugins in 
 the main `MyApp.pm` class of the application:
 
-<pre code="Perl">
+```perl
 package MyApp;
 
 use Catalyst qw/
     MemoryUsage
 /;
-</pre>
+```
 
 With that single extra magic word, our logs will henceforth fill with yummy memory usage reports:
 
-<pre code="plain">
+```
     [debug] memory usage of request
     time    vsz (  diff)    rss (  diff) shared (  diff)   code (  diff)   data (  diff)
         0  45304 ( 45304)  38640 ( 38640)   3448 (  3448)   1112 (  1112)  35168 ( 35168) preparing for the request
@@ -143,14 +143,14 @@ With that single extra magic word, our logs will henceforth fill with yummy memo
         1  47592 (     0)  40860 (     0)   3468 (     0)   1112 (     0)  37456 (     0) after Galuga::Controller::Root : end
         1  47592 (     0)  40860 (     0)   3468 (     0)   1112 (     0)  37456 (     0) after Galuga::Controller::Root : _END
         1  47592 (     0)  40860 (     0)   3468 (     0)   1112 (     0)  37456 (     0) after Galuga::Controller::Root : _DISPATCH
-</pre>
+```
 
 Need more measuring points in the report? Peppering the actions' code with a
 few
 
-<pre code="Perl">
+```perl
     $c->memory_usage->record( "finished running some big chunk o' code" );
-</pre>
+```
 
 will do the trick.
 

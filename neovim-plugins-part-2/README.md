@@ -72,7 +72,7 @@ endsnippet
 
 I could also just have done something like
 
-```
+```bash
 imap @@package package __PACKAGE__;<ESC>:call FileToPackage()<CR>o
 ```
 

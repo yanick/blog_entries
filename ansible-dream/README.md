@@ -6,7 +6,8 @@ tags:
 
 # An Ansible dream
 
-![](./falcon.jpg)
+<img src="__ENTRY__/falcon.jpg" alt="the millenium falcon" 
+    class="hero" />
 
 This is a blog entry that I've been wanting to blurt out for a long while,
 now. Mostly to share the method behind the madness.
@@ -62,8 +63,7 @@ to refresh the system font cache? What was this weird tweak I had to do
 for FiraCode to work with Kitty? Here, future me, here is what you need to
 know:
 
-```
-
+```xml
 fonts belong to /usr/local/share/fonts
 
 FiraCode is at
@@ -71,18 +71,18 @@ https://github.com/tonsky/FiraCode/releases/download/1.206/FiraCode_1.206.zip
 
 The weird trick is at ~/.fonts/fontconfig/conf.f/8-firacodespacing.conf and is
 
-    <?xml version="1.0"?>
-    <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-    <fontconfig>
-    <match target="scan">
-        <test name="family">
-        <string>Fira Code</string>
-        </test>
-        <edit name="spacing">
-        <int>100</int>
-        </edit>
-    </match>
-    </fontconfig>
+<xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+<match target="scan">
+    <test name="family">
+    <string>Fira Code</string>
+    </test>
+    <edit name="spacing">
+    <int>100</int>
+    </edit>
+</match>
+</fontconfig>
 
 and don't forget to do 
 
@@ -121,7 +121,7 @@ between free-form notes and automated recipes.
 Returning to the previous font example, this would be what it looks like on a
 first Ansibling phase:
 
-```yaml
+```xml
 #fonts belong to /usr/local/share/fonts
 #
 #FiraCode is at
@@ -210,6 +210,5 @@ I am also building myself some helpful
 tools. Like a custom action to check if a specific program on the local system
 needs to be upgraded or not. But that, and other such technicalities will have
 to wait for another day. Till then, enjoy!
-
 
 

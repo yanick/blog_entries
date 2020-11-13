@@ -1,5 +1,4 @@
 ---
-title: Smoked Modules, Montréal-style
 url: smoke-module
 format: markdown
 created: 2012-10-04
@@ -7,6 +6,8 @@ tags:
     - Perl
     - smoking
 ---
+
+# Smoked Modules, Montréal-style
 
 If you recall, in [our last
 episode](http://babyl.dyndns.org/techblog/entry/test-dancer-plugins) 
@@ -51,7 +52,7 @@ running of the test and creation of the TAP archive is delegated to
 to the lazy builders sprinkled everywhere, using the module turns out to be
 very short and sweet:
 
-    #syntax: bash
+```bash
     $ perl -Ilib -MSmoke::Module \
         -E'say Smoke::Module->new( tarball => shift )->test_status' \
         Dancer-Plugin-Cache-CHI-1.3.1.tar.gz 
@@ -67,6 +68,7 @@ very short and sweet:
 
     TAP Archive created at /tmp/sae8spnE_K/tap.tar.gz
     PASS
+```
 
 Uh. Okay, I still have to figure out why `prove` won't shut up, but beside
 that, ain't that sweet?
@@ -78,7 +80,7 @@ first one, we want to turn things around a little bit. Instead of providing
 a tarball directly, we'll provide a module name (and possibly a version), and
 let the system figure out how to borrow it from `Pinto`.
 
-<galuga_code code="perl">Pinto.pm</galuga_code>
+``Pinto.pm``
 
 The sneaky bit in that role is how we change the nature of the `tarball`
 attribute. Usually, roles aren't supposed to mess with the base class's
@@ -97,7 +99,7 @@ for that kind of job, I'm
 very quickly growing quite fond of my little [DBIx::NoSQL::Store::Manager](cpan)
 module:
 
-<galuga_code code="perl">Store.pm</galuga_code>
+``Store.pm``
 
 Most of the code in that module is there to oil the gears of
 [MooseX::Storage](cpan); to tell it which attributes which aren't worth
@@ -109,7 +111,7 @@ We could probably still find a way to run the base class with all the roles as
 a one-liner, but that would be just be show-off, so instead, let's do things
 properly, the long-hand way:
 
-    #syntax: bash
+```bash
     $ cat smoker.pl
     #!/usr/bin/env perl
 
@@ -209,6 +211,7 @@ properly, the long-hand way:
     }
     ');
     [..]
+```
 
 Now, picture few more plugins, a Dancer front-end, and wouldn't you agree this
 could become interesting real fast?

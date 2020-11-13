@@ -5,7 +5,7 @@ created: 2017-05-12
 # Type Schmecking
 
 These days, my pilgrimage through the divided kingdoms of EcmaScript made me 
-skirt the boundaries of [Typescript](typescript)landia. From my short
+skirt the boundaries of [Typescript][typescript]landia. From my short
 expeditions within, I have to admit: Typescript **is** a nice superset 
 of JavaScript. And its main feature, type checking, is sure a fresh breath of
 structure in an otherwise world of
@@ -38,7 +38,7 @@ type checking. (mostly because taking on compile-time checking
 would be aiming *way* above my grade).
 
 
-##hackthrough
+## hackthrough
 
 ### ./example1-1.javascript
 
@@ -66,7 +66,7 @@ things?
 
 Decorators!
 
-##/hackthrough
+## /hackthrough
 
 Once I knew I wanted to use decorators, the rest was pretty much
 creating a nice wrapper around the JSON Schema validator module [Ajv][ajv]
@@ -76,7 +76,7 @@ pleasure. Suffice to say that it works.
 
 ## A simple example
 
-##hackthrough
+## hackthrough
 
 ### ./example2-1.javascript
 
@@ -91,8 +91,6 @@ to be able to use the decorators.
 
 Not bad, eh?
 
-##/hackthrough
-
 ## Using the data to check the data? Check.
 
 Since we are using JSON Schemas, and doing things at runtime, there are a
@@ -102,7 +100,7 @@ value and that sort of things).  And thanks to `Ajv`'s bleeding edge support of
 JSON Schema specs, it goes further: those
 checks can refer to the data itself.
 
-##hackthrough
+## hackthrough
 
 ### ./example3-1.javascript
 
@@ -116,14 +114,14 @@ By the by, the `1/0` value for `$data` is a JSON pointer, basically meaning
 
 Bingo.
 
-##/hackthrough
+## /hackthrough
 
 ## Forgot to provide a value? Can't see default in that
 
 Thanks to another `Ajv` rad feature, we can have our 
 validation populate default values as well.
 
-##hackthrough
+## hackthrough
 
 ### ./example4-1.javascript
 
@@ -137,7 +135,7 @@ signature. It's an example, work with me here)
 
 Done.
 
-##/hackthrough
+## /hackthrough
 
 ## Going schemad with the power
 

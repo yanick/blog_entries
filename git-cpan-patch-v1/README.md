@@ -10,7 +10,7 @@ tags:
 # New And Improved: Git::CPAN::Patch -- Now With MetaCPAN Power
 
 <div style="float: right">
-<img src="__ENTRY_DIR__/val_approuve.png" alt="New and Improved!" width="300"/>
+<img src="val_approuve.png" alt="New and Improved!" width="300"/>
 </div>
 
 What better way to start the year than to bring a fresh new breath to an old
@@ -28,7 +28,7 @@ Most obvious, the cli interface has been collapsed to a single main command,
 `git-cpan` which, thanks to the way `git` discovers its subcommands, can also
 be called the old-fashioned way.
 
-    #syntax: bash
+```bash
     # new way to call git-cpan
     $ git-cpan --help
     Missing command
@@ -67,6 +67,7 @@ be called the old-fashioned way.
         --nocpan           show cpan information [Flag]
         --norepository     show repository information [Flag]
         --root             Location of the Git repository [Default:"."]
+```
 
 
 ### New Lifecycle
@@ -74,7 +75,7 @@ be called the old-fashioned way.
 The gaggle of subcommands have been stream-lined and modified.  For the vast
 majority of users, it means that the life-cycle of a patch will now look like:
 
-    #syntax: bash
+```bash
     $ git-cpan clone Git::CPAN::Patch
     fetching http://cpan.metacpan.org/authors/id/Y/YA/YANICK/Git-CPAN-Patch-0.8.0.tar.gz
     creating Git-CPAN-Patch
@@ -126,6 +127,7 @@ majority of users, it means that the life-cycle of a patch will now look like:
     X-Mailer: git-send-email 1.7.9.5
 
     Result: OK
+```
 
 ### Friggin' Fast
 
@@ -133,7 +135,7 @@ Last but not least, almost all ties to CPANPlus have been severed in favor
 of MetaCPAN, which means that cloning a distribution from CPAN is now, very,
 very fast.
 
-    #syntax: bash
+```bash
     $ time git-cpan clone Git::CPAN::Patch my-clone-dir
     fetching http://cpan.metacpan.org/authors/id/Y/YA/YANICK/Git-CPAN-Patch-0.8.0.tar.gz
     creating my-clone-dir
@@ -142,6 +144,7 @@ very fast.
     real    0m3.025s
     user    0m1.180s
     sys     0m0.456s
+```
 
 ### Oh Yeah, I Probably Broke Lotsa Things Too
 
@@ -168,7 +171,7 @@ Functionality
 used by more than one command got shoved in roles. For example, interactions
 with the repository are now the dominion of `Git::CPAN::Patch::Role::Git`:
 
-    #syntax: perl
+```perl
     package Git::CPAN::Patch::Role::Git;
 
     use strict;
@@ -234,6 +237,7 @@ with the repository are now the dominion of `Git::CPAN::Patch::Role::Git`:
     }
 
     1;
+```
 
 
 One of the very nice things about this is that as soon as a command consumes
@@ -246,7 +250,7 @@ have to repeat anything.  For example, the `clone` command is just like
 on the CPAN checkout. And its module reflects just that:
 
 
-    #syntax: perl
+```perl
     package Git::CPAN::Patch::Command::Clone;
 
     use 5.10.0;
@@ -285,6 +289,7 @@ on the CPAN checkout. And its module reflects just that:
     __PACKAGE__->meta->make_immutable;
 
     1;
+```
 
 ### Doing Things to MooseX:App
 
@@ -301,7 +306,7 @@ arguments. Well, what I did so far is fairly horrible (and will be made less
 atrocious soon, I swear), but I'm happy to report that the usage now mirrors
 the sub-command's `SYNOPSIS`.
 
-    #syntax: bash
+```bash
     $ git-cpan send-patch --help
     usage:
 
@@ -317,7 +322,7 @@ the sub-command's `SYNOPSIS`.
     options:
         --help --usage -?  Prints this usage information. [Flag]
         --root             Location of the Git repository [Default:"."]
-
+```
 
 ## What's Next?
 

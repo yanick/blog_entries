@@ -419,74 +419,13 @@ done_testing;
 Thanks to the magic of recursion, it works for changes that deep
 in our data structures too.
 
-```
-use Test::More;
 
-use 5.20.0;
-
-use MoobX;
-
-observable my @things;
-
-my $list = observer { 
-    join ' ', map @$_, @things 
-};
-
-is $list => '', "begins empty";
-
-@things = ( [1],[2],[3]);
-
-is $list => '1 2 3';
-
-push @things, [4];
-
-is $list => '1 2 3 4', 'shallow change';
-
-$things[0][0] = 5;
-
-is $list => '5 2 3 4', 'deep change';
-
-done_testing;
-```
+``file-1.perl``
 
 And, yes, we have also functions that autorun when changes are
 detected.
 
-```
-use Test::More tests => 5;
-
-use 5.20.0;
-
-use MoobX;
-
-use List::AllUtils qw/ first /;
-
-observable my @foo;
-@foo = 1..10;
-
-my $value = observer { first { $_ > 2 } @foo };
-
-is $value => 3;
-
-$foo[1] = 5;
-
-is $value => 5;
-
-observable( my $bar = 3 );
-
-autorun {
-    diag join ' ', $foo[0], $bar;
-    pass if $foo[0] < $bar;
-};
-
-# one pass as it get initialized for the first time
-
-$bar -= 5;  # no pass, -2 < 1
-
-$foo[0] = -100;  # pass
-
-$bar = 0; # pass again
-```
+``file-2.perl``
 
 So, there we go. Brilliant? Insane? Or way beyond such mundane
 human concepts? I'll let posterity judge. In the meantime, 

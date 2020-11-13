@@ -1,11 +1,10 @@
 ---
-title: Reminiscences of 2012, Foreshadowings of 2013
-url: out-2012-in-2013
-format: markdown
 created: 2012-12-31
 tags:
     - Perl
 ---
+
+# Reminiscences of 2012, Foreshadowings of 2013
 
 It has come again. This magic time of the year when, in-between the
 hangovers of Christmas and the hangovers of the New Year bashes, one takes a

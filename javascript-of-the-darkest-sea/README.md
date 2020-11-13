@@ -8,7 +8,7 @@ tags:
 # JavaScript of the Darkest Sea
 
 <div style="text-align: center;">
-<img src="./model.jpg" />
+<img src="__ENTRY__/model.jpg" />
 <div style="font-size: small">The <i>M</i> part of this MVC app was taken very literally</div>
 </div>
 
@@ -158,7 +158,7 @@ project (I kid, I kid! I... perhaps wish I was kidding more, though...).
 ## [The Heart of Darkest](https://github.com/yanick/fotds-battle)
 
 <div style="float: right; width: 300px; padding-top: 10px;">
-<img src="./model_1.jpg" width="300px" />
+<img src="__ENTRY__/model_1.jpg" width="300px" />
 <div style="font-size: small; text-align: center">
 Content of <code>package.json</code>, an
 artist rendering
@@ -256,7 +256,7 @@ ship), and downstream middlewares flesh out the details before they are fed
 to the reducer. 
 
 
-<Mermaid src="mw1.mmd" />
+<Mermaid src="__ENTRY__/mw1.mmd" />
 
 (that's what is happening in that weird `next(u(...))` stanza in the 
 `object_movement_phase` middleware of the previous section.
@@ -270,12 +270,12 @@ palatable solution would be to have the middleware issue a second
 `MOVE_SHIP` action, and have the reducer ignore any `MOVE_SHIP` actions that
 don't have all its trimmings.
 
-<Mermaid src="mw2.mmd" />
+<Mermaid src="__ENTRY__/mw2.mmd" />
 
 A better approach would be to lay off the overloading sauce and 
 define two actions for the two steps that are implicit in `MOVE_SHIP`.
 
-<Mermaid src="mw3.mmd" />
+<Mermaid src="__ENTRY__/mw3.mmd" />
 
 In all honesty, I think sagas have it right and I have it wrong there. The
 fleshing out actions by middlewares as I'm doing it is clever, but not
@@ -339,7 +339,7 @@ might step up to [pino-debug][].
 ## [DarkREST sea](https://github.com/yanick/fotds-server)
 
 <div style="float: right; width: 300px; padding-top: 10px; margin-left: 0.75em">
-<img src="./model_2.jpg" width="300px" />
+<img src="__ENTRY__/model_2.jpg" width="300px" />
 <div style="font-size: small; text-align: center">
 Kebab-case? Yeah, it has its uses.
 </div>
@@ -399,7 +399,7 @@ into the mix.
 ## [App of the darkest sea](https://github.com/yanick/fotds-app)
 
 <div style="float: right; width: 300px; padding-top: 10px;">
-<img src="./model_3.jpg" width="300px" />
+<img src="__ENTRY__/model_3.jpg" width="300px" />
 <div style="font-size: small; text-align: center">
 Hey! Slap a coat of paint on it and it'd begin to look half-way decent!
 </div>
@@ -463,7 +463,7 @@ CSS animations came along, and gave it a revival of sort.
 
 What does the app looks like currently? It looks like this:
 
-<div><img src="./app.png" style="width: 100%" /> </div>
+<div><img src="__ENTRY__/app.png" style="width: 100%" /> </div>
 
 Granted, it's not pretty yet. But... but we have a battle map that can
 be panned and moved around. We have a command panel for our ships. We can 

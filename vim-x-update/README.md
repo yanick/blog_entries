@@ -1,6 +1,4 @@
 ---
-url: vim-x-update
-format: markdown
 created: 2014-04-08
 tags:
     - Perl
@@ -22,7 +20,7 @@ and it's awesome. For example, when I do work on the
 
 and I manually change it to be
 
-```
+```perl
 ### Modern Perl: 2014 Edition is Out
 http://www.modernperlbooks.com/mt/2014/04/modern-perl-2014-edition-is-out.html
 2014-04-04
@@ -30,7 +28,7 @@ http://www.modernperlbooks.com/mt/2014/04/modern-perl-2014-edition-is-out.html
 
 Blerg. Why do it manually when I can have Perl do it for me?
 
-``` perl
+```perl
 package PerlWeekly;
 
 use Vim::X;
@@ -69,7 +67,7 @@ sub PWGetInfo :Vim() {
 
 With that, I just have to add the following to my `.vimrc`
 
-```
+```vim
 perl push @INC, '/path/to/lib/having/PerlWeekly.pm';
 perl use PerlWeekly;
 
@@ -94,7 +92,7 @@ only have to load the dependencies that we use, when we use them.
 To revisit the example of the first section, we will mode the code from
 `PerlWeekly.pm` to `~/.vim/vimx/perlweekly/PWGetInfo.pl` and remove some cruft:
 
-``` perl
+```perl
 use Vim::X;
 
 # only loaded on demand, so we can go *WILD*
@@ -131,7 +129,7 @@ sub PWGetInfo :Vim() {
 
 And the loading in our `.vimrc` becomes
 
-```
+```vim
 perl use Vim::X;
 
 autocmd BufNewFile,BufRead **/perlweekly/src/*.mkd

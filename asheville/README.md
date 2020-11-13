@@ -130,7 +130,7 @@ Havta catch'em all.
 At which point I expect my neurons to be overheated from all the
 information soaking of the previous 72 hours.
 
-##  around conference => sub { ... }
+## `around conference => sub &#123; ... }`
 
 I'm supposed to land on Sunday, and take off on Thursday, somewhat later
 during the day.  I already have a short list of folks to meet during the

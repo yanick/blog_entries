@@ -62,24 +62,25 @@ dig a little deeper to understand to use it.
 First thing is to understand the actors of that particular drama. Pod::Weaver
 itself is the rendering engine. Its purpose is to take a Perl file, like say:
 
-    #syntax: perl
-    package Frobuscate::Util;
-    # ABSTRACT: all you need to frobuscate your data
+```perl
+package Frobuscate::Util;
+# ABSTRACT: all you need to frobuscate your data
 
-    =head1 SYNOPSIS
+=head1 SYNOPSIS
 
-        use Frobuscate::Util qw/ frob /;
+    use Frobuscate::Util qw/ frob /;
 
-        my $frobbed = frob( $stuff );
+    my $frobbed = frob( $stuff );
 
-    =cut
+=cut
 
-    use 5.12.0;
+use 5.12.0;
 
-    ...
+...
 
-    1;
+1;
 
+```
 
 and munge the POD according to a configuration/doc template file, usually
 named '`weaver.ini`'.  In that template file, Pod::Weaver plugins are declared
@@ -87,8 +88,9 @@ that will either insert specific pieces of POD in the generated document, or
 perform certain transmutations of the original POD/code.  For example, one of
 the simplest '`weaver.ini`' we could have is:
 
-    #syntax: bash
-    [Leftovers]
+```bash
+[Leftovers]
+```
 
 The configuration item 'Leftovers', which comes from
 `Pod::Weaver::Section::Leftovers` outputs all the POD sections that haven't
@@ -102,9 +104,9 @@ To get something working, I had to cheat and peek at how
 to come up with the following minimal script to generate and output the weaved
 POD:
 
-    #syntax: perl
-    use strict;
-    use warnings;
+```perl
+use strict;
+use warnings;
 
     use Pod::Weaver;
     use File::Slurp;
@@ -137,6 +139,7 @@ POD:
 
     # print the generated POD
     print $doc->as_pod_string;
+```
 
 
 The method `weave_document()` is where all the magic happens.
@@ -147,18 +150,19 @@ method needs to be pre-divided and massaged into two object: an
 
 And indeed, if we try it out:
 
-    #syntax: bash
-    $ perl weave.pl Util.pm 
-    =pod
+```bash
+$ perl weave.pl Util.pm 
+=pod
 
-    =head1 SYNOPSIS
+=head1 SYNOPSIS
 
-        use Frobuscate::Util qw/ frob /;
+    use Frobuscate::Util qw/ frob /;
 
-        my $frobbed = frob( $stuff );
+    my $frobbed = frob( $stuff );
 
-    =cut
-    =cut
+=cut
+=cut
+```
 
 Yay! It works!
 

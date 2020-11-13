@@ -1,7 +1,4 @@
 ---
-title: Getting Around Expiration Dates via Reincarnation (and Catalyst)
-url: versioned-uri
-format: markdown
 created: 2010-12-18
 last_updated: 3 Jan 2011
 tags:
@@ -12,6 +9,8 @@ tags:
     - web development
     - Apache
 ---
+
+#Getting Around Expiration Dates via Reincarnation (and Catalyst)
 
 **EDIT**: as Alexander Hartmaier pointed out in the comments, the version
 can also be added as a parameter (http://foo.com/static/avatar.png?v=1.2.3),
@@ -26,12 +25,12 @@ cache and reuse those files, so that we can all save a little bit of bandwidth
 and get things moving a wee bit faster.  For that, we have the HTTP Expires
 header:
 
-<pre code="plain">
+```
 &lt;Directory /home/myapp/static>
         ExpiresActive on
         ExpiresDefault "access plus 1 year"
 &lt;/Directory>
-</pre>
+```
 
 This approach is flawless for files that will never, ever change.
  But for files that *almost* never change, it's
@@ -53,7 +52,7 @@ the url has to look different that, under the hood, it can't be the same.
 We can augment our Apache configuration with a little path legerdemain
 like so:
 
-<pre code="plain">
+```
 &lt;Directory /home/myapp/static>
         RewriteEngine on
         RewriteRule ^v[0123456789._]+/(.*)$ /myapp/static/$1 [PT]
@@ -61,7 +60,7 @@ like so:
         ExpiresActive on
         ExpiresDefault "access plus 1 year"
 &lt;/Directory>
-</pre>
+```
 
 And now, browser-side, we have it all. As long as the app isn't upgraded, the
 static files are set to never expire. And as soon we have a new release, 
@@ -70,15 +69,15 @@ that caching will be bypassed by the grace of a new set of urls.
 Those shenanigans, however, come with a logistic price; the code of application
 has to generate those versioned paths.  Where, before, we had
 
-<pre code="Perl">
-    $c->uri_for( '/static/foo.png' );
-</pre>
+```perl
+$c->uri_for( '/static/foo.png' );
+```
 
 we must now write
 
-<pre code="Perl">
-    $c->uri_for( '/static/v' . $c->VERSION . '/foo.png' );
-</pre>
+```perl
+$c->uri_for( '/static/v' . $c->VERSION . '/foo.png' );
+```
 
 Blerg. If we want to do that for more than a handful of uris, that's cumbersome.
 So... why not write a very small plugin to insert that versioned element in
@@ -95,11 +94,11 @@ for the plugin proves to be as concise as the requirements:
 
 Once this is done, we just have to add a stanza to our configuration file:
 
-<pre code="plain">
-    &lt;VersionedURI>
-        uri  static/
-   &lt;/VersionedURI>
-</pre>
+```
+&lt;VersionedURI>
+    uri  static/
+&lt;/VersionedURI>
+```
 
 And, voilà, our application is now issuing versioned paths.
 

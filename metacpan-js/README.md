@@ -1,5 +1,4 @@
 ---
-title: MetaCPAN JavaScript API
 url: metacpan-js
 format: markdown
 created: 2013-04-14
@@ -7,6 +6,8 @@ tags:
     - Perl
     - MetaCPAN
 ---
+
+# MetaCPAN JavaScript API
 
 Sometimes, it's humongous revolutions. Most of the time, it's itsy bitsy
 evolution steps. Today's hack definitively sits in the second category, 
@@ -22,29 +23,35 @@ Accessing REST endpoints is not hard, but it's a little bit of a low-level
 chore.  In Perl space, there is already [MetaCPAN::API](cpan) to 
 abstract
 
-    #syntax: perl
-    my $ua = LWP::UserAgent;
-    my $me = decode_json( 
-        $ua->get( 'https://api.metacpan.org/author/YANICK'
-    )->content;
+```perl
+my $ua = LWP::UserAgent;
+my $me = decode_json( 
+    $ua->get( 'https://api.metacpan.org/author/YANICK'
+)->content;
+```
 
 into
 
-    #syntax: perl
-    my $mcpan = MetaCPAN::API;
-    my $me = $mcpan->author('YANICK');
+```perl
+my $mcpan = MetaCPAN::API;
+my $me = $mcpan->author('YANICK');
+```
 
 In JavaScript-land? Well, there was jQuery, of course:
 
-    $.get('https://api.metacpan.org/author/YANICK').success( function(data) {
-        alert( 'hi there ' + data.name );
-    });
+```js
+$.get('https://api.metacpan.org/author/YANICK').success( function(data) {
+    alert( 'hi there ' + data.name );
+});
+```
 
 But now there is also [metacpan.js](https://github.com/yanick/metacpan.js): 
 
-    $.metacpan().author('YANICK').success( function(data) {
-        alert( 'hi there ' + data.name );
-    });
+```js
+$.metacpan().author('YANICK').success( function(data) {
+    alert( 'hi there ' + data.name );
+});
+```
 
 The plugin is still very simple and only implements `author()`, `module()`,
 `release()` and `file()`. And each of those methods is nothing but a glorified

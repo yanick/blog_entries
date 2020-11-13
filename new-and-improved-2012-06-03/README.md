@@ -8,7 +8,7 @@ tags:
 # New and Improved: Here Comes the Flood
 
 <div style="float: right; padding: 5px;">
-<img src="__ENTRY_DIR__/val_approuve.png" alt="New and Improved!" width="300"/>
+<img src="val_approuve.png" alt="New and Improved!" width="300"/>
 </div>
 
 In the last few weeks, I launched quite a few small releases to CPAN. Taken
@@ -28,7 +28,7 @@ the fetching of the cpan tarball uses
 instead of [CPANPLUS](cpan).  That change gaves the typical use-case a
 wee bit of a performance boost. How wee is that bit? Well:
 
-    #syntax: bash
+```bash
     # with CPANPlus
 
     $ time git cpan-init Git::CPAN::Patch
@@ -67,6 +67,7 @@ wee bit of a performance boost. How wee is that bit? Well:
     real    0m2.755s
     user    0m0.570s
     sys     0m0.190s
+```
 
 A mere factor of 20 times faster. Boo-friggin'-yah.
 
@@ -86,7 +87,7 @@ potentially more glamorous.  And while I was at it, I also made possible for
 the user to chose between [Text::Markdown](cpan) and
 [Text::MultiMarkdown](cpan) for the markdown rendering engine.
 
-    #syntax: perl
+```perl
     my $email = Email::Simple::Markdown->create(
         markdown_engine => 'Text::Markdown',
         header => [ ... ],
@@ -99,6 +100,7 @@ the user to chose between [Text::Markdown](cpan) and
             $_ = $html_banner . $_;
         },
     );
+```
 
 ## CPAN::Changes
 
@@ -113,7 +115,7 @@ what file in the current directory is the changelog if you don't specify it.
 Or print the headers off the changelog. Potentially in reverse, so that you
 can do things like figure out the last few dates of your releases:
 
-    #syntax: bash
+```bash
     $ tidy_changelog --headers  --reverse | tail
     changelog not provided, guessing 'Changes'
 
@@ -126,6 +128,7 @@ can do things like figure out the last few dates of your releases:
     0.18 2011-10-18
 
     0.19 2012-04-30
+```
 
 ## Dist::Zilla::Plugin::ChangeStats::Git
 
@@ -135,7 +138,7 @@ each release. A few hours later, the last of the breakfast coffee was consumed
 as [Dist::Zilla::Plugin::ChangeStats::Git](cpan) was born, which is now
 appending the coveted numbers to my changes:
 
-    #syntax: plain
+```
     0.8.0 2012-05-22
     [ENHANCEMENTS]
     - Added new command 'cpan-clone', which operates like git-clone [Mike
@@ -143,6 +146,7 @@ appending the coveted numbers to my changes:
 
     [STATISTICS]
     - code churn: 1 files changed, 4 insertions(+), 86 deletions(-)
+```
 
 ## GitStore
 
@@ -150,7 +154,7 @@ The release is pending [Fayland](http://search.cpan.org/~fayland/)'s approval,
 but [GitStore](cpan) should soon be able to return the full history
 of a stored object, in addition to returning the latest version. 
 
-    #syntax: perl
+```perl
     use GitStore;
     my $store = GitStore->new( '/path/to/git/repo' );
 
@@ -161,6 +165,7 @@ of a stored object, in addition to returning the latest version.
     my @history = $store->history('/some/object');
 
     say "created at " . $history[0]->timestamp;
+```
 
 
 While this

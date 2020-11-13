@@ -1,6 +1,4 @@
 ---
-url: dist-zilla-github
-format: markdown
 created: 2011-01-23
 tags:
     - Perl
@@ -30,7 +28,7 @@ I've developed a certain pattern that, so far,
 seems to do the trick.  In my `dist.ini`,
 I leverage the wonderful [Dist::Zilla::Plugin::Git](cpan) and have:
 
-<pre code="plain">
+```
 [Git::Check]
 [Git::Commit]
 
@@ -42,14 +40,13 @@ I leverage the wonderful [Dist::Zilla::Plugin::Git](cpan) and have:
 
 [Git::Push]
     push_to = github
-</pre>
+```
 
 The magic is in `Git::CommitBuild`. By itself, `Git::CommitBuild` 
-commits the result of a `dzil build` on a branch called <code>build/<i>original
-branch</i></code>. 
+commits the result of a `dzil build` on a branch called `build/original branch`. 
 Those are throwaway branches that I typically never push to my public repository, but that
 are very useful to have a quick peek at what the `Dist::Zilla`-generated code will look
-like.  
+like.
 
 However, it's the optional `release_branch` parameter that interest us
 here. When defined, the plugin also commits the build content to the given
@@ -62,7 +59,7 @@ development branch it comes from. For example, here is what
 [Catalyst::Plugin::MemoryUsage](cpan)'s repo looks like:
 
 <div align="center">
-<img src="__ENTRY_DIR__/branches.png" alt="Catalyst::Plugin::MemoryUsage's repository" />
+<img src="__ENTRY__/branches.png" alt="Catalyst::Plugin::MemoryUsage's repository" />
 </div>
 
 So, basically, the repository ends up having two main branches, `master`, on
@@ -83,9 +80,9 @@ can auto-populate the `README.mkd` of the project by using
 [Dist::Zilla::Plugin::ReadmeMarkdownFromPod](cpan) and adding
 the following to `dist.ini`:
 
-<pre code="plain">
+```
 [ReadmeMarkdownFromPod]
-</pre>
+```
 
 For an example of the resulting generated `README.mkd`, you have have a gander
 at my [Task-BeLike-YANICK](https://github.com/yanick/Task-BeLike-YANICK)

@@ -1,0 +1,29 @@
+import React      from 'react';
+import _        from 'lodash';
+import moment       from 'moment';
+import Day        from './Day.jsx';
+import MonthSummary   from './MonthSummary.jsx';
+import { format_price } from './Entry.jsx';
+
+const by_days = entries => _.sortBy(
+  _.values( _.groupBy( entries, 'postdate' ) ), '0.postdate'
+);
+
+export  default ({
+  month, start_balance, entries, accounts, is_stock_account
+}) => <table>
+  <thead>
+    <tr className="opening_balance">
+      <td colSpan={ is_stock_account ? 5 : 4 }>
+        <h2>{month} - { moment(month).format('MMMM') } </h2>
+      </td>
+      <td className="money">{ format_price( start_balance ) }</td>
+    </tr>
+  </thead>
+  { by_days(entries).map( (day,i) =>
+      <Day key={i} entries={day}
+         accounts={accounts} is_stock_account={is_stock_account}
+       /> ) }
+
+  <MonthSummary entries={entries} is_stock_account={is_stock_account} />
+</table>;

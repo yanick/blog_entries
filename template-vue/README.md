@@ -33,13 +33,13 @@ world needs. Another template module.
 
 <Hackthrough>
 
-<Hackstep src="template.none">
+<Hackstep src="__ENTRY__/template.html">
 
 So in Vue.js, a single-component file will look something like this.
 
 </Hackstep>
 
-<Hackstep src="main.perl">
+<Hackstep src="__ENTRY__/main.perl">
 
 For our Perl version, we'll use modules to be our components, and we will
 use Perl's natural instinct to ignore POD directives to put the template
@@ -47,7 +47,7 @@ smack there at the top.
 
 </Hackstep>
 
-<Hackstep src="entry.perl">
+<Hackstep src="__ENTRY__/entry.perl">
 
 And to make the example interesting, we're adding a subcomponent. With
 it, we'll be exercising the import of sub-components, `v-for` iterations,
@@ -73,22 +73,20 @@ clutch. Well, that's hardly a problem.
 
 <Hackthrough>
 
-</Hackstep>
-
-<Hackstep src="tv1.perl">
+<Hackstep src="__ENTRY__/tv1.perl">
 
 First things first. We create the role.
 
 </Hackstep>
 
-<Hackstep src="tv2.perl">
+<Hackstep src="__ENTRY__/tv2.perl">
 
 ... then we add the `components` attribute, which defaults to be boring as all
 hecks.
 
 </Hackstep>
 
-<Hackstep src="tv3.perl">
+<Hackstep src="__ENTRY__/tv3.perl">
 
 Then we add the `template` attribute. 
 
@@ -126,13 +124,13 @@ muchly close that one could be tempted to use
 <Hackthrough>
 
 
-<Hackstep src="tv3.perl">
+<Hackstep src="__ENTRY__/tv3.perl">
 
 Remember the template we already have?
 
 </Hackstep>
 
-<Hackstep src="tv4.perl" lines="4,5">
+<Hackstep src="__ENTRY__/tv4.perl" lines="4,5">
 
 Bam. 
 
@@ -154,7 +152,7 @@ release it within the week.)
 <Hackthrough>
 
 
-<Hackstep src="tv5.perl" lines="1">
+<Hackstep src="__ENTRY__/tv5.perl" lines="1">
 
 Now we're beginning to manipulate the DOM of the template. For that,
 we'll use [Web::Query](cpan:Web::Query), which is heavily inspired from
@@ -162,13 +160,13 @@ jQuery.
 
 </Hackstep>
 
-<Hackstep src="tv5.perl" lines="9">
+<Hackstep src="__ENTRY__/tv5.perl" lines="9">
 
 Basically, we find all nodes that have a `v-if` attribute...
 
 </Hackstep>
 
-<Hackstep src="tv5.perl" lines="10,13-16">
+<Hackstep src="__ENTRY__/tv5.perl" lines="10,13-16">
 
 ...since this is a protype, we're slightly gross and assume blindly that the
 first token of the expression is a variable to resolve as per the context, and
@@ -176,7 +174,7 @@ the rest is a Perl expression. Which is... soooomewhat reasonable.
 
 </Hackstep>
 
-<Hackstep src="tv5.perl" lines="13">
+<Hackstep src="__ENTRY__/tv5.perl" lines="13">
 
 In any case, if the condition turns out to be false, we delete the node and
 never speak of it again.
@@ -190,14 +188,14 @@ never speak of it again.
 <Hackthrough>
 
 
-<Hackstep src="tv6.perl" lines="4">
+<Hackstep src="__ENTRY__/tv6.perl" lines="4">
 
 For the bindings, it's almost the same tactic. We go through **all** the
 nodes.
 
 </Hackstep>
 
-<Hackstep src="tv6.perl" lines="8">
+<Hackstep src="__ENTRY__/tv6.perl" lines="8">
 
 We then filter on those that have attributes prefixed with colons. 
 
@@ -207,7 +205,7 @@ attributes easily. I'll also try to fix this presently.
 
 </Hackstep>
 
-<Hackstep src="tv6.perl" lines="11-13">
+<Hackstep src="__ENTRY__/tv6.perl" lines="11-13">
 
 Anyhoo, we populate the attribute `foo` with whatever the variable or method given in
 `:foo` interpolate into given the context.
@@ -224,14 +222,14 @@ less blindly what is in `:foo`. But that's just finickling around.
 
 <Hackthrough>
 
-<Hackstep src="tv7.perl" lines="7">
+<Hackstep src="__ENTRY__/tv7.perl" lines="7">
 
 For the `v-for` iterators, same procedure as usual. We look at all
 nodes with `v-for` attributes...
 
 </Hackstep>
 
-<Hackstep src="tv7.perl" lines="14-20">
+<Hackstep src="__ENTRY__/tv7.perl" lines="14-20">
 
 ... and for every item of the list iterate over we make a copy of the tag,
 augment the template context with the iteree, and invoke the MIGHTY POWER OF
@@ -249,7 +247,7 @@ ALL* HAIL THE RECURSION GODS!
 
 <Hackthrough>
 
-<Hackstep src="tv8.perl" lines="8">
+<Hackstep src="__ENTRY__/tv8.perl" lines="8">
 
 Last bit, the sub-components. 
 
@@ -260,14 +258,14 @@ Here we find nodes which tag name is the name of a component.
 
 </Hackstep>
 
-<Hackstep src="tv8.perl" lines="11-12">
+<Hackstep src="__ENTRY__/tv8.perl" lines="11-12">
 
 For those tags, we collect all the attributes, which will be the props of the
 sub-components.
 
 </Hackstep>
 
-<Hackstep src="tv8.perl" lines="15">
+<Hackstep src="__ENTRY__/tv8.perl" lines="15">
 
 And since the sub-component is also a template and only needs to be fed its
 props to do its thang, we go ahead, create the object and render it.
@@ -281,20 +279,20 @@ props to do its thang, we go ahead, create the object and render it.
 
 <Hackthrough>
 
-<Hackstep src="tv9.perl">
+<Hackstep src="__ENTRY__/tv9.perl">
 
 And we are done. With the code we did, plus that last 
 method that interconnect the pipeline....
 
 </Hackstep>
 
-<Hackstep src="tv10.perl">
+<Hackstep src="__ENTRY__/tv10.perl">
 
 ... we now have a set of components that we can call thus...
 
 </Hackstep>
 
-<Hackstep src="tv12.none">
+<Hackstep src="__ENTRY__/tv12.none">
 
 ...will give us that.
 

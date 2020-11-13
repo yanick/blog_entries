@@ -36,7 +36,7 @@ For the good of this blog entry, we'll simplify that api down to just building a
 forgetting about recursivity and everything else. Which leaves us with code
 looking like this:
 
-```
+```js
 type Dictionary<T> = { [key: string]: T };
 
 type DuxConfig = {
@@ -78,7 +78,7 @@ to how we use the class: if the consumer of the class wants the actions
 to be discoverable via their types, they'll have to be declared as part
 of the class initialization.
 
-```
+```js
 type ActionsOf<D> = D extends { actions: infer A } ? A : never;
 
 class Dux<C extends DuxConfig> {
@@ -100,7 +100,7 @@ class Dux<C extends DuxConfig> {
 
 And boom! It's already much better. With this we can create a dux like so:
 
-```
+```js
 const myDux = new Dux({
     actions: {
         doThis: () => {},
@@ -116,7 +116,7 @@ Also, it's worth nothing that with this implementation it's still possible
 to add actions programatically via `addAction`. It'll just not reflect 
 into the type.
 
-```
+```js
 // assuming the myDux object of the previous example
 
 myDux.actions.doThis();  // known by TypeScript and blissfully completed
@@ -131,7 +131,7 @@ If the class's consumer expects to use `addAction` a lot and doesn't want
 to `as any` all over the place, there's an easy emergency latch for that:
 
 
-```
+```js
 const myDux = new Dux({
     actions: {
         doThis: () => {},
@@ -160,7 +160,7 @@ we keep building a new object with a new type each time we add an action!
 For the sake of keep code as clear as possible, from here on I'll simplify the
 definition of my dux object to just be  a bag of actions:
 
-```
+```js
 type Dux = Dictionary<Function>;
     
 
@@ -177,7 +177,7 @@ const dux = addAction({}, 'doThis', () => {} );
 That works, but the type of `dux` will be a generic object of functions. If we
 want to be more specific, we have to do:
 
-```
+```js
 function addAction<
     D, K extends string 
 >( dux: D, name: K, creator: Function ):
@@ -196,7 +196,7 @@ Woo! `dux` shows as having the key `doThis`. Success!
 
 Now we can do
 
-```
+```js
 let dux = addAction({},  'doThis', () => {} );
     dux = addAction(dux, 'doThat', () => {} );
 ```
@@ -208,7 +208,7 @@ that's it, it's stuck with it.
 That's unfortunate. It means that we could call `addAction` many times, but to
 get the right type we'd have to assign a new variable each time:
 
-```
+```js
 const dux  = addAction({},   'doThis', () => {} );
 const dux2 = addAction(dux,  'doThat', () => {} );
 const dux3 = addAction(dux2, 'doSomethingElse', () => {} );
@@ -218,7 +218,7 @@ const dux4 = addAction(dux3, 'killMeNow', () => {} );
 Or we could bypass the intermediate variables altogether:
 
 
-```
+```js
 const dux = 
 addAction(
     addAction(
@@ -236,7 +236,7 @@ There is actually a third option, which is a little bit of... let's call it
 lateral thinking.  We could use the way promises can be chained to 
 cut on the silliness:
 
-```
+```js
 const dux = await Promise.resolve({})
     .then( dux => addAction(dux, 'doThis', () => {} ) )
     .then( dux => addAction(dux, 'doThat', () => {} ) );
@@ -245,7 +245,7 @@ const dux = await Promise.resolve({})
 In this case, our `dux` will have the right type! We can even shave a little
 bit of the repetition thanks to currying:
 
-```
+```js
 function curriedAddAction<K extends string>(name: K, creator: Function) {
     return <D>(dux:D) => addAction(dux,name,creator);
 }

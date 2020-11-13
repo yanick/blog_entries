@@ -37,27 +37,29 @@ following all the [Perl Advent calendars, right?](http://perlnews.org/2012/12/ad
 And now, the cool stuff happens. First, we create an object and fire up its
 very own web application:
 
-    #syntax: bash
-    $ perl -MWishlist -e'Wishlist->new( wishlist => [ "tiger socks", "alpaca wool", "a pony" ])->dev_server'
-    HTTP::Server::Simple::PSGI: You can connect to your server at http://localhost:3000/
+```bash
+$ perl -MWishlist -e'Wishlist->new( wishlist => [ "tiger socks", "alpaca wool", "a pony" ])->dev_server'
+HTTP::Server::Simple::PSGI: You can connect to your server at http://localhost:3000/
+```
 
 And with that...
 
-    #syntax: bash
-    $ echo 'html{ body { p{ "hello there" } } }' > templates/main.bou
+```bash
+$ echo 'html{ body { p{ "hello there" } } }' > templates/main.bou
 
-    $ curl localhost:3000/main
-    <html><body><p>hello there</p></body></html>
+$ curl localhost:3000/main
+<html><body><p>hello there</p></body></html>
 
-    $ echo 'ul { li { $_ } for @{$self->wishlist} }' > templates/list.bou
+$ echo 'ul { li { $_ } for @{$self->wishlist} }' > templates/list.bou
 
-    $  curl localhost:3000/list
-    <ul><li>tiger socks</li><li>alpaca wool</li><li>a pony</li></ul>
+$  curl localhost:3000/list
+<ul><li>tiger socks</li><li>alpaca wool</li><li>a pony</li></ul>
 
-    $ echo 'body { show("list") }' > templates/main.bou 
+$ echo 'body { show("list") }' > templates/main.bou 
 
-    $  curl localhost:3000/main
-    <body><ul><li>tiger socks</li><li>alpaca wool</li><li>a pony</li></ul></body>
+$  curl localhost:3000/main
+<body><ul><li>tiger socks</li><li>alpaca wool</li><li>a pony</li></ul></body>
+```
 
 Okay, I confess, that display is slightly rigged: an already existing template has to be
 hit so that the new ones are registered. But still, you have to admit, it's

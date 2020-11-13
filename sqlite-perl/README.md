@@ -1,12 +1,12 @@
 ---
-title: Embedding Perl in SQLite
 url: sqlite-perl
-format: markdown
 created: 2012-02-20
 tags:
     - Perl
     - SQLite
 ---
+
+# Embedding Perl in SQLite
 
 As you may remember, recently I took the fancy to 
 [implement a TAP emitter in SQLite](http://babyl.dyndns.org/techblog/entry/sqlitetap).
@@ -32,9 +32,9 @@ As I mentioned, my C is quite rusty and my afinity to XS is, shall we say,
 minimal.  But after banging my head a lot over `perlembed`, and staring at
 `perlapi`, I was able to come up with:
 
-    #syntax: cpp
-    #include "sqlite3ext.h"
-    SQLITE_EXTENSION_INIT1;
+```cpp
+#include "sqlite3ext.h"
+SQLITE_EXTENSION_INIT1;
 
     #include <stdlib.h>
     #include <stdio.h>
@@ -85,22 +85,24 @@ minimal.  But after banging my head a lot over `perlembed`, and staring at
 
         return SQLITE_OK;
     }
+```
 
 
 I am the firs to admit, the code is mostly cargo cult, stitched together with
 guesses and hopes. But it goes survive the compilation dance:
 
-    #syntax: bash
-    $ gcc -c -fPIC sql_perl.c \
-        `/usr/bin/perl -MExtUtils::Embed -e ldopts -e ccopts`
-    $ gcc -shared -o sql_perl.sqliteext \
-        sql_perl.o /usr/lib/libperl.so
+```bash
+$ gcc -c -fPIC sql_perl.c \
+    `/usr/bin/perl -MExtUtils::Embed -e ldopts -e ccopts`
+$ gcc -shared -o sql_perl.sqliteext \
+    sql_perl.o /usr/lib/libperl.so
+```
 
 So far, so good. But.. does it blends? 
 
-    #syntax: bash
-    $ cat perl.sql
-    .load sql_perl.sqliteext
+```bash
+$ cat perl.sql
+.load sql_perl.sqliteext
 
     select perl_do('
         $x = "whfg nabgure fdy unpxre";
@@ -110,7 +112,7 @@ So far, so good. But.. does it blends?
 
     $ sqlite3 < perl.sql
     just another sql hacker
-
+```
 
 <div>... In the words of dear ol' Cassidy: "<div style="display: inline-block; position: relative;">fuck<div style="position: absolute; background: black; width: 90%; height: 6px; top: 7px;"></div></div>in' groovy."</div>
 

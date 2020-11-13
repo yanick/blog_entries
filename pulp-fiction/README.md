@@ -1,12 +1,11 @@
 ---
-title: Pulp Fiction
-url: pulp-fiction
-format: markdown
 created: 2015-06-26
 tags:
     - Perl
     - Pulp
 ---
+
+# Pulp Fiction
 
 So, these days, I'm having fun splashing in the JavaScript pool. And in the
 course of duty I've looked at its popular build systems [Grunt](http://gruntjs.com/) and
@@ -73,64 +72,7 @@ stylesheet.
 
 A possible Pulp fiction that could do that is
 
-```perl
-package PoC;
-
-use 5.20.0;
-
-use strict;
-use warnings;
-
-use Pulp;
-use MooseX::Types::Path::Tiny qw/Path/;
-
-use Pulp::Actions qw/ Src Rename Dest Less WebQuery Concat /;
-
-use experimental 'signatures';
-
-has dest_dir => (
-    is      => 'ro',
-    isa     => Path,
-    coerce  => 1,
-    default => sub {
-        Path::Tiny->tempdir;
-    },
-);
-
-has src_dir => (
-    is      => 'ro',
-    isa     => Path,
-    coerce  => 1,
-    default => 't/corpus/poc',
-);
-
-has css_file => (
-    isa     => 'Str',
-    is      => 'ro',
-    default => 'style.css',
-);
-
-proof default => sub ($pulp) {
-    my $src = quotemeta $pulp->src_dir;
-    my $css = $pulp->css_file;
-
-    pulp_src( $pulp->src_dir . '/*' )
-    => pulp_rename( sub { s#^$src/## } )
-    => {
-       qr/\.less$/ => sub{ 
-          pulp_less() => pulp_concat($pulp->css_file) 
-       },
-       qr/\.html$/ => pulp_webquery( sub {
-            $_->find('head')->append(
-                "&lt;link href='$css' rel='stylesheet' type='text/css'>"
-            )
-        }),
-    }
-    => pulp_dest( $pulp->dest_dir );
-};
-
-1;
-```
+<SnippetFile src="./file1.perl" />
 
 And then to run it:
 
@@ -429,46 +371,7 @@ Likewise, an action that modify a folio, either content or name, consumes
 `Pulp::Role::Action::Editor`, and implements an `edit()` method. 
 For example:
 
-```perl
-package Pulp::Action::Less;
-
-use 5.10.0;
-
-use strict;
-use warnings;
-
-use Moose;
-use CSS::LESS;
-use PerlX::Maybe;
-
-with 'Pulp::Role::Action::Editor';
-
-has "include_paths" => (
-    is => 'ro',
-);
-
-has "engine" => (
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {
-        my $self = shift;
-        return CSS::LESS->new(
-            maybe include_paths => $self->include_paths
-        );
-    },
-);
-
-sub edit {
-    my( $self, $folio ) = @_;
-
-    $folio->content( join '', $self->engine->compile( $folio->content ) );
-    $folio->filename( $folio->filename =~ s/\.less/\.css/r );
-
-    return $folio;
-}
-
-1;
-```
+<SnippetFile src="./less.perl" />
 
 See? Toldya it was going to be shorter.
 

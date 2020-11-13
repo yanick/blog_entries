@@ -1,11 +1,10 @@
 ---
-title: Working with Jolly Santa's Outstanding Notes
-url: merry-xmas
-format: markdown
 created: 2014-12-23
 tags:
     - Perl
 ---
+
+# Working with Jolly Santa's Outstanding Notes
 
 > *Note:* here's an article that couldn't make it to the Perl Advent calendar.
 > Can't really let it go to waste, now, can I? Merry Xmas, and here's to 
@@ -42,7 +41,7 @@ straight from the command line.
 For example, the first thing they usually do is to pretty-print 
 the JSON so that they can look at it without going blind.
 
-```
+```javascript
 $ jt < shortlist.json
 [
 {

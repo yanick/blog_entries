@@ -1,13 +1,12 @@
 ---
-title: Having fun with logging and I18N
-url: logging-and-I18N
-format: markdown
 created: 2011-01-01
 tags:
     - Perl
     - Log::Dispatchouli
     - Data::Localize
 ---
+
+# Having fun with logging and I18N
 
 I must confess, that [game I'm leasurely working
 on](http://babyl.dyndns.org/techblog/entry/perl-in-space) is nothing but a big
@@ -40,7 +39,7 @@ to do exactly that.
 From the outside of the object, it's all very simple: just pass the 
 main `$logger` for the whole application:
 
-<pre code="Perl">
+```perl
 my $log = Log::Dispatchouli->new({
         ident     => 'game',
         to_stdout => 1,
@@ -52,13 +51,13 @@ my $ship = Ship->new(
     name   => 'USS Rakudo',
     logger => $log,
 );
-</pre>
+```
 
 From within the object, it's not much harder. At the end of the object
 creation phase I personalize the logger for this specific
 fleet and ship, and I throw in a few logging help functions:
 
-<pre code="Perl">
+```perl
 package Ship;
 
 use Log::Dispatchouli;
@@ -97,11 +96,11 @@ sub engineer_log {
     my ( $self, @msg ) = @_;
     $self->internal_log( 'engineer', @msg );
 }
-</pre>
+```
 
 And now if we want the engineer to say something, we can simply use `engineer_log`:
 
-<pre code="Perl">
+```perl
 sub engage_thrusters {
     my $self   = shift;
     my $thrust = shift;
@@ -113,31 +112,31 @@ sub engage_thrusters {
 
     # thrust code goes here
 }
-</pre>
+```
 
 Et voilà, we have logging. The code
 
-<pre code="Perl">
+```perl
 $ship->engage_thrusters( 12 );
-</pre>
+```
 
 produces the log output
 
-<pre code="plain">
+```
 [22008] [StarFleet] [USS Rakudo] [engineer] Thrust reduced to the engine maximum (10)
-</pre>
+```
 
 Oh, and notice the use of the parameter `to_self` in the creation of the
 logger? That's to tell it to keep a copy of the logs, which can be accessed
 with the method `events()`. So that latter I can do, for example:
 
-<pre code="Perl">
+```perl
 my @starfleet_log = 
     grep { $_->[1] eq 'StarFleet' } 
     map  { [ m#(?:\G|^)\[([^]]+)\] #g, $' ] }
     map  { $_->{message} } 
          @{ $log->events };
-</pre>
+```
 
 Not that I want to use that verbatim, mind you, as the use of<code>$`</code>
 is going to slow down everything, but you get the idea: I can
@@ -157,7 +156,7 @@ which for me was a little easier to get working than
 to the `Ship` class, I've added the translator to the ship's computer grid:
 
 
-<pre code="Perl">
+```perl
 has loc => ( 
     is => 'ro',
     default => sub {
@@ -171,12 +170,12 @@ has loc => (
     },
     handles => [ qw/ localize / ],
 );
-</pre>
+```
 
 Without forgetting to initialize it to the right language at 
 building time:
 
-<pre code="Perl">
+```perl
 after BUILDALL => sub {
     my $self = shift;
 
@@ -187,13 +186,13 @@ after BUILDALL => sub {
 
     $self->loc->set_languages( $self->fleet );
 };
-</pre>
+```
 
 And, to make it transparent for the rest of the code, I intercept the
 messages sent to the log and change them before [String::Flogger](cpan)
 does its magic:
 
-<pre code="Perl">
+```perl
 sub internal_log {
     my ( $self, $crew, @message ) = @_;
 
@@ -208,14 +207,14 @@ sub internal_log {
 
     $self->logger->log( { prefix => "[$crew] " }, @message );
 }
-</pre>
+```
 
 All we have to do is to create the lexicon classes, which hold nothing 
 but a big dump hash (I've tried to go the way of the `po/mo` files, but
 I still have to get the hang of the creation/update process of those
 puppies):
 
-<pre code="Perl">
+```perl
 package Ship::Lingo::StarFleet;
 
 our %Lexicon = (
@@ -224,11 +223,11 @@ our %Lexicon = (
 );
 
 1;
-</pre>
+```
 
 And that's all there is to it. If we run
 
-<pre code="Perl">
+```perl
 my $ship = Ship->new(
     fleet  => 'StarFleet',
     name   => 'USS Rakudo',
@@ -243,12 +242,12 @@ my $other_ship = Ship->new(
 
 $ship->engage_thrusters( 12 );
 $other_ship->engage_thrusters( 12 );
-</pre>
+```
 
 We'll get:
 
-<pre code="plain">
+```
 [22312] [StarFleet] [USS Rakudo] [engineer] She canna go that high, capt'n! I'm giving you 10.
 [22312] [Klingon] [HMS Vista] [engineer] Qovpatlh! The ship can not go beyond 10.
-</pre>
+```
 

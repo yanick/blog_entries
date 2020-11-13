@@ -1,11 +1,12 @@
 ---
-title: Webpage Timezone Hopping
 url: time-hopping
 format: markdown
 created: 2012-10-20
 tags:
     - Javascript
 ---
+
+# Webpage Timezone Hopping
 
 Timezones can be darn confusing. Personally, daylight saving is enough to
 throw me into bi-annual bouts of confusion. So when I deal with information on
@@ -25,19 +26,21 @@ then from the other guy's?
 First thing that we want to do is to mark the times and dates on the page so
 that we'll be able to manipulate them.
 
-    #syntax: xml
+```xml
     <p>We shall meet at <span class="datetime" timezone="Etc/UTC">2012/10/20 12:34</span> at the
     docks. We strike at <span class="datetime">2012/10/20 14:56</span>.</p>
+```
 
 And because the information is already there, let's add a css rule to display
 it:
 
-    #syntax: xml
+```xml
     <style>
         span.datetime:after {
             content: " (" attr(timezone) ")";
         } 
     </style>
+```
 
 ## Get(), Set()
 
@@ -55,7 +58,7 @@ slightly tweak `timezone-js`. My version of the code is [here](__ENTRY_DIR__/tim
 With those two libraries as our base, we have left to do is to provide the
 glue:
 
-    #syntax: javascript
+```js
     function changeTimes() {
         var new_tz = $('select#timezone').val();
 
@@ -77,10 +80,11 @@ glue:
 
         changeTimes();
     });
+```
 
 and provide the choice to the user.
 
-    #syntax: html
+```html
     <form>
         <select id="timezone" >
             <option selected="selected">Etc/UTC</option>
@@ -89,6 +93,7 @@ and provide the choice to the user.
             <option>Asia/Tokyo</option>
         </select>
     </form>
+```
 
 ## Go!
 

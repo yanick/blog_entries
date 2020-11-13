@@ -66,15 +66,16 @@ and maybe share Perl-themed
 to use the fat comma, but don't want its auto-quoting behavior? Well, 
 add a little dangling bit to it, of course!
 
-    #syntax: perl
-    use strict;
-    use Data::Printer;
+```perl
+use strict;
+use Data::Printer;
 
-    sub foo { 'bar' }
+sub foo { 'bar' }
 
-    my %x = ( foo => 'quoted', foo ,=> 'not so' );
+my %x = ( foo => 'quoted', foo ,=> 'not so' );
 
-    print p %x;
+print p %x;
+```
 
 
 The logic twists the interpreter goes through to manage to Do The Right Thing

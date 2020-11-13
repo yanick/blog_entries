@@ -24,16 +24,17 @@ the Pinto.
 Well, *almost* with a total lack of regrets. While adding any module to
 a Pinto repository is only a
 
-    #syntax: bash
-    $ pinto pull Git::CPAN::Patch
+```bash
+$ pinto pull Git::CPAN::Patch
+```
 
 away, it's still one command to type. Wouldn't be nice to be able to have a
 proxy mode, just like `dpanneur` had? Well, as it turns out, thanks to the
 beautifully clean innards of `Pinto`, such a proxy is a small
 [Dancer](cpan) app away:
 
-    #syntax: perl
-    package PintoProxy;
+```perl
+package PintoProxy;
 
     use Dancer ':syntax';
 
@@ -81,11 +82,12 @@ beautifully clean innards of `Pinto`, such a proxy is a small
     };
 
     true;
+```
 
 And indeed:
 
-    #syntax: bash
-    $ pinto list -s bleeding | grep Acme::EyeDrops
+```bash
+$ pinto list -s bleeding | grep Acme::EyeDrops
 
     $ alias darkpan='cpanm --mirror http://localhost:3000/ --mirror-only'
 
@@ -99,6 +101,7 @@ And indeed:
 
     $ pinto list -s bleeding | grep Acme::EyeDrops
     rf  Acme::EyeDrops
+```
 
 Tadah!
 
@@ -106,8 +109,8 @@ Tadah!
 
 ... by using what pinto already provides:
 
-    #syntax: bash
-    $ alias darkpan='pinto install --message="proxy import" -v --pull '
+```bash
+$ alias darkpan='pinto install --message="proxy import" -v --pull '
 
     $ darkpan Acme::EyeDrops
     Pulling distribution http://cpan.perl.org/authors/id/A/AS/ASAVIGE/Acme-EyeDrops-1.60.tar.gz
@@ -115,6 +118,7 @@ Tadah!
     Pulling distribution http://cpan.perl.org/authors/id/R/RC/RCLAMP/Pod-Coverage-0.22.tar.gz
     Pulling distribution http://cpan.perl.org/authors/id/A/AN/ANDK/Devel-Symdump-2.08.tar.gz
     Acme::EyeDrops is up to date. (1.60)
+```
 
 
 To my defense, last time I had checked the argument *--message* wasn't there

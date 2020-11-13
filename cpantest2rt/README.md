@@ -1,7 +1,5 @@
 ---
-title: Generating RT bugs out of CPAN Testers' Reports
 url: cpantest-to-rt
-format: markdown
 created: 2010-10-31
 tags:
     - Perl
@@ -9,6 +7,7 @@ tags:
     - rt.cpan.org
 ---
 
+# Generating RT bugs out of CPAN Testers' Reports
 
 A few hours ago, I received a [CPAN Testers](http://www.cpantesters.org)'s
 report. The report was a genuine bug (CPANtesters++. Love you guys), and 
@@ -24,9 +23,9 @@ but I did the second-best thing. Namely, a little command-line script that
 takes a report url and uses it to auto-generates a bug report to the right
 distribution:
 
-<pre code="bash">
+```bash
 $ ./cpantest2rt.pl http://www.cpantesters.org/cpan/report/8648ea2e-e35d-11df-a329-07bc4e7aadc9
-</pre>
+```
 
 The [script](https://gist.github.com/yanick/657197.js) is pretty straight-forward. It grabs the bug report off the CPAN Testers site, 
 figures out

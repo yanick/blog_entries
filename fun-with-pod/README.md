@@ -1,12 +1,11 @@
 ---
-title: Fun in POD-land
-url: fun-with-pod
-format: markdown
 created: 2014-12-19
 tags:
     - Perl
     - POD
 ---
+
+# Fun in POD-land
 
 I love to tinker with tools, utilities, tweaks, anything that can be used
 to make grease the production chain into stupendously slick efficiency. So it
@@ -327,7 +326,7 @@ sub transform {
 
 Or reordered. 
 
-```
+```perl
 package Pod::Knit::Plugin::Sort;
 
 use Moose;

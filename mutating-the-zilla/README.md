@@ -44,26 +44,27 @@ would be possible, without directly touching any of the core `Dist::Zilla` code.
 First, we would need the plugin to tell us which `Dist::Zilla` roles they need
 to function. Something like
 
-    #syntax: perl
-    package Dist::Zilla::Plugin::ChangeStats::Git;
-    use Moose;
+```perl
+package Dist::Zilla::Plugin::ChangeStats::Git;
+use Moose;
 
-    # regular stuff
-    with qw/
-        Dist::Zilla::Role::Plugin
-        Dist::Zilla::Role::FileMunger
-    /;
+# regular stuff
+with qw/
+    Dist::Zilla::Role::Plugin
+    Dist::Zilla::Role::FileMunger
+/;
 
-    # roles we need our master zilla to have
-    with 'Dist::Zilla::Role::Author::YANICK::RequireZillaRole' => {
-        roles => [ qw/ Author::YANICK::Changelog / ],
-    };
+# roles we need our master zilla to have
+with 'Dist::Zilla::Role::Author::YANICK::RequireZillaRole' => {
+    roles => [ qw/ Author::YANICK::Changelog / ],
+};
+```
 
 With that, now we just need that `RequireZillaRole` to take those roles and
 apply them to our *$zilla*.
 
-    #syntax: perl
-    package Dist::Zilla::Role::Author::YANICK::RequireZillaRole;
+```perl
+package Dist::Zilla::Role::Author::YANICK::RequireZillaRole;
 
     use Module::Load;
 
@@ -100,6 +101,7 @@ apply them to our *$zilla*.
             return $self;
         }
     }
+```
 
 The general framework is done.  Now, the main tricky thing to remember is
 that even though we have shiny new zilla attributes, not all plugins will be
@@ -170,10 +172,10 @@ zilla object, which in turn are likely to turn around and modify plugin
 behaviors. Pretty straight-forward, isn't?  But with this, the first snippet
 above is now reduced to 
 
-    #syntax: perl
-    with 'Dist::Zilla::Role::Author::YANICK::RequireZillaRole' => {
-        roles => [ qw/ Author::YANICK::Changelog / ],
-    };
+```perl
+with 'Dist::Zilla::Role::Author::YANICK::RequireZillaRole' => {
+    roles => [ qw/ Author::YANICK::Changelog / ],
+};
 
     sub munge_files {
         my ($self) = @_;
@@ -181,6 +183,7 @@ above is now reduced to
         my ( $next ) = reverse $self->zilla->changes->releases;
         $next->add_changes( 'hi there' );
     }
+```
 
 In bonus, we now also have the
 possibility to make all changelog-related configurations central.

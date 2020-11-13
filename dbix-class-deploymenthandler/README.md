@@ -1,6 +1,4 @@
 ---
-url: dbix-class-deploymenthandler-rocks
-format: markdown
 created: 2011-01-20
 tags:
     - Perl
@@ -22,11 +20,11 @@ Say that I have a [DBIx::Class](cpan) representation of my database's
 schema, with three versions already tucked in the repository. Then, I can
 write a little script called `prep_db.pl`:
 
-<galuga_code code="Perl">prep_db.pl</galuga_code>
+<SnippetFile src="./prep_db.perl"/>
 
 And with it, do:
 
-<pre code="bash">
+```bash
 $ git checkout v1 &amp;&amp; ./prep_db.pl 
 processing version 1 of MyDB::Schema...
 generating deployment script
@@ -48,11 +46,11 @@ generating upgrade script
 generating downgrade script
 generating graph
 done
-</pre>
+```
 
 Once this is, done, we'll have a new direction, `sql`, in our project:
 
-<pre code="plain">
+```
 $ tree sql
 sql
 |-- diagram-v1.png
@@ -83,7 +81,7 @@ sql
 |   ... same as for MySQL
 `-- SQLite
     ... ditto
-</pre>
+```
 
 What does that mean? That means that our 60-something lines of Perl above
 allowed us to automatically generate SQL scripts, for every version of our schema and 
@@ -99,7 +97,7 @@ And if you paid attention, you'll see that I also threw in at the
 end of that script a little stanza that uses [SQL::Translator](cpan)
 to also generate diagrams of the schema's version that will look like this:
 
-<div align="center"><img src="__ENTRY_DIR__/diagram-v2.png" /></div>
+<div align="center"><img src="./diagram-v2.png" /></div>
 
 Let's reiterate, because I think the feat is amazing enough to warrant it: our
 little program has made trivial the creation of deployment scripts for the

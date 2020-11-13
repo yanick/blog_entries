@@ -1,6 +1,4 @@
 ---
-url: pod-manual-returns
-format: markdown
 created: 2010-12-27
 tags:
     - Perl
@@ -74,7 +72,7 @@ pages numbered, with titles and stuff in the headers and footers.
 And that's where `Pod::Manual` fits in.  Let's say that I want to build a
 manual for [Dist::Zilla](cpan). Then I could do:
 
-<galuga_code code="Perl">dist-zilla.pl</galuga_code>
+<SnippetFile src="dist-zilla.pl" />
 
 Let's go over that again, in a more detailed fashion.
 
@@ -84,7 +82,7 @@ creating a subclass is not strictly necessary, but it helps re-use and, as
 we'll see in a few lines, allows for a nifty trick with 
 [Module::Pluggable](cpan)). 
 
-<pre code="Perl">
+```perl
 package Pod::Manual::DistZilla;
 
 use Moose;
@@ -92,41 +90,41 @@ use Moose;
 extends 'Pod::Manual';
 
 use Module::Pluggable search_path => ['Dist::Zilla::Plugin'];
-</pre>
+```
 
 Then, because we're using a class, I'm grabbing the singleton instance for it.
 
-<pre code="Perl">
+```perl
 my $manual = __PACKAGE__->master;
-</pre>
+```
 
 I assign the title of the manual.
 
-<pre code="Perl">
+```perl
 $manual->title('Dist::Zilla');
-</pre>
+```
 
 I don't want to see the `VERSION` sections.
 
-<pre code="Perl">
+```perl
 $manual->ignore( ['VERSION'] );
-</pre>
+```
 
 And I want to have one instance of the `COPYRIGHT AND LICENSE` section 
 punted to the appendix (with the rest being ignored).
 
-<pre code="Perl">
+```perl
 $manual->move_one_to_appendix( ['COPYRIGHT AND LICENSE'] );
-</pre>
+```
 
 That done, I can now add the main `Dist::Zilla` modules I want to see in the manual. 
 
-<pre code="Perl">
+```perl
 $manual->add_module( [ qw/
     Dist::Zilla
     Dist::Zilla::Tutorial 
 / ] );
-</pre>
+```
 
 Because I can't resist being a cleaver monkey, I used
 `Module::Pluggable` to throw in all the 
@@ -136,31 +134,31 @@ distributions than the core `Dist::Zilla`, I don't want to ignore
 the `VERSION` or `COPYRIGHT` sections for them.
 
 
-<pre code="Perl">
+```perl
 $manual->ignore( [] );
 $manual->move_one_to_appendix( [] );
 
 $manual->add_module( [ $manual->plugins ] );
-</pre>
+```
 
 Finally, we drop a `$manual;` as a last piece of cleverness.  As `$manual`
 evaluates to `true`, our code can be used as a normal module:
 
-<pre code="Perl">
+```perl
 use Pod::Manual::DistZilla;
 
 my $manual = Pod::Manual::DistZilla->master;
 
 print $manual->as_docbook;
-</pre>
+```
 
 or used with `do` if we don't want to install the module or play with `lib`.
 
-<pre code="Perl">
+```perl
 my $manual = do 'path/to/DistZilla.pm';
 
 print $manual->as_docbook;
-</pre>
+```
 
 (That's going to be useful later on to make the command-line interface as
 supple as possible.)
@@ -174,16 +172,16 @@ useful format. `Pod::Manual` is using
 [DocBook](http://www.docbook.org/) as its base format, and we can 
 get to it by doing:
 
-<pre code="Perl">
+```perl
 print $manual->as_docbook;
-</pre>
+```
 
 Or, if we have a `css` file that we want to associate to the resulting
 DocBook:
 
-<pre code="Perl">
+```perl
 print $manual->as_docbook( css => '/path/to/file.css' );
-</pre>
+```
 
 ### Beyond DocBook
 
@@ -203,7 +201,7 @@ to generate the manual pick himself the roles he'll need to get there.
 To be nice, we can even provide a little command-line utility script
 that can do that for us:
 
-<galuga_code code="Perl">podmanual</galuga_code>
+<SnippetFile src="./podmanual.perl" />
 
 ### A first PDF formatter using Prince
 
@@ -219,20 +217,20 @@ and the little translation engine does all the magic.
 So what I did was to encapsulate the work in
 `Pod::Manual::Formatter::PDFPrince`:
 
-<galuga_code code="Perl">PDFPrince.pm</galuga_code>
+<SnippetFile src="./PDFPrince.perl" />
 
 And now, provided that `prince` is installed on our machine, we can generate
 our first `pdf` from the script describe in the first section:
 
-<pre code="bash">
+```bash
 $ podmanual --formatter=PDFPrince \
             --as=pdf              \
             --output=dist-zilla-prince.pdf examples/dist-zilla.pl 
 creating d.pdf...
 done
-</pre>
+```
 
-The resulting `pdf` is [here](__ENTRY_DIR__/dist-zilla-prince.pdf).  The
+The resulting `pdf` is [here](./dist-zilla-prince.pdf).  The
 format still has to be tweaked to be truly pretty, but... we have a table of
 content! we have pages that look like pages from a real book!  Woohoo!
 
@@ -244,17 +242,17 @@ working on upgrading the powerful, but slightly eldritch
 That's a topic for another blog entry, but once I'm done, we'll be able to get
 `LaTeX` output by doing
 
-<pre code="bash">
+```bash
 $ podmanual --formatter=LaTeX --as=latex \
     --output=dist-zilla.latex examples/dist-zilla.pl 
-</pre>
+```
 
 and use it to generate the `pdf` via
 
-<pre code="bash">
+```bash
 $ podmanual --formatter=LaTeX,PDFLaTeX --as=pdf \
     --output=dist-zilla.pdf examples/dist-zilla.pl 
-</pre>
+```
 
 ## What Lies Ahead
 

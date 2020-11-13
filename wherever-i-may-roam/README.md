@@ -1,8 +1,6 @@
 ---
-title: Wherever I May Roam
 created: 2010-06-06
-last_updated: 7/June/2010
-format: markdown
+updated: 2010-07-07
 tags:
     - Perl
     - environment
@@ -10,11 +8,13 @@ tags:
     - GitHub
 ---
 
-<div style="margin-left: 20px;"><pre>
+# Wherever I May Roam
+
+```perl
     Roamer, wanderer
     Nomad, vagabond
     Call me what you will
-
+    
     $ENV{LC_ALL} = "anywhere";
     my $time = localtime;
     say {$anywhere} my $mind;
@@ -25,7 +25,7 @@ tags:
 
         # 'grep may_roam($_) => @everywhere', 
         #                with apologies to Metallica
-</pre></div>
+```
 
 Laziness and a severe addiction to yak shaving conspire to constantly make me
 tweak configurations and hack scripts to make my everyday 

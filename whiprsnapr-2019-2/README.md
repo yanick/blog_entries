@@ -3,14 +3,14 @@ created: 2020-01-20
 tags:
     - R
     - whiprsnapr
---- 
+---
 
 # Whiprsnapr 2019, part II
 
 
 If you are a normal person, all you need to know is that I was feeling cute
 and wanted to practice my nascent [R](https://www.r-project.org/) skills. So I reprised and
-extended the data analysis [I did last time](/entry/whisprsnapr-2019) on the [Whiprsnapr](https://whiprsnaprbrewingco.com/) beers.
+extended the data analysis [I did last time](/entry/whiprsnapr-2019) on the [Whiprsnapr](https://whiprsnaprbrewingco.com/) beers.
 The resulting report is [here](./report.html).
 
 If you are a data nerd, read on.

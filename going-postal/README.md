@@ -1,5 +1,4 @@
 ---
-title: Going Postal (with Dancer)
 url: going-postal
 format: markdown
 created: 2011-09-05
@@ -10,6 +9,8 @@ tags:
     - Canada Post
     - Dancer::Plugin::Cache::CHI
 ---
+
+# Going Postal (with Dancer)
 
 The [Dancer][dancer] plugin mechanism primary aims to provide
 a way to encapsulate pieces of functionality that can
@@ -24,10 +25,11 @@ a cart for the [Académie des Chasseurs de Primes][acp] site. One of
 the things the cart system has to compute is the postal cost. Since I'm based
 in Canada, writing that part of the code is easy:
 
-    #syntax: perl
-    sub postal_fee {
-        return "much too much";
-    }
+```perl
+sub postal_fee {
+    return "much too much";
+}
+```
 
 ... Well, okay. While the return value *is* correct, it could be a little more
 precise.  Fortunately, Canada Post provides a [web service to calculate
@@ -49,27 +51,28 @@ work like a beaut. Woohoo!
 So, anyway, knowing that I have the tools to get my postage fees, I can
 abstract the logic in the application itself to something like
 
-    #syntax: perl
-    sub postal_fee {
-        my %args = @_;
+```perl
+sub postal_fee {
+    my %args = @_;
 
-        my $key = join '-', @args{qw/
-            country city width length height weight
-        /};
+    my $key = join '-', @args{qw/
+        country city width length height weight
+    /};
 
-        return cache->compute( $key => sub {
-            postage->destination(
-                map { $_ => $args{$_} } qw/ country city /
-            );
+    return cache->compute( $key => sub {
+        postage->destination(
+            map { $_ => $args{$_} } qw/ country city /
+        );
 
-            postage->add_item(
-                map { $_ => $args{$_} } 
-                    qw/ height width length weight /
-            );
+        postage->add_item(
+            map { $_ => $args{$_} } 
+                qw/ height width length weight /
+        );
 
-            return postage->cheapest_shipping_rate;
-        } );
-    }
+        return postage->cheapest_shipping_rate;
+    } );
+}
+```
 
 Everything that has to do with the postage is dealt with in the 
 `postage` object.  Because Canada Post's web service is a little
@@ -81,7 +84,7 @@ Now that the high-level logic has been set in the application,
 we can implement the details within the plugin. First thing I do 
 is to define the Dancer-specific parts of it:
 
-    #syntax: perl
+```perl
     package Dancer::Plugin::Postage::CanadaPost;
 
     use 5.10.0;
@@ -109,6 +112,7 @@ is to define the Dancer-specific parts of it:
     };
 
     register_plugin;
+```
 
 Not a lot there. I define the keyword `postage`, which will return the
 singleton object for the class (which is auto-created upon its first
@@ -125,7 +129,7 @@ After this, what is left to do is to implement the remaining
 functionality as a good old straight-forward OO wrapper for
 the underlying `Business::CanadaPost` work-horse:
 
-    #syntax: perl
+```perl
     ### regular object stuff
 
     sub new {
@@ -187,6 +191,7 @@ the underlying `Business::CanadaPost` work-horse:
     }
 
     1;
+```
 
 
 And I'm done. My application has its `postage`

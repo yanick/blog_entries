@@ -1,0 +1,146 @@
+&lt;workflow-app name=&quot;demo-wf&quot;&gt;
+
+    &lt;start to=&quot;cleanup-node&quot;/&gt;
+
+    &lt;action name=&quot;cleanup-node&quot;&gt;
+        &lt;fs&gt;
+            &lt;delete path=&quot;${nameNode}/user/${wf:user()}/${examplesRoot}/output-data/demo&quot;/&gt;
+        &lt;/fs&gt;
+        &lt;ok to=&quot;fork-node&quot;/&gt;
+        &lt;error to=&quot;fail&quot;/&gt;
+    &lt;/action&gt;
+
+    &lt;fork name=&quot;fork-node&quot;&gt;
+        &lt;path start=&quot;pig-node&quot;/&gt;
+        &lt;path start=&quot;streaming-node&quot;/&gt;
+    &lt;/fork&gt;
+
+    &lt;action name=&quot;pig-node&quot;&gt;
+        &lt;pig&gt;
+            &lt;job-tracker&gt;${jobTracker}&lt;/job-tracker&gt;
+            &lt;name-node&gt;${nameNode}&lt;/name-node&gt;
+            &lt;prepare&gt;
+                &lt;delete path=&quot;${nameNode}/user/${wf:user()}/${examplesRoot}/output-data/demo/pig-node&quot;/&gt;
+            &lt;/prepare&gt;
+            &lt;configuration&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.job.queue.name&lt;/name&gt;
+                    &lt;value&gt;${queueName}&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.map.output.compress&lt;/name&gt;
+                    &lt;value&gt;false&lt;/value&gt;
+                &lt;/property&gt;
+            &lt;/configuration&gt;
+            &lt;script&gt;id.pig&lt;/script&gt;
+            &lt;param&gt;INPUT=/user/${wf:user()}/${examplesRoot}/input-data/text&lt;/param&gt;
+            &lt;param&gt;OUTPUT=/user/${wf:user()}/${examplesRoot}/output-data/demo/pig-node&lt;/param&gt;
+        &lt;/pig&gt;
+        &lt;ok to=&quot;join-node&quot;/&gt;
+        &lt;error to=&quot;fail&quot;/&gt;
+    &lt;/action&gt;
+
+    &lt;action name=&quot;streaming-node&quot;&gt;
+        &lt;map-reduce&gt;
+            &lt;job-tracker&gt;${jobTracker}&lt;/job-tracker&gt;
+            &lt;name-node&gt;${nameNode}&lt;/name-node&gt;
+            &lt;prepare&gt;
+                &lt;delete path=&quot;${nameNode}/user/${wf:user()}/${examplesRoot}/output-data/demo/streaming-node&quot;/&gt;
+            &lt;/prepare&gt;
+            &lt;streaming&gt;
+                &lt;mapper&gt;/bin/cat&lt;/mapper&gt;
+                &lt;reducer&gt;/usr/bin/wc&lt;/reducer&gt;
+            &lt;/streaming&gt;
+            &lt;configuration&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.job.queue.name&lt;/name&gt;
+                    &lt;value&gt;${queueName}&lt;/value&gt;
+                &lt;/property&gt;
+
+                &lt;property&gt;
+                    &lt;name&gt;mapred.input.dir&lt;/name&gt;
+                    &lt;value&gt;/user/${wf:user()}/${examplesRoot}/input-data/text&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.output.dir&lt;/name&gt;
+                    &lt;value&gt;/user/${wf:user()}/${examplesRoot}/output-data/demo/streaming-node&lt;/value&gt;
+                &lt;/property&gt;
+            &lt;/configuration&gt;
+        &lt;/map-reduce&gt;
+        &lt;ok to=&quot;join-node&quot;/&gt;
+        &lt;error to=&quot;fail&quot;/&gt;
+    &lt;/action&gt;
+
+    &lt;join name=&quot;join-node&quot; to=&quot;mr-node&quot;/&gt;
+
+
+    &lt;action name=&quot;mr-node&quot;&gt;
+        &lt;map-reduce&gt;
+            &lt;job-tracker&gt;${jobTracker}&lt;/job-tracker&gt;
+            &lt;name-node&gt;${nameNode}&lt;/name-node&gt;
+            &lt;prepare&gt;
+                &lt;delete path=&quot;${nameNode}/user/${wf:user()}/${examplesRoot}/output-data/demo/mr-node&quot;/&gt;
+            &lt;/prepare&gt;
+            &lt;configuration&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.job.queue.name&lt;/name&gt;
+                    &lt;value&gt;${queueName}&lt;/value&gt;
+                &lt;/property&gt;
+
+                &lt;property&gt;
+                    &lt;name&gt;mapred.mapper.class&lt;/name&gt;
+                    &lt;value&gt;org.apache.oozie.example.DemoMapper&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.mapoutput.key.class&lt;/name&gt;
+                    &lt;value&gt;org.apache.hadoop.io.Text&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.mapoutput.value.class&lt;/name&gt;
+                    &lt;value&gt;org.apache.hadoop.io.IntWritable&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.reducer.class&lt;/name&gt;
+                    &lt;value&gt;org.apache.oozie.example.DemoReducer&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.map.tasks&lt;/name&gt;
+                    &lt;value&gt;1&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.input.dir&lt;/name&gt;
+                    &lt;value&gt;/user/${wf:user()}/${examplesRoot}/output-data/demo/pig-node,/user/${wf:user()}/${examplesRoot}/output-data/demo/streaming-node&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.output.dir&lt;/name&gt;
+                    &lt;value&gt;/user/${wf:user()}/${examplesRoot}/output-data/demo/mr-node&lt;/value&gt;
+                &lt;/property&gt;
+            &lt;/configuration&gt;
+        &lt;/map-reduce&gt;
+        &lt;ok to=&quot;decision-node&quot;/&gt;
+        &lt;error to=&quot;fail&quot;/&gt;
+    &lt;/action&gt;
+
+    &lt;decision name=&quot;decision-node&quot;&gt;
+        &lt;switch&gt;
+            &lt;case to=&quot;hdfs-node&quot;&gt;${fs:exists(concat(concat(concat(concat(concat(nameNode, '/user/'), wf:user()), '/'), examplesRoot), '/output-data/demo/mr-node')) == &quot;true&quot;}&lt;/case&gt;
+            &lt;default to=&quot;end&quot;/&gt;
+        &lt;/switch&gt;
+    &lt;/decision&gt;
+
+    &lt;action name=&quot;hdfs-node&quot;&gt;
+        &lt;fs&gt;
+            &lt;move source=&quot;${nameNode}/user/${wf:user()}/${examplesRoot}/output-data/demo/mr-node&quot;
+                  target=&quot;/user/${wf:user()}/${examplesRoot}/output-data/demo/final-data&quot;/&gt;
+        &lt;/fs&gt;
+        &lt;ok to=&quot;end&quot;/&gt;
+        &lt;error to=&quot;fail&quot;/&gt;
+    &lt;/action&gt;
+
+    &lt;kill name=&quot;fail&quot;&gt;
+        &lt;message&gt;Demo workflow failed, error message[${wf:errorMessage(wf:lastErrorNode())}]&lt;/message&gt;
+    &lt;/kill&gt;
+
+    &lt;end name=&quot;end&quot;/&gt;
+
+&lt;/workflow-app&gt;

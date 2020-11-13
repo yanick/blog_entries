@@ -24,7 +24,7 @@ This being said, let's an example speak for itself.
 
 <Hackthrough>
 
-<Hackstep src="Blog.perl">
+<Hackstep src="__ENTRY__/Blog.perl">
 
 First up, the main `Blog` store class. That part is wonderfully boring.
 
@@ -36,25 +36,25 @@ First up, the main `Blog` store class. That part is wonderfully boring.
 
 <Hackthrough>
 
-<Hackstep src="Blog/Model/Entry_1.perl">
+<Hackstep src="__ENTRY__/Blog/Model/Entry_1.perl">
 
 Next we create the class that represents blog entries.
 
 </Hackstep>
 
-<Hackstep src="Blog/Model/Entry_2.perl" lines="4-8">
+<Hackstep src="__ENTRY__/Blog/Model/Entry_2.perl" lines="4-8">
 
 A blog entry has a url (which is also its unique identifier).
 
 </Hackstep>
 
-<Hackstep src="Blog/Model/Entry_3.perl" lines="8-13">
+<Hackstep src="__ENTRY__/Blog/Model/Entry_3.perl" lines="8-13">
 
 And an author, which will also be an object saved in the database.
 
 </Hackstep>
 
-<Hackstep src="Blog/Model/Entry_4.perl" lines="6-21">
+<Hackstep src="__ENTRY__/Blog/Model/Entry_4.perl" lines="6-21">
 
 And can be assigned tags, also saved in the database.
 
@@ -64,7 +64,7 @@ the tag `perl`), but don't want the end-user to have to worry about it.
 
 </Hackstep>
 
-<Hackstep src="Blog/Model/Entry_5.perl" lines="6-8">
+<Hackstep src="__ENTRY__/Blog/Model/Entry_5.perl" lines="6-8">
 
 Oh yeah, and content. Let's not forget some content...
 
@@ -76,7 +76,7 @@ Oh yeah, and content. Let's not forget some content...
 
 <Hackthrough>
 
-<Hackstep src="Blog/Model/Author.perl">
+<Hackstep src="__ENTRY__/Blog/Model/Author.perl">
 
 We also need an `Author` class. Let's make it minimalistic: a name and an
 optional bio.
@@ -90,7 +90,7 @@ optional bio.
 <Hackthrough>
 
 
-<Hackstep src="Blog/Model/Tag.perl">
+<Hackstep src="__ENTRY__/Blog/Model/Tag.perl">
 
 Same deal with the tags.
 
@@ -107,7 +107,7 @@ based on both the tag and the blog's id, and we index on those two values.
 <Hackthrough>
 
 
-<Hackstep src="ex1.perl">
+<Hackstep src="__ENTRY__/ex1.perl">
 
 Setting the store is dead easy. Yes, even if the database
 didn't previously exist.
@@ -116,45 +116,45 @@ Love you, sqlite. Always did, always will.
 
 </Hackstep>
 
-<Hackstep src="ex2.perl">
+<Hackstep src="__ENTRY__/ex2.perl">
 
 You can create objects and put in the store....
 
 </Hackstep>
 
-<Hackstep src="ex3.perl">
+<Hackstep src="__ENTRY__/ex3.perl">
 
 ... or do it all in one fell swoop.
 
 </Hackstep>
 
-<Hackstep src="ex4.perl">
+<Hackstep src="__ENTRY__/ex4.perl">
 
 Once created, it can be used as an attribute for another 
 object.
 
 </Hackstep>
 
-<Hackstep src="ex5.perl">
+<Hackstep src="__ENTRY__/ex5.perl">
 
 Or if the object already exist in the db, just use its key.
 
 </Hackstep>
 
-<Hackstep src="ex6.perl">
+<Hackstep src="__ENTRY__/ex6.perl">
 
 The object doesn't exist yet? Pass in a hashref. It will be taken as the arguments of
 the attribute's object constructor.
 
 </Hackstep>
 
-<Hackstep src="ex7.perl">
+<Hackstep src="__ENTRY__/ex7.perl">
 
 Works with arrays of objects too.
 
 </Hackstep>
 
-<Hackstep src="ex8.perl">
+<Hackstep src="__ENTRY__/ex8.perl">
 
 What does the search functionality looks like? Like this.
 

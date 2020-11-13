@@ -66,8 +66,8 @@ First, I need a store manager (think [DBIx::Class::Schema](cpan)-like
 mothership):
 
 
-    #syntax: perl
-    package Galuga::Store;
+```perl
+package Galuga::Store;
 
     use Moose;
 
@@ -85,6 +85,7 @@ mothership):
     __PACKAGE__->meta->make_immutable(inline_constructor => 0);
 
     1;
+```
 
 (*shhhh* yes, I'll explain the magic later on. For now, just let the joy of
 minimalism sink in)
@@ -92,8 +93,8 @@ minimalism sink in)
 And then comes the beefiest class: the model for the blog entries:
 
 
-    #syntax: perl
-    package Galuga::Store::Model::Entry;
+```perl
+package Galuga::Store::Model::Entry;
 
     use Moose;
 
@@ -147,13 +148,14 @@ And then comes the beefiest class: the model for the blog entries:
     __PACKAGE__->meta->make_immutable;
 
     1;
+```
 
 last bit: the model that capture the relationship between the entries and the
 tags.
 
 
-    #syntax: perl
-    package Galuga::Store::Model::EntryTag;
+```perl
+package Galuga::Store::Model::EntryTag;
 
     use Method::Signatures;
 
@@ -186,13 +188,13 @@ tags.
     __PACKAGE__->meta->make_immutable;
 
     1;
+```
 
 
 With that, our store is ready. And how do we use it? Like this:
 
 
-    #syntax: perl
-
+```perl
     use 5.10.0;
 
     use strict;
@@ -229,6 +231,7 @@ With that, our store is ready. And how do we use it? Like this:
 
     # get all tags
     say join ' ', $store->all_tags;
+```
 
 Pretty sweet, isn't it?  Of course,  there is some arcane stuff going on
 behind the scene. Maybe a tad more than I had hoped for, but definitively less
@@ -243,8 +246,8 @@ to bottom.
 
 First, I had to define my constraint types for my store:
 
-    #syntax: perl
-    use Galuga::Store::Types;
+```perl
+use Galuga::Store::Types;
 
     use strict;
     use warnings;
@@ -299,6 +302,7 @@ First, I had to define my constraint types for my store:
     );
 
     1;
+```
 
 Mostly boilerplate [Moose::Util::TypeConstraints](cpan) stuff, with one
 extra bit: the registration of handlers for those types for 
@@ -313,14 +317,15 @@ deserialization is dealt with by the already-defined coercion. With that way
 of doing things, the code required to make a `DateTimeClass` attribute 
 `MooseX::Storage`-friendly would have been:
 
-    #syntax: perl
-    has date_created => (
-        traits => [ 'Serialize' ],
-        is => 'rw',
-        isa => 'DateTimeClass',
-        coerce => 1,
-        serializer => sub { (shift)->iso8601 },
-    );
+```perl
+has date_created => (
+    traits => [ 'Serialize' ],
+    is => 'rw',
+    isa => 'DateTimeClass',
+    coerce => 1,
+    serializer => sub { (shift)->iso8601 },
+);
+```
 
 Now, I do see the wisdom in making the serialization and deserialization based
 on the constraint type and not on the attribute (DRY, baby, DRY). At the same
@@ -330,24 +335,26 @@ patch that would allow to tell `MooseX::Storage` to do exactly that, via
 passing the keyword `coerce` to `expand` instead of a coderef:
 
 
-    #syntax: perl
-    MooseX::Storage::Engine->add_custom_type_handler(
-        'DateTimeClass' => (
-            expand   => 'coerce',
-            collapse => sub { (shift)->iso8601 },
-        ),
-    );
+```perl
+MooseX::Storage::Engine->add_custom_type_handler(
+    'DateTimeClass' => (
+        expand   => 'coerce',
+        collapse => sub { (shift)->iso8601 },
+    ),
+);
+```
 
 And then I began to dream that it would be even niftier if we brought the
 solution one level lower in the food chain, and didn't only gave coercion
 instructions to constraint types, but also serialization tips:
 
-    #syntax: perl
-    coerce 'SetClass' 
-        => from 'ArrayRef' 
-        => via { Set::Object->new(@{shift @_}) };
+```perl
+coerce 'SetClass' 
+    => from 'ArrayRef' 
+    => via { Set::Object->new(@{shift @_}) };
 
-    serialize 'SetClass' => via { return [ (shift)->elements ] };
+serialize 'SetClass' => via { return [ (shift)->elements ] };
+```
 
 I actually began to look into `Moose::Meta::TypeConstraint` and squeeze some
 attributes past the radar and into its inner hashref. And it wasn't going too
@@ -363,8 +370,8 @@ which mostly adds the capacity of finding all the model classes
 of the store and set up their indexes and deserialization handlers (the
 serialization will be handler by the models themselves, as we'll see next).
 
-    #syntax: perl
-    package DBIx::NoSQL::Store::Manager;
+```perl
+package DBIx::NoSQL::Store::Manager;
 
     use Moose;
 
@@ -421,6 +428,7 @@ serialization will be handler by the models themselves, as we'll see next).
     }
 
     1;
+```
 
 ### Here comes a huge dollop of glue
 
@@ -434,8 +442,8 @@ a little bit of wiring to make `DBIx::NoSQL` uses the serialization
 provided by `MooseX::Storage`, and a few extra goodies for the fun of it.
 
 
-    #syntax: perl
-    package DBIx::NoSQL::Store::Model::Role;
+```perl
+package DBIx::NoSQL::Store::Model::Role;
 
     use Moose::Role;
 
@@ -523,6 +531,7 @@ provided by `MooseX::Storage`, and a few extra goodies for the fun of it.
     );
 
     1;
+```
     
 ## Tadah!
 

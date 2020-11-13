@@ -1,6 +1,4 @@
 ---
-url:            xss-templates-sugar
-format:         markdown
 created: 2010-08-02
 tags:
     - XML::XSS
@@ -19,24 +17,24 @@ stylesheet definitions.
 To recap the example I used last time, we were trying to convert
 the xml snippet
 
-<pre code="xml">
+```xml
 &lt;section title="Introduction">
     &lt;para>This is the first paragraph.&lt;/para>
     &lt;para>And here comes the second one.&lt;/para>
 &lt;/section>
-</pre>
+```
 
 into 
 
-<pre code="xml">
+```xml
 &lt;h1>Introduction&lt;/h1>
     &lt;p class="first_para">This is the first paragraph.&lt;/p>
     &lt;p>And here comes the second one.&lt;/p>
-</pre>
+```
 
 And we saw that one of the ways of doing this is
 
-<pre code="perl">
+```perl
 $xss->set(
     section => {
         showtag => 0,
@@ -60,13 +58,12 @@ $xss->set(
             return 1;
         },
     } );
-
-</pre>
+```
 
 Now, using all the all-new shortcuts available to us, 
 we can perform the same logic with 
 
-<pre code="perl">
+```perl
 $xss.'section'.'showtag' *= 0;
 
 $xss.'section'.'intro' x= q{
@@ -80,7 +77,7 @@ $xss.'para'.'style' %= {
     },
     post => '&lt;/p>',
 };
-</pre>
+```
 
 *Tadah!*
 
@@ -95,43 +92,43 @@ In order to reduce the amount of typing,
 I've (ab)used the `overload` pragma to give the stylesheet
 a CCS-ish flavor. Its basic use is
 
-<pre code="perl">
+```perl
 $xss.$element.$attribute *= $something;
-</pre>
+```
 
 and is simply a shorthand for
 
-<pre code="perl">
+```perl
 $xss->get( $element )->set_$attribute( $something );
-</pre>
+```
 
 Likewise, 
 
-<pre code="perl">
+```perl
 $xss.$element.'style' %= {
     pre  => $pre,
     post => $post,
 };
-</pre>
+```
 
 is a shorthand for
 
-<pre code="perl">
+```perl
 $xss->set( $element => {
     pre  => $pre,
     post => $post,
 });
-</pre>
+```
 
 
 And, yes, it would have been even better to be able to do
 
-<pre code="perl">
+```perl
 $xss.$element %= {
     pre  => $pre,
     post => $post,
 };
-</pre>
+```
 
 but alas it doesn't seem to be possible, as this mix of overloaded operators
 confuses the Perl parser to no end. Humbug.
@@ -152,15 +149,15 @@ but those four are the principal ones.
 
 And as a last bit of magic, the `x=` operator is overloaded such that
 
-<pre code="perl">
+```perl
 $xss.$element.$attribute x= q{  Hello &lt;%= $r->stylesheet->stash->{name} %> };
-</pre>
+```
 
 is really
 
-<pre code="perl">
+```perl
 $xss.$element.$attribute *= xsst q{  Hello &lt;%= $r->stylesheet->stash->{name} %> };
-</pre>
+```
 
 <h3>What Lies Ahead</h3>
 

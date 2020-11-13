@@ -1,5 +1,4 @@
 ---
-title: Playing with Play Perl
 url: play-perl
 format: markdown
 created: 2013-02-10
@@ -7,6 +6,8 @@ tags:
     - Perl
     - Play Perl
 ---
+
+# Playing with Play Perl
 
 So, this morning I finally clicked on one of the tweets talking about that 
 new [Play Perl](http://play-perl.org/) thingy. And then I squealed like a
@@ -23,8 +24,8 @@ have external widgets. Would it be easy to hack one for `Play Perl`? Thanks to
 a very nice [API](https://github.com/berekuk/play-perl/blob/master/app/api.txt), 
 the answer is '*oh yes*':
 
-    #syntax: perl
-    #!/usr/bin/env perl 
+```perl
+#!/usr/bin/env perl 
 
     use 5.10.0;
 
@@ -69,6 +70,7 @@ the answer is '*oh yes*':
     $w->endTag;
 
     print $output;
+```
 
 Admittedly, it could be more interesting to write the widget straight in
 JavaScript so that no server-side work is required.  And while for the first draft I 
@@ -77,8 +79,8 @@ workhorse, the same logic can of course easily be translated to any
 templating system.  With the latter in mind, I had to see what it would like using
 `Template::Caribou`, my nascent pet-template project: 
 
-    #syntax: perl
-    package Web::Widget::PlayPerl;
+```perl
+package Web::Widget::PlayPerl;
 
     use LWP::Simple qw/ get /;
     use JSON::XS;
@@ -167,15 +169,16 @@ templating system.  With the latter in mind, I had to see what it would like usi
     };
 
     1;
+```
 
 
 I'll just leave it there as-is, as a teaser for another, upcoming blog entry. 
 But, as you can see, it does produce a nice base for our desired widget. A
 little bit of CSS here and there, and we should be ready to go:
 
-    #syntax: bash
-    $ perl -MWeb::Widget::PlayPerl \
-        -E'say Web::Widget::PlayPerl->new( username => "yanick" )->render("widget")'
+```bash
+$ perl -MWeb::Widget::PlayPerl \
+    -E'say Web::Widget::PlayPerl->new( username => "yanick" )->render("widget")'
 
     <div class="widget play-perl">
     <h1>
@@ -203,3 +206,4 @@ little bit of CSS here and there, and we should be ready to go:
     </div>
     </div>
 
+```

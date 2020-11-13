@@ -1,6 +1,5 @@
 ---
 url:               dzil-autocomplete
-format:            markdown
 created: 2010-06-16
 original:         the Pythian blog - http://www.pythian.com/news/13359/distzilla-autocomplete
 tags:
@@ -20,9 +19,11 @@ that peeps might find useful.
 of [Aristotle's perldoc-complete](http://github.com/ap/perldoc-complete) for
 dzil.  
 
-    $ dzil *<tab>* 
-    build     install   new       plugins   rjbsver   smoke     xtest     
-    clean     listdeps  nop       release   run       test      
+```
+$ dzil *<tab>* 
+build     install   new       plugins   rjbsver   smoke     xtest     
+clean     listdeps  nop       release   run       test      
+```
 
 
 [The second](http://github.com/yanick/dist-zilla/tree/command-plugins) 
@@ -31,29 +32,32 @@ there is about a gazillion Dist::Zilla plugins, I wanted to have a quick way
 to see all the plugins installed on a specific machine.
 Enter a new dzil sub-command: `plugins`.  
 
-    $ dzil plugins
-    [ lotsa plugins ]
-    MatchManifest - Ensure that MANIFEST is correct
-    MetaConfig - summarize Dist::Zilla configuration into distmeta
-    MetaJSON - produce a META.json
-    * MetaNoIndex - Stop CPAN from indexing stuff
-    MetaProvides - Generating and Populating 'provides' in your META.yml
-    MetaProvides::Class - Scans Dist::Zilla's .pm files and tries to identify classes using Class::Discover.
-    MetaProvides::FromFile - In the event nothing else works, pull in hand-crafted metadata from a specified file.
-    MetaProvides::Package - Extract namespaces/version from traditional packages for provides
-    * MetaResources - provide arbitrary "resources" for distribution metadata
-    MetaTests - common extra tests for META.yml
-    MetaYAML - produce a META.yml
-    [ still lotsa plugins ]
+```
+$ dzil plugins
+[ lotsa plugins ]
+MatchManifest - Ensure that MANIFEST is correct
+MetaConfig - summarize Dist::Zilla configuration into distmeta
+MetaJSON - produce a META.json
+* MetaNoIndex - Stop CPAN from indexing stuff
+MetaProvides - Generating and Populating 'provides' in your META.yml
+MetaProvides::Class - Scans Dist::Zilla's .pm files and tries to identify classes using Class::Discover.
+MetaProvides::FromFile - In the event nothing else works, pull in hand-crafted metadata from a specified file.
+MetaProvides::Package - Extract namespaces/version from traditional packages for provides
+* MetaResources - provide arbitrary "resources" for distribution metadata
+MetaTests - common extra tests for META.yml
+MetaYAML - produce a META.yml
+[ still lotsa plugins ]
+```
 
 The plugins marked with an asterix are used by the current `dist.ini`.  Also,
 give a plugin name to the sub-command, and it'll act as a glorified 
-`perldoc Dist::Zilla::Plugin::<Plugin Name>`.  The sweet thing is,
+`perldoc Dist::Zilla::Plugin::*Plugin Name*`.  The sweet thing is,
 autocomplete also work there:
 
-    $ dzil plugins Pod<Tab>
-    PodCoverageTests  PodSyntaxTests    PodVersion        PodWeaver
-
+```
+$ dzil plugins Pod<Tab>
+PodCoverageTests  PodSyntaxTests    PodVersion        PodWeaver
+```
 
 Both patches are available on [my Github fork of
 Dist::Zilla](http://github.com/yanick/dist-zilla). Enjoy! 

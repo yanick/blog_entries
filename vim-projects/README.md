@@ -1,5 +1,4 @@
 ---
-title: Fine-Tuning the 'vim-project' Plugin For My Perl Needs
 url: vim-project
 format: markdown
 created: 2012-10-14
@@ -7,6 +6,8 @@ tags:
     - Perl
     - Vim
 ---
+
+# Fine-Tuning the 'vim-project' Plugin For My Perl Needs
 
 I'm a [vim][vim] man. Sure, from time to time I hit mid-line editing crisis and
 feel the need to go and try out some other more flashy editors. But, so far,
@@ -28,9 +29,9 @@ small script, [gen_pvim.pl](https://github.com/yanick/environment/blob/master/bi
 which update a `project.vim` with new files (and new ignores), or create a
 skeleton one where none is present:
 
-    #syntax: bash
-    $ gen_pvim
-    Dancer-Plugin-MobileDevice=/home/yanick/work/perl-modules/Dancer-Plugin-MobileDevice CD=. {
+```bash
+$ gen_pvim
+Dancer-Plugin-MobileDevice=/home/yanick/work/perl-modules/Dancer-Plugin-MobileDevice CD=. {
 
     lib/                 Files=lib {
     Dancer/Plugin/MobileDevice.pm
@@ -60,6 +61,7 @@ skeleton one where none is present:
     }
     # \.git
     }
+```
 
 When updating a `project.vim` file, this script will insert any new file (in
 the right folder, natch), and will take any comment as regex for files that
@@ -72,14 +74,15 @@ project'](https://github.com/yanick/environment/commit/4718d7806b48f60b8976d4d76
 such that it would refresh the project listing using my little script. Oh, and
 defined a bash alias:
 
-    #syntax: bash
-    $ alias pvim
-    alias pvim='gvim +'\''Project project.vim'\'''
+```bash
+$ alias pvim
+alias pvim='gvim +'\''Project project.vim'\'''
+```
 
 The result? Not yet a perfect IDE, but it's getting closer... 
 
 <div align="center">
-<img src="__ENTRY_DIR__/screenshot.png" />
+<img src="screenshot.png" />
 </div>
 
 

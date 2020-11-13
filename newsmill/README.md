@@ -1,5 +1,4 @@
 ---
-title: Newsmill (aka an excuse to play with shinies)
 url: newsmill
 format: markdown
 created: 2013-01-20
@@ -7,6 +6,8 @@ tags:
     - Perl
     - Perlweekly
 ---
+
+# Newsmill (aka an excuse to play with shinies)
 
 If you are subscribed to the [Perl Weekly Newsletter](http://perlweekly.com/),
 you probably noticed that I've been drafted as a co-editor. As a side-effect,
@@ -32,8 +33,8 @@ traditional. So [DBIx::Class](cpan) it is, with a
 generous sprinkling of [DBIx::Class::Candy](cpan) on top, such that 
 the table classes look like:
 
-    #syntax: perl
-    package Newsmill::Schema::Result::Article;
+```perl
+package Newsmill::Schema::Result::Article;
 
     use strict;
     use warnings;
@@ -73,6 +74,7 @@ the table classes look like:
     many_to_many tags => 'article_tag', 'tag';
 
     1;
+```
 
 It also gave me the occasion to look at [DBIx::Class::Migration](cpan),
 which provides a very, very nice front-end for the powerful but byzantine 
@@ -80,8 +82,9 @@ which provides a very, very nice front-end for the powerful but byzantine
 first version of the application, I didn't have a lot of migration stuff
 to try out, but at least I can do
 
-    #syntax: bash
-    $ dbic-migration diagram -Ilib --schema_class Newsmill::Schema
+```bash
+$ dbic-migration diagram -Ilib --schema_class Newsmill::Schema
+```
 
 and obtain
 
@@ -95,25 +98,26 @@ which is neat.
 As the Perl Weekly entries are so nicely JSON formatted, slurping them all
 into the database is no great hardship with the help of a [little script](https://github.com/yanick/Newsmill/blob/master/bin/import_newsletters.pl):
 
-<galuga_code code="perl">import_newsletters.pl</galuga_code>
+``import_newsletters.pl``
 
 That done, we only have to point the script to the right directory and:
 
-    #syntax: bash
-    $ perl -Ilib ./bin/import_newsletters.pl 
-    importing 1
-            add section Headlines
-                    add article Nice progress in the development of MetaCPAN
-                    add article Rakudo Star 2011.07 released with 10%-30% improvement in compile and execution speed
-            add section Articles
-                    add article Whitepaper from ActiveState: Perl and Python in the Cloud
-                    add article Padre on OSX
-                    add article OSCON Perl Unicode Slides
-                    add article Moose is Perl: A Guide to the New Revolution
-                    add article YAPC::Europe Preview
-                    add article GSoC - The Perl 6 podparser branch has landed
-            add section Discussions
-                    add article To Answer, Or Not To Answer....
+```bash
+$ perl -Ilib ./bin/import_newsletters.pl 
+importing 1
+        add section Headlines
+                add article Nice progress in the development of MetaCPAN
+                add article Rakudo Star 2011.07 released with 10%-30% improvement in compile and execution speed
+        add section Articles
+                add article Whitepaper from ActiveState: Perl and Python in the Cloud
+                add article Padre on OSX
+                add article OSCON Perl Unicode Slides
+                add article Moose is Perl: A Guide to the New Revolution
+                add article YAPC::Europe Preview
+                add article GSoC - The Perl 6 podparser branch has landed
+        add section Discussions
+                add article To Answer, Or Not To Answer....
+```
 
 
 ## Show Them What We've Got
@@ -123,7 +127,7 @@ external peeps, have a voting system, et cetera and so forth, but let's pace
 ourselves. For now, we have a database shockful of newsletters, so it might be nice to
 see them. In consequence, let's create a web front-end for the newsletters:
 
-<galuga_code code="perl">WebApp.pm</galuga_code>
+``WebApp.pm``
 
 Note that by now I've left the bleeding edge of technology and boldly jumped
 into the arterial spray of the future. The web framework? [Dancer
@@ -132,18 +136,18 @@ The templating system? My little pet `Template::Caribou`. I'll not bore you
 with the details of `Template::Caribou` (that's coming in my next blog entry),
 so I'll just mention that the `Entry` template class looks like
 
-<galuga_code code="perl">Issue.pm</galuga_code>
+``Issue.pm``
 
 And the main page template segment is:
 
-<galuga_code code="perl">page.bou</galuga_code>
+``page.bou``
 
 Oh, yes, HTML5 [Bootstrap](http://twitter.github.com/bootstrap/) has been thrown in the mix too, natch.
 
 And the result:
 
 <div align="center">
-<img src="__ENTRY_DIR__/screenshot.png" alt="Newsletter sample" /></div>
+<img src="screenshot.png" alt="Newsletter sample" /></div>
 
 Not bad, I daresay, considering that there is no stylesheet applied beyond the basic Bootstrap
 stuff.

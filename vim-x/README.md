@@ -1,6 +1,4 @@
 ---
-url: vim-x
-format: markdown
 created: 2014-03-23
 tags:
     - Perl
@@ -12,7 +10,7 @@ tags:
 Last week, I finally got around [writing a few macros][vim_macros] to help with conflict
 resolution in Vim:
 
-``` viml
+```vim
 " conflict resolution - pick this one / option 1 / option 2
 map ,. $?\v^[<=]{7}<CR>jy/\v^[=>]{7}<CR>?\v^[<]{7}<CR>"_d/\v^\>{7}<CR>"_ddP
 map ,<  $?\v^[<]{7}<CR><,>.
@@ -115,7 +113,7 @@ sub ResolveConflict :Vim(args) {
 
 Then, in your `.vimrc`:
 
-``` viml
+```vim
 " only if the modules aren't already in the path
 perl push @INC, '/path/to/modules/';
 

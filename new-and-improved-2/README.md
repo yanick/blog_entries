@@ -1,6 +1,5 @@
 ---
 url: new-and-improved-moosex-role-buildinstanceof
-format: markdown
 created: 2011-11-10
 tags:
     - Perl
@@ -9,7 +8,7 @@ tags:
     - DBIx::Class::DeploymentHandler
 ---
 
-# New &amp; Improved: MooseX::Role::BuildInstanceOf
+# New & Improved: MooseX::Role::BuildInstanceOf
 
 <div style="float: right; padding: 5px;">
 <img src="__ENTRY_DIR__/val_approuve.png" alt="New and Improved!" width="150"/>
@@ -32,8 +31,8 @@ but once one understanding settles in, it's humongously handy.
 Without going into the details, with that module, you can turn that
 chunk of code:
 
-    #syntax: perl
-    package MyShip;
+```perl
+package MyShip;
 
     use Moose;
 
@@ -57,11 +56,12 @@ chunk of code:
     }
 
     1;
+```
 
 into
 
-    #syntax: perl
-    package MyShip;
+```perl
+package MyShip;
 
     use Moose;
 
@@ -72,12 +72,14 @@ into
     };
 
     1;
+```
 
 Both versions will do just what you think it will do when you write
 
-    #syntax: perl
-    # damned Ferengies never fill up the tank
-    my $warbird = MyShip->new( engine_args => [ fuel => 20 ] );
+```perl
+# damned Ferengies never fill up the tank
+my $warbird = MyShip->new( engine_args => [ fuel => 20 ] );
+```
 
 There is a *lot* more to [MooseX::Role::BuildInstanceOf](cpan) than that,
 but we can agree that it's already pretty sweet.
@@ -101,8 +103,8 @@ push down to the sub-objects some attributes of the main object. Very handy,
 that. So I cracked my knuckles, went to work... and by now the code
 
 
-    #syntax: perl
-    package MyShip;
+```perl
+package MyShip;
 
     use Moose;
 
@@ -147,11 +149,12 @@ that. So I cracked my knuckles, went to work... and by now the code
     }
 
     1;
+```
 
 can all be replaced by
 
-    #syntax: perl
-    package MyShip;
+```perl
+package MyShip;
 
     use Moose;
 
@@ -190,5 +193,6 @@ can all be replaced by
     };
 
     1;
+```
 
 Nifty, isn't?

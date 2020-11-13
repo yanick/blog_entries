@@ -54,62 +54,41 @@ then progressively replace the chunks that need to be dynamic. When
 [Storybook][storybook] is used, that can make for wicked tight iterative
 work.
 
-<Hackthrough>
+### hackthrough
 
-<Hackstep src="Month.html">
+#### Month.html
 
 Here's the React version of one of the components. Not horrendous
 by any standard. 
 
-</Hackstep>
-
-<Hackstep src="Month.html" lines="14-29">
+#### Month.html lines:14-29
 
 But the template itself is kinda buried deep in the file.
 
-</Hackstep>
-
-<Hackstep src="Month.html" lines="18,20">
+#### Month.html lines:18,20
 
 Code in the middle of the template is meh.
 
-</Hackstep>
-
-<Hackstep src="Month.html" lines="23-26">
+#### Month.html lines:23-26
 
 And those iterations really get clunky fast.
 
-</Hackstep>
-
-<Hackstep src="Month_vue.html">
+#### Month_vue.html
 
 Contrast with the vue component. 
 
-</Hackstep>
-
-<Hackstep src="Month_vue.html" lines="1-17">
+#### Month_vue.html lines:1-17
 
 The template is upfront and center, giving emphasis on what the component is
 about rather than how it's being operated behind the curtain.
 
-</Hackstep>
-
-<Hackstep src="Month_vue.html" lines="6,27-29,35">
+#### Month_vue.html lines:6,27-29,35
 
 Formatting is addressed by filters, which are more visually distinct.
 
-</Hackstep>
+#### Month_vue.html lines:12-14 
 
-<Hackstep src="Month_vue.html" lines="12-14"> 
 And yeah, that's a list iteration that is softer on the eye. 
-
-</Hackstep>
-
-</Hackthrough>
-
-
-
-
 
 
 
@@ -123,33 +102,25 @@ are implemented to *what* is implemented? I think so.  It's not a huge thing,
 but that's what makes the difference between code that is not hard to read,
 and code that is *easy* to read.
 
-<Hackthrough>
+### Hackthrough
 
-<Hackstep src="ifs.javascript">
+#### ifs.javascript
 
 Let's be honest. Do you prefer this?
 
-</Hackstep>
-
-<Hackstep src="ifs_vue.html">
+#### ifs_vue.html
 
 ... or that?
 
-</Hackstep>
 
-<Hackstep src="loop.javascript">
+#### loop.javascript
 
 How sharply are you tilting your head to grok this?
 
-</Hackstep>
-
-<Hackstep src="loop_vue.html">
+#### loop_vue.html
 
 Versus that?
 
-</Hackstep>
-
-</Hackthrough>
 
 ## Piece of evidence #3: Shadows of self-documentation
 
@@ -158,63 +129,53 @@ way the components are declared as a simple object. Just by looking
 at it, one can have a pretty good idea what are the component's
 characteristics.
 
-<Hackthrough>
+### Hackthrough
 
-<Hackstep src="object.javascript" lines="2,3">
+#### object.javascript 2,3
 
 For example, this component accepts all those props...
 
-</Hackstep>
 
-<Hackstep src="object.javascript" lines="4">
+#### object.javascript 4
 
 ... uses (or might use) those components within its template...
 
-</Hackstep>
 
-<Hackstep src="object.javascript" lines="5">
+#### object.javascript 5
 
 ... uses this filter...
 
-</Hackstep>
 
-<Hackstep src="object.javascript" lines="6">
+#### object.javascript 6
 
 ... and has one function that munges prop to get
 a derived value. 
 
 Got it.
 
-</Hackstep>
 
-</Hackthrough>
+### /Hackthrough
 
 In fact, those component objects are so descriptive...
 
-<Hackthrough>
+### Hackthrough
 
-<Hackstep src="doc_app.javascript">
+#### doc_app.javascript
 
 ...one could be almost
 tempted to write code that gathers that information for all the 
 components an app use...
 
-</Hackstep>
-
-<Hackstep src="doc_app2.javascript">
+#### doc_app2.javascript
 
 ... and feed them to a meta-app...
 
-</Hackstep>
-
-<Hackstep src="doc_app3.javascript">
+#### doc_app3.javascript
 
 ... that grooms them into self-generated documentation.
 
 
-</Hackstep>
-
-</Hackthrough>
+### /Hackthrough
 
 Yes, one could almost be tempted to do that. But that'd be silly.
 

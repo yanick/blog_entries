@@ -14,7 +14,7 @@ tags:
 ---
 
 <div style="float: right">
-<img src="__ENTRY_DIR__/vignette.png" alt="Onion pattern" />
+<img src="__ENTRY__/vignette.png" alt="Onion pattern" />
 </div>
 
 *This blog entry is based on true events. Only the pattern has been
@@ -324,7 +324,7 @@ print $fh $pattern->png;
 That, finally, hit the spot just right:
 
 <div align="center">
-<a href="__ENTRY_DIR__/pattern.png"><img src="__ENTRY_DIR__/final.png" /></a>
+<a href="__ENTRY__/pattern.png"><img src="__ENTRY_DIR__/final.png" /></a>
 <br />
 Click on the image to see the pattern in its full-size glory.
 </div>

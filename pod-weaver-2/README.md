@@ -33,13 +33,14 @@ POD, and **pluginbundle** modules are handy aggregates of individual plugins.
 All three kinds of module are invoked similarily in the configuration file.
 For example, the configuration
 
-    #syntax: bash
-    [@YANICK]
+```bash
+[@YANICK]
 
-    [-NormalizeCapitalization]
-    skip_headers = head2, head3
+[-NormalizeCapitalization]
+skip_headers = head2, head3
 
-    [Generic / DESCRIPTION ]
+[Generic / DESCRIPTION ]
+```
 
 has the bunle *YANICK*, the straight plugin *NormalizeCapitalization*
 and the section plugin *Generic*. Each of them can be given parameters
@@ -60,40 +61,43 @@ The most basic of the bunch is undubitously `Pod::Weaver::Section::Generic`,
 which takes the section of the original POD corresponding to its name and drops it 
 in the generated POD.  For example, using the configuration
 
-    #syntax: bash
-    [Generic / SYNOPSIS]
-    required = 1
+```
+[Generic / SYNOPSIS]
+required = 1
 
-    [Generic / DESCRIPTION]
-    required = 1
+[Generic / DESCRIPTION]
+required = 1
 
-    [Generic / BUGS]
+[Generic / BUGS]
 
-    [Generic / SEE ALSO]
+[Generic / SEE ALSO]
+```
 
 and the original POD
 
-    #syntax: perl
-    =head1 SEE ALSO
+```perl
+=head1 SEE ALSO
 
-    * L<Pod::Weaver>
+* L<Pod::Weaver>
 
-    =head1 DESCRIPTION
+=head1 DESCRIPTION
 
-    Yadah yadah
+Yadah yadah
 
-    =head1 SYNOPSIS
+=head1 SYNOPSIS
 
-        ...
+    ...
 
-    =head1 IRRELEVANT
+=head1 IRRELEVANT
 
-    This section is not that important, after all.
+This section is not that important, after all.
+```
 
 we would get
 
-    #syntax: perl
-    
+```perl
+
+```
 
 
 Err.. Nothing? 
@@ -104,38 +108,40 @@ included in the configuration if we want anything to happen. I'll explain
 in more details in the next section, but for the time being just trust me and
 add two lines to the configuration:
 
-    #syntax: bash
-    [-EnsurePod5]
-    [-H1Nester]
+```bash
+[-EnsurePod5]
+[-H1Nester]
 
-    [Generic / SYNOPSIS]
-    required = 1
+[Generic / SYNOPSIS]
+required = 1
 
-    [Generic / DESCRIPTION]
-    required = 1
+[Generic / DESCRIPTION]
+required = 1
 
-    [Generic / BUGS]
+[Generic / BUGS]
 
-    [Generic / SEE ALSO]
+[Generic / SEE ALSO]
+```
 
 and then, *tadah*:
 
-    #syntax: perl
-    =pod
+```perl
+=pod
 
-    =head1 SYNOPSIS
+=head1 SYNOPSIS
 
-        ...
+    ...
 
-    =head1 DESCRIPTION
+=head1 DESCRIPTION
 
-    Yadah yadah
+Yadah yadah
 
-    =head1 SEE ALSO
+=head1 SEE ALSO
 
-    * L<Pod::Weaver>
+* L<Pod::Weaver>
 
-    =cut
+=cut
+```
 
 The sections are generated in the order that we picked them. The
 *IRRELEVANT* section, as it has not been explicitly picked,
@@ -183,9 +189,10 @@ Pod::Weaver end-users, and should be automatically dealt with
 behind the scene. But, for the time being, it is  what it is, 
 so just take my word for it: add the two magic lines
 
-    #syntax: bash
-    [-EnsurePod5]
-    [-H1Nester]
+```bash
+[-EnsurePod5]
+[-H1Nester]
+```
 
 to all your `weaver.ini` files, and happiness will ensue.
 
@@ -197,8 +204,9 @@ And then there are plugin bundles, living under the namespace
 Just like their [Dist::Zilla](cpan) cousins, they are a handy way to aggregate 
 many plugins together and turn a 30-section configuration file into:
 
-    #syntax: bash
-    [@YANICK]
+```
+[@YANICK]
+```
 
 
 ### The Other Plugins
@@ -211,7 +219,9 @@ It's also possible to user plugins that live outside of the three
 namespaces mentioned above, by prefixing their names
 with an equal sign in the configuration, like so:
 
-    [=YANICK::Pod::Weaver::Plugins::Foo]
+```
+[=YANICK::Pod::Weaver::Plugins::Foo]
+```
 
 Of course, for clarity's sake it's a better idea to stick to the official
 namespaces. But still, it's nice to know that we have this extra-flexibility,
