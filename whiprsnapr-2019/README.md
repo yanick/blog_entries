@@ -2,6 +2,9 @@
 created: 2020-01-06
 tags:
   - whiprsnapr
+  - react
+  - chart.js
+  - untappd
 ---
 
 # Taking a stroll up Ballmer's Peak
