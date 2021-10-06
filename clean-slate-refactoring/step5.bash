@@ -1,0 +1,3 @@
+$ ls
+
+<behold the void!>
